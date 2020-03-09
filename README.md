@@ -15,12 +15,26 @@ For the sake of our project, we will be using periodic boundary conditions.
 
 The main purpose of this project is to be able to find and manipulate cycles in cellular automata. As these automata are finite, they will eventually reach a cycle, meaning a set of states that has already been evolved to in an automaton.
 
-  0001        0001        0001
-  0010        1001        0011
-  0100        0101        1100
-  1000        1111*       1110
-  0001*       1111*       0110
-  0010*       1111*       0111
+  0001
+  0010
+  0100
+  1000
+  0001*
+  0010*
+  
+  0001
+  1001
+  0101
+  1111
+  1111
+  1111
+  
+  0001
+  0011
+  1100
+  1110
+  0110
+  0111
   
 In the above examples, as the first column evolves, we reach a cycle at state 5, and the automaton begins to repeat itself. As the second column evolves, we reach a cycle at state 4, and the automaton cycles through the same state (1111) infinitely. The third column has no discernable cycle in the given 7 states, but since the automaton is finite, it will eventually reach a cycle. Considering the alphabet {0,1}, there are 2^4 possible states, meaning that if you evolve any of these automata over 2^4 +1 states (17), you are guaranteed to find a cycle.
 
