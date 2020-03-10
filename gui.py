@@ -4,6 +4,7 @@ The program will ask for several variables and evolve a state over several steps
 
 """
 
+import math
 import scipy
 import numpy
 from sympy import *
@@ -31,6 +32,7 @@ def cellular_automata(num_elements, num_alphabet, cellular_automata, num_steps):
 
 
 	M = []
+	M.append(cellular_automata)
 
 	while (step < num_steps):
 		ca_next = []	# Reset list for every new step
@@ -84,15 +86,33 @@ if __name__ == '__main__':
 
 	start_state = [] # Starting state will be appended one element at a time.
 
-	print ('Enter starting state, one element per line: ')
-	for i in range(0, num_elements):
-		element = int(input())
-		start_state.append(element)
-
+	"""
+	This process takes a string of integers as input and ensures that it is a valid starting state.
+	"""
+	num_digits = 0
+	test_state = input ('Enter starting state: ')
+	for i in test_state:
+		if (i.isdigit()):
+			num_digits = num_digits + 1
+		else:
+			print('Incorrect character')
+		
+	while (num_digits != num_elements):
+		print('You entered: ', num_digits, ' element(s)\nThis automaton needs: ', num_elements, ' element(s)\n')
+		num_digits = 0
+		test_state = input ('Enter starting state: ')
+		for i in test_state:
+			if (i.isdigit()):
+				num_digits = num_digits + 1
+			else:
+				print('Incorrect character')
+		
+	for i in test_state:
+		start_state.append(int(i))
+		
 	# update_rule = input ('Enter update rule: ')
 
 	num_steps = int(input ('Enter # of steps the automaton will take: '))
-	
 	
 	print ('\n\nBeginning process...\n')
 	cellular_automata(num_elements, num_alphabet, start_state, num_steps)
