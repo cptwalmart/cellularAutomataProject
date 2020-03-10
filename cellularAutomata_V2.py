@@ -155,7 +155,7 @@ if __name__ == '__main__':
 			num_digits = num_digits + 1
 		else:
 			print('Incorrect character')
-		
+
 	while (num_digits != num_elements):
 		print('You entered: ', num_digits, ' element(s)\nThis automaton needs: ', num_elements, ' element(s)\n')
 		num_digits = 0
@@ -165,7 +165,7 @@ if __name__ == '__main__':
 				num_digits = num_digits + 1
 			else:
 				print('Incorrect character')
-		
+
 	for i in test_state:
 		start_state.append(int(i))
 
