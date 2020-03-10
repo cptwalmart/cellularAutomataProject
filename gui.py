@@ -110,7 +110,6 @@ if __name__ == '__main__':
 	for i in test_state:
 		start_state.append(int(i))
 		
-	
 	# update_rule = input ('Enter update rule: ')
 
 	num_steps = int(input ('Enter # of steps the automaton will take: '))
