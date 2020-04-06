@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import colors
 import re								# Regular expression - used for parsing
+import random
 
-# Code is referenced from python sympy library. Reference for further explination
 
-
+# Code is referenced from python sympy library. Reference for further explanation
 def rref(B, tol=1e-8, debug=False):
     A = B.copy()
     rows, cols = A.shape
@@ -71,8 +71,12 @@ def rref(B, tol=1e-8, debug=False):
     return (A, pivots_pos, row_exchanges)
 
 
-def cellular_automata(num_elements, num_alphabet, cellular_automata, num_steps, evolution_matrix):
+def cellular_automata(num_elements, num_alphabet, ca_next, num_steps, evolution_matrix, debug=False):
     """Takes a state and evolves it over n steps.
+
+    cellular_automata   -- Main matrix
+    ca_next             -- Current state in iteration of process
+    step                -- Number of states in the matrix
 
     The final output will look like:
             0001
@@ -81,76 +85,83 @@ def cellular_automata(num_elements, num_alphabet, cellular_automata, num_steps, 
             1111
     """
 
-    ca_next = cellular_automata[:]  # List representation of next state
+    step = 1
 
-    print(*ca_next)  # Prints the starting state
-
-    step = 1  # Number of current state
-
-    M = []
-    M.append(ca_next)
+    cellular_automata = []
+    cellular_automata.append(np.transpose(ca_next))
 
     while (step < num_steps):
-        ca_next = []  # Reset list for every new step
-
-        # Add elements to next state according to update rule
-        for i in range(0, num_elements):
-            if i > 0:
-                ca_next.append(
-                    (cellular_automata[i-1]+cellular_automata[i]) % num_alphabet)
-
-            elif(i == 0):
-                ca_next.append(
-                    (cellular_automata[num_elements - 1]+cellular_automata[i]) % num_alphabet)
-
-        M.append(ca_next)
-
-        cellular_automata = ca_next[:]  # Update cell list
+        
+        if (debug == True):
+            print('Step # ', step, ':\nEvolution Matrix:\n', np.matrix(evolution_matrix), '\nMultiplied by State:', cellular_automata[step-1])
+        ca_next = np.transpose(np.matmul(evolution_matrix, cellular_automata[step-1]) % num_alphabet)
+        if (debug == True):
+            print('Equals: ', ca_next, ' Equals: ', np.transpose(ca_next))
+        cellular_automata.append(ca_next)
 
         step += 1  # Step increment
 
-    for i in range(0, num_steps):
-        print(M[i], end = " ")
+    print("\nFinal Matrix: ")
+    for i in range(0, num_steps-1):
+        print(cellular_automata[i], end = " ")
         print()
 
-    # plt.matshow(M)
-    # plt.show()
-
-    #print(M)
-
-    M_rref = np.asarray(M, dtype=np.int32)
-    print(rref(M_rref))
+    cellular_automata_rref = np.asarray(cellular_automata, dtype=np.int32)
+    print("\nFinal Matrix in Row Reduced Echelon Form:\n", rref(cellular_automata_rref))
     # rref(M_rref, tol=1e-8, debug=True)
+    
+    # Output the matplot graph
+    wait = input("Press enter to continue...")
+    plt.matshow(cellular_automata)
+    plt.show()
 
 
-def check_state(num_elements):
+def check_state(num_elements, num_alphabet, debug=False):
     """
     This process takes a string of integers as input and verifies that it is a valid starting state.
     """
 
     start_state = []  # Starting state will be appended one element at a time.
+    valid = True
 
     num_digits = 0
     test_state = input('Enter starting state: ')
-    for i in test_state:
-        if (i.isdigit()):
-            num_digits = num_digits + 1
-        else:
-            print('Incorrect character')
-
-    while (num_digits != num_elements):
-        print('You entered: ', num_digits,
-                ' element(s)\nThis automaton needs: ', num_elements, ' element(s)\n')
-        num_digits = 0
-        test_state = input('Enter starting state: ')
+    if test_state == 'random':
+        for x in range(0, num_elements):
+            start_state.append(random.randint(0, num_alphabet-1))
+        print("Your random state is ", start_state)
+            
+    else:
         for i in test_state:
-            if (i.isdigit()):
+            if (i.isdigit() and int(i) < num_alphabet):
+                if debug == True:
+                    print(i, " is a digit and is less than ", num_alphabet)
                 num_digits = num_digits + 1
+                valid = True
             else:
-                print('Incorrect character')
+                print('Incorrect character: ', i)
+                valid = False
+                break
 
-    for i in test_state:
-        start_state.append(int(i))
+        while (not valid or num_digits != num_elements):
+            if (num_digits != num_elements):
+                print('You entered: ', num_digits,
+                    ' element(s)\nThis automaton needs: ', num_elements, ' element(s)\n')
+            num_digits = 0
+            test_state = input('Enter starting state: ')
+            for i in test_state:
+                if (i.isdigit() and int(i) < num_alphabet):
+                    if debug == True:
+                        print(i, " is a digit and is less than ", num_alphabet)
+                    num_digits = num_digits + 1
+                    valid = True
+                else:
+                    print('Incorrect character: ', i)
+                    valid = False
+                    break
+
+        for i in test_state:
+            start_state.append(int(i))
         
     return start_state
 
@@ -167,7 +178,8 @@ def evolve_matrix(num_elements, update_rule, debug=False):
     """
 
     identity_matrix = np.identity(num_elements, int)
-    print(identity_matrix)
+    if debug == True:
+        print('\nIdentity Matrix: ', identity_matrix)
 
     evolution_matrix = []
     row = []
@@ -186,11 +198,12 @@ def evolve_matrix(num_elements, update_rule, debug=False):
                     
                 if debug == True:
                     print('l = ', l)
+                    print(new_element, '+', identity_matrix[i][l], '=', new_element + identity_matrix[i][l])
                     
                 new_element = new_element + identity_matrix[i][l]
                     
                 if debug == True:           # Debug -- print the location and value of element
-                    print('Element [', i, ', ', j, '] will be ', new_element)
+                    print('Element [', i, ', ', j, '] will now be ', new_element)
             
             row.append(new_element % num_alphabet)
             
@@ -199,9 +212,12 @@ def evolve_matrix(num_elements, update_rule, debug=False):
                 print('Row ', i, ':\n', row)
         evolution_matrix.append(row)
         if debug == True:
-            print('\nEvolution Matrix:\n', np.matrix(evolution_matrix))
+            print('\nEvolution Matrix (Row ', i, '):\n', np.matrix(evolution_matrix))
 
-    return evolution_matrix
+    if debug == True:
+        print('\nIdentity Matrix: ', identity_matrix)
+
+    return np.transpose(evolution_matrix)
 
 
 def det_update_rule(num_elements, debug=False):
@@ -252,10 +268,13 @@ if __name__ == '__main__':
     debug = input('Debug? (Y/N) ')
     if debug == 'y' or debug == 'Y':
         debug = True
+        print('Debug Mode On')
     else:
         debug = False
 
     num_elements = int(input('Enter # of elements in automaton: '))
+    if debug == True:
+        print("\t", num_elements, " elements in automaton.", sep = '')
 
     num_alphabet = int(input('Enter # of elements in alphabet: '))
 
@@ -263,21 +282,25 @@ if __name__ == '__main__':
 
     for i in range(0, num_alphabet):
         alphabet.append(i)
-    print('Your alphabet is', *alphabet)
+    print('\tYour alphabet is', *alphabet)
     
-    start_state = check_state(num_elements)
+    start_state = check_state(num_elements, num_alphabet, debug)
+    if debug == True:
+        print('\tStart State: ', start_state)
 
     update_rule = det_update_rule(num_elements, debug)
+    if debug == True:
+        print('\tUpdate Rule: ', update_rule)
 
     evolution_matrix = evolve_matrix(num_elements, update_rule, debug)
+    print("Evolution Matrix:\n", np.matrix(evolution_matrix))
+    evolution_matrix_rref = np.asarray(evolution_matrix, dtype=np.int32)
+    print("Evolution Matrix in Row Reduced Echelon Form:\n", rref(evolution_matrix_rref))
 
     num_steps = int(input('Enter # of steps the automaton will take: '))
+    if debug == True:
+        print('\t', num_steps, " steps in automaton.")
 
-    print('\n\nBeginning process...\n')
-    
-    a = np.array(evolution_matrix)
-    b = np.array([0,1,0,0])
-    print(a, ' * ', b, ' = ', np.matmul(a,b))
-    
-    ### Currently using old non-evolution_matrix function
-    #cellular_automata(num_elements, num_alphabet, start_state, num_steps, evolution_matrix)
+    print('\nBeginning process...\n')
+
+    cellular_automata(num_elements, num_alphabet, start_state, num_steps, evolution_matrix, debug)
