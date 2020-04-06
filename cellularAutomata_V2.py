@@ -90,7 +90,7 @@ def cellular_automata(num_elements, num_alphabet, ca_next, num_steps, evolution_
     cellular_automata = []
     cellular_automata.append(np.transpose(ca_next))
 
-    while (step < num_steps):
+    while (step <= num_steps):
         
         if (debug == True):
             print('Step # ', step, ':\nEvolution Matrix:\n', np.matrix(evolution_matrix), '\nMultiplied by State:', cellular_automata[step-1])
@@ -102,7 +102,7 @@ def cellular_automata(num_elements, num_alphabet, ca_next, num_steps, evolution_
         step += 1  # Step increment
 
     print("\nFinal Matrix: ")
-    for i in range(0, num_steps-1):
+    for i in range(0, num_steps):
         print(cellular_automata[i], end = " ")
         print()
 
@@ -179,7 +179,7 @@ def evolve_matrix(num_elements, update_rule, debug=False):
 
     identity_matrix = np.identity(num_elements, int)
     if debug == True:
-        print('\nIdentity Matrix: ', identity_matrix)
+        print('Identity Matrix:\n', identity_matrix)
 
     evolution_matrix = []
     row = []
@@ -215,7 +215,7 @@ def evolve_matrix(num_elements, update_rule, debug=False):
             print('\nEvolution Matrix (Row ', i, '):\n', np.matrix(evolution_matrix))
 
     if debug == True:
-        print('\nIdentity Matrix: ', identity_matrix)
+        print('Identity Matrix:\n', identity_matrix)
 
     return np.transpose(evolution_matrix)
 
