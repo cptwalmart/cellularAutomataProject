@@ -1,10 +1,13 @@
 import numpy as np
+from numpy.linalg import svd  # calc nullspace
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import colors
-import re								# Regular expression - used for parsing
+import re		# Regular expression - used for parsing
 import random
 
+# from http://wiki.scipy.org/Cookbook/RankNullspace
+# code for rref(), rank(), nullspace() are referenced from scipy libs
 
 # Code is referenced from python sympy library. Reference for further explanation
 def rref(B, tol=1e-8, debug=False):
@@ -73,11 +76,9 @@ def rref(B, tol=1e-8, debug=False):
 
 def cellular_automata(num_elements, num_alphabet, ca_next, num_steps, evolution_matrix, debug=False):
     """Takes a state and evolves it over n steps.
-
     cellular_automata   -- Main matrix
     ca_next             -- Current state in iteration of process
     step                -- Number of states in the matrix
-
     The final output will look like:
             0001
             1001
@@ -91,10 +92,12 @@ def cellular_automata(num_elements, num_alphabet, ca_next, num_steps, evolution_
     cellular_automata.append(np.transpose(ca_next))
 
     while (step <= num_steps):
-        
+
         if (debug == True):
-            print('Step # ', step, ':\nEvolution Matrix:\n', np.matrix(evolution_matrix), '\nMultiplied by State:', cellular_automata[step-1])
-        ca_next = np.transpose(np.matmul(evolution_matrix, cellular_automata[step-1]) % num_alphabet)
+            print('Step # ', step, ':\nEvolution Matrix:\n', np.matrix(
+                evolution_matrix), '\nMultiplied by State:', cellular_automata[step-1])
+        ca_next = np.transpose(
+            np.matmul(evolution_matrix, cellular_automata[step-1]) % num_alphabet)
         if (debug == True):
             print('Equals: ', ca_next, ' Equals: ', np.transpose(ca_next))
         cellular_automata.append(ca_next)
@@ -103,13 +106,14 @@ def cellular_automata(num_elements, num_alphabet, ca_next, num_steps, evolution_
 
     print("\nFinal Matrix: ")
     for i in range(0, num_steps):
-        print(cellular_automata[i], end = " ")
+        print(cellular_automata[i], end=" ")
         print()
 
     cellular_automata_rref = np.asarray(cellular_automata, dtype=np.int32)
-    print("\nFinal Matrix in Row Reduced Echelon Form:\n", rref(cellular_automata_rref))
+    print("\nFinal Matrix in Row Reduced Echelon Form:\n",
+          rref(cellular_automata_rref))
     # rref(M_rref, tol=1e-8, debug=True)
-    
+
     # Output the matplot graph
     wait = input("Press enter to continue...")
     plt.matshow(cellular_automata)
@@ -130,7 +134,7 @@ def check_state(num_elements, num_alphabet, debug=False):
         for x in range(0, num_elements):
             start_state.append(random.randint(0, num_alphabet-1))
         print("Your random state is ", start_state)
-            
+
     else:
         for i in test_state:
             if (i.isdigit() and int(i) < num_alphabet):
@@ -146,7 +150,7 @@ def check_state(num_elements, num_alphabet, debug=False):
         while (not valid or num_digits != num_elements):
             if (num_digits != num_elements):
                 print('You entered: ', num_digits,
-                    ' element(s)\nThis automaton needs: ', num_elements, ' element(s)\n')
+                      ' element(s)\nThis automaton needs: ', num_elements, ' element(s)\n')
             num_digits = 0
             test_state = input('Enter starting state: ')
             for i in test_state:
@@ -162,7 +166,7 @@ def check_state(num_elements, num_alphabet, debug=False):
 
         for i in test_state:
             start_state.append(int(i))
-        
+
     return start_state
 
 
@@ -189,30 +193,34 @@ def evolve_matrix(num_elements, update_rule, debug=False):
         row = []
         for j in range(0, num_elements):    # Every element in row
             new_element = 0
-            
+
             for k in update_rule:           # Every element in update rule
                 if j + k >= num_elements:
                     l = j + k - num_elements
                 else:
                     l = j + k
-                    
+
                 if debug == True:
                     print('l = ', l)
-                    print(new_element, '+', identity_matrix[i][l], '=', new_element + identity_matrix[i][l])
-                    
+                    print(
+                        new_element, '+', identity_matrix[i][l], '=', new_element + identity_matrix[i][l])
+
                 new_element = new_element + identity_matrix[i][l]
-                    
+
                 if debug == True:           # Debug -- print the location and value of element
-                    print('Element [', i, ', ', j, '] will now be ', new_element)
-            
+                    print('Element [', i, ', ', j,
+                          '] will now be ', new_element)
+
             row.append(new_element % num_alphabet)
-            
+
             if debug == True:
-                print(new_element, ' % ', num_alphabet, ' = ', new_element % num_alphabet)
+                print(new_element, ' % ', num_alphabet,
+                      ' = ', new_element % num_alphabet)
                 print('Row ', i, ':\n', row)
         evolution_matrix.append(row)
         if debug == True:
-            print('\nEvolution Matrix (Row ', i, '):\n', np.matrix(evolution_matrix))
+            print('\nEvolution Matrix (Row ', i, '):\n',
+                  np.matrix(evolution_matrix))
 
     if debug == True:
         print('Identity Matrix:\n', identity_matrix)
@@ -238,16 +246,93 @@ def det_update_rule(num_elements, debug=False):
 
         for i in update_rule:
             if abs(i) > num_elements:
-                print(i,' is not a valid element for this automaton.\n')
+                print(i, ' is not a valid element for this automaton.\n')
                 valid = False
                 break
             else:
-                valid = True     
-        
+                valid = True
+
         if debug == True:
             print('The update rule is ', update_rule)
-    
+
     return update_rule
+
+
+def rank(A, atol=1e-13, rtol=0):
+    """Estimate the rank (i.e. the dimension of the nullspace) of a matrix.
+    The algorithm used by this function is based on the singular value
+    decomposition of `A`.
+    Parameters
+    ----------
+    A : ndarray
+        A should be at most 2-D.  A 1-D array with length n will be treated
+        as a 2-D with shape (1, n)
+    atol : float
+        The absolute tolerance for a zero singular value.  Singular values
+        smaller than `atol` are considered to be zero.
+    rtol : float
+        The relative tolerance.  Singular values less than rtol*smax are
+        considered to be zero, where smax is the largest singular value.
+    If both `atol` and `rtol` are positive, the combined tolerance is the
+    maximum of the two; that is::
+        tol = max(atol, rtol * smax)
+    Singular values smaller than `tol` are considered to be zero.
+    Return value
+    ------------
+    r : int
+        The estimated rank of the matrix.
+    See also
+    --------
+    numpy.linalg.matrix_rank
+        matrix_rank is basically the same as this function, but it does not
+        provide the option of the absolute tolerance.
+    """
+
+    A = np.atleast_2d(A)
+    s = svd(A, compute_uv=False)
+    tol = max(atol, rtol * s[0])
+    rank = int((s >= tol).sum())
+    return rank
+
+
+def nullspace(A, atol=1e-13, rtol=0):
+    """Compute an approximate basis for the nullspace of A.
+    The algorithm used by this function is based on the singular value
+    decomposition of `A`.
+    Parameters
+    ----------
+    A : ndarray
+        A should be at most 2-D.  A 1-D array with length k will be treated
+        as a 2-D with shape (1, k)
+    atol : float
+        The absolute tolerance for a zero singular value.  Singular values
+        smaller than `atol` are considered to be zero.
+    rtol : float
+        The relative tolerance.  Singular values less than rtol*smax are
+        considered to be zero, where smax is the largest singular value.
+    If both `atol` and `rtol` are positive, the combined tolerance is the
+    maximum of the two; that is::
+        tol = max(atol, rtol * smax)
+    Singular values smaller than `tol` are considered to be zero.
+    Return value
+    ------------
+    ns : ndarray
+        If `A` is an array with shape (m, k), then `ns` will be an array
+        with shape (k, n), where n is the estimated dimension of the
+        nullspace of `A`.  The columns of `ns` are a basis for the
+        nullspace; each element in numpy.dot(A, ns) will be approximately
+        zero.
+
+    np.linalg.svd
+        Single Value Decomposition
+    """
+
+    A = np.atleast_2d(A)
+    u, s, vh = svd(A)
+    tol = max(atol, rtol * s[0])
+    nnz = (s >= tol).sum()
+    ns = vh[nnz:].conj().T
+    return ns
 
 
 if __name__ == '__main__':
@@ -257,10 +342,10 @@ if __name__ == '__main__':
             num_alphabet	-- Number of elements in the alphabet
                                 -- In general, our alphabet will be numerical, starting at 0, and incrementing up to user input.
             start_state     -- Starting state of automaton.
-			evolution_matrix     --n by n matrix which, when multiplied to a state in the automaton, will determine the next state.
-			update_rule      -- Rule that governs how the automaton will evolve
+                        evolution_matrix     --n by n matrix which, when multiplied to a state in the automaton, will determine the next state.
+                        update_rule      -- Rule that governs how the automaton will evolve
                                     -- In general, the rule will be of the form: ( a + b + c + ... + n ) mod m, where a...n are elements of the previous state, and m is the number of elements in the alphabet.
-            
+
             num_steps		-- Number of steps through which the automaton will evolve
     """
 
@@ -274,7 +359,7 @@ if __name__ == '__main__':
 
     num_elements = int(input('Enter # of elements in automaton: '))
     if debug == True:
-        print("\t", num_elements, " elements in automaton.", sep = '')
+        print("\t", num_elements, " elements in automaton.", sep='')
 
     num_alphabet = int(input('Enter # of elements in alphabet: '))
 
@@ -283,7 +368,7 @@ if __name__ == '__main__':
     for i in range(0, num_alphabet):
         alphabet.append(i)
     print('\tYour alphabet is', *alphabet)
-    
+
     start_state = check_state(num_elements, num_alphabet, debug)
     if debug == True:
         print('\tStart State: ', start_state)
@@ -295,7 +380,17 @@ if __name__ == '__main__':
     evolution_matrix = evolve_matrix(num_elements, update_rule, debug)
     print("Evolution Matrix:\n", np.matrix(evolution_matrix))
     evolution_matrix_rref = np.asarray(evolution_matrix, dtype=np.int32)
-    print("Evolution Matrix in Row Reduced Echelon Form:\n", rref(evolution_matrix_rref))
+    print("Evolution Matrix in Row Reduced Echelon Form:\n",
+          rref(evolution_matrix_rref))
+
+    rank_of_evolution_matrix = rank(evolution_matrix)
+    print("\nRank of Evolution Matrix: ", rank_of_evolution_matrix)
+    nullspace_basis = nullspace(evolution_matrix_rref)
+    print("Nullspace of Evolution Matrix: \n", nullspace_basis)
+
+    #if nullspace_basis.size > 0:
+    #    res = np.abs(np.dot(evolution_matrix, nullspace_basis)).max()
+    #    print("max residual is", res)
 
     num_steps = int(input('Enter # of steps the automaton will take: '))
     if debug == True:
@@ -303,4 +398,5 @@ if __name__ == '__main__':
 
     print('\nBeginning process...\n')
 
-    cellular_automata(num_elements, num_alphabet, start_state, num_steps, evolution_matrix, debug)
+cellular_automata(num_elements, num_alphabet, start_state,
+                  num_steps, evolution_matrix, debug)
