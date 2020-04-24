@@ -1,8 +1,8 @@
 import numpy as np
-from numpy.linalg import svd  # calc nullspace
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import colors
+from sympy import *     # calc nullspace
 import re		# Regular expression - used for parsing
 import random
 
@@ -71,7 +71,7 @@ def rref(B, tol=1e-8, debug=False):
         # Check if done
         if r == rows:
             break
-    return (A, pivots_pos, row_exchanges)
+    return (A)#, pivots_pos, row_exchanges)
 
 
 def cellular_automata(num_elements, num_alphabet, ca_next, num_steps, evolution_matrix, debug=False):
@@ -295,46 +295,6 @@ def rank(A, atol=1e-13, rtol=0):
     return rank
 
 
-def nullspace(A, atol=1e-13, rtol=0):
-    """Compute an approximate basis for the nullspace of A.
-    The algorithm used by this function is based on the singular value
-    decomposition of `A`.
-    Parameters
-    ----------
-    A : ndarray
-        A should be at most 2-D.  A 1-D array with length k will be treated
-        as a 2-D with shape (1, k)
-    atol : float
-        The absolute tolerance for a zero singular value.  Singular values
-        smaller than `atol` are considered to be zero.
-    rtol : float
-        The relative tolerance.  Singular values less than rtol*smax are
-        considered to be zero, where smax is the largest singular value.
-    If both `atol` and `rtol` are positive, the combined tolerance is the
-    maximum of the two; that is::
-        tol = max(atol, rtol * smax)
-    Singular values smaller than `tol` are considered to be zero.
-    Return value
-    ------------
-    ns : ndarray
-        If `A` is an array with shape (m, k), then `ns` will be an array
-        with shape (k, n), where n is the estimated dimension of the
-        nullspace of `A`.  The columns of `ns` are a basis for the
-        nullspace; each element in numpy.dot(A, ns) will be approximately
-        zero.
-
-    np.linalg.svd
-        Single Value Decomposition
-    """
-
-    A = np.atleast_2d(A)
-    u, s, vh = svd(A)
-    tol = max(atol, rtol * s[0])
-    nnz = (s >= tol).sum()
-    ns = vh[nnz:].conj().T
-    return ns
-
-
 if __name__ == '__main__':
     """ Main function will serve as the driver for the program.
     It takes user input and runs cellular_automata() with given parameters:
@@ -379,14 +339,16 @@ if __name__ == '__main__':
 
     evolution_matrix = evolve_matrix(num_elements, update_rule, debug)
     print("Evolution Matrix:\n", np.matrix(evolution_matrix))
-    evolution_matrix_rref = np.asarray(evolution_matrix, dtype=np.int32)
+    evolution_matrix_rref = rref(np.asarray(evolution_matrix, dtype=np.int32))
     print("Evolution Matrix in Row Reduced Echelon Form:\n",
-          rref(evolution_matrix_rref))
+          evolution_matrix_rref)
 
     rank_of_evolution_matrix = rank(evolution_matrix)
     print("\nRank of Evolution Matrix: ", rank_of_evolution_matrix)
-    nullspace_basis = nullspace(evolution_matrix_rref)
-    print("Nullspace of Evolution Matrix: \n", nullspace_basis)
+    nullspace_basis = Matrix(evolution_matrix_rref).nullspace()
+    
+    print("Nullspace of Evolution Matrix: \n")
+    pprint(nullspace_basis)
 
     #if nullspace_basis.size > 0:
     #    res = np.abs(np.dot(evolution_matrix, nullspace_basis)).max()
