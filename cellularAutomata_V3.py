@@ -1,10 +1,18 @@
+"""
+This project was created for COSC 425 for use by Salisbury University.
+Programmers: Joseph Craft, Sean Dunn, Malik Green, Kevin Koch
+
+COSC 425 Cellular Automata Project
+"""
+
+
 import sys
 import matplotlib
 matplotlib.use('Qt5Agg')
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 
@@ -14,7 +22,12 @@ from matplotlib.figure import Figure
 import numpy as np
 import matplotlib.pyplot as plt
 import re       # Needed for parsing
+import random
 
+"""
+Classes MplCanvas and MainWindow are needed to run the GUI
+The CellularAutomata class is used for the logic of the program
+"""
 
 class MplCanvas(FigureCanvasQTAgg):
 
@@ -40,54 +53,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.canvas.axes.matshow(self.CA.get_cellular_automata())
 
         #### Create toolbar, passing canvas as first parament, parent (self, the MainWindow) as second ###
-        self.toolbar = NavigationToolbar(self.canvas, self)
-        ### --- ###
-
-        ### Menu Bar ###
-        menubar = self.menuBar()
-
-        # File tab
-        fileMenu = menubar.addMenu('File')
-        newAct = QAction('New', self)
-        impMenu = QMenu('Import', self)
-        importAct = QAction('Import Automata', self) 
-        impMenu.addAction(importAct)
-
-        # Add sub-tab to File tab
-        fileMenu.addAction(newAct)
-        fileMenu.addMenu(impMenu)
-
-        # Calculation tab
-        calculation_menu = menubar.addMenu('Calculation')
-
-        # Cellular Automata sub-tab
-        automata_menu = QMenu('Automata Matrix', self)
-        automata_display_act = QAction('Display Matrix', self) 
-        automata_menu.addAction(automata_display_act)
-
-        # Evolution sub-tab
-        evolution_menu = QMenu('Evolution Matrix', self)
-        evolition_display_act = QAction('Display Matrix', self) 
-        evolution_menu.addAction(evolition_display_act)
-
-        # Nullspace sub-tab
-        nullspace_menu = QMenu('Basis of Nullspace', self)
-        nullspace_display_act = QAction('Display Nullspace', self)
-        nullspace_rank_display_act = QAction('Display Rank of Nullspace', self) 
-        nullspace_menu.addAction(nullspace_display_act)
-        nullspace_menu.addAction(nullspace_rank_display_act)
-
-        # Add sub-tab to File tab
-        calculation_menu.addMenu(automata_menu)
-        calculation_menu.addMenu(evolution_menu)
-        calculation_menu.addMenu(nullspace_menu)
-
-        automata_display_act.triggered.connect(self.display_automata_matrix)
-        evolition_display_act.triggered.connect(self.display_evolition_matrix)
-        nullspace_display_act.triggered.connect(self.display_nullspace_of_matrix)
-        nullspace_rank_display_act.triggered.connect(self.display_rank_of_matrix)
-
- 
+        toolbar = NavigationToolbar(self.canvas, self)
         ### --- ###
 
         ### Create Input Form Elements ###
@@ -98,7 +64,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.number_of_cells.resize(280,40)
 
         self.alphabet_size_lable = QLabel(self)
-        self.alphabet_size_lable.setText('alphablet size:')
+        self.alphabet_size_lable.setText('alphabet size:')
         self.alphabet_size = QLineEdit(self)
         self.alphabet_size.move(20, 20)
         self.alphabet_size.resize(280,40)
@@ -116,34 +82,25 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_rule.resize(280,40)
 
         # Update Automata Button
-        self.update_automata_button = QPushButton('Submit', self)
-        self.update_automata_button.setToolTip('Submit an Update to the Automata')
-        self.update_automata_button.clicked.connect(self.on_click_update_automata)
-
-        # Randomly Populate Automata Button
-        self.random_automata_button = QPushButton('Random', self)
-        self.random_automata_button.setToolTip('Randomly Populate the Automata')
-        self.random_automata_button.clicked.connect(self.on_click_randomly_pupulate_automata)
+        update_automata_button = QPushButton('Submit', self)
+        update_automata_button.setToolTip('Submit an Update to the Automata')
+        update_automata_button.clicked.connect(self.on_click_update_automata)
 
         input_form = QtWidgets.QFormLayout()
         input_form.addRow(self.number_of_cells_lable, self.number_of_cells)
         input_form.addRow(self.alphabet_size_lable, self.alphabet_size)
         input_form.addRow(self.initial_state_lable, self.initial_state)
         input_form.addRow(self.update_rule_lable, self.update_rule)
-        input_form.addRow(self.random_automata_button, self.update_automata_button)
+        input_form.addRow(update_automata_button)
 
-        self.automata_input_groupbox = QGroupBox("Cellular Automata Input")
-        self.automata_input_groupbox.setCheckable(True)
-        self.automata_input_groupbox.setChecked(True)
-        self.automata_input_groupbox.setLayout(input_form)
-
-        self.automata_input_groupbox.toggled.connect(lambda: self.toggleGroup(self.automata_input_groupbox))
+        automata_input_groupbox = QGroupBox("Cellular Automata Input")
+        automata_input_groupbox.setLayout(input_form)
         ### --- ###
 
         ### Place items in page layout ###
         layout = QtWidgets.QVBoxLayout()
-        layout.addWidget(self.automata_input_groupbox)
-        layout.addWidget(self.toolbar)
+        layout.addWidget(automata_input_groupbox)
+        layout.addWidget(toolbar)
         layout.addWidget(self.canvas)
         ### --- ###
 
@@ -153,6 +110,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setCentralWidget(plot)
         # Diplay the GUI
         self.show()
+
+        # Setup a timer to trigger the redraw by calling update_plot.
+        #self.timer = QtCore.QTimer()
+        #self.timer.setInterval(100)
+        #self.timer.timeout.connect(self.update_plot)
+        #self.timer.start()
 
     @pyqtSlot()
     def on_click_update_automata(self):
@@ -182,55 +145,16 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.CA.generate_evolution_matrix()
         self.CA.generate_cellular_automata()
+        self.CA.detect_cycle()
 
         # Redraw the plat
-        self.display_automata_matrix()
+        self.update_plot()
 
-    def on_click_randomly_pupulate_automata(self):
-        # Init variables for contraint checking
-        num = "1"
-        size = "2"
-        state = "3"
-        rule = "4"
-        
-        # Clear text fields
-        self.number_of_cells.clear()
-        self.alphabet_size.clear()
-        self.initial_state.clear()
-        self.update_rule.clear()
-
-        # Insert text fields
-        self.number_of_cells.insert(num)
-        self.alphabet_size.insert(size)
-        self.initial_state.insert(state)
-        self.update_rule.insert(rule)
-
-    def display_automata_matrix(self):
+    def update_plot(self):
         self.canvas.axes.cla()  # Clear the canvas.
         self.canvas.axes.matshow(self.CA.get_cellular_automata())
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
-
-    def display_evolition_matrix(self):
-        self.canvas.axes.cla()  # Clear the canvas.
-        self.canvas.axes.matshow(self.CA.get_evolution_matrix())
-        # Trigger the canvas to update and redraw.
-        self.canvas.draw()
-
-    def display_nullspace_of_matrix(self):
-        print("hello")
-
-    def display_rank_of_matrix(self):
-        print("hello")
-
-    def toggleGroup(self, ctrl):
-        state = ctrl.isChecked()
-        if state:
-            ctrl.setFixedHeight(ctrl.sizeHint().height())
-        else:
-            ctrl.setFixedHeight(30)
-
-        
 
 
 
@@ -262,40 +186,28 @@ class CellularAutomata:
         valid = True
 
         num_digits = 0
-        #test_state = input('Enter starting state: ')
         if initial_state == 'random':
-            for x in range(0, num_elements):
-                start_state.append(random.randint(0, num_alphabet-1))
+            for x in range(0, self.num_elements):
+                start_state.append(random.randint(0, self.num_alphabet-1))
             print("Your random state is ", start_state)
 
         else:
-            #for i in test_state:
-                #if (i.isdigit() and int(i) < num_alphabet):
-                    #if debug == True:
-                        #print(i, " is a digit and is less than ", num_alphabet)
-                    #num_digits = num_digits + 1
-                    #valid = True
-                #else:
-                    #print('Incorrect character: ', i)
-                    #valid = False
-                    #break
+            for i in start_state:
+                if (i.isdigit() and int(i) < self.num_alphabet):
+                    if self.debug == True:
+                        print(i, " is a digit and is less than ", self.num_alphabet)
+                    num_digits = num_digits + 1
+                    valid = True
+                else:
+                    print('Incorrect character: ', i)
+                    valid = False
+                    break
 
-            #while (not valid or num_digits != num_elements):
-                #if (num_digits != num_elements):
-                    #print('You entered: ', num_digits,
-                        #' element(s)\nThis automaton needs: ', num_elements, ' element(s)\n')
-                #num_digits = 0
-                #test_state = input('Enter starting state: ')
-                #for i in test_state:
-                    #if (i.isdigit() and int(i) < num_alphabet):
-                        #if debug == True:
-                            #print(i, " is a digit and is less than ", num_alphabet)
-                        #num_digits = num_digits + 1
-                        #valid = True
-                    #else:
-                        #print('Incorrect character: ', i)
-                        #valid = False
-                        #break
+            if (not valid or num_digits != self.num_elements):
+                if (num_digits != self.num_elements):
+                    print('You entered: ', num_digits,
+                        ' element(s)\nThis automaton needs: ', self.num_elements, ' element(s)\n')
+                return
 
             for i in initial_state:
                 start_state.append(int(i))
@@ -316,32 +228,23 @@ class CellularAutomata:
             update_rule = []
 
             # Each number represents a cell in relation to the current one. +1 is one to the right. -1 is one to the left.
-            #string = input("Enter cells to be added for the rule (i.e. -2 0 3): ")
             update_rule = [int(d) for d in re.findall(r'-?\d+', string)]
 
             for i in update_rule:
                 if abs(i) > self.num_elements:
                     print(i, ' is not a valid element for this automaton.\n')
                     valid = False
-                    break
+                    return
                 else:
                     valid = True
 
-            #if debug == True:
             print('The update rule is ', update_rule)
         self.update_rule = update_rule
+
 
     def get_cellular_automata(self):
         return self.cellular_automata
 
-    def get_evolution_matrix(self):
-        return self.evolution_matrix
-
-    def get_nullspace(self):
-        return self.cellular_automata
-
-    def get_rank(self):
-        return self.cellular_automata
 
     def generate_cellular_automata(self):
         """Takes a state and evolves it over n steps.
@@ -356,7 +259,7 @@ class CellularAutomata:
         """
 
         step = 1
-        ca_next = self.initial_state
+        ca_next = np.asarray(self.initial_state)
         cellular_automata = []
         cellular_automata.append((ca_next))
 
@@ -378,6 +281,7 @@ class CellularAutomata:
             print()
 
         self.cellular_automata = cellular_automata
+    
     
     def generate_evolution_matrix(self):
         """
@@ -436,9 +340,21 @@ class CellularAutomata:
 
         self.evolution_matrix = np.transpose(evolution_matrix)
         
+        
+    def detect_cycle(self):
+        for i in range(len(self.cellular_automata)):
+            for j in range(len(self.cellular_automata)):
+                if i != j:
+                    if (self.cellular_automata[i] == self.cellular_automata[j]).all():
+                        print("CYCLE DETECTED FROM STEP", i, "TO STEP", j)
+                        break
+                elif i == len(self.cellular_automata):
+                    print("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+            else:
+                continue
+            break
 
 
 app = QtWidgets.QApplication(sys.argv)
-app.setStyle('Fusion')
 w = MainWindow()
 app.exec_()
