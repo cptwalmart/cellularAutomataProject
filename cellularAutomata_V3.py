@@ -82,16 +82,21 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_rule.resize(280,40)
 
         # Update Automata Button
-        update_automata_button = QPushButton('Submit', self)
-        update_automata_button.setToolTip('Submit an Update to the Automata')
-        update_automata_button.clicked.connect(self.on_click_update_automata)
+        self.update_automata_button = QPushButton('Submit', self)
+        self.update_automata_button.setToolTip('Submit an Update to the Automata')
+        self.update_automata_button.clicked.connect(self.on_click_update_automata)
+
+        # Randomly Populate Automata Button
+        self.random_automata_button = QPushButton('Random', self)
+        self.random_automata_button.setToolTip('Randomly Populate the Automata')
+        self.random_automata_button.clicked.connect(self.on_click_randomly_pupulate_automata)
 
         input_form = QtWidgets.QFormLayout()
         input_form.addRow(self.number_of_cells_lable, self.number_of_cells)
         input_form.addRow(self.alphabet_size_lable, self.alphabet_size)
         input_form.addRow(self.initial_state_lable, self.initial_state)
         input_form.addRow(self.update_rule_lable, self.update_rule)
-        input_form.addRow(update_automata_button)
+        input_form.addRow(self.random_automata_button, self.update_automata_button)
 
         automata_input_groupbox = QGroupBox("Cellular Automata Input")
         automata_input_groupbox.setLayout(input_form)
@@ -150,7 +155,27 @@ class MainWindow(QtWidgets.QMainWindow):
         # Redraw the plat
         self.update_plot()
 
-    def update_plot(self):
+
+    def on_click_randomly_pupulate_automata(self):
+        # Init variables for contraint checking
+        num = "1"
+        size = "2"
+        state = "3"
+        rule = "4"
+        
+        # Clear text fields
+        self.number_of_cells.clear()
+        self.alphabet_size.clear()
+        self.initial_state.clear()
+        self.update_rule.clear()
+
+        # Insert text fields
+        self.number_of_cells.insert(num)
+        self.alphabet_size.insert(size)
+        self.initial_state.insert(state)
+        self.update_rule.insert(rule)
+
+    def display_automata_matrix(self):
         self.canvas.axes.cla()  # Clear the canvas.
         self.canvas.axes.matshow(self.CA.get_cellular_automata())
         # Trigger the canvas to update and redraw.
