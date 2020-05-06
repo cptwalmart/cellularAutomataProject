@@ -1,7 +1,6 @@
 """
 This project was created for COSC 425 for use by Salisbury University.
 Programmers: Joseph Craft, Sean Dunn, Malik Green, Kevin Koch
-
 COSC 425 Cellular Automata Project
 """
 
@@ -12,7 +11,7 @@ matplotlib.use('Qt5Agg')
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu, QDialog
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 
@@ -82,10 +81,12 @@ class MainWindow(QtWidgets.QMainWindow):
         automata_rref_act = QAction('Row Reduced Echelon Form', self)
         automata_nullspace_act = QAction('Nullspace of Matrix', self)
         automata_rank_act = QAction('Rank of Matrix', self)
+        automata_cycle_act = QAction('Detect Cycle', self)
         automata_menu.addAction(automata_display_act)
         automata_menu.addAction(automata_rref_act)
         automata_menu.addAction(automata_nullspace_act)
         automata_menu.addAction(automata_rank_act)
+        automata_menu.addAction(automata_cycle_act)
 
         # Evolution sub-tab
         evolution_menu = QMenu('Evolution Matrix', self)
@@ -114,6 +115,8 @@ class MainWindow(QtWidgets.QMainWindow):
         automata_rref_act.triggered.connect(lambda: self.display_rref_of_matrix('cell'))
         automata_nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix('cell'))
         automata_rank_act.triggered.connect(lambda: self.display_rank_of_matrix('cell'))
+        automata_cycle_act.triggered.connect(lambda: self.display_cycle_of_matrix())
+
         evolution_display_act.triggered.connect(lambda: self.display_matrix('evo'))
         evolution_rref_act.triggered.connect(lambda: self.display_rref_of_matrix('evo'))
         evolution_nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix('evo'))
@@ -232,6 +235,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.CA.generate_evolution_matrix()
         self.CA.generate_cellular_automata()
+        #self.CA.generate_nullspace_matrix('cell')
+        self.CA.generate_nullspace_matrix('evo')
         self.CA.detect_cycle()
 
         # Redraw the plat
@@ -293,30 +298,20 @@ class MainWindow(QtWidgets.QMainWindow):
     def display_rref_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if flag == 'cell':
-            rref = self.CA.rref(self.CA.get_cellular_automata())
-            self.canvas.axes.matshow(rref)
+            self.canvas.axes.matshow(self.CA.rref(self.CA.get_cellular_automata()))
             print("Row Reduced Echelon Form of Cellular Automata: ")
-            pprint(rref)
         elif flag == 'evo':
-            rref = self.CA.rref(self.CA.get_evolution_matrix())
-            self.canvas.axes.matshow(rref)
+            self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
             print("Row Reduced Echelon Form of Evolution Matrix: ")
-            pprint(rref)
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
     def display_nullspace_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if flag == 'cell':
-            nullspace = Matrix(self.CA.rref(self.CA.get_cellular_automata()))
-            print("Nullspace of Cellular Automata: ")
-            pprint(nullspace)
-            pprint(nullspace.nullspace())
+            self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
         elif flag == 'evo':
-            nullspace = Matrix(self.CA.rref(self.CA.get_evolution_matrix()))
-            print("Nullspace of Evolution Matrix: ")
-            pprint(nullspace)
-            pprint(nullspace.nullspace())
+            self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
         #self.canvas.axes.matshow(np.asarray(nullspace.nullspace()))
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
@@ -334,12 +329,13 @@ class MainWindow(QtWidgets.QMainWindow):
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
-    def toggleGroup(self, ctrl):
-        state = ctrl.isChecked()
-        if state:
-            ctrl.setFixedHeight(ctrl.sizeHint().height())
-        else:
-            ctrl.setFixedHeight(30)
+    def display_cycle_of_matrix(self):
+        dlg = QMessageBox(self)
+        msg = self.CA.detect_cycle()
+
+        dlg.setWindowTitle("Cycle Detected")
+        dlg.setText(msg)
+        dlg.exec_()
 
         
 
@@ -351,6 +347,7 @@ class CellularAutomata:
     def __init__(self):
         self.cellular_automata = np.zeros([2,2], dtype=int)
         self.evolution_matrix = np.zeros([2,2], dtype=int)
+        self.nullspace_matrix = np.zeros([2,2], dtype=int)
         self.num_elements = 0
         self.num_alphabet = 0
         self.ca_next = 0
@@ -362,8 +359,10 @@ class CellularAutomata:
 
     def set_number_of_cells(self, number_of_cells):
         self.num_elements = number_of_cells
+
     def set_alphabet_size(self, alphabet_size):
         self.num_alphabet = alphabet_size
+
     def set_initial_state(self, initial_state):
         """
         This process takes a string of integers as input and verifies that it is a valid starting state.
@@ -427,6 +426,7 @@ class CellularAutomata:
             if self.debug == True:
                 print('The update rule is ', update_rule)
         self.update_rule = update_rule
+
     def set_number_of_steps(self, number_of_steps):
         self.num_steps = number_of_steps
 
@@ -435,6 +435,9 @@ class CellularAutomata:
 
     def get_evolution_matrix(self):
         return self.evolution_matrix
+
+    def get_nullspace_matrix(self):
+        return self.nullspace_matrix
 
     def generate_cellular_automata(self):
         """Takes a state and evolves it over n steps.
@@ -529,20 +532,34 @@ class CellularAutomata:
             print('Identity Matrix:\n', identity_matrix)
 
         self.evolution_matrix = np.transpose(evolution_matrix)
-        
+
+    def generate_nullspace_matrix(self, flag="None"):
+        if flag == 'cell':
+            nullspace = Matrix(self.cellular_automata)
+            nullspace.nullspace()
+        if flag == 'evo':
+            nullspace = Matrix(self.evolution_matrix)
+            nullspace.nullspace()
+            self.nullspace_matrix = np.matrix(nullspace)
         
     def detect_cycle(self):
             for i in range(len(self.cellular_automata)):
                 for j in range(len(self.cellular_automata)):
                     if i != j:
                         if (self.cellular_automata[i] == self.cellular_automata[j]).all():
-                            print("CYCLE DETECTED FROM STEP", i, "TO STEP", j)
+                            msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
+                            #print(msg)
+                            return(msg)
                             break
                     elif i == len(self.cellular_automata):
-                        print("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+                        msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+                        return(msg)
                 else:
                     continue
                 break
+            msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+            return(msg)
+
 
     
     def rref(self, B, tol=1e-8, debug=False):
@@ -646,16 +663,6 @@ class CellularAutomata:
         tol = max(atol, rtol * s[0])
         rank = int((s >= tol).sum())
         return rank
-    
-    
-    #def nullspace(self, mat):
-        #"""Determine the nullspace of a matrix.
-        #This function doesn't really add anything, since we are currently using 
-        #the Sympy library's nullspace function.
-        #"""
-        #print(type(mat))
-        #nullspace_basis = Matrix(mat).nullspace()
-        #return nullspace_basis
 
 
 app = QtWidgets.QApplication(sys.argv)
