@@ -114,15 +114,13 @@ class MainWindow(QtWidgets.QMainWindow):
         automata_display_act.triggered.connect(lambda: self.display_matrix('cell'))
         automata_rref_act.triggered.connect(lambda: self.display_rref_of_matrix('cell'))
         automata_nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix('cell'))
-        automata_rank_act.triggered.connect(lambda: self.display_rank_of_matrix('cell'))
-        automata_cycle_act.triggered.connect(lambda: self.display_cycle_of_matrix())
+        automata_rank_act.triggered.connect(lambda: self.display_pop_up('rank', 'cell'))
+        automata_cycle_act.triggered.connect(lambda: self.display_pop_up('cycle', 'cell'))
 
         evolution_display_act.triggered.connect(lambda: self.display_matrix('evo'))
         evolution_rref_act.triggered.connect(lambda: self.display_rref_of_matrix('evo'))
         evolution_nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix('evo'))
-        evolution_rank_act.triggered.connect(lambda: self.display_rank_of_matrix('evo'))
-        #nullspace_display_act.triggered.connect(self.display_nullspace_of_matrix)
-        #nullspace_rank_display_act.triggered.connect(self.display_rank_of_matrix)
+        evolution_rank_act.triggered.connect(lambda: self.display_pop_up('rank', 'evo'))
 
  
         ### --- ###
@@ -309,10 +307,11 @@ class MainWindow(QtWidgets.QMainWindow):
     def display_nullspace_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if flag == 'cell':
-            self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
+            #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
+            print("Under Construction")
         elif flag == 'evo':
-            self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
-        #self.canvas.axes.matshow(np.asarray(nullspace.nullspace()))
+            #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
+            print("Under Construction")
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
@@ -329,11 +328,23 @@ class MainWindow(QtWidgets.QMainWindow):
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
-    def display_cycle_of_matrix(self):
+    def display_pop_up(self, flag_type="None", flag_call="None"):
         dlg = QMessageBox(self)
-        msg = self.CA.detect_cycle()
 
-        dlg.setWindowTitle("Cycle Detected")
+        if flag_type == "cycle":
+            msg = self.CA.detect_cycle()
+            dlg.setWindowTitle("Cycle Detected")
+
+        elif flag_type == "rank":
+            if flag_call == "cell":
+                rank = self.CA.rank(self.CA.get_cellular_automata())
+                msg = "RANK = {}".format(rank)
+            elif flag_call == "evo":
+                rank = self.CA.rank(self.CA.get_evolution_matrix())
+                msg = "RANK = {}".format(rank)
+
+            dlg.setWindowTitle("Rank")
+
         dlg.setText(msg)
         dlg.exec_()
 
