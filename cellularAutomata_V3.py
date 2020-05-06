@@ -105,26 +105,26 @@ class MainWindow(QtWidgets.QMainWindow):
         ### --- ###
 
         ### Create Input Form Elements ###
-        self.number_of_cells_lable = QLabel(self)
-        self.number_of_cells_lable.setText('# of cells:')
+        self.number_of_cells_label = QLabel(self)
+        self.number_of_cells_label.setText('# of cells:')
         self.number_of_cells = QLineEdit(self)
         self.number_of_cells.move(20, 20)
         self.number_of_cells.resize(280,40)
 
-        self.alphabet_size_lable = QLabel(self)
-        self.alphabet_size_lable.setText('alphabet size:')
+        self.alphabet_size_label = QLabel(self)
+        self.alphabet_size_label.setText('alphabet size:')
         self.alphabet_size = QLineEdit(self)
         self.alphabet_size.move(20, 20)
         self.alphabet_size.resize(280,40)
 
-        self.initial_state_lable = QLabel(self)
-        self.initial_state_lable.setText('initial state:')
+        self.initial_state_label = QLabel(self)
+        self.initial_state_label.setText('initial state:')
         self.initial_state = QLineEdit(self)
         self.initial_state.move(20, 20)
         self.initial_state.resize(280,40)
 
-        self.update_rule_lable = QLabel(self)
-        self.update_rule_lable.setText('update rule:')
+        self.update_rule_label = QLabel(self)
+        self.update_rule_label.setText('update rule:')
         self.update_rule = QLineEdit(self)
         self.update_rule.move(20, 20)
         self.update_rule.resize(280,40)
@@ -137,13 +137,13 @@ class MainWindow(QtWidgets.QMainWindow):
         # Randomly Populate Automata Button
         self.random_automata_button = QPushButton('Random', self)
         self.random_automata_button.setToolTip('Randomly Populate the Automata')
-        self.random_automata_button.clicked.connect(self.on_click_randomly_pupulate_automata)
+        self.random_automata_button.clicked.connect(self.on_click_randomly_populate_automata)
 
         input_form = QtWidgets.QFormLayout()
-        input_form.addRow(self.number_of_cells_lable, self.number_of_cells)
-        input_form.addRow(self.alphabet_size_lable, self.alphabet_size)
-        input_form.addRow(self.initial_state_lable, self.initial_state)
-        input_form.addRow(self.update_rule_lable, self.update_rule)
+        input_form.addRow(self.number_of_cells_label, self.number_of_cells)
+        input_form.addRow(self.alphabet_size_label, self.alphabet_size)
+        input_form.addRow(self.initial_state_label, self.initial_state)
+        input_form.addRow(self.update_rule_label, self.update_rule)
         input_form.addRow(self.random_automata_button, self.update_automata_button)
 
         self.automata_input_groupbox = QGroupBox("Cellular Automata Input")
@@ -196,18 +196,29 @@ class MainWindow(QtWidgets.QMainWindow):
         print('Update Rule: {}'.format(self.update_rule.text()))
 
         self.CA.generate_evolution_matrix()
+        print(self.CA.get_evolution_matrix())
         self.CA.generate_cellular_automata()
         self.CA.detect_cycle()
 
         # Redraw the plat
         self.display_automata_matrix()
 
-    def on_click_randomly_pupulate_automata(self):
+    def on_click_randomly_populate_automata(self):
         # Init variables for contraint checking
-        num = "1"
-        size = "2"
-        state = "3"
-        rule = "4"
+        num_cells = random.randint(1, 10)
+        alphabet = random.randint(1, 5)
+        # Init starting state
+        state = ''
+        for i in range(num_cells):
+            state += str(random.randint(0, alphabet-1))
+        # Init update rule - randomly decide when to stop
+        rule = ''
+        for i in range(5):
+            rule += str(random.randint(-1*num_cells+1, num_cells-1))
+            rule += " "
+            if (random.randint(0, 1) == 0):
+                break       
+        
         
         # Clear text fields
         self.number_of_cells.clear()
@@ -216,8 +227,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_rule.clear()
 
         # Insert text fields
-        self.number_of_cells.insert(num)
-        self.alphabet_size.insert(size)
+        self.number_of_cells.insert(str(num_cells))
+        self.alphabet_size.insert(str(alphabet))
         self.initial_state.insert(state)
         self.update_rule.insert(rule)
 
@@ -362,6 +373,8 @@ class CellularAutomata:
         ca_next = np.asarray(self.initial_state)
         cellular_automata = []
         cellular_automata.append((ca_next))
+
+        print(type(self.evolution_matrix), type(cellular_automata[0]))
 
         while (step <= self.num_steps):
 
