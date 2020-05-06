@@ -295,9 +295,13 @@ class MainWindow(QtWidgets.QMainWindow):
         if flag == 'cell':
             rref = self.CA.rref(self.CA.get_cellular_automata())
             self.canvas.axes.matshow(rref)
+            print("Row Reduced Echelon Form of Cellular Automata: ")
+            pprint(rref)
         elif flag == 'evo':
             rref = self.CA.rref(self.CA.get_evolution_matrix())
             self.canvas.axes.matshow(rref)
+            print("Row Reduced Echelon Form of Evolution Matrix: ")
+            pprint(rref)
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
@@ -306,10 +310,12 @@ class MainWindow(QtWidgets.QMainWindow):
         if flag == 'cell':
             nullspace = Matrix(self.CA.rref(self.CA.get_cellular_automata()))
             print("Nullspace of Cellular Automata: ")
+            pprint(nullspace)
             pprint(nullspace.nullspace())
         elif flag == 'evo':
             nullspace = Matrix(self.CA.rref(self.CA.get_evolution_matrix()))
             print("Nullspace of Evolution Matrix: ")
+            pprint(nullspace)
             pprint(nullspace.nullspace())
         #self.canvas.axes.matshow(np.asarray(nullspace.nullspace()))
         # Trigger the canvas to update and redraw.
