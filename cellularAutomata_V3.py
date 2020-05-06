@@ -242,9 +242,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def on_click_randomly_populate_automata(self):
         # Init variables for contraint checking
-        num_cells = random.randint(1, 10)
-        alphabet = random.randint(1, 5)
-        num_steps = random.randint(1, 50)
+        num_cells = random.randint(1, 20)
+        alphabet = random.randint(2, 5)
+        num_steps = random.randint(10, 50)
         # Init starting state
         state = ''
         for i in range(num_cells):
@@ -347,6 +347,13 @@ class MainWindow(QtWidgets.QMainWindow):
 
         dlg.setText(msg)
         dlg.exec_()
+
+    def toggleGroup(self, ctrl):
+        state = ctrl.isChecked()
+        if state:
+            ctrl.setFixedHeight(ctrl.sizeHint().height())
+        else:
+            ctrl.setFixedHeight(30)
 
         
 
