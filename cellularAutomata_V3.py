@@ -190,13 +190,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.CA.set_initial_state(initial_state)
         self.CA.set_update_rule(update_rule)
 
-        print('Cell number: {}'.format(self.number_of_cells.text()))
+        print('Number of Cells: {}'.format(self.number_of_cells.text()))
         print('Alphabet Size: {}'.format(self.alphabet_size.text()))
-        print('Initial state: {}'.format(self.initial_state.text()))
+        print('Initial State: {}'.format(self.initial_state.text()))
         print('Update Rule: {}'.format(self.update_rule.text()))
 
         self.CA.generate_evolution_matrix()
-        print(self.CA.get_evolution_matrix())
         self.CA.generate_cellular_automata()
         self.CA.detect_cycle()
 
@@ -295,22 +294,22 @@ class CellularAutomata:
             print("Your random state is ", start_state)
 
         else:
-            for i in start_state:
-                if (i.isdigit() and int(i) < self.num_alphabet):
-                    if self.debug == True:
-                        print(i, " is a digit and is less than ", self.num_alphabet)
-                    num_digits = num_digits + 1
-                    valid = True
-                else:
-                    print('Incorrect character: ', i)
-                    valid = False
-                    break
+            #for i in start_state:
+                #if (i.isdigit() and int(i) < self.num_alphabet):
+                    #if self.debug == True:
+                        #print(i, " is a digit and is less than ", self.num_alphabet)
+                    #num_digits = num_digits + 1
+                    #valid = True
+                #else:
+                    #print('Incorrect character: ', i)
+                    #valid = False
+                    #break
 
-            if (not valid or num_digits != self.num_elements):
-                if (num_digits != self.num_elements):
-                    print('You entered: ', num_digits,
-                        ' element(s)\nThis automaton needs: ', self.num_elements, ' element(s)\n')
-                return
+            #if (not valid or num_digits != self.num_elements):
+                #if (num_digits != self.num_elements):
+                    #print('You entered: ', num_digits,
+                        #' element(s)\nThis automaton needs: ', self.num_elements, ' element(s)\n')
+                #return
 
 
             for i in initial_state:
@@ -342,7 +341,8 @@ class CellularAutomata:
                 else:
                     valid = True
 
-            print('The update rule is ', update_rule)
+            if self.debug == True:
+                print('The update rule is ', update_rule)
         self.update_rule = update_rule
 
     def get_cellular_automata(self):
@@ -373,8 +373,6 @@ class CellularAutomata:
         ca_next = np.asarray(self.initial_state)
         cellular_automata = []
         cellular_automata.append((ca_next))
-
-        print(type(self.evolution_matrix), type(cellular_automata[0]))
 
         while (step <= self.num_steps):
 
