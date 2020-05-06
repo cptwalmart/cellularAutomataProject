@@ -287,46 +287,65 @@ class MainWindow(QtWidgets.QMainWindow):
     def display_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if flag == 'cell':
-            self.canvas.axes.matshow(self.CA.get_cellular_automata())
+            ca = self.CA.get_cellular_automata()    ### Temporary, fix later
+            self.canvas.axes.matshow(ca)
+            print('Cellular Automata:')
+            for i in range(len(ca)):
+                print(ca[i], end=" ")
+                print()
         elif flag == 'evo':
-            self.canvas.axes.matshow(self.CA.get_evolution_matrix())
+            evo = self.CA.get_evolution_matrix()    ### Temporary, fix later
+            self.canvas.axes.matshow(evo)
+            print('Evolution Matrix:')
+            for i in range(len(evo)):
+                print(evo[i], end=" ")
+                print()
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
     def display_rref_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if flag == 'cell':
-            self.canvas.axes.matshow(self.CA.rref(self.CA.get_cellular_automata()))
+            rref = self.CA.rref(self.CA.get_cellular_automata()) ### Temporary, fix later
+            self.canvas.axes.matshow(rref)
             print("Row Reduced Echelon Form of Cellular Automata: ")
+            pprint(rref)
         elif flag == 'evo':
-            self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
+            rref = self.CA.rref(self.CA.get_evolution_matrix()) ### Temporary, fix later
+            self.canvas.axes.matshow(rref)
             print("Row Reduced Echelon Form of Evolution Matrix: ")
+            pprint(rref)
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
     def display_nullspace_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
+        self.CA.generate_nullspace_matrix(flag)     ### Temporary, remove later
         if flag == 'cell':
             #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
-            print("Under Construction")
+            nullspace = self.CA.get_nullspace_matrix()
+            print("Nullspace of Cellular Automata:")
+            pprint(nullspace)
         elif flag == 'evo':
             #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
-            print("Under Construction")
+            nullspace = self.CA.get_nullspace_matrix()
+            print("Nullspace of Evolution Matrix:")
+            pprint(nullspace)
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
-    def display_rank_of_matrix(self, flag='None'):
-        self.canvas.axes.cla()  # Clear the canvas.
-        if flag == 'cell':
-            rank = self.CA.rank(self.CA.get_cellular_automata())
-            print("Rank of Cellular Automata: ")
-            pprint(rank)
-        elif flag == 'evo':
-            rank = self.CA.rank(self.CA.get_evolution_matrix())
-            print("Rank of Evolution Matrix: ")
-            pprint(rank)
-        # Trigger the canvas to update and redraw.
-        self.canvas.draw()
+    #def display_rank_of_matrix(self, flag='None'):
+        #self.canvas.axes.cla()  # Clear the canvas.
+        #if flag == 'cell':
+            #rank = self.CA.rank(self.CA.get_cellular_automata())
+            #print("Rank of Cellular Automata: ")
+            #pprint(rank)
+        #elif flag == 'evo':
+            #rank = self.CA.rank(self.CA.get_evolution_matrix())
+            #print("Rank of Evolution Matrix: ")
+            #pprint(rank)
+        ## Trigger the canvas to update and redraw.
+        #self.canvas.draw()
 
     def display_pop_up(self, flag_type="None", flag_call="None"):
         dlg = QMessageBox(self)
@@ -396,24 +415,6 @@ class CellularAutomata:
             print("Your random state is ", start_state)
 
         else:
-            #for i in start_state:
-                #if (i.isdigit() and int(i) < self.num_alphabet):
-                    #if self.debug == True:
-                        #print(i, " is a digit and is less than ", self.num_alphabet)
-                    #num_digits = num_digits + 1
-                    #valid = True
-                #else:
-                    #print('Incorrect character: ', i)
-                    #valid = False
-                    #break
-
-            #if (not valid or num_digits != self.num_elements):
-                #if (num_digits != self.num_elements):
-                    #print('You entered: ', num_digits,
-                        #' element(s)\nThis automaton needs: ', self.num_elements, ' element(s)\n')
-                #return
-
-
             for i in initial_state:
                 start_state.append(int(i))
 
@@ -474,7 +475,7 @@ class CellularAutomata:
         cellular_automata = []
         cellular_automata.append((ca_next))
 
-        while (step <= self.num_steps):
+        while (step < self.num_steps):
 
             if (self.debug == True):
                 print('Step # ', step, ':\nEvolution Matrix:\n', np.matrix(
@@ -486,10 +487,10 @@ class CellularAutomata:
 
             step += 1  # Step increment
 
-        print("\nFinal Matrix: ")
-        for i in range(0, self.num_steps):
-            print(cellular_automata[i], end=" ")
-            print()
+        #print("\nFinal Matrix: ")
+        #for i in range(0, self.num_steps):
+            #print(cellular_automata[i], end=" ")
+            #print()
 
         self.cellular_automata = cellular_automata
     
@@ -553,12 +554,10 @@ class CellularAutomata:
 
     def generate_nullspace_matrix(self, flag="None"):
         if flag == 'cell':
-            nullspace = Matrix(self.cellular_automata)
-            nullspace.nullspace()
+            nullspace = Matrix(self.rref(self.cellular_automata))
         if flag == 'evo':
-            nullspace = Matrix(self.evolution_matrix)
-            nullspace.nullspace()
-            self.nullspace_matrix = np.matrix(nullspace)
+            nullspace = Matrix(self.rref(self.evolution_matrix))
+        self.nullspace_matrix = nullspace.nullspace()
         
     def detect_cycle(self):
             for i in range(len(self.cellular_automata)):
