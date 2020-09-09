@@ -9,6 +9,8 @@ import sys
 import matplotlib
 matplotlib.use('Qt5Agg')
 
+from sympy import Matrix
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu, QDialog
@@ -24,6 +26,8 @@ import matplotlib.pyplot as plt
 from sympy import *     # For nullspace
 import re       # Needed for parsing
 import random
+
+import gistfile1 as gist
 
 """
 Classes MplCanvas and MainWindow are needed to run the GUI
@@ -299,7 +303,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.canvas.axes.matshow(self.CA.rref(self.CA.get_cellular_automata()))
             print("Row Reduced Echelon Form of Cellular Automata: ")
         elif flag == 'evo':
-            self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
+            #self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
+            self.canvas.axes.matshow(self.CA.row_echelon_form(self.CA.get_evolution_matrix()))
             print("Row Reduced Echelon Form of Evolution Matrix: ")
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
@@ -577,9 +582,14 @@ class CellularAutomata:
                 break
             msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
             return(msg)
-
-
     
+    # Uses multiplicative inverse
+    def row_echelon_form(self, A):
+        B = np.asarray(A, dtype=np.int32)
+        B = gist.matmodinv(B, self.num_alphabet)
+        return B
+
+    # Uses floating point arithmatic
     def rref(self, B, tol=1e-8, debug=False):
         B = np.asarray(B, dtype=np.int32)        
         
