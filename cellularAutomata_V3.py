@@ -247,7 +247,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_click_randomly_populate_automata(self):
         # Init variables for contraint checking
         num_cells = random.randint(1, 20)
-        alphabet = random.randint(2, 5)
+        alphabet = random.randint(2, 5) # make prime number only (max 13)
         num_steps = random.randint(10, 50)
         # Init starting state
         state = ''
