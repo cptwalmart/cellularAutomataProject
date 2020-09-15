@@ -33,7 +33,12 @@ import gistfile1 as gist
 Classes MplCanvas and MainWindow are needed to run the GUI
 The CellularAutomata class is used for the logic of the program
 """
-
+### Cached Prime Numbers ###
+# initialising primes
+minPrime = 0
+maxPrime = 1000
+cached_primes = [i for i in range(minPrime,maxPrime) if isprime(i)]
+### Cached Prime Numbers ###
 
 class MplCanvas(FigureCanvasQTAgg):
 
@@ -246,8 +251,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def on_click_randomly_populate_automata(self):
         # Init variables for contraint checking
-        num_cells = random.randint(1, 20)
-        alphabet = random.randint(2, 5) # make prime number only (max 13)
+        num_cells = random.randint(5, 20)
+        alphabet = random.choice([i for i in cached_primes if 3 <= i <= 13]) # make prime number only (min:3 max:13)
         num_steps = random.randint(10, 50)
         # Init starting state
         state = ''
