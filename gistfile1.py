@@ -81,3 +81,8 @@ def matmodinv(M, mod):
   modrref(N, mod)
   M = N[:,M.shape[0]:] % mod
   return M
+
+if __name__ == "__main__":
+  cellular_automata = np.array([[0,1,0],[0,0,1],[1,0,0]], dtype=int)
+  cellular_automata = matmodinv(cellular_automata, 5)
+  print(cellular_automata)
