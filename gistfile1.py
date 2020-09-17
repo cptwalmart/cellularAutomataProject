@@ -1,5 +1,7 @@
 import numpy as np
 
+from sympy import Matrix, Rational, mod_inverse, pprint
+
 def modinv(n, mod):
   '''
   Lazily finds the multiplicative inverse of n modulo mod.
@@ -48,12 +50,13 @@ def modrref(M, mod):
   '''
   r = 0
   while r < M.shape[0]:
+  #while r < M.shape[0]:
     # Ignore non-zero rows.
     try: f = firstnonzero(M[r])
     except:
       r += 1
       continue
-    
+
     # Rule 1: Swap with the row above if out of order.
     if r > 0:
       swap = False
@@ -69,6 +72,7 @@ def modrref(M, mod):
     # Rule 3: Subtract it from the others
     subrow(M, r)
     r += 1
+  M = organize(M)
   return M
 
 def matmodinv(M, mod):
@@ -82,7 +86,61 @@ def matmodinv(M, mod):
   M = N[:,M.shape[0]:] % mod
   return M
 
+def organize(B, debug=False):
+        B = np.asarray(B, dtype=np.int32)        
+        A = B.copy()
+        rows, cols = A.shape
+        r = 0
+        pivots_pos = []
+        row_exchanges = np.arange(rows)
+        for c in range(cols):
+            if debug:
+                print("Now at row", r, "and col", c, "with matrix:")
+                print(A)
+
+            # Find the pivot row:
+            pivot = np.argmax(np.abs(A[r:rows, c])) + r
+            m = np.abs(A[pivot, c])
+            if debug:
+                print("Found pivot", m, "in row", pivot)
+                pivots_pos.append((r, c))
+
+            if pivot != r:
+              # Swap current row and pivot row
+              A[[pivot, r], c:cols] = A[[r, pivot], c:cols]
+              row_exchanges[[pivot, r]] = row_exchanges[[r, pivot]]
+
+              if debug:
+                print("Swap row", r, "with row", pivot, "Now:")
+                print(A)
+
+            r += 1
+            # Check if done
+            if r == rows:
+                break
+        return (A)#, pivots_pos, row_exchanges)
+
+def mod(x,modulus):
+    numer, denom = x.as_numer_denom()
+    return numer*mod_inverse(denom,modulus) % modulus
+
 if __name__ == "__main__":
-  cellular_automata = np.array([[0,1,0],[0,0,1],[1,0,0]], dtype=int)
-  cellular_automata = matmodinv(cellular_automata, 5)
+  #cellular_automata = np.array([[1,2],[3,4]], dtype=int)
+  cellular_automata = np.array([[0,1],[1,0]], dtype=int)
+  B = Matrix(cellular_automata)
+  C = Matrix(cellular_automata)
+  cellular_automata = modrref(cellular_automata, 7)
   print(cellular_automata)
+
+  #B = Matrix([
+  #      [2,2,3,2,2],
+  #      [2,3,1,1,4],
+  #      [0,0,0,1,0],
+  #      [4,1,2,2,3]
+  #], dtype=int)
+
+  B_rref = B.rref(iszerofunc=lambda x: x % 7==0)
+  pprint(B_rref[0].applyfunc(lambda x: mod(x,7)))
+
+  #C_null = C.nullspace(iszerofunc=lambda x: x % 5==0) 
+  #pprint(C_null[0].applyfunc(lambda x: mod(x,5)))

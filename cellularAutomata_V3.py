@@ -28,6 +28,7 @@ import re       # Needed for parsing
 import random
 
 import gistfile1 as gist
+from sympy import Matrix, Rational, mod_inverse, pprint
 
 """
 Classes MplCanvas and MainWindow are needed to run the GUI
@@ -587,11 +588,19 @@ class CellularAutomata:
                 break
             msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
             return(msg)
-    
+
     # Uses multiplicative inverse
     def row_echelon_form(self, A):
+
+        ### Using Sympy ###
+        A_rref = Matrix(A, dtype=int)
+        A_rref = A_rref.rref(iszerofunc=lambda x: x % self.num_alphabet==0)
+        A_rref[0].applyfunc(lambda x: gist.mod(x,self.num_alphabet))
+        ### Using Sympy ###       
+
         B = np.asarray(A, dtype=np.int32)
-        B = gist.matmodinv(B, self.num_alphabet)
+        B = gist.modrref(B, self.num_alphabet)
+
         return B
 
     # Uses floating point arithmatic
