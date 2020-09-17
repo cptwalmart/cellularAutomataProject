@@ -1,20 +1,34 @@
 import numpy as np
+import sympy as sp
 
 from sympy import Matrix, Rational, mod_inverse, pprint
 
-def modinv(n, mod):
-  '''
-  Lazily finds the multiplicative inverse of n modulo mod.
-  '''
-  for x in range(1, mod):
-    if (n * x) % mod == 1: return x
-  else:
-    raise ArithmeticError('%i has no multiplicative inverse modulo %i.' % (n, mod))
+#def modinv(n, mod):
+#  '''
+#  Lazily finds the multiplicative inverse of n modulo mod.
+#  '''
+#  for x in range(1, mod):
+#    if (n * x) % mod == 1: return x
+#  else:
+#    raise ArithmeticError('%i has no multiplicative inverse modulo %i.' % (n, mod))
+
+# A naive method to find modulor  
+# multiplicative inverse of 'a'  
+# under modulo 'm' 
+def modinv(a, m) : 
+  a = a % m
+  for x in range(1, m) : 
+      if ((a * x) % m == 1) : 
+          return x 
+      else:
+        raise ArithmeticError('%i has no multiplicative inverse modulo %i.' % (a, m))
 
 def firstnonzero(row):
   '''
   Finds the index of the first non-zero element of the row.
+  return next((i for i, x in enumerate(row) if x), None)
   '''
+  print(row)
   for i, r in enumerate(row):
     if r != 0: return i
   else:
@@ -50,7 +64,6 @@ def modrref(M, mod):
   '''
   r = 0
   while r < M.shape[0]:
-  #while r < M.shape[0]:
     # Ignore non-zero rows.
     try: f = firstnonzero(M[r])
     except:
@@ -87,7 +100,7 @@ def matmodinv(M, mod):
   return M
 
 def organize(B, debug=False):
-        B = np.asarray(B, dtype=np.int32)        
+        B = np.asarray(B, dtype=int)        
         A = B.copy()
         rows, cols = A.shape
         r = 0
@@ -118,18 +131,25 @@ def organize(B, debug=False):
             # Check if done
             if r == rows:
                 break
-        return (A)#, pivots_pos, row_exchanges)
+        return (A)
 
 def mod(x,modulus):
     numer, denom = x.as_numer_denom()
     return numer*mod_inverse(denom,modulus) % modulus
 
+def rref_sp(A, m):
+  B_rref = A.rref(iszerofunc=lambda x: x % m==0)
+  pprint(B_rref[0].applyfunc(lambda x: mod(x,m)))
+
 if __name__ == "__main__":
   #cellular_automata = np.array([[1,2],[3,4]], dtype=int)
-  cellular_automata = np.array([[0,1],[1,0]], dtype=int)
+  #cellular_automata = np.array([[0,1],[1,0]], dtype=int)
+  cellular_automata = np.array([[8,1,6],[3,5,7],[4,9,2]], dtype=int)
+  m = 5
+
   B = Matrix(cellular_automata)
   C = Matrix(cellular_automata)
-  cellular_automata = modrref(cellular_automata, 7)
+  cellular_automata = modrref(cellular_automata, m)
   print(cellular_automata)
 
   #B = Matrix([
@@ -139,8 +159,7 @@ if __name__ == "__main__":
   #      [4,1,2,2,3]
   #], dtype=int)
 
-  B_rref = B.rref(iszerofunc=lambda x: x % 7==0)
-  pprint(B_rref[0].applyfunc(lambda x: mod(x,7)))
+  rref_sp(B, m)
 
   #C_null = C.nullspace(iszerofunc=lambda x: x % 5==0) 
   #pprint(C_null[0].applyfunc(lambda x: mod(x,5)))

@@ -310,7 +310,8 @@ class MainWindow(QtWidgets.QMainWindow):
             print("Row Reduced Echelon Form of Cellular Automata: ")
         elif flag == 'evo':
             #self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
-            self.canvas.axes.matshow(self.CA.row_echelon_form(self.CA.get_evolution_matrix()))
+            #self.canvas.axes.matshow(self.CA.row_echelon_form(self.CA.get_evolution_matrix()))
+            self.canvas.axes.mat = self.CA.row_echelon_form(self.CA.get_evolution_matrix())
             print("Row Reduced Echelon Form of Evolution Matrix: ")
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
@@ -592,16 +593,26 @@ class CellularAutomata:
     # Uses multiplicative inverse
     def row_echelon_form(self, A):
 
+        sz = self.num_elements
         ### Using Sympy ###
         A_rref = Matrix(A, dtype=int)
         A_rref = A_rref.rref(iszerofunc=lambda x: x % self.num_alphabet==0)
         A_rref[0].applyfunc(lambda x: gist.mod(x,self.num_alphabet))
+
+        #B = np.zeros([sz,sz], dtype=int)
+        #for i in range(A_rref.shape[0]):
+        #    for j in range(A_rref.shape[1]):
+        #        print(A_rref[i][j])
+        #        B[i][j] = A_rref[i][j]
         ### Using Sympy ###       
 
-        B = np.asarray(A, dtype=np.int32)
-        B = gist.modrref(B, self.num_alphabet)
+        # row reduction using gist function
+        # my re-visit to correct multiplcative inverse errors
+        # Issue: number of cells cannot be bigger than mod p
+        #B = np.asarray(A, dtype=np.int32)
+        #B = gist.modrref(B, self.num_alphabet)
 
-        return B
+        return A_rref
 
     # Uses floating point arithmatic
     def rref(self, B, tol=1e-8, debug=False):
