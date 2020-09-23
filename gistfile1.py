@@ -134,24 +134,29 @@ def organize(B, debug=False):
         return (A)
 
 def mod(x,modulus):
-    numer, denom = x.as_numer_denom()
-    return numer*mod_inverse(denom,modulus) % modulus
+  numer, denom = x.as_numer_denom()
+  return numer*mod_inverse(denom,modulus) % modulus
 
 def rref_sp(A, m):
   B_rref = A.rref(iszerofunc=lambda x: x % m==0)
-  pprint(B_rref[0].applyfunc(lambda x: mod(x,m)))
+  return(B_rref[0].applyfunc(lambda x: mod(x,m)))
+
+## The main function exit for testing purposes only
 
 if __name__ == "__main__":
   #cellular_automata = np.array([[1,2],[3,4]], dtype=int)
   #cellular_automata = np.array([[0,1],[1,0]], dtype=int)
-  cellular_automata = np.array([[8,1,6],[3,5,7],[4,9,2]], dtype=int)
+  #cellular_automata = np.array([[8,1,6],[3,5,7],[4,9,2]], dtype=int)
+  #cellular_automata = np.array([[1,2,3],[2,4,0],[1,1,3]], dtype=int)
+  cellular_automata = np.array([[1,2,3],[2,4,0],[3,1,3]], dtype=int)
   m = 5
 
+  A = cellular_automata
   B = Matrix(cellular_automata)
   C = Matrix(cellular_automata)
-  cellular_automata = modrref(cellular_automata, m)
+  #cellular_automata = modrref(cellular_automata, m)
   print(cellular_automata)
-
+  #print(matmodinv(A, m))
   #B = Matrix([
   #      [2,2,3,2,2],
   #      [2,3,1,1,4],
@@ -159,7 +164,8 @@ if __name__ == "__main__":
   #      [4,1,2,2,3]
   #], dtype=int)
 
-  rref_sp(B, m)
+  B_rref = rref_sp(B, m)
+  pprint(B_rref)
 
   #C_null = C.nullspace(iszerofunc=lambda x: x % 5==0) 
   #pprint(C_null[0].applyfunc(lambda x: mod(x,5)))

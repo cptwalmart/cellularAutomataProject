@@ -27,6 +27,7 @@ from sympy import *     # For nullspace
 import re       # Needed for parsing
 import random
 
+import Nayuki as field
 import gistfile1 as gist
 from sympy import Matrix, Rational, mod_inverse, pprint
 
@@ -252,8 +253,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def on_click_randomly_populate_automata(self):
         # Init variables for contraint checking
-        num_cells = random.randint(5, 20)
-        alphabet = random.choice([i for i in cached_primes if 3 <= i <= 13]) # make prime number only (min:3 max:13)
+        num_cells = random.randint(2, 10)
+        alphabet = random.choice([i for i in cached_primes if 3 <= i <= 7]) # make prime number only (min:3 max:13)
         num_steps = random.randint(10, 50)
         # Init starting state
         state = ''
@@ -310,8 +311,7 @@ class MainWindow(QtWidgets.QMainWindow):
             print("Row Reduced Echelon Form of Cellular Automata: ")
         elif flag == 'evo':
             #self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
-            #self.canvas.axes.matshow(self.CA.row_echelon_form(self.CA.get_evolution_matrix()))
-            self.canvas.axes.mat = self.CA.row_echelon_form(self.CA.get_evolution_matrix())
+            self.canvas.axes.matshow(self.CA.row_echelon_form(self.CA.get_evolution_matrix()))
             print("Row Reduced Echelon Form of Evolution Matrix: ")
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
@@ -593,26 +593,36 @@ class CellularAutomata:
     # Uses multiplicative inverse
     def row_echelon_form(self, A):
 
-        sz = self.num_elements
         ### Using Sympy ###
-        A_rref = Matrix(A, dtype=int)
-        A_rref = A_rref.rref(iszerofunc=lambda x: x % self.num_alphabet==0)
-        A_rref[0].applyfunc(lambda x: gist.mod(x,self.num_alphabet))
+        #A_rref = Matrix(A, dtype=int)
+        #A_rref = A_rref.rref(iszerofunc=lambda x: x % self.num_alphabet==0)
+        #A_rref[0].applyfunc(lambda x: gist.mod(x,self.num_alphabet))
+        #print(A_rref)
 
-        #B = np.zeros([sz,sz], dtype=int)
-        #for i in range(A_rref.shape[0]):
-        #    for j in range(A_rref.shape[1]):
-        #        print(A_rref[i][j])
-        #        B[i][j] = A_rref[i][j]
-        ### Using Sympy ###       
+        ### Using Nayuki ####
+        F = field.PrimeField(self.num_alphabet)
+        B = field.Matrix(A.shape[0], A.shape[1], F)
+        for i in range(A.shape[0]):
+            for j in range(A.shape[1]):
+                B.set(i, j, ( int(A[i][j])) )
 
-        # row reduction using gist function
+        print(B)
+        B.reduced_row_echelon_form()
+        print(B)
+
+        # Convert back to numpy matrix
+        B_rref = np.zeros([A.shape[0],A.shape[1]], dtype=int)
+        for i in range(A.shape[0]):
+            for j in range(A.shape[1]):
+                B_rref[i][j] = B.get(i, j)
+
+        ### using Gist ####
         # my re-visit to correct multiplcative inverse errors
         # Issue: number of cells cannot be bigger than mod p
-        #B = np.asarray(A, dtype=np.int32)
-        #B = gist.modrref(B, self.num_alphabet)
+        #C = np.asarray(A, dtype=np.int32)
+        #C = gist.modrref(B, self.num_alphabet)
 
-        return A_rref
+        return B_rref
 
     # Uses floating point arithmatic
     def rref(self, B, tol=1e-8, debug=False):
