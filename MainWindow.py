@@ -7,6 +7,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationTool
 from matplotlib.figure import Figure
 from sympy import *     # For nullspace
 import CellularAutomata
+import random
 
 ### Cached Prime Numbers ###
 # initialising primes
