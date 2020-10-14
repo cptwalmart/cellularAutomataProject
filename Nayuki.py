@@ -552,20 +552,15 @@ class Matrix:
         return pivots
     
     def get_nullspace(self):
-        rows = self.row_count()
         cols = self.column_count()
         pivots = self.find_pivots()
         freevariables = self.find_free_variables()
-        length = len(freevariables)
-        nullspace = [[0 for x in range(length)] for y in range(cols)]
-        for i in range(freevariables):  # For each Free variable
-            for j in range(rows):
-                for k in range(cols):
-                    if k in pivots:
-                        nullspace[i][k] = self.get(j,i)
-                    if k == i:
-                        nullspace[i][k] = 1
-        return nullspace
+        solutionset = [[0 for x in range(cols)] for y in range(len(freevariables))]
+        for i in range(len(freevariables)):
+            for k in range(len(pivots)):
+                solutionset[i][pivots[k]] = self.f.negate(self.get(k,freevariables[i]))
+            solutionset[i][freevariables[i]] = 1
+        return solutionset
 
     def invert(self):
         """Replaces the values of this matrix with the inverse of this matrix. Requires the matrix to be square.
