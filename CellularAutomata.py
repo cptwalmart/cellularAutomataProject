@@ -8,9 +8,10 @@ import Nayuki as field
 import gistfile1 as gist
 from sympy import Matrix, Rational, mod_inverse, pprint
 
-# The class is setup as a Method so all function must pass 'self' for the 1st variable
+# The class is setup as a method so all functions must pass 'self' for the 1st variable.
 class CellularAutomata:
 
+    # Initialization of variables.
     def __init__(self):
         self.cellular_automata = np.zeros([2,2], dtype=int)
         self.evolution_matrix = np.zeros([2,2], dtype=int)
@@ -24,20 +25,27 @@ class CellularAutomata:
         self.initial_state = []
         self.update_rule = 0
 
+	# Set function for number of columns in the matrix.
     def set_number_of_cells(self, number_of_cells):
         self.num_elements = number_of_cells
 
+
+	# Set function for size of alphabet.
     def set_alphabet_size(self, alphabet_size):
         self.num_alphabet = alphabet_size
 
+
+	# Set function for number of discrete time steps (rows in matrix).
+    def set_number_of_steps(self, number_of_steps):
+        self.num_steps = number_of_steps
+
+
+	# Set function for initial state.
     def set_initial_state(self, initial_state):
         """
-        This process takes a string of integers as input and verifies that it is a valid starting state.
+        This function takes a string of integers as input and converts it to a compatible starting state for the matrix.
         """
-
-        start_state = []  # Starting state will be appended one element at a time.
-        valid = True
-
+        start_state = []
         num_digits = 0
         if initial_state == 'random':
             for x in range(0, self.num_elements):
@@ -45,31 +53,16 @@ class CellularAutomata:
             print("Your random state is ", start_state)
 
         else:
-            #for i in start_state:
-                #if (i.isdigit() and int(i) < self.num_alphabet):
-                    #if self.debug == True:
-                        #print(i, " is a digit and is less than ", self.num_alphabet)
-                    #num_digits = num_digits + 1
-                    #valid = True
-                #else:
-                    #print('Incorrect character: ', i)
-                    #valid = False
-                    #break
-
-            #if (not valid or num_digits != self.num_elements):
-                #if (num_digits != self.num_elements):
-                    #print('You entered: ', num_digits,
-                        #' element(s)\nThis automaton needs: ', self.num_elements, ' element(s)\n')
-                #return
-
-
             for i in initial_state:
                 start_state.append(int(i))
 
         self.initial_state = start_state
+        
+        
+    # Set function for update rule.
     def set_update_rule(self, string):
         """
-        This function takes a string of numbers as input, which represent cells in a row. If a number exist outside the boundaries of the row, the string must be reentered.
+        This function takes a string of numbers as input, which represent cells in a row. If a number exists outside the boundaries of the row, the string must be reentered.
             num_elements        -- Number of cells in row.
             valid               -- Flag that checks whether a string of numbers is valid.
         """
@@ -90,22 +83,27 @@ class CellularAutomata:
                 else:
                     valid = True
 
-            if self.debug == True:
-                print('The update rule is ', update_rule)
+            #if self.debug == True:
+                #print('The update rule is ', update_rule)
         self.update_rule = update_rule
 
-    def set_number_of_steps(self, number_of_steps):
-        self.num_steps = number_of_steps
 
+	# Return function for main matrix
     def get_cellular_automata(self):
         return self.cellular_automata
 
+
+	# Return function for evolution matrix
     def get_evolution_matrix(self):
         return self.evolution_matrix
 
+
+	# Return function for the nullspace of the matrix
     def get_nullspace_matrix(self):
         return self.nullspace_matrix
 
+
+    # Primary function - determines the automaton itself.
     def generate_cellular_automata(self):
         """Takes a state and evolves it over n steps.
         cellular_automata   -- Main matrix
@@ -125,12 +123,12 @@ class CellularAutomata:
 
         while (step <= self.num_steps):
 
-            if (self.debug == True):
-                print('Step # ', step, ':\nEvolution Matrix:\n', np.matrix(
-                    self.evolution_matrix), '\nMultiplied by State:', cellular_automata[step-1])
+            #if (self.debug == True):
+                #print('Step # ', step, ':\nEvolution Matrix:\n', np.matrix(
+                    #self.evolution_matrix), '\nMultiplied by State:', cellular_automata[step-1])
             ca_next = np.matmul(self.evolution_matrix, cellular_automata[step-1]) % self.num_alphabet
-            if (self.debug == True):
-                print('Equals: ', ca_next, ' Equals: ', np.transpose(ca_next))
+            #if (self.debug == True):
+                #print('Equals: ', ca_next, ' Equals: ', np.transpose(ca_next))
             cellular_automata.append(ca_next)
 
             step += 1  # Step increment
@@ -143,6 +141,7 @@ class CellularAutomata:
         self.cellular_automata = cellular_automata
     
     
+    # Function to determine the evolution matrix based on the update rule.
     def generate_evolution_matrix(self):
         """
         This function translates an identity_matrix into an evolution_matrix, given an update rule.
@@ -155,8 +154,8 @@ class CellularAutomata:
         """
 
         identity_matrix = np.identity(self.num_elements, int)
-        if self.debug == True:
-            print('Identity Matrix:\n', identity_matrix)
+        #if self.debug == True:
+            #print('Identity Matrix:\n', identity_matrix)
 
         evolution_matrix = []
         row = []
@@ -173,33 +172,35 @@ class CellularAutomata:
                     else:
                         l = j + k
 
-                    if self.debug == True:
-                        print('l = ', l)
-                        print(
-                            new_element, '+', identity_matrix[i][l], '=', new_element + identity_matrix[i][l])
+                    #if self.debug == True:
+                        #print('l = ', l)
+                        #print(
+                            #new_element, '+', identity_matrix[i][l], '=', new_element + identity_matrix[i][l])
 
                     new_element = new_element + identity_matrix[i][l]
 
-                    if self.debug == True:           # Debug -- print the location and value of element
-                        print('Element [', i, ', ', j,
-                            '] will now be ', new_element)
+                    #if self.debug == True:           # Debug -- print the location and value of element
+                        #print('Element [', i, ', ', j,
+                            #'] will now be ', new_element)
 
                 row.append(new_element % self.num_alphabet)
 
-                if self.debug == True:
-                    print(new_element, ' % ', self.num_alphabet,
-                        ' = ', new_element % self.num_alphabet)
-                    print('Row ', i, ':\n', row)
+                #if self.debug == True:
+                    #print(new_element, ' % ', self.num_alphabet,
+                        #' = ', new_element % self.num_alphabet)
+                    #print('Row ', i, ':\n', row)
             evolution_matrix.append(row)
-            if self.debug == True:
-                print('\nEvolution Matrix (Row ', i, '):\n',
-                    np.matrix(evolution_matrix))
+            #if self.debug == True:
+                #print('\nEvolution Matrix (Row ', i, '):\n',
+                    #np.matrix(evolution_matrix))
 
-        if self.debug == True:
-            print('Identity Matrix:\n', identity_matrix)
+        #if self.debug == True:
+            #print('Identity Matrix:\n', identity_matrix)
 
         self.evolution_matrix = np.transpose(evolution_matrix)
 
+
+	# Generate nullspace of the matrix
     def generate_nullspace_matrix(self, flag="None"):
         if flag == 'cell':
             nullspace = Matrix(self.cellular_automata)
@@ -209,25 +210,31 @@ class CellularAutomata:
             nullspace.nullspace()
             self.nullspace_matrix = np.matrix(nullspace)
         
+        
+    # This function will be improved later, in terms of versatility and time complexity.
+	# Detect the first cycle in the range of the matrix
     def detect_cycle(self):
-            for i in range(len(self.cellular_automata)):
-                for j in range(len(self.cellular_automata)):
-                    if i != j:
-                        if (self.cellular_automata[i] == self.cellular_automata[j]).all():
-                            msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
-                            #print(msg)
-                            return(msg)
-                            break
-                    elif i == len(self.cellular_automata):
-                        msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-                        return(msg)
-                else:
-                    continue
-                break
-            msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-            return(msg)
+        """
+        This function loops through the range of the matrix and compares each row i to each row j in the rest of the matrix.
+        It stops either when it finds two of the same row (a cycle), or it reaches the end of the matrix.
+        Because there are a finite number of states, given enough discrete time steps, there will be a cycle.
+        
+        This function will be improved later, in terms of versatility and time complexity.
+        """
+        
+        for i in range(len(self.cellular_automata)):
+            for j in range(i+1, len(self.cellular_automata)):
+                if (self.cellular_automata[i] == self.cellular_automata[j]).all():
+                    msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
+                    return(msg)
+                elif i == len(self.cellular_automata):
+                    msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+                    return(msg)
+        msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+        return(msg)
 
-    # Uses multiplicative inverse
+
+    # Row reduced echelon form using multiplicative inverse
     def row_echelon_form(self, A):
 
         ### Using Sympy ###
@@ -261,7 +268,8 @@ class CellularAutomata:
 
         return B_rref
 
-    # Uses floating point arithmatic
+
+    # Row reduced echelon form using floating point arithmetic
     def rref(self, B, tol=1e-8, debug=False):
         B = np.asarray(B, dtype=np.int32)        
         
@@ -328,6 +336,7 @@ class CellularAutomata:
         return (A)#, pivots_pos, row_exchanges)
     
     
+    # Function to determine the rank of a matrix.
     def rank(self, A, atol=1e-13, rtol=0):
         """Estimate the rank (i.e. the dimension of the nullspace) of a matrix.
         The algorithm used by this function is based on the singular value
