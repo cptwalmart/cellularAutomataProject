@@ -1,118 +1,98 @@
 import Nayuki
 import numpy as np
 
+####################################### 3 x 3 mod(5) #######################################
+#F = Nayuki.PrimeField(5)
+#B = Nayuki.Matrix(3, 3, F)
+#size = 3
+#data = [1, 2, 3, 2, 4, 0, 1, 2 ,3] # nullspace = [[3, 1, 0]]
+#data = [2, 4, 1, 2, 1, 0, 4, 3, 4] # nullspace = []
 
 
-F = Nayuki.PrimeField(5)
+#######################################     END     #######################################
 
-# B is transistion matrix
+####################################### 4 x 4 mod(5) #######################################
+
+#F = Nayuki.PrimeField(5)
+#B = Nayuki.Matrix(4, 4, F)
+#size = 4
+#data = [2, 4, 1, 2,
+#        1, 0, 4, 3,
+#        4, 0, 3, 2,
+#        2, 0, 0, 0] # nullspace = []
+#data = [2, 4, 1, 2,
+#        1, 0, 4, 3,
+#        4, 0, 3, 2,
+#        0, 0, 0, 0] # nullspace = [[2, 1, 0, 1]]
+
+#######################################     END     #######################################
+
+####################################### 6 x 6 mod(5) #######################################
+alphabet = 5 # our mod(p)
+F = Nayuki.PrimeField(alphabet)
 B = Nayuki.Matrix(6, 6, F)
-
-# C is the transition matrix - Identity.
-C = Nayuki.Matrix(6, 6, F)
-
-
-
-tmp = Nayuki.Matrix(5, 1, F)
-res = Nayuki.Matrix(5, 1, F)
-
-cols = 6
-rows = 6
-
-# Going to copy Nayuki matrix B into this numpy matrix.
-transit = np.zeros([rows, cols], dtype=int)
-transit_tmp = np.zeros([rows, cols], dtype=int)
-
-# Temporary storage for our transition matrix.
+size = 6
+rows = cols = size
 data = [0, 1, 1, 0, 0, 0,
         0, 0, 1, 1, 0, 0,
         0, 0, 0, 1, 1, 0,
         0, 0, 0, 0, 1, 1,
         1, 0, 0, 0, 0, 1,
-        1, 1, 0, 0, 0, 0]
+        1, 1, 0, 0, 0, 0] # nullspace = [[4, 1, 4, 1, 4, 1]]
 
-# Identity Matrix.
-I = np.identity(6)
+#######################################     END     #######################################
 
+####################################### RREF & NULL #######################################
 
-# Convert data to Nayuki type matrix.
+# Nayuki Matrix "B"
 inc = 0
-for i in range(rows):  # For each column
-    for j in range(cols):
+for i in range(size):  # For each column
+    for j in range(size):
         B.set(i,j,data[inc])
         inc += 1
 
-
-
-print("Nullspace testing *** \n")
-print("mod 5 matrix:\n")
-print(B)
+# Transisition Matrix "transition"
+transition = np.zeros([rows, cols], dtype=int)
+result_matrix = np.zeros([rows, cols], dtype=int)
 
 for i in range(rows):
     for j in range(cols):
-        transit[i][j] = B.get(i, j)
+        transition[i][j] = B.get(i, j)
 
+I = np.identity(6, dtype=int)  # Identity Matrix
+power = 1           # power
+n = alphabet        # mod
 
-
-print("rref for matrix:")
+print("\nrref for matrix:")
 B.reduced_row_echelon_form()
 print(B)
 
-
-print("nullspace for matrix:")
-
+print("\nnullspace for matrix:")
 Basis = B.get_nullspace()
 print(Basis)
 
+#######################################     END     #######################################
 
+####################################### NULL POW(1) #######################################
 
-# Get dimensions of the Basis.
-# Make into numpy array anmd use numpy.add and numpy.multiply.
-res = []
+for i in range(alphabet):
+    print("\n(T)^{} - I: ".format(power))
+    result_matrix = (np.power(transition, power) - I) % alphabet
+    print(result_matrix)
 
+    # Set Nayuki Matrix to reult of (T)^n - I
+    for i in range(size):  # For each column
+        for j in range(size):
+            B.set(i,j,int(result_matrix[i,j]))
 
-# Lines 77 - 83 I made following up on what Bardzell told us about adding all of the vectors within the basis.
-# Will be incorporated after.
-for i in range(0, len(Basis)):
-    tmp = np.array([Basis[i]])
-    res.append([tmp])
+    print("\nrref for matrix:")
+    B.reduced_row_echelon_form()
+    print(B)
 
-# To add up all the vectors in the Basis.
-sumOfBasis = [sum(i) for i in zip(*res)]
+    print("\nnullspace for matrix:")
+    Basis = B.get_nullspace()
+    print(Basis)
+    
+    power += 1
 
-# Cycle detection work.
-
-
-print("\nFor cycle detection: \n")
-
-# For multiple powers of the same matrix (going up to 6 for this example).
-# First, convert cycles Basis to a numpy matrix.
-
-
-pow = 1
-n = 6
-for i in range(n):
-
-    transit_tmp = np.power(transit, pow)
-    A = transit_tmp - I
-
-    # Must mod A after every operation to ensure it is in same prime field.
-    for i in range(rows):
-        for j in range(cols):
-            A[i][j] = A[i][j] % 5
-
-
-
-    print("(T)^n - I power: ", pow, "\n\n", A)
-    # Have to convert back to Nayuki inorder to get null space.
-    nay_cycles = Nayuki.Matrix(6, 6, F)
-    for j in range(rows):
-        for k in range(cols):
-            val = int(A[j][k])
-            nay_cycles.set(j,k,val)
-
-
-    tmp_cycles = nay_cycles.get_nullspace()
-
-    print("\nCycle Basis for (Transition - Identity) To the power of ", pow, "\n\n", tmp_cycles, "\n\n")
-    pow += 1
+#######################################     END     #######################################
