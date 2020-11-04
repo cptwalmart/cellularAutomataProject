@@ -73,11 +73,11 @@ print(Basis)
 
 #######################################     END     #######################################
 
-####################################### NULL POW(1) #######################################
+####################################### NULL POW(N) #######################################
 
 for i in range(alphabet):
     print("\n(T)^{} - I: ".format(power))
-    result_matrix = (np.power(transition, power) - I) % alphabet
+    result_matrix = (np.linalg.matrix_power(transition, power) - I) % alphabet
     print(result_matrix)
 
     # Set Nayuki Matrix to reult of (T)^n - I
@@ -85,11 +85,11 @@ for i in range(alphabet):
         for j in range(size):
             B.set(i,j,int(result_matrix[i,j]))
 
-    print("\nrref for matrix:")
+    print("\nrref for (T)^{} - I: ".format(power))
     B.reduced_row_echelon_form()
     print(B)
 
-    print("\nnullspace for matrix:")
+    print("\nnullspace for (T)^{} - I: ".format(power))
     Basis = B.get_nullspace()
     print(Basis)
     
