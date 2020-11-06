@@ -59,9 +59,9 @@ for i in range(rows):
     for j in range(cols):
         transition[i][j] = B.get(i, j)
 
-I = np.identity(6, dtype=int)  # Identity Matrix
-power = 1           # power
-n = alphabet        # mod
+I = np.identity(6, dtype=int)   # Identity Matrix
+power = 1                       # power
+n = 21 #pow(size, alphabet)      # mod
 
 print("\nrref for matrix:")
 B.reduced_row_echelon_form()
@@ -73,9 +73,16 @@ print(Basis)
 
 #######################################     END     #######################################
 
+for i in range(n):
+    print("\n(T)^{}: ".format(power))
+    result_matrix = (np.linalg.matrix_power(transition, power)) % alphabet
+    print(result_matrix)
+    power += 1
+
 ####################################### NULL POW(N) #######################################
 
-for i in range(alphabet):
+power = 1
+for i in range(n):
     print("\n(T)^{} - I: ".format(power))
     result_matrix = (np.linalg.matrix_power(transition, power) - I) % alphabet
     print(result_matrix)
