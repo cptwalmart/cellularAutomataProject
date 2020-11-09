@@ -38,6 +38,12 @@ The main purpose of this project is to be able to find and manipulate cycles in 
   
 In the above examples, as the first column evolves, we reach a cycle at state 5, and the automaton begins to repeat itself. As the second column evolves, we reach a cycle at state 4, and the automaton cycles through the same state (1111) infinitely. The third column has no discernable cycle in the given 7 states, but since the automaton is finite, it will eventually reach a cycle. Considering the alphabet {0,1}, there are 2^4 possible states, meaning that if you evolve any of these automata over 2^4 +1 states (17), you are guaranteed to find a cycle.
 
+Creating the automata
+
+To create the cellular automata, we start by producing an evolution (transition) matrix out of a given update rule. From there, filling out the steps of the matrix is as simple as multiplying the evolution matrix by a state.
+
+As stated previously, the most important part of the project is the detection, analysis, and manipulation of cycles in given cellular automata. 
+
 
 More information will follow.
 
