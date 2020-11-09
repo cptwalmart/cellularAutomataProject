@@ -103,3 +103,45 @@ for i in range(n):
     power += 1
 
 #######################################     END     #######################################
+############################# Find T^k = T^n-k (IF there is one) ##########################
+def detect_cycle(T, alpha):
+    u_bound = 21 # Upper bound user-defined.
+    power = 1
+    M_list = []
+    count = 0
+
+    # Append each matrix to list M_List.
+    for i in range(u_bound):
+        result_matrix = (np.linalg.matrix_power(T, power)) % alphabet
+        M_list.append(result_matrix)
+        power += 1
+
+
+    while (count < u_bound):
+
+        for i  in range(len(M_list)):
+            for j  in range(len(M_list)):
+
+                if i != j:
+                    if (M_list[i] == M_list[j]).all():
+                        msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
+                        return(msg)
+
+                elif i == len(M_list):
+                    print("\n In elif\n\n")
+                    result_matrix = (np.linalg.matrix_power(T, power)) % alpha
+                    M_list.append(result_matrix)
+                    power += 1
+                    #msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+                    #return(msg)
+            else:
+                continue
+        count += 1
+
+        msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+        return(msg)
+
+
+#######################################     END     ######################################
+G = detect_cycle(transition, alphabet)
+print(G)
