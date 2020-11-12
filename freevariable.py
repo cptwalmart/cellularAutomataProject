@@ -105,7 +105,7 @@ def detect_cycle2(transition, alphabet):
             if i != j:
                 if (M_list[i] == M_list[j]).all():
                     msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
-                    return(j+1)
+                    return(j)
             elif i == len(M_list):
                 msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
                 return(msg)
