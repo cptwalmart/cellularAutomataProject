@@ -12,18 +12,19 @@ import numpy as np
 #######################################     END     #######################################
 
 ####################################### 4 x 4 mod(5) #######################################
-
-#F = Nayuki.PrimeField(5)
+#alphabet = 5 # our mod(p)
+#F = Nayuki.PrimeField(alphabet)
 #B = Nayuki.Matrix(4, 4, F)
 #size = 4
+#rows = cols = size
 #data = [2, 4, 1, 2,
 #        1, 0, 4, 3,
 #        4, 0, 3, 2,
-#        2, 0, 0, 0] # nullspace = []
+#        2, 0, 0, 0] # nullspace = [] # cycle = 0 - 1632
 #data = [2, 4, 1, 2,
 #        1, 0, 4, 3,
 #        4, 0, 3, 2,
-#        0, 0, 0, 0] # nullspace = [[2, 1, 0, 1]]
+#        0, 0, 0, 0] # nullspace = [[2, 1, 0, 1]] # cycle = 0 - 7637
 
 #######################################     END     #######################################
 
@@ -61,43 +62,57 @@ data = [0, 1, 1, 0, 0, 0, 0, 0, 1,
 #######################################     END     #######################################
 
 ############################# Find T^k = T^n-k (IF there is one) ##########################
-def detect_cycle(T, alpha):
-    u_bound = 21 # Upper bound user-defined.
+def detect_cycle(transition, alphabet):
+
+    u_bound = 1000
     power = 1
     M_list = []
-    count = 0
 
-    # Append each matrix to list M_List.
+
     for i in range(u_bound):
-        result_matrix = (np.linalg.matrix_power(T, power)) % alphabet
+        result_matrix = (np.linalg.matrix_power(transition, power)) % alphabet
         M_list.append(result_matrix)
         power += 1
 
+    for i in range(len(M_list)):
+        for j in range(len(M_list)):
+            if i != j:
+                if (M_list[i] == M_list[j]).all():
+                    msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
+                    return(j)
+            elif i == len(M_list):
+                msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+                return(msg)
+        else:
+            continue
+    msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+    return(msg)
 
-    while (count < u_bound):
+def detect_cycle2(transition, alphabet):
 
-        for i  in range(len(M_list)):
-            for j  in range(len(M_list)):
+    u_bound = 10000
+    power = 1
+    M_list = []
 
-                if i != j:
-                    if (M_list[i] == M_list[j]).all():
-                        msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
-                        # Return max cycle length
-                        return(j)
 
-                elif i == len(M_list):
-                    print("\n In elif\n\n")
-                    result_matrix = (np.linalg.matrix_power(T, power)) % alpha
-                    M_list.append(result_matrix)
-                    power += 1
-                    #msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-                    #return(msg)
-            else:
-                continue
-        count += 1
+    for i in range(u_bound):
+        result_matrix = (np.linalg.matrix_power(transition, power)) % alphabet
+        M_list.append(result_matrix)
+        power += 1
 
-        msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-        return(msg)
+    for i in range(len(M_list)):
+        for j in range(i + 1, len(M_list)):
+            if i != j:
+                if (M_list[i] == M_list[j]).all():
+                    msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
+                    return(j+1)
+            elif i == len(M_list):
+                msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+                return(msg)
+        else:
+            continue
+    msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+    return(msg)
 
 
 #######################################     END     ######################################
@@ -121,7 +136,7 @@ for i in range(rows):
 
 I = np.identity(size, dtype=int)        # Identity Matrix
 power = 1                               # power
-n = detect_cycle(transition, alphabet)  # max steps
+n = detect_cycle2(transition, alphabet)  # max steps
 
 print("\nrref for matrix:")
 B.reduced_row_echelon_form()
@@ -133,6 +148,7 @@ print(Basis)
 
 #######################################     END     #######################################
 
+power = 1
 for i in range(n):
     print("\n(T)^{}: ".format(power))
     result_matrix = (np.linalg.matrix_power(transition, power)) % alphabet
