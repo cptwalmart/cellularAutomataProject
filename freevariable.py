@@ -119,6 +119,33 @@ def detect_cycle_transtion(transition, alphabet):
 
 #######################################     END     ######################################
 
+############################ Find if N(T) == O-matrix #########################
+def is_reversable(B, rows, cols, size):
+    B.reduced_row_echelon_form()
+    result = np.zeros([rows, cols], dtype=int)
+    I = np.identity(size, dtype=int)
+
+    for i in range(rows):
+        for j in range(cols):
+            result[i][j] = B.get(i, j)
+
+    # if reduced_row_echelon_form of transtion matrix = Idn matrix
+    # the matrix is reversable
+    # else it is irreverable
+    if (result == I).all():
+        print("reverable")
+        return(True)
+    print("irreverable")
+    return(False)
+
+#######################################     END     ######################################
+
+############################ Find N(T^k -I) = cylces in automata #########################
+def detect_cycle():
+    return()
+
+#######################################     END     ######################################
+
 ####################################### RREF & NULL #######################################
 
 # Nayuki Matrix "B"
@@ -138,6 +165,7 @@ for i in range(rows):
 
 I = np.identity(size, dtype=int)        # Identity Matrix
 power = 1                               # power
+reverable = is_reversable(B, rows, cols, size)   # is automate reverable
 n = detect_cycle_transtion(transition, alphabet)  # max steps
 
 print("\nrref for matrix:")
