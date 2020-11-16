@@ -44,51 +44,53 @@ import numpy as np
 #######################################     END     #######################################
 
 ####################################### 6 x 6 mod(5) #######################################
-alphabet = 2 # our mod(p)
+#alphabet = 2 # our mod(p)
+#F = Nayuki.PrimeField(alphabet)
+#B = Nayuki.Matrix(9, 9, F)
+#size = 9
+#rows = cols = size
+#data = [0, 1, 1, 0, 0, 0, 0, 0, 1,
+#        1, 0, 1, 1, 0, 0, 0, 0, 0,
+#        0, 1, 0, 1, 1, 0, 0, 0, 0,
+#        0, 0, 1, 0, 1, 1, 0, 0, 0,
+#        0, 0, 0, 1, 0, 1, 1, 0, 0,
+#        0, 0, 0, 0, 1, 0, 1, 1, 0,
+#        0, 0, 0, 0, 0, 1, 0, 1, 1,
+#        1, 0, 0, 0, 0, 0, 1, 0, 1,
+#        1, 1, 0, 0, 0, 0, 0, 1, 0,]
+
+#######################################     END     #######################################
+
+####################################### 6 x 6 mod(5) #######################################
+alphabet = 3 # our mod(p)
+size = 8
 F = Nayuki.PrimeField(alphabet)
-B = Nayuki.Matrix(9, 9, F)
-size = 9
+B = Nayuki.Matrix(size, size, F)
 rows = cols = size
-data = [0, 1, 1, 0, 0, 0, 0, 0, 1,
-        1, 0, 1, 1, 0, 0, 0, 0, 0,
-        0, 1, 0, 1, 1, 0, 0, 0, 0,
-        0, 0, 1, 0, 1, 1, 0, 0, 0,
-        0, 0, 0, 1, 0, 1, 1, 0, 0,
-        0, 0, 0, 0, 1, 0, 1, 1, 0,
-        0, 0, 0, 0, 0, 1, 0, 1, 1,
-        1, 0, 0, 0, 0, 0, 1, 0, 1,
-        1, 1, 0, 0, 0, 0, 0, 1, 0,]
+#data = [1, 0, 0, 0, 0, 0, 0, 2,
+#        0, 1, 0, 0, 0, 0, 0, 2,
+#        0, 0, 1, 0, 0, 0, 0, 2,
+#        0, 0, 0, 1, 0, 0, 0, 2,
+#        0, 0, 0, 0, 1, 0, 0, 2,
+#        0, 0, 0, 0, 0, 1, 0, 2,
+#        0, 0, 0, 0, 0, 0, 1, 2,
+#        0, 0, 0, 0, 0, 0, 0, 0]
+
+data = [1, 1, 1, 0, 0, 0, 0, 0,
+        0, 1, 1, 1, 0, 0, 0, 0,
+        0, 0, 1, 1, 1, 0, 0, 0,
+        0, 0, 0, 1, 1, 1, 0, 0,
+        0, 0, 0, 0, 1, 1, 1, 0,
+        0, 0, 0, 0, 0, 1, 1, 1,
+        1, 0, 0, 0, 0, 0, 1, 1,
+        1, 1, 0, 0, 0, 0, 0, 1]
+
 
 #######################################     END     #######################################
 
 ############################# Find T^k = T^n-k (IF there is one) ##########################
-def detect_cycle(transition, alphabet):
-
-    u_bound = 1000
-    power = 1
-    M_list = []
-
-
-    for i in range(u_bound):
-        result_matrix = (np.linalg.matrix_power(transition, power)) % alphabet
-        M_list.append(result_matrix)
-        power += 1
-
-    for i in range(len(M_list)):
-        for j in range(len(M_list)):
-            if i != j:
-                if (M_list[i] == M_list[j]).all():
-                    msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
-                    return(j)
-            elif i == len(M_list):
-                msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-                return(msg)
-        else:
-            continue
-    msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-    return(msg)
-
-def detect_cycle2(transition, alphabet):
+# finds the max number of cycle of transtion matrix to compute
+def detect_cycle_transtion(transition, alphabet):
 
     u_bound = 10000
     power = 1
@@ -104,15 +106,15 @@ def detect_cycle2(transition, alphabet):
         for j in range(i + 1, len(M_list)):
             if i != j:
                 if (M_list[i] == M_list[j]).all():
-                    msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
+                    #msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
                     return(j)
             elif i == len(M_list):
-                msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-                return(msg)
+                #msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+                return(-1)
         else:
             continue
-    msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-    return(msg)
+    #msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+    return(-1)
 
 
 #######################################     END     ######################################
@@ -136,7 +138,7 @@ for i in range(rows):
 
 I = np.identity(size, dtype=int)        # Identity Matrix
 power = 1                               # power
-n = detect_cycle2(transition, alphabet)  # max steps
+n = detect_cycle_transtion(transition, alphabet)  # max steps
 
 print("\nrref for matrix:")
 B.reduced_row_echelon_form()
