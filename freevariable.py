@@ -61,7 +61,7 @@ data = [0, 1, 1, 0, 0, 0, 0, 0, 1,
 
 #######################################     END     #######################################
 
-####################################### 6 x 6 mod(3) #######################################
+####################################### 8 x 8 mod(3) #######################################
 alphabet = 3 # our mod(p)
 size = 8
 F = Nayuki.PrimeField(alphabet)
@@ -221,16 +221,39 @@ for i in range(n):
 
     power += 1
 
+
+
+# Get Automata Stats
 unique_nullspace = detect_unique_cycle(Nullspace_list, alphabet, size)  # max steps
-print(unique_nullspace, "\n")
+Automata_stats = []
 
 for i in range( len(unique_nullspace["nullspace"]) ):
-    print("Power:", unique_nullspace["power"][i])
-    print("Cycles:", len(unique_nullspace["nullspace"][i]))
-    print("States:", pow( alphabet, len(unique_nullspace["nullspace"][i]) ) )
-    print("Nullspace:", unique_nullspace["nullspace"][i])
+    power  = unique_nullspace["power"][i]
+    cylces_size = len(unique_nullspace["nullspace"][i])
+    states = pow( alphabet, cylces_size)
+    Automata_stats.append({ "nullspace": [], "power": 0, "cylces_size": 0, "cylces_count": 0, "states": 0})
+
+    subtract_repeat_states = 0
+    if(i != 0):
+        for j in range(i, 0, -1):
+            item = Automata_stats[j-1]
+            subtract_repeat_states += item["states"]
+        states -= subtract_repeat_states
+            
 
 
+    Automata_stats[i]["nullspace"] = unique_nullspace["nullspace"][i]
+    Automata_stats[i]["power"] = power
+    Automata_stats[i]["cylces_size"] = cylces_size
+    Automata_stats[i]["cylces_count"] = states / power
+    Automata_stats[i]["states"] = states
+
+    print("\n")
+    print("Power:", power)
+    print("Cylces Size:", cylces_size)
+    print("Cylces Count:", states / power)
+    print("States:", states)
+    print("Nullspace:", Automata_stats[i]["nullspace"])
 
 
 #######################################     END     #######################################
