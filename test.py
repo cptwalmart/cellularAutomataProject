@@ -231,7 +231,7 @@ def num_of_cycles(transit, alpha, n):
 
 
     num_states = num_of_states(transit, len(G_Basis), alpha, n)
-    print("\n\nNumber of States on {} cycles : {} ".format(n, num_of_states))
+    print("\n\nNumber of States on {} cycles : {} ".format(n, num_states))
 
     return (msg)
 
