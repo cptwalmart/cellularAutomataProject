@@ -133,9 +133,9 @@ def is_reversable(B, rows, cols, size):
     # the matrix is reversable
     # else it is irreverable
     if (result == I).all():
-        print("reverable")
+        print("reversable")
         return(True)
-    print("irreverable")
+    print("irreversable")
     return(False)
 
 #######################################     END     ######################################
@@ -205,7 +205,36 @@ for i in range(n):
     print("\nnullspace for (T)^{} - I: ".format(power))
     Basis = B.get_nullspace()
     print(Basis)
-    
+
     power += 1
 
 #######################################     END     #######################################
+
+
+####################################### # of cycles w/ length #############################
+def num_of_cycles(transit, alpha, n):
+
+    T = (np.linalg.matrix_power(transit, n)) % alpha
+    I = np.identity(size, dtype=int)
+
+    result = T - I
+
+    K = Nayuki.Matrix(size, size, F)
+    for i in range(size):
+        for j in range(size):
+            K.set(i,j,int(result[i,j]))
+
+    G_Basis = K.get_nullspace()
+
+    print("\n\nNullspace for T^n - I for power of {}: {} \n\n".format(n, G_Basis))
+    msg = ("\n\nLength of cycles: {} \n\n".format(len(G_Basis)))
+
+
+    num_of_states = pow(alpha, len(G_Basis)) - alpha
+    print("\n\nNumber of States on {} cycles : {} ".format(n, num_of_states))
+
+    return (msg)
+
+#######################################     END     #######################################
+res = num_of_cycles(transition, alphabet, 4)
+print(res)
