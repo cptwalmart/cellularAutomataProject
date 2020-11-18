@@ -44,7 +44,7 @@ import numpy as np
 #######################################     END     #######################################
 
 ####################################### 9 x 9 mod(2) #######################################
-alphabet = 2 # our mod(p)
+""" alphabet = 2 # our mod(p)
 F = Nayuki.PrimeField(alphabet)
 B = Nayuki.Matrix(9, 9, F)
 size = 9
@@ -57,33 +57,25 @@ data = [0, 1, 1, 0, 0, 0, 0, 0, 1,
         0, 0, 0, 0, 1, 0, 1, 1, 0,
         0, 0, 0, 0, 0, 1, 0, 1, 1,
         1, 0, 0, 0, 0, 0, 1, 0, 1,
-        1, 1, 0, 0, 0, 0, 0, 1, 0,]
+        1, 1, 0, 0, 0, 0, 0, 1, 0,] """
 
 #######################################     END     #######################################
 
 ####################################### 6 x 6 mod(3) #######################################
-#alphabet = 3 # our mod(p)
-#size = 8
-#F = Nayuki.PrimeField(alphabet)
-#B = Nayuki.Matrix(size, size, F)
-#rows = cols = size
-#data = [1, 0, 0, 0, 0, 0, 0, 2,
-#        0, 1, 0, 0, 0, 0, 0, 2,
-#        0, 0, 1, 0, 0, 0, 0, 2,
-#        0, 0, 0, 1, 0, 0, 0, 2,
-#        0, 0, 0, 0, 1, 0, 0, 2,
-#        0, 0, 0, 0, 0, 1, 0, 2,
-#        0, 0, 0, 0, 0, 0, 1, 2,
-#        0, 0, 0, 0, 0, 0, 0, 0]
+alphabet = 3 # our mod(p)
+size = 8
+F = Nayuki.PrimeField(alphabet)
+B = Nayuki.Matrix(size, size, F)
+rows = cols = size
 
-#data = [1, 1, 1, 0, 0, 0, 0, 0,
-#        0, 1, 1, 1, 0, 0, 0, 0,
-#        0, 0, 1, 1, 1, 0, 0, 0,
-#        0, 0, 0, 1, 1, 1, 0, 0,
-#        0, 0, 0, 0, 1, 1, 1, 0,
-#        0, 0, 0, 0, 0, 1, 1, 1,
-#        1, 0, 0, 0, 0, 0, 1, 1,
-#        1, 1, 0, 0, 0, 0, 0, 1]
+data = [1, 1, 1, 0, 0, 0, 0, 0,
+        0, 1, 1, 1, 0, 0, 0, 0,
+        0, 0, 1, 1, 1, 0, 0, 0,
+        0, 0, 0, 1, 1, 1, 0, 0,
+        0, 0, 0, 0, 1, 1, 1, 0,
+        0, 0, 0, 0, 0, 1, 1, 1,
+        1, 0, 0, 0, 0, 0, 1, 1,
+        1, 1, 0, 0, 0, 0, 0, 1]
 
 
 #######################################     END     #######################################
@@ -142,8 +134,6 @@ def is_reversable(B, rows, cols, size):
 
 ############################ Find N(T^k -I) = cylces in automata #########################
 def detect_unique_cycle(Nullspace_list, alphabet, size):
-    #unique_nullsapces = set(Nullspace_list)
-    #print(len(unique_nullsapces))
 
     # taking an input list 
     unique_nullspace = { "nullspace": [], "power": []} 
@@ -231,7 +221,16 @@ for i in range(n):
 
     power += 1
 
-unique_nullsapce = detect_unique_cycle(Nullspace_list, alphabet, size)  # max steps
-print(unique_nullsapce)
+unique_nullspace = detect_unique_cycle(Nullspace_list, alphabet, size)  # max steps
+print(unique_nullspace, "\n")
+
+for i in range( len(unique_nullspace["nullspace"]) ):
+    print("Power:", unique_nullspace["power"][i])
+    print("Cycles:", len(unique_nullspace["nullspace"][i]))
+    print("States:", pow( alphabet, len(unique_nullspace["nullspace"][i]) ) )
+    print("Nullspace:", unique_nullspace["nullspace"][i])
+
+
+
 
 #######################################     END     #######################################
