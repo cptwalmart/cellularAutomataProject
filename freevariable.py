@@ -43,30 +43,30 @@ import numpy as np
 
 #######################################     END     #######################################
 
-####################################### 6 x 6 mod(5) #######################################
-#alphabet = 2 # our mod(p)
-#F = Nayuki.PrimeField(alphabet)
-#B = Nayuki.Matrix(9, 9, F)
-#size = 9
-#rows = cols = size
-#data = [0, 1, 1, 0, 0, 0, 0, 0, 1,
-#        1, 0, 1, 1, 0, 0, 0, 0, 0,
-#        0, 1, 0, 1, 1, 0, 0, 0, 0,
-#        0, 0, 1, 0, 1, 1, 0, 0, 0,
-#        0, 0, 0, 1, 0, 1, 1, 0, 0,
-#        0, 0, 0, 0, 1, 0, 1, 1, 0,
-#        0, 0, 0, 0, 0, 1, 0, 1, 1,
-#        1, 0, 0, 0, 0, 0, 1, 0, 1,
-#        1, 1, 0, 0, 0, 0, 0, 1, 0,]
+####################################### 9 x 9 mod(2) #######################################
+alphabet = 2 # our mod(p)
+F = Nayuki.PrimeField(alphabet)
+B = Nayuki.Matrix(9, 9, F)
+size = 9
+rows = cols = size
+data = [0, 1, 1, 0, 0, 0, 0, 0, 1,
+        1, 0, 1, 1, 0, 0, 0, 0, 0,
+        0, 1, 0, 1, 1, 0, 0, 0, 0,
+        0, 0, 1, 0, 1, 1, 0, 0, 0,
+        0, 0, 0, 1, 0, 1, 1, 0, 0,
+        0, 0, 0, 0, 1, 0, 1, 1, 0,
+        0, 0, 0, 0, 0, 1, 0, 1, 1,
+        1, 0, 0, 0, 0, 0, 1, 0, 1,
+        1, 1, 0, 0, 0, 0, 0, 1, 0,]
 
 #######################################     END     #######################################
 
-####################################### 6 x 6 mod(5) #######################################
-alphabet = 3 # our mod(p)
-size = 8
-F = Nayuki.PrimeField(alphabet)
-B = Nayuki.Matrix(size, size, F)
-rows = cols = size
+####################################### 6 x 6 mod(3) #######################################
+#alphabet = 3 # our mod(p)
+#size = 8
+#F = Nayuki.PrimeField(alphabet)
+#B = Nayuki.Matrix(size, size, F)
+#rows = cols = size
 #data = [1, 0, 0, 0, 0, 0, 0, 2,
 #        0, 1, 0, 0, 0, 0, 0, 2,
 #        0, 0, 1, 0, 0, 0, 0, 2,
@@ -76,14 +76,14 @@ rows = cols = size
 #        0, 0, 0, 0, 0, 0, 1, 2,
 #        0, 0, 0, 0, 0, 0, 0, 0]
 
-data = [1, 1, 1, 0, 0, 0, 0, 0,
-        0, 1, 1, 1, 0, 0, 0, 0,
-        0, 0, 1, 1, 1, 0, 0, 0,
-        0, 0, 0, 1, 1, 1, 0, 0,
-        0, 0, 0, 0, 1, 1, 1, 0,
-        0, 0, 0, 0, 0, 1, 1, 1,
-        1, 0, 0, 0, 0, 0, 1, 1,
-        1, 1, 0, 0, 0, 0, 0, 1]
+#data = [1, 1, 1, 0, 0, 0, 0, 0,
+#        0, 1, 1, 1, 0, 0, 0, 0,
+#        0, 0, 1, 1, 1, 0, 0, 0,
+#        0, 0, 0, 1, 1, 1, 0, 0,
+#        0, 0, 0, 0, 1, 1, 1, 0,
+#        0, 0, 0, 0, 0, 1, 1, 1,
+#        1, 0, 0, 0, 0, 0, 1, 1,
+#        1, 1, 0, 0, 0, 0, 0, 1]
 
 
 #######################################     END     #######################################
@@ -141,13 +141,23 @@ def is_reversable(B, rows, cols, size):
 #######################################     END     ######################################
 
 ############################ Find N(T^k -I) = cylces in automata #########################
-def detect_cycle(Nullspace_list, alphabet, size):
-    #unique_nullsapces = set(Basis)
+def detect_unique_cycle(Nullspace_list, alphabet, size):
+    #unique_nullsapces = set(Nullspace_list)
     #print(len(unique_nullsapces))
 
-    print(len(Nullspace_list))
+    # taking an input list 
+    unique_nullspace = [] 
+    
+    # taking an counter 
+    count = 0
+    
+    # travesing the array 
+    for item in Nullspace_list: 
+        if item not in unique_nullspace: 
+            count += 1
+            unique_nullspace.append(item) 
 
-    return()
+    return(unique_nullspace)
 
 #######################################     END     ######################################
 
@@ -216,6 +226,6 @@ for i in range(n):
 
     power += 1
 
-n = detect_cycle(Nullspace_list, alphabet, size)  # max steps
+unique_nullsapce = detect_unique_cycle(Nullspace_list, alphabet, size)  # max steps
 
 #######################################     END     #######################################
