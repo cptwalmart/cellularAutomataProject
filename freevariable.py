@@ -213,7 +213,7 @@ for i in range(n):
 
 ####################################### # of cycles w/ length #############################
 def num_of_cycles(transit, alpha, n):
-
+    print("\n\n--*** Number of Cycles & Length function ***-- \n\n")
     T = (np.linalg.matrix_power(transit, n)) % alpha
     I = np.identity(size, dtype=int)
 
