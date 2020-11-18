@@ -227,7 +227,7 @@ def num_of_cycles(transit, alpha, n):
     G_Basis = K.get_nullspace()
 
     print("\n\nNullspace for T^n - I for power of {}: {} \n\n".format(n, G_Basis))
-    msg = ("\n\nLength of cycles: {} \n\n".format(len(G_Basis)))
+    msg = ("\n\nNumber of cycles: {} \n\n".format(len(G_Basis)))
 
 
     num_of_states = pow(alpha, len(G_Basis)) - alpha
