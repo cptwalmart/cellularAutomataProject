@@ -133,15 +133,20 @@ def is_reversable(B, rows, cols, size):
     # the matrix is reversable
     # else it is irreverable
     if (result == I).all():
-        print("reversable")
+        print("reverable")
         return(True)
-    print("irreversable")
+    print("irreverable")
     return(False)
 
 #######################################     END     ######################################
 
 ############################ Find N(T^k -I) = cylces in automata #########################
-def detect_cycle():
+def detect_cycle(Nullspace_list, alphabet, size):
+    #unique_nullsapces = set(Basis)
+    #print(len(unique_nullsapces))
+
+    print(len(Nullspace_list))
+
     return()
 
 #######################################     END     ######################################
@@ -187,6 +192,7 @@ for i in range(n):
 
 ####################################### NULL POW(N) #######################################
 
+Nullspace_list = []
 power = 1
 for i in range(n):
     print("\n(T)^{} - I: ".format(power))
@@ -205,36 +211,11 @@ for i in range(n):
     print("\nnullspace for (T)^{} - I: ".format(power))
     Basis = B.get_nullspace()
     print(Basis)
+    
+    Nullspace_list.append(Basis)
 
     power += 1
 
-#######################################     END     #######################################
-
-
-####################################### # of cycles w/ length #############################
-def num_of_cycles(transit, alpha, n):
-    print("\n\n--*** Number of Cycles & Length function ***-- \n\n")
-    T = (np.linalg.matrix_power(transit, n)) % alpha
-    I = np.identity(size, dtype=int)
-
-    result = T - I
-
-    K = Nayuki.Matrix(size, size, F)
-    for i in range(size):
-        for j in range(size):
-            K.set(i,j,int(result[i,j]))
-
-    G_Basis = K.get_nullspace()
-
-    print("\n\nNullspace for T^n - I for power of {}: {} \n\n".format(n, G_Basis))
-    msg = ("\n\nNumber of cycles: {} \n\n".format(len(G_Basis)))
-
-
-    num_of_states = pow(alpha, len(G_Basis)) - alpha
-    print("\n\nNumber of States on {} cycles : {} ".format(n, num_of_states))
-
-    return (msg)
+n = detect_cycle(Nullspace_list, alphabet, size)  # max steps
 
 #######################################     END     #######################################
-res = num_of_cycles(transition, alphabet, 4)
-print(res)
