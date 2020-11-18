@@ -146,16 +146,20 @@ def detect_unique_cycle(Nullspace_list, alphabet, size):
     #print(len(unique_nullsapces))
 
     # taking an input list 
-    unique_nullspace = [] 
+    unique_nullspace = { "nullspace": [], "power": []} 
     
-    # taking an counter 
-    count = 0
-    
-    # travesing the array 
-    for item in Nullspace_list: 
-        if item not in unique_nullspace: 
-            count += 1
-            unique_nullspace.append(item) 
+    # travesing the dict 
+    #for item in Nullspace_list["nullspace"]: 
+    #    if item not in unique_nullspace["nullspace"]: 
+    #        unique_nullspace["nullspace"].append(item) 
+
+    # travesing the dict 
+    idx = 0
+    for item in Nullspace_list["nullspace"]: 
+        if item not in unique_nullspace["nullspace"]: 
+            unique_nullspace["nullspace"].append(item)
+            unique_nullspace["power"].append(Nullspace_list["power"][idx])
+        idx += 1
 
     return(unique_nullspace)
 
@@ -202,7 +206,7 @@ for i in range(n):
 
 ####################################### NULL POW(N) #######################################
 
-Nullspace_list = []
+Nullspace_list = { "nullspace": [], "power": []}
 power = 1
 for i in range(n):
     print("\n(T)^{} - I: ".format(power))
@@ -222,10 +226,12 @@ for i in range(n):
     Basis = B.get_nullspace()
     print(Basis)
     
-    Nullspace_list.append(Basis)
+    Nullspace_list["nullspace"].append(Basis)
+    Nullspace_list["power"].append(power)
 
     power += 1
 
 unique_nullsapce = detect_unique_cycle(Nullspace_list, alphabet, size)  # max steps
+print(unique_nullsapce)
 
 #######################################     END     #######################################
