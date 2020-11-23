@@ -249,9 +249,9 @@ for i in range( len(unique_nullspace["nullspace"]) ):
     Automata_stats[i]["states"] = states
 
     print("\n")
-    print("Power:", power)
-    print("Cylces Size:", cylces_size)
-    print("Cylces Count:", states / power)
+    print("Length:", power)
+    print("Cylces Count:", cylces_size)
+    print("Cylces Copies:", states / power)
     print("States:", states)
     print("Nullspace:", Automata_stats[i]["nullspace"])
 
