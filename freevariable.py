@@ -143,11 +143,12 @@ inputFile = input("Enter in the name of the file you want to write to: ")
 f = open(inputFile, "w") # for output file.
 ############################# Find T^k = T^n-k (IF there is one) ##########################
 # finds the max number of cycle of transtion matrix to compute
-def detect_cycle_transtion(transition, alphabet):
+def detect_cycle_transtion(transition, alphabet, size):
 
     u_bound = 100000
     power = 1
     M_list = []
+    ZERO = np.zeros(size, dtype=int)
 
 
     for i in range(u_bound):
@@ -156,6 +157,11 @@ def detect_cycle_transtion(transition, alphabet):
         power += 1
 
     for i in range(len(M_list)):
+        
+        if(M_list[i] == ZERO).all():
+            print("ZERO ZERO ZERO")
+            return(0)
+        
         for j in range(i + 1, len(M_list)):
             if i != j:
                 if (M_list[i] == M_list[j]).all():
@@ -234,7 +240,7 @@ for i in range(rows):
 I = np.identity(size, dtype=int)        # Identity Matrix
 power = 1                               # power
 reverable = is_reversable(B, rows, cols, size)   # is automate reverable
-n = detect_cycle_transtion(transition, alphabet)  # max steps
+n = detect_cycle_transtion(transition, alphabet, size)  # max steps
 
 #print("\nrref for matrix:")
 #B.reduced_row_echelon_form()
