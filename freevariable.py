@@ -1,6 +1,7 @@
 import Nayuki
 import numpy as np
 import math
+import sys
 
 """*** Notes from meeting on 11/24: Don't need to double count cycles already counted. """
 """5mod5: Need to extend for longer cycle detection. Bardzell says there is another / more cycles that we have not shown."""
@@ -34,40 +35,40 @@ import math
 
 #######################################     END     #######################################
 
-####################################### 6 x 6 mod(5) #######################################
-#alphabet = 5 # our mod(p)
-#F = Nayuki.PrimeField(alphabet)
-#B = Nayuki.Matrix(6, 6, F)
-#size = 6
-#rows = cols = size
-#data = [0, 1, 1, 0, 0, 0,
-#        0, 0, 1, 1, 0, 0,
-#        0, 0, 0, 1, 1, 0,
-#        0, 0, 0, 0, 1, 1,
-#        1, 0, 0, 0, 0, 1,
-#        1, 1, 0, 0, 0, 0] # nullspace = [[4, 1, 4, 1, 4, 1]]
+"""####################################### 6 x 6 mod(5) #######################################
+alphabet = 5 # our mod(p)
+F = Nayuki.PrimeField(alphabet)
+B = Nayuki.Matrix(6, 6, F)
+size = 6
+rows = cols = size
+data = [0, 1, 1, 0, 0, 0,
+        0, 0, 1, 1, 0, 0,
+        0, 0, 0, 1, 1, 0,
+        0, 0, 0, 0, 1, 1,
+        1, 0, 0, 0, 0, 1,
+        1, 1, 0, 0, 0, 0] # nullspace = [[4, 1, 4, 1, 4, 1]]
 
-#######################################     END     #######################################
+#######################################     END     #######################################"""
 
 """####################################### 9 x 9 mod(2) #######################################
- alphabet = 2 # our mod(p)
+alphabet = 2 # our mod(p)
 F = Nayuki.PrimeField(alphabet)
 B = Nayuki.Matrix(9, 9, F)
 size = 9
 rows = cols = size
-data = [0, 1, 1, 0, 0, 0, 0, 0, 1,
-        1, 0, 1, 1, 0, 0, 0, 0, 0,
-        0, 1, 0, 1, 1, 0, 0, 0, 0,
-        0, 0, 1, 0, 1, 1, 0, 0, 0,
-        0, 0, 0, 1, 0, 1, 1, 0, 0,
-        0, 0, 0, 0, 1, 0, 1, 1, 0,
-        0, 0, 0, 0, 0, 1, 0, 1, 1,
-        1, 0, 0, 0, 0, 0, 1, 0, 1,
-        1, 1, 0, 0, 0, 0, 0, 1, 0,]
+data = [1, 1, 0, 0, 0, 0, 0, 0, 0,
+        0, 1, 1, 0, 0, 0, 0, 0, 0,
+        0, 0, 1, 1, 0, 0, 0, 0, 0,
+        0, 0, 0, 1, 1, 0, 0, 0, 0,
+        0, 0, 0, 0, 1, 1, 0, 0, 0,
+        0, 0, 0, 0, 0, 1, 1, 0, 0,
+        0, 0, 0, 0, 0, 0, 1, 1, 0,
+        0, 0, 0, 0, 0, 0, 0, 1, 1,
+        1, 0, 0, 0, 0, 0, 0, 0, 1,]
 
 #######################################     END     #######################################"""
 
-""" ####################################### 8 x 8 mod(3) #####################################
+"""####################################### 8 x 8 mod(3) #####################################
 alphabet = 3 # our mod(p)
 size = 8
 F = Nayuki.PrimeField(alphabet)
@@ -85,7 +86,7 @@ data = [1, 1, 1, 0, 0, 0, 0, 0,
 
 
 
-"""####################################### 5 x 5 mod(5) #######################################
+####################################### 5 x 5 mod(5) #######################################
 
 
 alphabet = 5 # our mod(p)
@@ -121,7 +122,7 @@ data = [1, 1, 0, 0, 0, 0, 0, 0, 1,
 
 #######################################     END     #######################################"""
 
-####################################### 7 x 7 mod(3) #######################################
+"""####################################### 7 x 7 mod(3) #######################################
 alphabet = 3 # our mod(p)
 size = 7
 F = Nayuki.PrimeField(alphabet)
@@ -133,10 +134,11 @@ data = [0, 1, 0, 0, 0, 1, 1,
         1, 1, 0, 1, 0, 0, 0,
         0, 1, 1, 0, 1, 0, 0,
         0, 0, 1, 1, 0, 1, 0,
-        1, 0, 0, 1, 1, 0, 1,
-        1, 1, 0, 0, 1, 1, 0]
+        0, 0, 0, 1, 1, 0, 1,
+        1, 0, 0, 0, 1, 1, 0]
 
 #######################################     END     #######################################"""
+#sys.stdout = open("test.txt", "w")
 inputFile = input("Enter in the name of the file you want to write to: ")
 f = open(inputFile, "w") # for output file.
 ############################# Find T^k = T^n-k (IF there is one) ##########################
@@ -157,16 +159,15 @@ def detect_cycle_transtion(transition, alphabet):
         for j in range(i + 1, len(M_list)):
             if i != j:
                 if (M_list[i] == M_list[j]).all():
-                    #msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
+
                     return(j)
             elif i == len(M_list):
-                #msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+
                 return(-1)
         else:
             continue
-    #msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-    return(-1)
 
+    return(-1)
 
 #######################################     END     ######################################
 
@@ -185,8 +186,11 @@ def is_reversable(B, rows, cols, size):
     # else it is irreverable
     if (result == I).all():
         print("reversible")
+        f.write("reversible")
         return(True)
-    print("irrevesible")
+
+    print("irreversible")
+    f.write("irreversible")
     return(False)
 
 #######################################     END     ######################################
@@ -195,12 +199,8 @@ def is_reversable(B, rows, cols, size):
 def detect_unique_cycle(Nullspace_list, alphabet, size):
 
     # taking an input list
-    unique_nullspace = { "nullspace": [], "power": []}
+    unique_nullspace = { "nullspace": [], "power": [] }
 
-    # travesing the dict
-    #for item in Nullspace_list["nullspace"]:
-    #    if item not in unique_nullspace["nullspace"]:
-    #        unique_nullspace["nullspace"].append(item)
 
     # travesing the dict
     idx = 0
@@ -247,17 +247,17 @@ n = detect_cycle_transtion(transition, alphabet)  # max steps
 #######################################     END     #######################################
 ####################################### NULL POW(N) #######################################
 
-Nullspace_list = { "nullspace": [], "power": []}
+Nullspace_list = { "nullspace": [], "power": [] }
 power = 1
 for i in range(n):
-    print("\n(T)^{} - I: ".format(power))
-    result_matrix = (np.linalg.matrix_power(transition, power) - I) % alphabet
-    print(result_matrix)
+    #print("\n(T)^{} - I: ".format(power))
+    result_matrix = ( np.linalg.matrix_power( transition, power ) - I ) % alphabet
+    #print(result_matrix)
 
     # Set Nayuki Matrix to reult of (T)^n - I
     for i in range(size):  # For each column
         for j in range(size):
-            B.set(i,j,int(result_matrix[i,j]))
+            B.set( i,j,int( result_matrix[i,j] ) )
 
     #print("\nrref for (T)^{} - I: ".format(power))
     B.reduced_row_echelon_form()
@@ -275,16 +275,16 @@ for i in range(n):
 
 
 # Get Automata Stats
-unique_nullspace = detect_unique_cycle(Nullspace_list, alphabet, size)  # max steps
+unique_nullspace = detect_unique_cycle( Nullspace_list, alphabet, size )  # max steps
 Automata_stats = []
 
 # Prints all of the unique nullspaces to a file.
 
 for i in range( len(unique_nullspace["nullspace"]) ):
     power  = unique_nullspace["power"][i]
-    cylces_size = len(unique_nullspace["nullspace"][i])
-    states = pow( alphabet, cylces_size)
-    Automata_stats.append({ "nullspace": [], "power": 0, "cycles_size": 0, "cycles_count": 0, "states": 0})
+    cycles_size = len( unique_nullspace["nullspace"][i] )
+    states = pow( alphabet, cycles_size )
+    Automata_stats.append( { "nullspace": [], "power": 0, "cycles_size": 0, "cycles_count": 0, "states": 0} )
 
     subtract_repeat_states = 0
     if(i != 0):
@@ -297,18 +297,20 @@ for i in range( len(unique_nullspace["nullspace"]) ):
 
     Automata_stats[i]["nullspace"] = unique_nullspace["nullspace"][i]
     Automata_stats[i]["power"] = power
-    Automata_stats[i]["cycles_size"] = cylces_size
+    Automata_stats[i]["cycles_size"] = cycles_size
     Automata_stats[i]["cycles_count"] = states / power
     Automata_stats[i]["states"] = states
 
 
+
+
     f.write("\n")
     f.write("Length: {}\n".format(power))
-    f.write("Dimension of nullspace: {}\n".format(cylces_size))
+    f.write("Dimension of nullspace: {}\n".format(cycles_size))
     f.write("Cycles Copies: {}\n".format(math.ceil(states / power)))
     f.write("States: {}\n".format(states))
     f.write("Nullspace: {}\n".format(Automata_stats[i]["nullspace"]))
 
 f.close()
-
+#sys.stdout.close()
 #######################################     END     #######################################
