@@ -25,7 +25,7 @@ elif platform == "darwin": # OS X
 elif platform == "win32": # Windows.
     try:
         os.system('curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py')
-        os.system('py get-pip.py')
+        os.system('python3 get-pip.py')
         os.system('python3 -m pip3 install numpy matplotlib sympy PyQt5')
     except:
         print("There was a problem installing the proper modules.\nMake sure 'ca_needed_modules.txt' is in the same directory as this python script is.\n")
