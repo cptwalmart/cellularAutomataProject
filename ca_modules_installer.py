@@ -23,7 +23,7 @@ elif platform == "darwin": # OS X
 
 elif platform == "win32": # Windows.
     try:
-        os.system('pip3 install numpy==1.19 matplotlib sympy PyQt5'')
+        os.system('pip3 install numpy==1.19 matplotlib sympy PyQt5')
     except:
         print("There was a problem installing the proper modules.\nMake sure 'ca_needed_modules.txt' is in the same directory as this python script is.\n")
     else:
