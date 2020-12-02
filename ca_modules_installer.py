@@ -16,7 +16,7 @@ if platform == "linux" or platform == "linux2": # linux
 
 elif platform == "darwin": # OS X
     try:
-        os.system('pip install Flask')
+        os.system('pip install numpy==1.8.0rcl matplotlib==1.3.1 sympy PyQt5')
     except:
         print("There was a problem installing the proper modules.\nMake sure 'ca_needed_modules.txt' is in the same directory as this python script is.\n")
     else:
