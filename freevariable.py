@@ -140,6 +140,7 @@ def detect_cycle_transtion(transition, alphabet, size):
     power = 1
     M_list = []
     ZERO = np.zeros((size, size), dtype=int)
+    I = np.identity(size, dtype=int)
 
 
     #for i in range(u_bound):
@@ -157,6 +158,8 @@ def detect_cycle_transtion(transition, alphabet, size):
         for j in range(i + 1, len(M_list)):
             if i != j:
                 # If true all states evloves to Zero State
+                if(M_list[j] == I).all():
+                    return(j)
                 if(M_list[j] == ZERO).all():
                     return(j)
                 if (M_list[i] == M_list[j]).all():
@@ -200,7 +203,7 @@ def detect_unique_cycle(Nullspace_list, alphabet, size):
     # taking an input list
     unique_nullspace = { "nullspace": [], "power": [] }
 
-    # travesing the dict
+    # traversing the dict
     idx = 0
     for item in Nullspace_list["nullspace"]:
         if item not in unique_nullspace["nullspace"]:
@@ -277,11 +280,15 @@ for i in range(n):
 
     power += 1
 
-
-
 # Get Automata Stats
 unique_nullspace = detect_unique_cycle( Nullspace_list, alphabet, size )  # max steps
 Automata_stats = []
+
+# Add final Cycle since the entire system is reverable
+if(reverable):
+    result_matrix = I
+    unique_nullspace["nullspace"].append(result_matrix)
+    unique_nullspace["power"].append(power)
 
 # Prints all of the unique nullspaces to a file.
 
@@ -299,7 +306,6 @@ for i in range( len(unique_nullspace["nullspace"]) ):
         states -= subtract_repeat_states
 
 
-
     Automata_stats[i]["nullspace"] = unique_nullspace["nullspace"][i]
     Automata_stats[i]["power"] = power
     Automata_stats[i]["cycles_size"] = cycles_size
@@ -307,14 +313,16 @@ for i in range( len(unique_nullspace["nullspace"]) ):
     Automata_stats[i]["states"] = states
 
 
-
-
     f.write("\n")
     f.write("Length: {}\n".format(power))
     f.write("Dimension of nullspace: {}\n".format(cycles_size))
     f.write("Cycles Copies: {}\n".format(math.ceil(states / power)))
     f.write("States: {}\n".format(states))
-    f.write("Nullspace: {}\n".format(Automata_stats[i]["nullspace"]))
+
+    if np.array_equal(Automata_stats[i]["nullspace"], I):
+        f.write("Nullspace: {}\n".format("0"))
+    else:
+        f.write("Nullspace: {}\n".format(Automata_stats[i]["nullspace"]))
 
 f.close()
 #sys.stdout.close()
