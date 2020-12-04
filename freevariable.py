@@ -132,6 +132,63 @@ data = [0, 1, 0, 0, 0, 1, 1,
         1, 0, 0, 0, 1, 1, 0]
 #######################################     END     #######################################"""
 
+### 12/04/2020 Test Cases
+
+"""####################################### 6 x 6 mod(3) #######################################
+### update rule: 0 2
+alphabet = 3 # our mod(p)
+F = Nayuki.PrimeField(alphabet)
+B = Nayuki.Matrix(6, 6, F)
+size = 6
+rows = cols = size
+data = [1, 0, 1, 0, 0, 0,
+        0, 1, 0, 1, 0, 0,
+        0, 0, 1, 0, 1, 0,
+        0, 0, 0, 1, 0, 1,
+        1, 0, 0, 0, 1, 0,
+        0, 1, 0, 0, 0, 1]
+#######################################     END     #######################################"""
+
+"""####################################### 10 x 10 mod(2) #######################################
+### update rule: -2 0 1
+alphabet = 2 # our mod(p)
+F = Nayuki.PrimeField(alphabet)
+B = Nayuki.Matrix(10, 10, F)
+size = 10
+rows = cols = size
+data = [1, 1, 0, 0, 0, 0, 0, 0, 1, 0,
+        0, 1, 1, 0, 0, 0, 0, 0, 0, 1,
+        1, 0, 1, 1, 0, 0, 0, 0, 0, 0,
+        0, 1, 0, 1, 1, 0, 0, 0, 0, 0,
+        0, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+        0, 0, 0, 1, 0, 1, 1, 0, 0, 0,
+        0, 0, 0, 0, 1, 0, 1, 1, 0, 0,
+        0, 0, 0, 0, 0, 1, 0, 1, 1, 0,
+        0, 0, 0, 0, 0, 0, 1, 0, 1, 1,
+        1, 0, 0, 0, 0, 0, 0, 1, 0, 1]
+#######################################     END     #######################################"""
+
+####################################### 6 x 6 mod(3) #######################################
+### update rule: 0 1
+alphabet = 5 # our mod(p)
+F = Nayuki.PrimeField(alphabet)
+B = Nayuki.Matrix(6, 6, F)
+size = 6
+rows = cols = size
+data = [1, 1, 0, 0, 0, 0,
+        0, 1, 1, 0, 0, 0,
+        0, 0, 1, 1, 0, 0,
+        0, 0, 0, 1, 1, 0,
+        0, 0, 0, 0, 1, 1,
+        1, 0, 0, 0, 0, 1]
+#######################################     END     #######################################"""
+
+
+
+
+
+
+
 ############################# Find T^k = T^n-k (IF there is one) ##########################
 # finds the max number of cycle of transtion matrix to compute
 def detect_cycle_transtion(transition, alphabet, size):
@@ -320,7 +377,7 @@ for i in range( len(unique_nullspace["nullspace"]) ):
     f.write("States: {}\n".format(states))
 
     if np.array_equal(Automata_stats[i]["nullspace"], I):
-        f.write("Nullspace: {}\n".format("0"))
+        f.write("Nullspace: {}\n".format("Entire Cellular Automata"))
     else:
         f.write("Nullspace: {}\n".format(Automata_stats[i]["nullspace"]))
 
