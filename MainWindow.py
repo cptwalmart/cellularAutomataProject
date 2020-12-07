@@ -11,7 +11,7 @@ The main computational file CellularAutomata.py is imported and called throughou
 
 import MplCanvas as mpl
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu, QDialog
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu, QDialog, QTabWidget, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar
@@ -250,15 +250,29 @@ class MainWindow(QtWidgets.QMainWindow):
         """ End Powers Of Matrix Input Form Creation """
 
         """ Finish placing items in page layout """
-        layout = QtWidgets.QVBoxLayout()
-        layout.addWidget(self.default_input_groupbox)
-        layout.addWidget(self.powers_input_groupbox)
-        layout.addWidget(self.toolbar)
-        layout.addWidget(self.canvas)
+        self.layout = QtWidgets.QVBoxLayout()
+        self.tabs = QTabWidget()
+        self.tab1 = QWidget()
+        self.tab2 = QWidget()
+        self.tabs.resize(300,200)
+        self.tabs.addTab(self.tab1, "Default Input")
+        self.tabs.addTab(self.tab2, "Matrix Powers")
+        self.tab1.layout = QVBoxLayout(self)
+        self.tab1.layout.addWidget(self.default_input_groupbox)
+        self.tab1.setLayout(self.tab1.layout)
+        self.tab2.layout = QVBoxLayout(self)
+        self.tab2.layout.addWidget(self.powers_input_groupbox)
+        self.tab2.setLayout(self.tab2.layout)
+
+        # self.layout.addWidget(self.default_input_groupbox)
+        # self.layout.addWidget(self.powers_input_groupbox)
+        self.layout.addWidget(self.toolbar)
+        self.layout.addWidget(self.canvas)
+        self.layout.addWidget(self.tabs)
 
         # Create a placeholder widget to hold our toolbar and canvas.
         plot = QtWidgets.QWidget()
-        plot.setLayout(layout)
+        plot.setLayout(self.layout)
         self.setCentralWidget(plot)
         # Diplay the GUI
         self.show()
