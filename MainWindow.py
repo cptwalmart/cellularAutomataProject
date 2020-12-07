@@ -1,3 +1,14 @@
+"""
+This project was created for COSC 425 for use by Salisbury University.
+Programmers: Joseph Craft, Sean Dunn, Malik Green, Kevin Koch
+COSC 425 Cellular Automata Project
+
+******************************************
+
+This is the GUI file of the project, primarily using the PyQt5 library, as well as matplotlib for graphing.
+The main computational file CellularAutomata.py is imported and called throughout to incorporate functions into the GUI.
+"""
+
 import MplCanvas as mpl
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu, QDialog
@@ -16,8 +27,13 @@ maxPrime = 1000
 cached_primes = [i for i in range(minPrime,maxPrime) if isprime(i)]
 ### Cached Prime Numbers ###
 
+"""
+This class represents the main window of the GUI. As such, most of the GUI is accessed here, as well as the main computational file CellularAutomata.py.
+"""
 class MainWindow(QtWidgets.QMainWindow):
-
+    """
+    Initialization of variables and GUI.
+    """
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
 
@@ -29,6 +45,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.title = 'PyQt5 - Cellular Automata'
         self.setWindowTitle(self.title)
 
+        # Display cellular automata as graphs in the GUI
         self.canvas = mpl.MplCanvas(self, width=5, height=4, dpi=100)
         self.canvas.axes.matshow(self.CA.get_cellular_automata())
 
@@ -36,137 +53,208 @@ class MainWindow(QtWidgets.QMainWindow):
         self.toolbar = NavigationToolbar(self.canvas, self)
         ### --- ###
 
-        ### Menu Bar ###
+        # Flag to determine which matrix certain functions work with.
+        # Default is base matrix.
+        self.activeMatrix = 'base'
+
+        """ Menu Bar Creation """
         menubar = self.menuBar()
 
-        # File tab
+        # Adds a 'File' tab, which is placed in the top left of the GUI.
         fileMenu = menubar.addMenu('File')
         newAct = QAction('New', self)
         impMenu = QMenu('Import', self)
-        importAct = QAction('Import Automata', self) 
+        importAct = QAction('Import Automata', self)
         impMenu.addAction(importAct)
 
-        # Add sub-tab to File tab
+        # Adds a sub-tab to 'File' tab.
         fileMenu.addAction(newAct)
         fileMenu.addMenu(impMenu)
 
-        # Calculation tab
+        # Adds a 'Display' tab,  which is placed to the right of 'File' in the top left of the GUI.
+        display_menu = menubar.addMenu('Display')
+
+        # Adds actions to 'Display' tab.
+        base_matrix_act = QAction('Base Matrix', self)
+        evo_matrix_act = QAction('Evolution Matrix', self)
+        display_menu.addAction(base_matrix_act)
+        display_menu.addAction(evo_matrix_act)
+
+        # Adds a 'Calculation' tab, which is placed to the right of 'Display' in the top left of the GUI.
         calculation_menu = menubar.addMenu('Calculation')
 
-        # Cellular Automata sub-tab
-        automata_menu = QMenu('Automata Matrix', self)
-        automata_display_act = QAction('Display Matrix', self)
-        automata_rref_act = QAction('Row Reduced Echelon Form', self)
-        automata_nullspace_act = QAction('Nullspace of Matrix', self)
-        automata_rank_act = QAction('Rank of Matrix', self)
-        automata_cycle_act = QAction('Detect Cycle', self)
-        automata_menu.addAction(automata_display_act)
-        automata_menu.addAction(automata_rref_act)
-        automata_menu.addAction(automata_nullspace_act)
-        automata_menu.addAction(automata_rank_act)
-        automata_menu.addAction(automata_cycle_act)
+        # Adds a 'Cellular Automata' tab, which will be added underneath the 'Calculation' tab.
+        #automata_menu = QMenu('Automata Matrix', self)
+        #automata_display_act = QAction('Display Matrix', self)
+        rref_act = QAction('Row Reduced Echelon Form', self)
+        nullspace_act = QAction('Nullspace of Matrix', self)
+        rank_act = QAction('Rank of Matrix', self)
+        cycle_act = QAction('Detect Cycle', self)
+        #calculation_menu.addAction(automata_display_act)
+        calculation_menu.addAction(rref_act)
+        calculation_menu.addAction(nullspace_act)
+        calculation_menu.addAction(rank_act)
+        calculation_menu.addAction(cycle_act)
 
-        # Evolution sub-tab
-        evolution_menu = QMenu('Evolution Matrix', self)
-        evolution_display_act = QAction('Display Matrix', self)
-        evolution_rref_act = QAction('Row Reduced Echelon Form', self)
-        evolution_nullspace_act = QAction('Nullspace of Matrix', self)
-        evolution_rank_act = QAction('Rank of Matrix', self)
-        evolution_menu.addAction(evolution_display_act)
-        evolution_menu.addAction(evolution_rref_act)
-        evolution_menu.addAction(evolution_nullspace_act)
-        evolution_menu.addAction(evolution_rank_act)
+        # Creates an 'Evolution Matrix' tab, which will be added underneath the 'Calculation' tab.
+        # evolution_menu = QMenu('Evolution Matrix', self)
+        # evolution_display_act = QAction('Display Matrix', self)
+        # evolution_rref_act = QAction('Row Reduced Echelon Form', self)
+        # evolution_nullspace_act = QAction('Nullspace of Matrix', self)
+        # evolution_rank_act = QAction('Rank of Matrix', self)
+        # evolution_menu.addAction(evolution_display_act)
+        # evolution_menu.addAction(evolution_rref_act)
+        # evolution_menu.addAction(evolution_nullspace_act)
+        # evolution_menu.addAction(evolution_rank_act)
 
         # Nullspace sub-tab
         #nullspace_menu = QMenu('Basis of Nullspace', self)
         #nullspace_display_act = QAction('Display Nullspace', self)
-        #nullspace_rank_display_act = QAction('Display Rank of Nullspace', self) 
+        #nullspace_rank_display_act = QAction('Display Rank of Nullspace', self)
         #nullspace_menu.addAction(nullspace_display_act)
         #nullspace_menu.addAction(nullspace_rank_display_act)
 
-        # Add sub-tab to File tab
-        calculation_menu.addMenu(automata_menu)
-        calculation_menu.addMenu(evolution_menu)
+        # Adds sub-tabs to 'Calculation' tab.
+        # calculation_menu.addMenu(automata_menu)
+        # calculation_menu.addMenu(evolution_menu)
         #calculation_menu.addMenu(nullspace_menu)
 
-        automata_display_act.triggered.connect(lambda: self.display_matrix('cell'))
-        automata_rref_act.triggered.connect(lambda: self.display_rref_of_matrix('cell'))
-        automata_nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix('cell'))
-        automata_rank_act.triggered.connect(lambda: self.display_pop_up('rank', 'cell'))
-        automata_cycle_act.triggered.connect(lambda: self.display_pop_up('cycle', 'cell'))
+        """
+        Commands to set the function that calls when an item is selected.
+        The flag 'base' refers to the base automata matrix, while 'evo' refers to the evolution matrix.
+        """
+        base_matrix_act.triggered.connect(lambda: self.display_matrix('base'))
+        evo_matrix_act.triggered.connect(lambda: self.display_matrix('evo'))
+        #automata_display_act.triggered.connect(lambda: self.display_matrix('cell'))
+        rref_act.triggered.connect(lambda: self.display_rref_of_matrix())
+        nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix())
+        rank_act.triggered.connect(lambda: self.display_pop_up('rank'))
+        cycle_act.triggered.connect(lambda: self.display_pop_up('cycle'))
 
-        evolution_display_act.triggered.connect(lambda: self.display_matrix('evo'))
-        evolution_rref_act.triggered.connect(lambda: self.display_rref_of_matrix('evo'))
-        evolution_nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix('evo'))
-        evolution_rank_act.triggered.connect(lambda: self.display_pop_up('rank', 'evo'))
+        # evolution_display_act.triggered.connect(lambda: self.display_matrix('evo'))
+        # evolution_rref_act.triggered.connect(lambda: self.display_rref_of_matrix('evo'))
+        # evolution_nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix('evo'))
+        # evolution_rank_act.triggered.connect(lambda: self.display_pop_up('rank', 'evo'))
 
- 
-        ### --- ###
+        """ End Menu Bar Creation """
 
-        ### Create Input Form Elements ###
+        """ Begin Default Input Form Creation """
+
+        """
+        Input form for number of cells. The input value will determine the number of columns in the automata.
+        """
         self.number_of_cells_label = QLabel(self)
-        self.number_of_cells_label.setText('# of cells:')
+        self.number_of_cells_label.setText('Number Of Cells:')
         self.number_of_cells = QLineEdit(self)
         self.number_of_cells.move(20, 20)
         self.number_of_cells.resize(280,40)
 
+        """
+        Input form for alphabet size. The input value will determine the alphabet of our automata (ie. 0, 1, 2, 3), as well as the modulo division of our system.
+        """
         self.alphabet_size_label = QLabel(self)
-        self.alphabet_size_label.setText('alphabet size:')
+        self.alphabet_size_label.setText('Alphabet Size:')
         self.alphabet_size = QLineEdit(self)
         self.alphabet_size.move(20, 20)
         self.alphabet_size.resize(280,40)
 
+        """
+        Input form for the initial state of the automata. The input value will be the state at which the system begins.
+        The initial state must agree with the number of cells (columns) in the automata and the size of the alphabet in the automata.
+        The user may input 'random' for a random initial state, while retaining the other variables.
+        """
         self.initial_state_label = QLabel(self)
-        self.initial_state_label.setText('initial state:')
+        self.initial_state_label.setText('Initial State:')
         self.initial_state = QLineEdit(self)
         self.initial_state.move(20, 20)
         self.initial_state.resize(280,40)
 
+        """
+        Input form for the update rule of the automata. The update rule will be used to transition the automata between steps.
+        The update rule is of the form: n1 n2 n3 ... nm, where n is an element of R (all real integers) and m is an element of Z (all positive integers).
+        This string of integers represents the positional elements relative to the current cell, which will be computed in transition to the next state of the automata.
+
+        UNDER CONSTRUCTION: Will be replaced later with a radius of elements to choose from, in order to add complexity and functionality to the system.
+        """
         self.update_rule_label = QLabel(self)
-        self.update_rule_label.setText('update rule:')
+        self.update_rule_label.setText('Update Rule:')
         self.update_rule = QLineEdit(self)
         self.update_rule.move(20, 20)
         self.update_rule.resize(280,40)
-        
-        # Steps
+
+        """
+        Input form the number of steps of the automata. The input value will determine how large the generating automata will be.
+        """
         self.number_of_steps_label = QLabel(self)
-        self.number_of_steps_label.setText('# of steps:')
+        self.number_of_steps_label.setText('Number Of Steps:')
         self.number_of_steps = QLineEdit(self)
         self.number_of_steps.move(20, 20)
         self.number_of_steps.resize(280,40)
 
-        # Update Automata Button
+        """
+        Update Automata Button - will regenerate automata with current entries in the input forms.
+        """
         self.update_automata_button = QPushButton('Submit', self)
         self.update_automata_button.setToolTip('Submit an Update to the Automata')
         self.update_automata_button.clicked.connect(self.on_click_update_automata)
 
-        # Randomly Populate Automata Button
+        """
+        Randomly Populate Automata Button - will randomly fill each form with a valid entry, yielding a random automata.
+        """
         self.random_automata_button = QPushButton('Random', self)
         self.random_automata_button.setToolTip('Randomly Populate the Automata')
         self.random_automata_button.clicked.connect(self.on_click_randomly_populate_automata)
 
-        input_form = QtWidgets.QFormLayout()
-        input_form.addRow(self.number_of_cells_label, self.number_of_cells)
-        input_form.addRow(self.alphabet_size_label, self.alphabet_size)
-        input_form.addRow(self.initial_state_label, self.initial_state)
-        input_form.addRow(self.update_rule_label, self.update_rule)
-        input_form.addRow(self.number_of_steps_label, self.number_of_steps)
-        input_form.addRow(self.random_automata_button, self.update_automata_button)
+        """
+        Pushes form to the GUI.
+        """
+        input_form_default = QtWidgets.QFormLayout()
+        input_form_default.addRow(self.number_of_cells_label, self.number_of_cells)
+        input_form_default.addRow(self.alphabet_size_label, self.alphabet_size)
+        input_form_default.addRow(self.initial_state_label, self.initial_state)
+        input_form_default.addRow(self.update_rule_label, self.update_rule)
+        input_form_default.addRow(self.number_of_steps_label, self.number_of_steps)
+        input_form_default.addRow(self.random_automata_button, self.update_automata_button)
 
-        self.automata_input_groupbox = QGroupBox("Cellular Automata Input")
-        self.automata_input_groupbox.setCheckable(True)
-        self.automata_input_groupbox.setChecked(True)
-        self.automata_input_groupbox.setLayout(input_form)
+        self.default_input_groupbox = QGroupBox("Cellular Automata Input")
+        self.default_input_groupbox.setCheckable(True)
+        self.default_input_groupbox.setChecked(True)
+        self.default_input_groupbox.setLayout(input_form_default)
 
-        self.automata_input_groupbox.toggled.connect(lambda: self.toggleGroup(self.automata_input_groupbox))
+        self.default_input_groupbox.toggled.connect(lambda:self.toggleGroup(self.default_input_groupbox))
         ### --- ###
 
-        ### Place items in page layout ###
+        """ End Default Input Form Creation """
+
+        """ Begin Powers Of Matrix Input Form Creation """
+
+        # Matrix powers tab
+        # Powers of matrix label
+        self.powers_of_matrix_label = QLabel(self)
+        self.powers_of_matrix_label.setText('Power of matrix to generate:')
+        self.powers_of_matrix = QLineEdit(self)
+        self.powers_of_matrix.move(20, 20)
+        self.powers_of_matrix.resize(280,40)
+
+
+        input_form_matrix_powers = QtWidgets.QFormLayout()
+        input_form_matrix_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
+
+        self.powers_input_groupbox = QGroupBox("Matrix Powers Input")
+        self.powers_input_groupbox.setCheckable(True)
+        self.powers_input_groupbox.setChecked(False)
+        self.powers_input_groupbox.setLayout(input_form_matrix_powers)
+
+        self.powers_input_groupbox.toggled.connect(lambda: self.toggleGroup(self.powers_input_groupbox))
+
+        """ End Powers Of Matrix Input Form Creation """
+
+        """ Finish placing items in page layout """
         layout = QtWidgets.QVBoxLayout()
-        layout.addWidget(self.automata_input_groupbox)
+        layout.addWidget(self.default_input_groupbox)
+        layout.addWidget(self.powers_input_groupbox)
         layout.addWidget(self.toolbar)
         layout.addWidget(self.canvas)
-        ### --- ###
 
         # Create a placeholder widget to hold our toolbar and canvas.
         plot = QtWidgets.QWidget()
@@ -175,6 +263,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # Diplay the GUI
         self.show()
 
+        """ End Initialization """
 
     @pyqtSlot()
     def on_click_update_automata(self):
@@ -196,7 +285,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         initial_state = self.initial_state.text()
         update_rule = self.update_rule.text()
-        
+
         self.CA.set_number_of_cells(number_of_cells)
         self.CA.set_alphabet_size(alphabet_size)
         self.CA.set_initial_state(initial_state)
@@ -216,7 +305,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.CA.detect_cycle()
 
         # Redraw the plat
-        self.display_matrix('cell')
+        self.display_matrix('base')
 
     def on_click_randomly_populate_automata(self):
         # Init variables for contraint checking
@@ -233,9 +322,9 @@ class MainWindow(QtWidgets.QMainWindow):
             rule += str(random.randint(-1*num_cells+1, num_cells-1))
             rule += " "
             if (random.randint(0, 1) == 0):
-                break       
-        
-        
+                break
+
+
         # Clear text fields
         self.number_of_cells.clear()
         self.alphabet_size.clear()
@@ -261,22 +350,30 @@ class MainWindow(QtWidgets.QMainWindow):
         #self.canvas.axes.matshow(self.CA.get_evolution_matrix())
         ## Trigger the canvas to update and redraw.
         #self.canvas.draw()
-        
+
     def display_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
-        if flag == 'cell':
+        if flag == 'base':
+            self.activeMatrix = 'base'
             self.canvas.axes.matshow(self.CA.get_cellular_automata())
         elif flag == 'evo':
+            self.activeMatrix = 'evo'
             self.canvas.axes.matshow(self.CA.get_evolution_matrix())
+        else:
+            if self.activeMatrix == 'base':
+                self.canvas.axes.matshow(self.CA.get_cellular_automata())
+            elif self.activeMatrix == 'evo':
+                self.canvas.axes.matshow(self.CA.get_evolution_matrix())
+
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
     def display_rref_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
-        if flag == 'cell':
+        if self.activeMatrix == 'base':
             self.canvas.axes.matshow(self.CA.rref(self.CA.get_cellular_automata()))
             print("Row Reduced Echelon Form of Cellular Automata: ")
-        elif flag == 'evo':
+        elif self.activeMatrix == 'evo':
             #self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
             self.canvas.axes.matshow(self.CA.row_echelon_form(self.CA.get_evolution_matrix()))
             print("Row Reduced Echelon Form of Evolution Matrix: ")
@@ -285,10 +382,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def display_nullspace_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
-        if flag == 'cell':
+        if self.activeMatrix == 'base':
             #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
             print("Under Construction")
-        elif flag == 'evo':
+        elif self.activeMatrix == 'evo':
             #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
             print("Under Construction")
         # Trigger the canvas to update and redraw.
@@ -296,11 +393,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def display_rank_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
-        if flag == 'cell':
+        if self.activeMatrix == 'base':
             rank = self.CA.rank(self.CA.get_cellular_automata())
             print("Rank of Cellular Automata: ")
             pprint(rank)
-        elif flag == 'evo':
+        elif self.activeMatrix == 'evo':
             rank = self.CA.rank(self.CA.get_evolution_matrix())
             print("Rank of Evolution Matrix: ")
             pprint(rank)
@@ -315,10 +412,10 @@ class MainWindow(QtWidgets.QMainWindow):
             dlg.setWindowTitle("Cycle Detected")
 
         elif flag_type == "rank":
-            if flag_call == "cell":
+            if self.activeMatrix == 'base':
                 rank = self.CA.rank(self.CA.get_cellular_automata())
                 msg = "RANK = {}".format(rank)
-            elif flag_call == "evo":
+            elif self.activeMatrix == 'evo':
                 rank = self.CA.rank(self.CA.get_evolution_matrix())
                 msg = "RANK = {}".format(rank)
 
@@ -333,3 +430,8 @@ class MainWindow(QtWidgets.QMainWindow):
             ctrl.setFixedHeight(ctrl.sizeHint().height())
         else:
             ctrl.setFixedHeight(30)
+
+    """ End Main Window """
+
+"""
+"""
