@@ -348,7 +348,6 @@ if(reverable):
     unique_nullspace["power"].append(power)
 
 # Prints all of the unique nullspaces to a file.
-
 for i in range( len(unique_nullspace["nullspace"]) ):
     power  = unique_nullspace["power"][i]
     cycles_size = len( unique_nullspace["nullspace"][i] )
