@@ -88,6 +88,11 @@ class CellularAutomata:
         self.update_rule = update_rule
 
 
+    # Set function for main matrix
+    def set_cellular_automata(self, new_matrix):
+        self.cellular_automata = np.asarray(new_matrix)
+
+
 	# Return function for main matrix
     def get_cellular_automata(self):
         return self.cellular_automata
@@ -353,9 +358,24 @@ class CellularAutomata:
         return rank
 
 
+    # Returns the power of a matrix using np.linalg
+    def get_matrix_power(self, matrix, power):
+
+        power = int(power)
+
+        try:
+            return_matrix = np.linalg.matrix_power(matrix, power)
+
+        except:
+            print('The matrix must be square!')
+            return_matrix = matrix
+
+        return return_matrix
+
+
     # This function will be improved later, in terms of versatility and time complexity.
 	# Detect the first cycle in the range of the matrix
-    def detect_cycle(self):
+    def detect_first_cycle(self):
         """
         This function loops through the range of the matrix and compares each row i to each row j in the rest of the matrix.
         It stops either when it finds two of the same row (a cycle), or it reaches the end of the matrix.

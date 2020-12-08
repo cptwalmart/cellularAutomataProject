@@ -55,7 +55,14 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Flag to determine which matrix certain functions work with.
         # Default is base matrix.
-        self.activeMatrix = 'base'
+        self.activeMatrixLabel = 'base'
+
+        """
+        self.activeMatrix and self.lastMatrix are variables to hold the currently active matrix and the most recently used matrix, respectively.
+        The important distinction between these two variables is the active matrix will always be a standard matrix, which is to say it will never be a calculation matrix, such as rref or nullspace.
+        """
+        self.activeMatrix = []
+        self.lastMatrix = []
 
         """ Menu Bar Creation """
         menubar = self.menuBar()
@@ -104,6 +111,7 @@ class MainWindow(QtWidgets.QMainWindow):
         """
         base_matrix_act.triggered.connect(lambda: self.display_matrix('base'))
         evo_matrix_act.triggered.connect(lambda: self.display_matrix('evo'))
+        active_matrix_act.triggered.connect(lambda: self.display_matrix('new'))
         rref_act.triggered.connect(lambda: self.display_rref_of_matrix())
         nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix())
         rank_act.triggered.connect(lambda: self.display_pop_up('rank'))
@@ -168,7 +176,7 @@ class MainWindow(QtWidgets.QMainWindow):
         Update Automata Button - will regenerate automata with current entries in the input forms.
         """
         self.update_automata_button = QPushButton('Submit', self)
-        self.update_automata_button.setToolTip('Submit an Update to the Automata')
+        self.update_automata_button.setToolTip('Submit an update to the automaton')
         self.update_automata_button.clicked.connect(self.on_click_update_automata)
 
         """
@@ -210,8 +218,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.powers_of_matrix.move(20, 20)
         self.powers_of_matrix.resize(280,40)
 
+        # Submit button to generate the power
+        self.update_powers_button = QPushButton('Submit', self)
+        self.update_powers_button.setToolTip('Submit an update to the automaton')
+        self.update_powers_button.clicked.connect(self.on_click_update_powers)
+
         input_form_matrix_powers = QtWidgets.QFormLayout()
         input_form_matrix_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
+        input_form_matrix_powers.addRow(self.update_powers_button)
 
         # Functionality to enable or disable powers input.
         self.powers_input_groupbox = QGroupBox("Matrix Powers Input")
@@ -329,9 +343,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.CA.generate_evolution_matrix()
         self.CA.generate_cellular_automata()
+
+        self.activeMatrix = self.CA.get_cellular_automata()
         #self.CA.generate_nullspace_matrix('cell')
-        self.CA.generate_nullspace_matrix('evo')
-        self.CA.detect_cycle()
+        # self.CA.generate_nullspace_matrix('evo')
+        # self.CA.detect_first_cycle()
 
         # Redraw the plat
         self.display_matrix('base')
@@ -368,30 +384,70 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_rule.insert(rule)
         self.number_of_steps.insert(str(num_steps))
 
+    """
+    When the Update Powers button is clicked, calculate and display the corresponding matrix power.
+    """
+    def on_click_update_powers(self):
+        self.lastMatrix = self.CA.get_matrix_power(self.activeMatrix, self.powers_of_matrix.text())
+        self.display_matrix('last')
+
+    """
+    Main function for displaying the matrix.
+    """
     def display_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if flag == 'base':
-            self.activeMatrix = 'base'
-            self.canvas.axes.matshow(self.CA.get_cellular_automata())
+            """
+            If function is called with 'base' flag, the base matrix becomes the last matrix displayed.
+            The base matrix is then displayed in the canvas.
+            """
+            self.activeMatrixLabel = 'base'
+            self.lastMatrix = self.CA.get_cellular_automata()
+            self.activeMatrix = self.lastMatrix
+            self.canvas.axes.matshow(self.activeMatrix)
         elif flag == 'evo':
-            self.activeMatrix = 'evo'
-            self.canvas.axes.matshow(self.CA.get_evolution_matrix())
+            """
+            If function is called with 'evo' flag, the evolution matrix of the base matrix becomes the last matrix displayed.
+            The evolution matrix is then displayed in the canvas.
+            """
+            self.activeMatrixLabel = 'evo'
+            self.lastMatrix = self.CA.get_evolution_matrix()
+            self.activeMatrix = self.lastMatrix
+            self.canvas.axes.matshow(self.activeMatrix)
+        elif flag == 'last':
+            """
+            If function is called with 'last' flag, the last used matrix is displayed in the canvas.
+            """
+            self.canvas.axes.matshow(self.lastMatrix)
+        elif flag == 'new':
+            """
+            If function is called with 'new' flag, the currently displayed matrix becomes the new base matrix.
+            The new base matrix is then displayed in the canvas.
+            """
+            self.activeMatrixLabel = 'base'
+            self.activeMatrix = self.lastMatrix
+            self.CA.set_cellular_automata(self.activeMatrix)
+            self.canvas.axes.matshow(self.activeMatrix)
         else:
-            if self.activeMatrix == 'base':
-                self.canvas.axes.matshow(self.CA.get_cellular_automata())
-            elif self.activeMatrix == 'evo':
-                self.canvas.axes.matshow(self.CA.get_evolution_matrix())
+            if self.activeMatrixLabel == 'base':
+                self.lastMatrix = self.CA.get_cellular_automata()
+                self.activeMatrix = self.lastMatrix
+                self.canvas.axes.matshow(self.activeMatrix)
+            elif self.activeMatrixLabel == 'evo':
+                self.lastMatrix = self.CA.get_evolution_matrix()
+                self.activeMatrix = self.lastMatrix
+                self.canvas.axes.matshow(self.activeMatrix)
 
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
     def display_rref_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
-        if self.activeMatrix == 'base':
-            self.canvas.axes.matshow(self.CA.row_reduced_echelon_form(self.CA.get_cellular_automata()))
+        if self.activeMatrixLabel == 'base':
+            self.lastMatrix = self.CA.row_reduced_echelon_form(self.CA.get_cellular_automata())
+            self.canvas.axes.matshow(self.lastMatrix)
             print("Row Reduced Echelon Form of Cellular Automata: ")
-        elif self.activeMatrix == 'evo':
-            #self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
+        elif self.activeMatrixLabel == 'evo':
             self.canvas.axes.matshow(self.CA.row_reduced_echelon_form(self.CA.get_evolution_matrix()))
             print("Row Reduced Echelon Form of Evolution Matrix: ")
         # Trigger the canvas to update and redraw.
@@ -399,10 +455,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def display_nullspace_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
-        if self.activeMatrix == 'base':
+        if self.activeMatrixLabel == 'base':
             #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
             print("Under Construction")
-        elif self.activeMatrix == 'evo':
+        elif self.activeMatrixLabel == 'evo':
             #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
             print("Under Construction")
         # Trigger the canvas to update and redraw.
@@ -410,29 +466,30 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def display_rank_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
-        if self.activeMatrix == 'base':
+        if self.activeMatrixLabel == 'base':
             rank = self.CA.rank(self.CA.get_cellular_automata())
             print("Rank of Cellular Automata: ")
             pprint(rank)
-        elif self.activeMatrix == 'evo':
+        elif self.activeMatrixLabel == 'evo':
             rank = self.CA.rank(self.CA.get_evolution_matrix())
             print("Rank of Evolution Matrix: ")
             pprint(rank)
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
+
     def display_pop_up(self, flag_type="None", flag_call="None"):
         dlg = QMessageBox(self)
 
         if flag_type == "cycle":
-            msg = self.CA.detect_cycle()
+            msg = self.CA.detect_first_cycle()
             dlg.setWindowTitle("Cycle Detected")
 
         elif flag_type == "rank":
-            if self.activeMatrix == 'base':
+            if self.activeMatrixLabel == 'base':
                 rank = self.CA.rank(self.CA.get_cellular_automata())
                 msg = "RANK = {}".format(rank)
-            elif self.activeMatrix == 'evo':
+            elif self.activeMatrixLabel == 'evo':
                 rank = self.CA.rank(self.CA.get_evolution_matrix())
                 msg = "RANK = {}".format(rank)
 
