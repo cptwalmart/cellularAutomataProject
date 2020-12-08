@@ -372,7 +372,7 @@ for i in range( len(unique_nullspace["nullspace"]) ):
     f.write("\n")
     f.write("Length: {}\n".format(power))
     f.write("Dimension of nullspace: {}\n".format(cycles_size))
-    f.write("Cycles Copies: {}\n".format(math.ceil(states / power)))
+    f.write("Cycles Copies: {}\n".format(states / power))
     f.write("States: {}\n".format(states))
 
     if np.array_equal(Automata_stats[i]["nullspace"], I):
