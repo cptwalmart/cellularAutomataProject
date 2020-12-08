@@ -1,3 +1,4 @@
+
 import Nayuki
 import numpy as np
 import math
@@ -14,8 +15,6 @@ B = Nayuki.Matrix(3, 3, F)
 size = 3
 data = [1, 2, 3, 2, 4, 0, 1, 2 ,3] # nullspace = [[3, 1, 0]]
 data = [2, 4, 1, 2, 1, 0, 4, 3, 4] # nullspace = []
-
-
 #######################################     END     #######################################"""
 
 """####################################### 4 x 4 mod(5) #######################################
@@ -32,7 +31,6 @@ data = [2, 4, 1, 2,
 #        1, 0, 4, 3,
 #        4, 0, 3, 2,
 #        0, 0, 0, 0] # nullspace = [[2, 1, 0, 1]] # cycle = 0 - 7637
-
 #######################################     END     #######################################"""
 
 """####################################### 6 x 6 mod(5) #######################################
@@ -86,7 +84,7 @@ data = [1, 1, 1, 0, 0, 0, 0, 0,
 
 
 
-####################################### 5 x 5 mod(5) #######################################
+"""####################################### 5 x 5 mod(5) #######################################
 alphabet = 5 # our mod(p)
 size = 5
 F = Nayuki.PrimeField(alphabet)
@@ -310,7 +308,6 @@ n = detect_cycle_transtion(transition, alphabet, size)  # max steps
 #######################################     END     #######################################
 ####################################### NULL POW(N) #######################################
 
-
 result_matrix_pow = transition
 Nullspace_list = { "nullspace": [], "power": [] }
 power = 1
@@ -347,6 +344,8 @@ if(reverable):
     unique_nullspace["nullspace"].append(result_matrix)
     unique_nullspace["power"].append(power)
 
+ONES = np.ones((size), dtype=int)
+#Automata_stats.append( { "nullspace": [], "power": 0, "cycles_size": 0, "cycles_count": 0, "states": 0} )
 # Prints all of the unique nullspaces to a file.
 for i in range( len(unique_nullspace["nullspace"]) ):
     power  = unique_nullspace["power"][i]
@@ -356,9 +355,14 @@ for i in range( len(unique_nullspace["nullspace"]) ):
 
     subtract_repeat_states = 0
     if(i != 0):
+        # Checks for divisibility now!
         for j in range(i, 0, -1):
-            item = Automata_stats[j-1]
-            subtract_repeat_states += item["states"]
+            if j > 0 and power % unique_nullspace["power"][j-1] == 0:
+                item = Automata_stats[j-1]
+                subtract_repeat_states += item["states"]
+
+        #print("Value for States for power {}: {}".format(power, states))
+        #print("States to be subtracted for power {}: {}".format(power, subtract_repeat_states))
         states -= subtract_repeat_states
 
 
@@ -368,11 +372,12 @@ for i in range( len(unique_nullspace["nullspace"]) ):
     Automata_stats[i]["cycles_count"] = states / power
     Automata_stats[i]["states"] = states
 
+    #prev = power
 
     f.write("\n")
     f.write("Length: {}\n".format(power))
     f.write("Dimension of nullspace: {}\n".format(cycles_size))
-    f.write("Cycles Copies: {}\n".format(states / power))
+    f.write("Cycles Copies: {}\n".format(int(states / power)))
     f.write("States: {}\n".format(states))
 
     if np.array_equal(Automata_stats[i]["nullspace"], I):
@@ -381,5 +386,4 @@ for i in range( len(unique_nullspace["nullspace"]) ):
         f.write("Nullspace: {}\n".format(Automata_stats[i]["nullspace"]))
 
 f.close()
-#sys.stdout.close()
 #######################################     END     #######################################
