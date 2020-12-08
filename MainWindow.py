@@ -62,14 +62,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Adds a 'File' tab, which is placed in the top left of the GUI.
         fileMenu = menubar.addMenu('File')
-        newAct = QAction('New', self)
-        impMenu = QMenu('Import', self)
-        importAct = QAction('Import Automata', self)
-        impMenu.addAction(importAct)
 
-        # Adds a sub-tab to 'File' tab.
-        fileMenu.addAction(newAct)
-        fileMenu.addMenu(impMenu)
+        # Adds an action to 'File' tab.
+        saveFile = QAction('Output to file', self)
+        fileMenu.addAction(saveFile)
 
         # Adds a 'Display' tab,  which is placed to the right of 'File' in the top left of the GUI.
         display_menu = menubar.addMenu('Display')
@@ -77,35 +73,23 @@ class MainWindow(QtWidgets.QMainWindow):
         # Adds actions to 'Display' tab.
         base_matrix_act = QAction('Base Matrix', self)
         evo_matrix_act = QAction('Evolution Matrix', self)
+        active_matrix_act = QAction('Make this my base matrix for future calculations', self)
         display_menu.addAction(base_matrix_act)
         display_menu.addAction(evo_matrix_act)
+        display_menu.addAction(active_matrix_act)
 
         # Adds a 'Calculation' tab, which is placed to the right of 'Display' in the top left of the GUI.
         calculation_menu = menubar.addMenu('Calculation')
 
-        # Adds a 'Cellular Automata' tab, which will be added underneath the 'Calculation' tab.
-        #automata_menu = QMenu('Automata Matrix', self)
-        #automata_display_act = QAction('Display Matrix', self)
+        # Adds actions to 'Calculation' tab.
         rref_act = QAction('Row Reduced Echelon Form', self)
         nullspace_act = QAction('Nullspace of Matrix', self)
         rank_act = QAction('Rank of Matrix', self)
         cycle_act = QAction('Detect Cycle', self)
-        #calculation_menu.addAction(automata_display_act)
         calculation_menu.addAction(rref_act)
         calculation_menu.addAction(nullspace_act)
         calculation_menu.addAction(rank_act)
         calculation_menu.addAction(cycle_act)
-
-        # Creates an 'Evolution Matrix' tab, which will be added underneath the 'Calculation' tab.
-        # evolution_menu = QMenu('Evolution Matrix', self)
-        # evolution_display_act = QAction('Display Matrix', self)
-        # evolution_rref_act = QAction('Row Reduced Echelon Form', self)
-        # evolution_nullspace_act = QAction('Nullspace of Matrix', self)
-        # evolution_rank_act = QAction('Rank of Matrix', self)
-        # evolution_menu.addAction(evolution_display_act)
-        # evolution_menu.addAction(evolution_rref_act)
-        # evolution_menu.addAction(evolution_nullspace_act)
-        # evolution_menu.addAction(evolution_rank_act)
 
         # Nullspace sub-tab
         #nullspace_menu = QMenu('Basis of Nullspace', self)
@@ -114,27 +98,16 @@ class MainWindow(QtWidgets.QMainWindow):
         #nullspace_menu.addAction(nullspace_display_act)
         #nullspace_menu.addAction(nullspace_rank_display_act)
 
-        # Adds sub-tabs to 'Calculation' tab.
-        # calculation_menu.addMenu(automata_menu)
-        # calculation_menu.addMenu(evolution_menu)
-        #calculation_menu.addMenu(nullspace_menu)
-
         """
         Commands to set the function that calls when an item is selected.
         The flag 'base' refers to the base automata matrix, while 'evo' refers to the evolution matrix.
         """
         base_matrix_act.triggered.connect(lambda: self.display_matrix('base'))
         evo_matrix_act.triggered.connect(lambda: self.display_matrix('evo'))
-        #automata_display_act.triggered.connect(lambda: self.display_matrix('cell'))
         rref_act.triggered.connect(lambda: self.display_rref_of_matrix())
         nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix())
         rank_act.triggered.connect(lambda: self.display_pop_up('rank'))
         cycle_act.triggered.connect(lambda: self.display_pop_up('cycle'))
-
-        # evolution_display_act.triggered.connect(lambda: self.display_matrix('evo'))
-        # evolution_rref_act.triggered.connect(lambda: self.display_rref_of_matrix('evo'))
-        # evolution_nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix('evo'))
-        # evolution_rank_act.triggered.connect(lambda: self.display_pop_up('rank', 'evo'))
 
         """ End Menu Bar Creation """
 
@@ -216,6 +189,7 @@ class MainWindow(QtWidgets.QMainWindow):
         input_form_default.addRow(self.number_of_steps_label, self.number_of_steps)
         input_form_default.addRow(self.random_automata_button, self.update_automata_button)
 
+        # Functionality to enable or disable powers input.
         self.default_input_groupbox = QGroupBox("Cellular Automata Input")
         self.default_input_groupbox.setCheckable(True)
         self.default_input_groupbox.setChecked(True)
@@ -236,10 +210,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.powers_of_matrix.move(20, 20)
         self.powers_of_matrix.resize(280,40)
 
-
         input_form_matrix_powers = QtWidgets.QFormLayout()
         input_form_matrix_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
 
+        # Functionality to enable or disable powers input.
         self.powers_input_groupbox = QGroupBox("Matrix Powers Input")
         self.powers_input_groupbox.setCheckable(True)
         self.powers_input_groupbox.setChecked(False)
@@ -249,23 +223,64 @@ class MainWindow(QtWidgets.QMainWindow):
 
         """ End Powers Of Matrix Input Form Creation """
 
-        """ Finish placing items in page layout """
+        """ Begin Output Form Creation """
+
+        self.output_label = QLabel(self)
+        self.output_label.setText('Please note that you must select a file to write to before you generate data, otherwise it will only output here.')
+
+        self.output_form = QtWidgets.QFormLayout()
+        self.output_form.addRow(self.output_label)
+
+        self.output_form_groupbox = QGroupBox("Output")
+        self.output_form_groupbox.setLayout(self.output_form)
+
+        """ End Output Form Creation """
+
+        """ Begin Layout Creation """
         self.layout = QtWidgets.QVBoxLayout()
+
+        # Create tabs to hold various inputs and outputs
         self.tabs = QTabWidget()
         self.tab1 = QWidget()
         self.tab2 = QWidget()
+        self.tab3 = QWidget()
+        self.tab4 = QWidget()
         self.tabs.resize(300,200)
+
         self.tabs.addTab(self.tab1, "Default Input")
-        self.tabs.addTab(self.tab2, "Matrix Powers")
+        self.tabs.addTab(self.tab2, "Update Rule")
+        self.tabs.addTab(self.tab3, "Matrix Powers")
+        self.tabs.addTab(self.tab4, "Output")
+
+        """
+        Tab 1: Default Input
+        """
         self.tab1.layout = QVBoxLayout(self)
         self.tab1.layout.addWidget(self.default_input_groupbox)
         self.tab1.setLayout(self.tab1.layout)
+
+        """
+        Tab 2: Update Rule (Currently not implemented)
+        """
         self.tab2.layout = QVBoxLayout(self)
-        self.tab2.layout.addWidget(self.powers_input_groupbox)
+        # self.tab2.layout.addWidget()
         self.tab2.setLayout(self.tab2.layout)
 
-        # self.layout.addWidget(self.default_input_groupbox)
-        # self.layout.addWidget(self.powers_input_groupbox)
+        """
+        Tab 3: Matrix Powers
+        """
+        self.tab3.layout = QVBoxLayout(self)
+        self.tab3.layout.addWidget(self.powers_input_groupbox)
+        self.tab3.setLayout(self.tab3.layout)
+
+        """
+        Tab 4: Output
+        """
+        self.tab4.layout = QVBoxLayout(self)
+        self.tab4.layout.addWidget(self.output_form_groupbox)
+        self.tab4.setLayout(self.tab4.layout)
+
+        """ Finish placing items in page layout """
         self.layout.addWidget(self.toolbar)
         self.layout.addWidget(self.canvas)
         self.layout.addWidget(self.tabs)
@@ -353,18 +368,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_rule.insert(rule)
         self.number_of_steps.insert(str(num_steps))
 
-    #def display_automata_matrix(self):
-        #self.canvas.axes.cla()  # Clear the canvas.
-        #self.canvas.axes.matshow(self.CA.get_cellular_automata())
-        ## Trigger the canvas to update and redraw.
-        #self.canvas.draw()
-
-    #def display_evolution_matrix(self):
-        #self.canvas.axes.cla()  # Clear the canvas.
-        #self.canvas.axes.matshow(self.CA.get_evolution_matrix())
-        ## Trigger the canvas to update and redraw.
-        #self.canvas.draw()
-
     def display_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if flag == 'base':
@@ -385,11 +388,11 @@ class MainWindow(QtWidgets.QMainWindow):
     def display_rref_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if self.activeMatrix == 'base':
-            self.canvas.axes.matshow(self.CA.rref(self.CA.get_cellular_automata()))
+            self.canvas.axes.matshow(self.CA.row_reduced_echelon_form(self.CA.get_cellular_automata()))
             print("Row Reduced Echelon Form of Cellular Automata: ")
         elif self.activeMatrix == 'evo':
             #self.canvas.axes.matshow(self.CA.rref(self.CA.get_evolution_matrix()))
-            self.canvas.axes.matshow(self.CA.row_echelon_form(self.CA.get_evolution_matrix()))
+            self.canvas.axes.matshow(self.CA.row_reduced_echelon_form(self.CA.get_evolution_matrix()))
             print("Row Reduced Echelon Form of Evolution Matrix: ")
         # Trigger the canvas to update and redraw.
         self.canvas.draw()

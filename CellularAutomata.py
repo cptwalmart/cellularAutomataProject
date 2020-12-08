@@ -57,8 +57,8 @@ class CellularAutomata:
                 start_state.append(int(i))
 
         self.initial_state = start_state
-        
-        
+
+
     # Set function for update rule.
     def set_update_rule(self, string):
         """
@@ -138,9 +138,9 @@ class CellularAutomata:
             print(cellular_automata[i], end=" ")
             print()
 
-        self.cellular_automata = cellular_automata
-    
-    
+        self.cellular_automata = np.asarray(cellular_automata)
+
+
     # Function to determine the evolution matrix based on the update rule.
     def generate_evolution_matrix(self):
         """
@@ -209,33 +209,12 @@ class CellularAutomata:
             nullspace = Matrix(self.evolution_matrix)
             nullspace.nullspace()
             self.nullspace_matrix = np.matrix(nullspace)
-        
-        
-    # This function will be improved later, in terms of versatility and time complexity.
-	# Detect the first cycle in the range of the matrix
-    def detect_cycle(self):
-        """
-        This function loops through the range of the matrix and compares each row i to each row j in the rest of the matrix.
-        It stops either when it finds two of the same row (a cycle), or it reaches the end of the matrix.
-        Because there are a finite number of states, given enough discrete time steps, there will be a cycle.
-        
-        This function will be improved later, in terms of versatility and time complexity.
-        """
-        
-        for i in range(len(self.cellular_automata)):
-            for j in range(i+1, len(self.cellular_automata)):
-                if (self.cellular_automata[i] == self.cellular_automata[j]).all():
-                    msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
-                    return(msg)
-                elif i == len(self.cellular_automata):
-                    msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-                    return(msg)
-        msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
-        return(msg)
 
 
     # Row reduced echelon form using multiplicative inverse
-    def row_echelon_form(self, A):
+    def row_reduced_echelon_form(self, A):
+
+        print(type(A))
 
         ### Using Sympy ###
         #A_rref = Matrix(A, dtype=int)
@@ -269,73 +248,73 @@ class CellularAutomata:
         return B_rref
 
 
-    # Row reduced echelon form using floating point arithmetic
-    def rref(self, B, tol=1e-8, debug=False):
-        B = np.asarray(B, dtype=np.int32)        
-        
-        A = B.copy()
-        rows, cols = A.shape
-        r = 0
-        pivots_pos = []
-        row_exchanges = np.arange(rows)
-        for c in range(cols):
-            if debug:
-                print("Now at row", r, "and col", c, "with matrix:")
-                print(A)
+    # # Row reduced echelon form using floating point arithmetic
+    # def rref(self, B, tol=1e-8, debug=False):
+    #     B = np.asarray(B, dtype=np.int32)
+    #
+    #     A = B.copy()
+    #     rows, cols = A.shape
+    #     r = 0
+    #     pivots_pos = []
+    #     row_exchanges = np.arange(rows)
+    #     for c in range(cols):
+    #         if debug:
+    #             print("Now at row", r, "and col", c, "with matrix:")
+    #             print(A)
+    #
+    #         # Find the pivot row:
+    #         pivot = np.argmax(np.abs(A[r:rows, c])) + r
+    #         m = np.abs(A[pivot, c])
+    #         if debug:
+    #             print("Found pivot", m, "in row", pivot)
+    #         if m <= tol:
+    #             # Skip column c, making sure the approximately zero terms are
+    #             # actually zero.
+    #             A[r:rows, c] = np.zeros(rows-r)
+    #             if debug:
+    #                 print("All elements at and below (", r,
+    #                     ",", c, ") are zero.. moving on..")
+    #         else:
+    #             # keep track of bound variables
+    #             pivots_pos.append((r, c))
+    #
+    #             if pivot != r:
+    #                 # Swap current row and pivot row
+    #                 A[[pivot, r], c:cols] = A[[r, pivot], c:cols]
+    #                 row_exchanges[[pivot, r]] = row_exchanges[[r, pivot]]
+    #
+    #                 if debug:
+    #                     print("Swap row", r, "with row", pivot, "Now:")
+    #                     print(A)
+    #
+    #             # Normalize pivot row
+    #             A[r, c:cols] = A[r, c:cols] / A[r, c]
+    #
+    #             # Eliminate the current column
+    #             v = A[r, c:cols]
+    #             # Above (before row r):
+    #             if r > 0:
+    #                 ridx_above = np.arange(r)
+    #                 A[ridx_above, c:cols] = A[ridx_above, c:cols] - \
+    #                     np.outer(v, A[ridx_above, c]).T
+    #                 if debug:
+    #                     print("Elimination above performed:")
+    #                     print(A)
+    #             # Below (after row r):
+    #             if r < rows-1:
+    #                 ridx_below = np.arange(r+1, rows)
+    #                 A[ridx_below, c:cols] = A[ridx_below, c:cols] - \
+    #                     np.outer(v, A[ridx_below, c]).T
+    #                 if debug:
+    #                     print("Elimination below performed:")
+    #                     print(A)
+    #             r += 1
+    #         # Check if done
+    #         if r == rows:
+    #             break
+    #     return (A)#, pivots_pos, row_exchanges)
 
-            # Find the pivot row:
-            pivot = np.argmax(np.abs(A[r:rows, c])) + r
-            m = np.abs(A[pivot, c])
-            if debug:
-                print("Found pivot", m, "in row", pivot)
-            if m <= tol:
-                # Skip column c, making sure the approximately zero terms are
-                # actually zero.
-                A[r:rows, c] = np.zeros(rows-r)
-                if debug:
-                    print("All elements at and below (", r,
-                        ",", c, ") are zero.. moving on..")
-            else:
-                # keep track of bound variables
-                pivots_pos.append((r, c))
 
-                if pivot != r:
-                    # Swap current row and pivot row
-                    A[[pivot, r], c:cols] = A[[r, pivot], c:cols]
-                    row_exchanges[[pivot, r]] = row_exchanges[[r, pivot]]
-
-                    if debug:
-                        print("Swap row", r, "with row", pivot, "Now:")
-                        print(A)
-
-                # Normalize pivot row
-                A[r, c:cols] = A[r, c:cols] / A[r, c]
-
-                # Eliminate the current column
-                v = A[r, c:cols]
-                # Above (before row r):
-                if r > 0:
-                    ridx_above = np.arange(r)
-                    A[ridx_above, c:cols] = A[ridx_above, c:cols] - \
-                        np.outer(v, A[ridx_above, c]).T
-                    if debug:
-                        print("Elimination above performed:")
-                        print(A)
-                # Below (after row r):
-                if r < rows-1:
-                    ridx_below = np.arange(r+1, rows)
-                    A[ridx_below, c:cols] = A[ridx_below, c:cols] - \
-                        np.outer(v, A[ridx_below, c]).T
-                    if debug:
-                        print("Elimination below performed:")
-                        print(A)
-                r += 1
-            # Check if done
-            if r == rows:
-                break
-        return (A)#, pivots_pos, row_exchanges)
-    
-    
     # Function to determine the rank of a matrix.
     def rank(self, A, atol=1e-13, rtol=0):
         """Estimate the rank (i.e. the dimension of the nullspace) of a matrix.
@@ -372,3 +351,26 @@ class CellularAutomata:
         tol = max(atol, rtol * s[0])
         rank = int((s >= tol).sum())
         return rank
+
+
+    # This function will be improved later, in terms of versatility and time complexity.
+	# Detect the first cycle in the range of the matrix
+    def detect_cycle(self):
+        """
+        This function loops through the range of the matrix and compares each row i to each row j in the rest of the matrix.
+        It stops either when it finds two of the same row (a cycle), or it reaches the end of the matrix.
+        Because there are a finite number of states, given enough discrete time steps, there will be a cycle.
+
+        This function will be improved later, in terms of versatility and time complexity.
+        """
+
+        for i in range(len(self.cellular_automata)):
+            for j in range(i+1, len(self.cellular_automata)):
+                if (self.cellular_automata[i] == self.cellular_automata[j]).all():
+                    msg = ("CYCLE DETECTED FROM STEP {} TO STEP {}".format(i, j))
+                    return(msg)
+                elif i == len(self.cellular_automata):
+                    msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+                    return(msg)
+        msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
+        return(msg)
