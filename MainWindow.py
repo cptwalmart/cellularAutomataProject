@@ -11,6 +11,7 @@ The main computational file CellularAutomata.py is imported and called throughou
 
 import MplCanvas as mpl
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QFile, QFileInfo, QSettings, Qt, QTextStream
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QTextEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu
 from PyQt5.QtWidgets import QDialog, QFileDialog, QTabWidget, QVBoxLayout
 from PyQt5.QtGui import QIcon
@@ -40,6 +41,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
 
+        
         ### Cellular Automata ###
         self.CA = CellularAutomata.CellularAutomata()
         ### ###
@@ -67,6 +69,10 @@ class MainWindow(QtWidgets.QMainWindow):
         """
         self.activeMatrix = []
         self.lastMatrix = []
+
+        # Create output file
+        self.textEdit = QTextEdit()
+        self.outputFile = ''
 
         """ Menu Bar Creation """
         menubar = self.menuBar()
@@ -229,6 +235,10 @@ class MainWindow(QtWidgets.QMainWindow):
         input_form_matrix_powers = QtWidgets.QFormLayout()
         input_form_matrix_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
         input_form_matrix_powers.addRow(self.update_powers_button)
+
+        # input_form_identity_powers = QtWidgets.QFormLayout()
+        # input_form_identity_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
+        # input_form_identity_powers.addRow(self.update_powers_button)
 
         # Functionality to enable or disable powers input.
         self.powers_input_groupbox = QGroupBox("Matrix Powers Input")
@@ -415,6 +425,15 @@ class MainWindow(QtWidgets.QMainWindow):
 
             msg = '\nBase Matrix:\n' + str(self.lastMatrix)
             self.output_text.append(msg)
+
+            # Append to file if file is selected
+            if self.outputFile:
+                print('outputting to file')
+                self.outputFile.write(msg)
+            else:
+                print('no file selected')
+            
+
         elif flag == 'evo':
             """
             If function is called with 'evo' flag, the evolution matrix of the base matrix becomes the last matrix displayed.
@@ -532,14 +551,29 @@ class MainWindow(QtWidgets.QMainWindow):
         dlg.exec_()
 
 
+    """
+    When this function is called, open a file explorer window for user to select a file to append to.
+    """
     def saveToFile(self):
-        # # dlg = QMessageBox(self)
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"Output to a file", "","All Files (*);;Python Files (*.py)", options=options)
+        
+        print (fileName)
+        if fileName:
+            self.outputFile = open(fileName, 'w')
+            self.outputFile.write('testtttttttttttttttttttttttttttt')
+            # self.outputFile.close()
+            # file = QFile(fileName)
+            # if not file.open(QFile.WriteOnly | QFile.Text):
+            #     QMessageBox.warning(self, "Recent Files",
+            #         "Cannot write file %s:\n%s." % (fileName, file.errorString()))
+            #     return
+            # self.outputFile = QTextStream(file)
+            # QApplication.setOverrideCursor(Qt.WaitCursor)
+            # self.outputFile << self.textEdit.toPlainText()
+            # QApplication.restoreOverrideCursor()
 
-        # file = QtWidgets.QInputDialog.getText(self, 'Output to a file', 'Choose a file')
-
-        # dlg.setWindowTitle('Output to a file')
-        # dlg.exec_()
-        file
 
 
     def toggleGroup(self, ctrl):
@@ -567,6 +601,12 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.output_text.append("Nullspace: {}\n".format(automata_stats[i]["nullspace"]))
 
         return()
+
+    """
+    Upon app close, close output file.
+    """
+    def closeEvent(self, event):
+        self.outputFile.close()
 
     """ End Main Window """
 
