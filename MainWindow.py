@@ -11,13 +11,16 @@ The main computational file CellularAutomata.py is imported and called throughou
 
 import MplCanvas as mpl
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu, QDialog, QTabWidget, QVBoxLayout
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QTextEdit, QMessageBox, QLabel, QGroupBox, QToolBar, QMenu
+from PyQt5.QtWidgets import QDialog, QFileDialog, QTabWidget, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 from sympy import *     # For nullspace
+import numpy as np
 import CellularAutomata
+import AutomataStats as stats
 import random
 
 ### Cached Prime Numbers ###
@@ -44,6 +47,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # Set Window Elements
         self.title = 'PyQt5 - Cellular Automata'
         self.setWindowTitle(self.title)
+        self.setWindowIcon(QtGui.QIcon('icon.ico')) 
 
         # Display cellular automata as graphs in the GUI
         self.canvas = mpl.MplCanvas(self, width=5, height=4, dpi=100)
@@ -92,23 +96,21 @@ class MainWindow(QtWidgets.QMainWindow):
         rref_act = QAction('Row Reduced Echelon Form', self)
         nullspace_act = QAction('Nullspace of Matrix', self)
         rank_act = QAction('Rank of Matrix', self)
-        cycle_act = QAction('Detect Cycle', self)
+        cycle_act = QAction('Detect First Cycle', self)
+        stats_act = QAction('Generate Automata Statistics', self)
         calculation_menu.addAction(rref_act)
         calculation_menu.addAction(nullspace_act)
         calculation_menu.addAction(rank_act)
         calculation_menu.addAction(cycle_act)
+        calculation_menu.addAction(stats_act)
 
-        # Nullspace sub-tab
-        #nullspace_menu = QMenu('Basis of Nullspace', self)
-        #nullspace_display_act = QAction('Display Nullspace', self)
-        #nullspace_rank_display_act = QAction('Display Rank of Nullspace', self)
-        #nullspace_menu.addAction(nullspace_display_act)
-        #nullspace_menu.addAction(nullspace_rank_display_act)
 
         """
         Commands to set the function that calls when an item is selected.
         The flag 'base' refers to the base automata matrix, while 'evo' refers to the evolution matrix.
         """
+        saveFile.triggered.connect(lambda: self.saveToFile())
+
         base_matrix_act.triggered.connect(lambda: self.display_matrix('base'))
         evo_matrix_act.triggered.connect(lambda: self.display_matrix('evo'))
         active_matrix_act.triggered.connect(lambda: self.display_matrix('new'))
@@ -116,6 +118,7 @@ class MainWindow(QtWidgets.QMainWindow):
         nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix())
         rank_act.triggered.connect(lambda: self.display_pop_up('rank'))
         cycle_act.triggered.connect(lambda: self.display_pop_up('cycle'))
+        stats_act.triggered.connect(lambda: self.get_automata_stats())
 
         """ End Menu Bar Creation """
 
@@ -242,8 +245,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.output_label = QLabel(self)
         self.output_label.setText('Please note that you must select a file to write to before you generate data, otherwise it will only output here.')
 
+        self.output_text = QTextEdit(self)
+
         self.output_form = QtWidgets.QFormLayout()
         self.output_form.addRow(self.output_label)
+        self.output_form.addRow(self.output_text)
 
         self.output_form_groupbox = QGroupBox("Output")
         self.output_form_groupbox.setLayout(self.output_form)
@@ -400,43 +406,70 @@ class MainWindow(QtWidgets.QMainWindow):
             """
             If function is called with 'base' flag, the base matrix becomes the last matrix displayed.
             The base matrix is then displayed in the canvas.
+            The base matrix is then displayed in the output.
             """
             self.activeMatrixLabel = 'base'
             self.lastMatrix = self.CA.get_cellular_automata()
             self.activeMatrix = self.lastMatrix
             self.canvas.axes.matshow(self.activeMatrix)
+
+            msg = '\nBase Matrix:\n' + str(self.lastMatrix)
+            self.output_text.append(msg)
         elif flag == 'evo':
             """
             If function is called with 'evo' flag, the evolution matrix of the base matrix becomes the last matrix displayed.
             The evolution matrix is then displayed in the canvas.
+            The evolution matrix is then displayed in the output.
             """
             self.activeMatrixLabel = 'evo'
             self.lastMatrix = self.CA.get_evolution_matrix()
             self.activeMatrix = self.lastMatrix
             self.canvas.axes.matshow(self.activeMatrix)
+
+            msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
+            self.output_text.append(msg)
         elif flag == 'last':
             """
             If function is called with 'last' flag, the last used matrix is displayed in the canvas.
+            The last used matrix is then displayed in the output.
             """
             self.canvas.axes.matshow(self.lastMatrix)
+
+            if self.activeMatrixLabel == 'evo':
+                msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
+            else:
+                msg = '\nBase Matrix:\n' + str(self.lastMatrix)
+            self.output_text.append(msg)
         elif flag == 'new':
             """
             If function is called with 'new' flag, the currently displayed matrix becomes the new base matrix.
             The new base matrix is then displayed in the canvas.
+            The new base matrix is then displayed in the output.
             """
             self.activeMatrixLabel = 'base'
             self.activeMatrix = self.lastMatrix
             self.CA.set_cellular_automata(self.activeMatrix)
             self.canvas.axes.matshow(self.activeMatrix)
+
+            msg = '\nBase Matrix:\n' + str(self.lastMatrix)
+            self.output_text.append(msg)
         else:
             if self.activeMatrixLabel == 'base':
                 self.lastMatrix = self.CA.get_cellular_automata()
                 self.activeMatrix = self.lastMatrix
                 self.canvas.axes.matshow(self.activeMatrix)
+
+                # Print matrix to output
+                msg = '\nBase Matrix:\n' + str(self.lastMatrix)
+                self.output_text.append(msg)
             elif self.activeMatrixLabel == 'evo':
                 self.lastMatrix = self.CA.get_evolution_matrix()
                 self.activeMatrix = self.lastMatrix
                 self.canvas.axes.matshow(self.activeMatrix)
+
+                # Print matrix to output
+                msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
+                self.output_text.append(msg)
 
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
@@ -498,12 +531,42 @@ class MainWindow(QtWidgets.QMainWindow):
         dlg.setText(msg)
         dlg.exec_()
 
+
+    def saveToFile(self):
+        # # dlg = QMessageBox(self)
+
+        # file = QtWidgets.QInputDialog.getText(self, 'Output to a file', 'Choose a file')
+
+        # dlg.setWindowTitle('Output to a file')
+        # dlg.exec_()
+        file
+
+
     def toggleGroup(self, ctrl):
         state = ctrl.isChecked()
         if state:
             ctrl.setFixedHeight(ctrl.sizeHint().height())
         else:
             ctrl.setFixedHeight(30)
+
+
+    def get_automata_stats(self):
+
+        automata_stats = stats.generate_automata_stats(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()))
+
+        for i in range(len(automata_stats)):
+            self.output_text.append("\n")
+            self.output_text.append("Length: {}\n".format(automata_stats[i]["power"]))
+            self.output_text.append("Dimension of nullspace: {}\n".format(automata_stats[i]["cycles_size"]))
+            self.output_text.append("Cycles Copies: {}\n".format(automata_stats[i]["cycles_count"]))
+            self.output_text.append("States: {}\n".format(automata_stats[i]["states"]))
+
+            if np.array_equal(automata_stats[i]["nullspace"], I):
+                self.output_text.append("Nullspace: {}\n".format("Entire Cellular Automata"))
+            else:
+                self.output_text.append("Nullspace: {}\n".format(automata_stats[i]["nullspace"]))
+
+        return()
 
     """ End Main Window """
 

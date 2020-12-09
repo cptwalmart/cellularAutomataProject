@@ -8,10 +8,11 @@ import sys
 """7mod3: Should output one cycle and one other cycle 20 < C < 90, but not all the other cycles. """
 """9mod3: Extreme irrevesible system that should only produce 1 1-cycle (after certain step, should evolve to 0-state forever)."""
 
-
-############################# Find T^k = T^n-k (IF there is one) ##########################
-# finds the max number of cycle of transtion matrix to compute
 def detect_cycle_transtion(transition, alphabet, size):
+    """
+    Find T^k = T^n-k (IF there is one)
+    finds the max number of cycle of transtion matrix to compute
+    """
 
     u_bound = 100000
     power = 1
@@ -48,10 +49,11 @@ def detect_cycle_transtion(transition, alphabet, size):
 
     return(-1)
 
-#######################################     END     ######################################
 
-############################ Find if N(T) == O-matrix #########################
 def is_reversable(B, rows, cols, size):
+    """
+    Find if N(T) == O-matrix
+    """
     B.reduced_row_echelon_form()
     result = np.zeros([rows, cols], dtype=int)
     I = np.identity(size, dtype=int)
@@ -65,17 +67,18 @@ def is_reversable(B, rows, cols, size):
     # else it is irreverable
     if (result == I).all():
         print("reversible")
-        f.write("reversible")
+        # f.write("reversible")
         return(True)
 
     print("irreversible")
-    f.write("irreversible")
+    # f.write("irreversible")
     return(False)
 
-#######################################     END     ######################################
 
-############################ Find N(T^k -I) = cylces in automata #########################
 def detect_unique_cycle(Nullspace_list, alphabet, size):
+    """
+        Find N(T^k -I) = cylces in automata 
+    """
 
     # taking an input list
     unique_nullspace = { "nullspace": [], "power": [] }
@@ -90,24 +93,40 @@ def detect_unique_cycle(Nullspace_list, alphabet, size):
 
     return(unique_nullspace)
 
-#######################################     END     ######################################
-
-####################################### RREF & NULL #######################################
-
-def generate_automata_stats(data, size , alphabet):
-    inputFile = input("Enter in the name of the file you want to write to: ")
-    f = open(inputFile, "w") # for output file.
+def generate_null_T_minus_I(data, size, alphabet):
     
+    data = data.tolist()
     rows = cols = size
     F = Nayuki.PrimeField(alphabet)
     B = Nayuki.Matrix(rows, cols, F)
 
     # Nayuki Matrix "B"
-    inc = 0
-    for i in range(size):  # For each column
+    for i in range(size):
         for j in range(size):
-            B.set(i,j,data[inc])
-            inc += 1
+            B.set(i, j, data[i][j])
+
+    # Transisition Matrix "transition"
+    transition = np.zeros([rows, cols], dtype=int)
+    result_matrix = np.zeros([rows, cols], dtype=int)
+
+    for i in range(rows):
+        for j in range(cols):
+            transition[i][j] = B.get(i, j)
+
+def generate_automata_stats(data, size, alphabet):
+    """
+    RREF & NULL
+    """
+
+    data = data.tolist()
+    rows = cols = size
+    F = Nayuki.PrimeField(alphabet)
+    B = Nayuki.Matrix(rows, cols, F)
+
+    # Nayuki Matrix "B"
+    for i in range(size):
+        for j in range(size):
+            B.set(i, j, data[i][j])
 
     # Transisition Matrix "transition"
     transition = np.zeros([rows, cols], dtype=int)
@@ -129,9 +148,6 @@ def generate_automata_stats(data, size , alphabet):
     #print("\nnullspace for matrix:")
     #Basis = B.get_nullspace()
     #print(Basis)
-
-    #######################################     END     #######################################
-    ####################################### NULL POW(N) #######################################
 
     result_matrix_pow = transition
     Nullspace_list = { "nullspace": [], "power": [] }
@@ -169,7 +185,6 @@ def generate_automata_stats(data, size , alphabet):
         unique_nullspace["nullspace"].append(result_matrix)
         unique_nullspace["power"].append(power)
 
-    #Automata_stats.append( { "nullspace": [], "power": 0, "cycles_size": 0, "cycles_count": 0, "states": 0} )
     # Prints all of the unique nullspaces to a file.
     for i in range( len(unique_nullspace["nullspace"]) ):
         power  = unique_nullspace["power"][i]
@@ -179,14 +194,11 @@ def generate_automata_stats(data, size , alphabet):
 
         subtract_repeat_states = 0
         if(i != 0):
-            # Checks for divisibility now!
+            # Checks for divisibility
             for j in range(i, 0, -1):
                 if j > 0 and power % unique_nullspace["power"][j-1] == 0:
                     item = Automata_stats[j-1]
                     subtract_repeat_states += item["states"]
-
-            #print("Value for States for power {}: {}".format(power, states))
-            #print("States to be subtracted for power {}: {}".format(power, subtract_repeat_states))
             states -= subtract_repeat_states
 
 
@@ -196,20 +208,4 @@ def generate_automata_stats(data, size , alphabet):
         Automata_stats[i]["cycles_count"] = states / power
         Automata_stats[i]["states"] = states
 
-        #prev = power
-
-        f.write("\n")
-        f.write("Length: {}\n".format(power))
-        f.write("Dimension of nullspace: {}\n".format(cycles_size))
-        f.write("Cycles Copies: {}\n".format(int(states / power)))
-        f.write("States: {}\n".format(states))
-
-        if np.array_equal(Automata_stats[i]["nullspace"], I):
-            f.write("Nullspace: {}\n".format("Entire Cellular Automata"))
-        else:
-            f.write("Nullspace: {}\n".format(Automata_stats[i]["nullspace"]))
-
-    f.close()
-
     return Automata_stats
-#######################################     END     #######################################
