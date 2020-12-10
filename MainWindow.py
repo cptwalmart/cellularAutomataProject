@@ -41,7 +41,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
 
-        
+
         ### Cellular Automata ###
         self.CA = CellularAutomata.CellularAutomata()
         ### ###
@@ -49,7 +49,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # Set Window Elements
         self.title = 'PyQt5 - Cellular Automata'
         self.setWindowTitle(self.title)
-        self.setWindowIcon(QtGui.QIcon('icon.ico')) 
+        self.setWindowIcon(QtGui.QIcon('icon.ico'))
 
         # Display cellular automata as graphs in the GUI
         self.canvas = mpl.MplCanvas(self, width=5, height=4, dpi=100)
@@ -424,7 +424,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.canvas.axes.matshow(self.activeMatrix)
 
             msg = '\nBase Matrix:\n' + str(self.lastMatrix)
-            self.output_text.append(msg)
+            self.output_text.setText(msg)
 
             # Append to file if file is selected
             if self.outputFile:
@@ -432,7 +432,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.outputFile.write(msg)
             else:
                 print('no file selected')
-            
+
 
         elif flag == 'evo':
             """
@@ -446,7 +446,15 @@ class MainWindow(QtWidgets.QMainWindow):
             self.canvas.axes.matshow(self.activeMatrix)
 
             msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
-            self.output_text.append(msg)
+            self.output_text.setText(msg)
+
+            # Append to file if file is selected
+            if self.outputFile:
+                print('outputting to file')
+                self.outputFile.write(msg)
+            else:
+                print('no file selected')
+
         elif flag == 'last':
             """
             If function is called with 'last' flag, the last used matrix is displayed in the canvas.
@@ -458,7 +466,15 @@ class MainWindow(QtWidgets.QMainWindow):
                 msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
             else:
                 msg = '\nBase Matrix:\n' + str(self.lastMatrix)
-            self.output_text.append(msg)
+            self.output_text.setText(msg)
+
+            # Append to file if file is selected
+            if self.outputFile:
+                print('outputting to file')
+                self.outputFile.write(msg)
+            else:
+                print('no file selected')
+
         elif flag == 'new':
             """
             If function is called with 'new' flag, the currently displayed matrix becomes the new base matrix.
@@ -471,7 +487,15 @@ class MainWindow(QtWidgets.QMainWindow):
             self.canvas.axes.matshow(self.activeMatrix)
 
             msg = '\nBase Matrix:\n' + str(self.lastMatrix)
-            self.output_text.append(msg)
+            self.output_text.setText(msg)
+
+            # Append to file if file is selected
+            if self.outputFile:
+                print('outputting to file')
+                self.outputFile.write(msg)
+            else:
+                print('no file selected')
+
         else:
             if self.activeMatrixLabel == 'base':
                 self.lastMatrix = self.CA.get_cellular_automata()
@@ -480,7 +504,15 @@ class MainWindow(QtWidgets.QMainWindow):
 
                 # Print matrix to output
                 msg = '\nBase Matrix:\n' + str(self.lastMatrix)
-                self.output_text.append(msg)
+                self.output_text.setText(msg)
+
+                # Append to file if file is selected
+                if self.outputFile:
+                    print('outputting to file')
+                    self.outputFile.write(msg)
+                else:
+                    print('no file selected')
+
             elif self.activeMatrixLabel == 'evo':
                 self.lastMatrix = self.CA.get_evolution_matrix()
                 self.activeMatrix = self.lastMatrix
@@ -488,7 +520,14 @@ class MainWindow(QtWidgets.QMainWindow):
 
                 # Print matrix to output
                 msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
-                self.output_text.append(msg)
+                self.output_text.setText(msg)
+
+                # Append to file if file is selected
+                if self.outputFile:
+                    print('outputting to file')
+                    self.outputFile.write(msg)
+                else:
+                    print('no file selected')
 
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
@@ -558,22 +597,10 @@ class MainWindow(QtWidgets.QMainWindow):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getOpenFileName(self,"Output to a file", "","All Files (*);;Python Files (*.py)", options=options)
-        
+
         print (fileName)
         if fileName:
             self.outputFile = open(fileName, 'w')
-            self.outputFile.write('testtttttttttttttttttttttttttttt')
-            # self.outputFile.close()
-            # file = QFile(fileName)
-            # if not file.open(QFile.WriteOnly | QFile.Text):
-            #     QMessageBox.warning(self, "Recent Files",
-            #         "Cannot write file %s:\n%s." % (fileName, file.errorString()))
-            #     return
-            # self.outputFile = QTextStream(file)
-            # QApplication.setOverrideCursor(Qt.WaitCursor)
-            # self.outputFile << self.textEdit.toPlainText()
-            # QApplication.restoreOverrideCursor()
-
 
 
     def toggleGroup(self, ctrl):
@@ -588,17 +615,36 @@ class MainWindow(QtWidgets.QMainWindow):
 
         automata_stats = stats.generate_automata_stats(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()))
 
+        msg = ''
+
+        msg += 'Number of Cells: {}\n'.format(self.number_of_cells.text())
+        msg += 'Alphabet Size: {}\n'.format(self.alphabet_size.text())
+        msg += 'Update Rule: {}\n'.format(self.update_rule.text())
+
+        msg += str(automata_stats[0]["reversible"]) + '\n'
+
         for i in range(len(automata_stats)):
-            self.output_text.append("\n")
-            self.output_text.append("Length: {}\n".format(automata_stats[i]["power"]))
-            self.output_text.append("Dimension of nullspace: {}\n".format(automata_stats[i]["cycles_size"]))
-            self.output_text.append("Cycles Copies: {}\n".format(automata_stats[i]["cycles_count"]))
-            self.output_text.append("States: {}\n".format(automata_stats[i]["states"]))
+            msg += "\n"
+            msg += ("Cycle Length: {}\n".format(automata_stats[i]["power"]))
+            msg += ("Cycles Copies: {}\n".format(int(automata_stats[i]["cycles_count"])))
+            msg += ("Number of States on Length {} Cycles: {}\n".format(automata_stats[i]["power"], automata_stats[i]["states"]))
+            msg += ("Dimension of nullspace: {}\n".format(automata_stats[i]["cycles_size"]))
+
+
 
             if np.array_equal(automata_stats[i]["nullspace"], I):
-                self.output_text.append("Nullspace: {}\n".format("Entire Cellular Automata"))
+                msg += ("Nullspace: {}\n".format("Entire Cellular Automata"))
             else:
-                self.output_text.append("Nullspace: {}\n".format(automata_stats[i]["nullspace"]))
+                msg += "Nullspace: \n" + str(automata_stats[i]["nullspace"]) + '\n\n'
+
+        self.output_text.setText(msg)
+
+        # Append to file if file is selected
+        if self.outputFile:
+            print('outputting to file')
+            self.outputFile.write(msg)
+        else:
+            print('no file selected')
 
         return()
 
@@ -606,7 +652,8 @@ class MainWindow(QtWidgets.QMainWindow):
     Upon app close, close output file.
     """
     def closeEvent(self, event):
-        self.outputFile.close()
+        if self.outputFile:
+            self.outputFile.close()
 
     """ End Main Window """
 

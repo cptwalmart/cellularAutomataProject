@@ -20,12 +20,6 @@ def detect_cycle_transtion(transition, alphabet, size):
     ZERO = np.zeros((size, size), dtype=int)
     I = np.identity(size, dtype=int)
 
-
-    #for i in range(u_bound):
-    #    result_matrix = (np.linalg.matrix_power(transition, power)) % alphabet
-    #    M_list.append(result_matrix)
-    #    power += 1
-
     result_matrix = transition
     for i in range(u_bound):
         M_list.append(result_matrix)
@@ -49,8 +43,41 @@ def detect_cycle_transtion(transition, alphabet, size):
 
     return(-1)
 
+def detect_cycle_transtion_test(transition, alphabet, size):
+    """
+    Find T^k = T^n-k (IF there is one)
+    finds the max number of cycle of transtion matrix to compute
+    """
 
-def is_reversable(B, rows, cols, size):
+    power = 1
+    M_list = []
+    ZERO = np.zeros((size, size), dtype=int)
+    I = np.identity(size, dtype=int)
+
+    result_matrix = transition
+    M_list.append(result_matrix)
+
+    return(detect_cycle_transtion_test_recurse(M_List, transition, result_matrix))
+
+def detect_cycle_transtion_test_recurse(M_List, transition, result_matrix):
+
+    for i in range(len(M_list)):
+        for j in range(i + 1, len(M_list)):
+            if i != j:
+                # If true all states evloves to Zero State
+                if(M_list[j] == I).all():
+                    return(j)
+                if(M_list[j] == ZERO).all():
+                    return(j)
+                if (M_list[i] == M_list[j]).all():
+                    return(j)
+
+    result_matrix = (np.matmul(transition, result_matrix)) % alphabet
+    M_list.append(result_matrix)
+    return(detect_cycle_transtion_test_recurse(M_List, transition, result_matrix))
+
+
+def is_reversible(B, rows, cols, size):
     """
     Find if N(T) == O-matrix
     """
@@ -62,22 +89,22 @@ def is_reversable(B, rows, cols, size):
         for j in range(cols):
             result[i][j] = B.get(i, j)
 
-    # if reduced_row_echelon_form of transtion matrix = Idn matrix
-    # the matrix is reversable
-    # else it is irreverable
+    """
+    if reduced_row_echelon_form of transtion matrix = Identity matrix
+    the matrix is reversible
+    else it is irreversible
+    """
     if (result == I).all():
         print("reversible")
-        # f.write("reversible")
         return(True)
 
     print("irreversible")
-    # f.write("irreversible")
     return(False)
 
 
 def detect_unique_cycle(Nullspace_list, alphabet, size):
     """
-        Find N(T^k -I) = cylces in automata 
+        Find N(T^k -I) = cylces in automata
     """
 
     # taking an input list
@@ -93,8 +120,11 @@ def detect_unique_cycle(Nullspace_list, alphabet, size):
 
     return(unique_nullspace)
 
-def generate_null_T_minus_I(data, size, alphabet):
-    
+def generate_null_T_minus_I(data, size, alphabet, power):
+    """
+    Compute nullspace for (T)^{power} - I
+    """
+
     data = data.tolist()
     rows = cols = size
     F = Nayuki.PrimeField(alphabet)
@@ -112,6 +142,23 @@ def generate_null_T_minus_I(data, size, alphabet):
     for i in range(rows):
         for j in range(cols):
             transition[i][j] = B.get(i, j)
+
+    result_matrix_pow = transition
+    for i in range(power):
+        if(i > 0):
+            result_matrix_pow = (np.matmul(transition, result_matrix_pow)) % alphabet
+        result_matrix = (result_matrix_pow - I) % alphabet
+
+    # Set Nayuki Matrix to reult of (T)^n - I
+    for i in range(size):  # For each column
+        for j in range(size):
+            B.set( i,j,int( result_matrix[i,j] ))
+
+
+    B.reduced_row_echelon_form()
+    Basis = B.get_nullspace()
+
+    return(Basis)
 
 def generate_automata_stats(data, size, alphabet):
     """
@@ -138,7 +185,7 @@ def generate_automata_stats(data, size, alphabet):
 
     I = np.identity(size, dtype=int)        # Identity Matrix
     power = 1                               # power
-    reverable = is_reversable(B, rows, cols, size)   # is automate reverable
+    reversible = is_reversible(B, rows, cols, size)   # is automate reversible
     n = detect_cycle_transtion(transition, alphabet, size)  # max steps
 
     #print("\nrref for matrix:")
@@ -179,8 +226,8 @@ def generate_automata_stats(data, size, alphabet):
     unique_nullspace = detect_unique_cycle( Nullspace_list, alphabet, size )  # max steps
     Automata_stats = []
 
-    # Add final Cycle since the entire system is reverable
-    if(reverable):
+    # Add final Cycle since the entire system is reversible
+    if(reversible):
         result_matrix = I
         unique_nullspace["nullspace"].append(result_matrix)
         unique_nullspace["power"].append(power)
@@ -207,5 +254,9 @@ def generate_automata_stats(data, size, alphabet):
         Automata_stats[i]["cycles_size"] = cycles_size
         Automata_stats[i]["cycles_count"] = states / power
         Automata_stats[i]["states"] = states
+        if reversible:
+            Automata_stats[i]["reversible"] = 'Reversible system'
+        else:
+            Automata_stats[i]["reversible"] = 'Irreversible system'
 
     return Automata_stats
