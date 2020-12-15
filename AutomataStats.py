@@ -49,6 +49,41 @@ def detect_cycle_transtion_test(transition, alphabet, size):
     finds the max number of cycle of transtion matrix to compute
     """
 
+    u_bound = 100000
+    power = 1
+    M_list = []
+    ZERO = np.zeros((size, size), dtype=int)
+    I = np.identity(size, dtype=int)
+
+    result_matrix = transition
+    for i in range(u_bound):
+        M_list.append(result_matrix)
+        result_matrix = (np.matmul(transition, result_matrix)) % alphabet
+        power += 1
+
+    for i in range(len(M_list)):
+        for j in range(i + 1, len(M_list)):
+            if i != j:
+                # If true all states evloves to Zero State
+                if(M_list[j] == I).all():
+                    return(j, "I")
+                if(M_list[j] == ZERO).all():
+                    return(j, "0")
+                if (M_list[i] == M_list[j]).all():
+                    return(j, "Cycle")
+            elif i == len(M_list):
+                return(-1, "-1")
+        else:
+            continue
+
+    return(-1, "-1")
+
+def detect_cycle_transtion_test_recurse_1(transition, alphabet, size):
+    """
+    Find T^k = T^n-k (IF there is one)
+    finds the max number of cycle of transtion matrix to compute
+    """
+
     power = 1
     M_list = []
     ZERO = np.zeros((size, size), dtype=int)
@@ -59,7 +94,7 @@ def detect_cycle_transtion_test(transition, alphabet, size):
 
     return(detect_cycle_transtion_test_recurse(M_List, transition, result_matrix))
 
-def detect_cycle_transtion_test_recurse(M_List, transition, result_matrix):
+def detect_cycle_transtion_test_recurse_2(M_List, transition, result_matrix):
 
     for i in range(len(M_list)):
         for j in range(i + 1, len(M_list)):
@@ -125,23 +160,23 @@ def generate_null_T_minus_I(data, size, alphabet, power):
     Compute nullspace for (T)^{power} - I
     """
 
-    data = data.tolist()
+    I = np.identity(size, dtype=int) # Identity Matrix
     rows = cols = size
-    F = Nayuki.PrimeField(alphabet)
-    B = Nayuki.Matrix(rows, cols, F)
+    #F = Nayuki.PrimeField(alphabet)
+    #B = Nayuki.Matrix(rows, cols, F)
 
     # Nayuki Matrix "B"
-    for i in range(size):
-        for j in range(size):
-            B.set(i, j, data[i][j])
+    #for i in range(size):
+    #    for j in range(size):
+    #        B.set(i, j, data[i][j])
 
     # Transisition Matrix "transition"
-    transition = np.zeros([rows, cols], dtype=int)
+    transition = data
     result_matrix = np.zeros([rows, cols], dtype=int)
 
-    for i in range(rows):
-        for j in range(cols):
-            transition[i][j] = B.get(i, j)
+    #for i in range(rows):
+    #    for j in range(cols):
+    #        transition[i][j] = B.get(i, j)
 
     result_matrix_pow = transition
     for i in range(power):
@@ -150,15 +185,15 @@ def generate_null_T_minus_I(data, size, alphabet, power):
         result_matrix = (result_matrix_pow - I) % alphabet
 
     # Set Nayuki Matrix to reult of (T)^n - I
-    for i in range(size):  # For each column
-        for j in range(size):
-            B.set( i,j,int( result_matrix[i,j] ))
+    #for i in range(size):  # For each column
+    #    for j in range(size):
+    #        B.set( i,j,int( result_matrix[i,j] ))
 
 
-    B.reduced_row_echelon_form()
-    Basis = B.get_nullspace()
+    # B.reduced_row_echelon_form()
+    # Basis = B.get_nullspace()
 
-    return(Basis)
+    return(result_matrix)
 
 def generate_automata_stats(data, size, alphabet):
     """
@@ -186,7 +221,7 @@ def generate_automata_stats(data, size, alphabet):
     I = np.identity(size, dtype=int)        # Identity Matrix
     power = 1                               # power
     reversible = is_reversible(B, rows, cols, size)   # is automate reversible
-    n = detect_cycle_transtion(transition, alphabet, size)  # max steps
+    n, cylce_type = detect_cycle_transtion(transition, alphabet, size)  # max steps
 
     #print("\nrref for matrix:")
     #B.reduced_row_echelon_form()
@@ -259,4 +294,4 @@ def generate_automata_stats(data, size, alphabet):
         else:
             Automata_stats[i]["reversible"] = 'Irreversible system'
 
-    return Automata_stats
+    return (Automata_stats, n, cylce_type)

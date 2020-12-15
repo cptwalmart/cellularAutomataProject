@@ -84,16 +84,18 @@ class MainWindow(QtWidgets.QMainWindow):
         saveFile = QAction('Output to file', self)
         fileMenu.addAction(saveFile)
 
-        # Adds a 'Display' tab,  which is placed to the right of 'File' in the top left of the GUI.
+        # Adds a 'Help' tab, which is placed to the right of 'File' in the top left of the GUI.
+        help_act = QAction('Help', self)
+        menubar.addAction(help_act)        
+
+        # Adds a 'Display' tab,  which is placed to the right of 'Help' in the top left of the GUI.
         display_menu = menubar.addMenu('Display')
 
         # Adds actions to 'Display' tab.
-        base_matrix_act = QAction('Base Matrix', self)
-        evo_matrix_act = QAction('Evolution Matrix', self)
-        active_matrix_act = QAction('Make this my base matrix for future calculations', self)
+        base_matrix_act = QAction('Base Matrix', self, checkable=True)
+        evo_matrix_act = QAction('Transition (Evolution) Matrix', self, checkable=True)
         display_menu.addAction(base_matrix_act)
         display_menu.addAction(evo_matrix_act)
-        display_menu.addAction(active_matrix_act)
 
         # Adds a 'Calculation' tab, which is placed to the right of 'Display' in the top left of the GUI.
         calculation_menu = menubar.addMenu('Calculation')
@@ -103,7 +105,7 @@ class MainWindow(QtWidgets.QMainWindow):
         nullspace_act = QAction('Nullspace of Matrix', self)
         rank_act = QAction('Rank of Matrix', self)
         cycle_act = QAction('Detect First Cycle', self)
-        stats_act = QAction('Generate Automata Statistics', self)
+        stats_act = QAction('Generate Cycle Statistics', self)
         calculation_menu.addAction(rref_act)
         calculation_menu.addAction(nullspace_act)
         calculation_menu.addAction(rank_act)
@@ -113,15 +115,16 @@ class MainWindow(QtWidgets.QMainWindow):
 
         """
         Commands to set the function that calls when an item is selected.
-        The flag 'base' refers to the base automata matrix, while 'evo' refers to the evolution matrix.
+        The flag 'base' refers to the base automata matrix, while 'evo' refers to the Transition (Evolution) matrix.
         """
         saveFile.triggered.connect(lambda: self.saveToFile())
 
+        help_act.triggered.connect(lambda: self.display_help())
+
         base_matrix_act.triggered.connect(lambda: self.display_matrix('base'))
         evo_matrix_act.triggered.connect(lambda: self.display_matrix('evo'))
-        active_matrix_act.triggered.connect(lambda: self.display_matrix('new'))
-        rref_act.triggered.connect(lambda: self.display_rref_of_matrix())
-        nullspace_act.triggered.connect(lambda: self.display_nullspace_of_matrix())
+        rref_act.triggered.connect(lambda: self.rref_of_matrix())
+        nullspace_act.triggered.connect(lambda: self.nullspace_of_matrix())
         rank_act.triggered.connect(lambda: self.display_pop_up('rank'))
         cycle_act.triggered.connect(lambda: self.display_pop_up('cycle'))
         stats_act.triggered.connect(lambda: self.get_automata_stats())
@@ -206,15 +209,6 @@ class MainWindow(QtWidgets.QMainWindow):
         input_form_default.addRow(self.number_of_steps_label, self.number_of_steps)
         input_form_default.addRow(self.random_automata_button, self.update_automata_button)
 
-        # Functionality to enable or disable powers input.
-        self.default_input_groupbox = QGroupBox("Cellular Automata Input")
-        self.default_input_groupbox.setCheckable(True)
-        self.default_input_groupbox.setChecked(True)
-        self.default_input_groupbox.setLayout(input_form_default)
-
-        self.default_input_groupbox.toggled.connect(lambda:self.toggleGroup(self.default_input_groupbox))
-        ### --- ###
-
         """ End Default Input Form Creation """
 
         """ Begin Powers Of Matrix Input Form Creation """
@@ -227,26 +221,22 @@ class MainWindow(QtWidgets.QMainWindow):
         self.powers_of_matrix.move(20, 20)
         self.powers_of_matrix.resize(280,40)
 
-        # Submit button to generate the power
-        self.update_powers_button = QPushButton('Submit', self)
-        self.update_powers_button.setToolTip('Submit an update to the automaton')
-        self.update_powers_button.clicked.connect(self.on_click_update_powers)
+        # Submit button for T^k
+        self.update_powers_button1 = QPushButton('Find T^k', self)
+        self.update_powers_button1.setToolTip('Submit an update to the automaton')
+        self.update_powers_button1.clicked.connect(lambda: self.matrix_powers('None'))
 
-        input_form_matrix_powers = QtWidgets.QFormLayout()
-        input_form_matrix_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
-        input_form_matrix_powers.addRow(self.update_powers_button)
+        # Submit button for T^k - I
+        self.update_powers_button2 = QPushButton('Find T^k - I', self)
+        self.update_powers_button2.setToolTip('Submit an update to the automaton')
+        self.update_powers_button2.clicked.connect(lambda: self.matrix_powers('identity'))
 
-        # input_form_identity_powers = QtWidgets.QFormLayout()
-        # input_form_identity_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
-        # input_form_identity_powers.addRow(self.update_powers_button)
+        self.matrix_output = QTextEdit(self)
 
-        # Functionality to enable or disable powers input.
-        self.powers_input_groupbox = QGroupBox("Matrix Powers Input")
-        self.powers_input_groupbox.setCheckable(True)
-        self.powers_input_groupbox.setChecked(False)
-        self.powers_input_groupbox.setLayout(input_form_matrix_powers)
-
-        self.powers_input_groupbox.toggled.connect(lambda: self.toggleGroup(self.powers_input_groupbox))
+        form_matrix_powers = QtWidgets.QFormLayout()
+        form_matrix_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
+        form_matrix_powers.addRow(self.update_powers_button1, self.update_powers_button2)
+        form_matrix_powers.addRow(self.matrix_output)
 
         """ End Powers Of Matrix Input Form Creation """
 
@@ -257,12 +247,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.output_text = QTextEdit(self)
 
-        self.output_form = QtWidgets.QFormLayout()
-        self.output_form.addRow(self.output_label)
-        self.output_form.addRow(self.output_text)
-
-        self.output_form_groupbox = QGroupBox("Output")
-        self.output_form_groupbox.setLayout(self.output_form)
+        self.output_form_layout = QtWidgets.QFormLayout()
+        self.output_form_layout.addRow(self.output_label)
+        self.output_form_layout.addRow(self.output_text)
 
         """ End Output Form Creation """
 
@@ -285,30 +272,24 @@ class MainWindow(QtWidgets.QMainWindow):
         """
         Tab 1: Default Input
         """
-        self.tab1.layout = QVBoxLayout(self)
-        self.tab1.layout.addWidget(self.default_input_groupbox)
-        self.tab1.setLayout(self.tab1.layout)
+        self.tab1.setLayout(input_form_default)
 
         """
         Tab 2: Update Rule (Currently not implemented)
         """
-        self.tab2.layout = QVBoxLayout(self)
+        # self.tab2.layout = QVBoxLayout(self)
         # self.tab2.layout.addWidget()
-        self.tab2.setLayout(self.tab2.layout)
+        # self.tab2.setLayout(self.tab2.layout)
 
         """
         Tab 3: Matrix Powers
         """
-        self.tab3.layout = QVBoxLayout(self)
-        self.tab3.layout.addWidget(self.powers_input_groupbox)
-        self.tab3.setLayout(self.tab3.layout)
+        self.tab3.setLayout(form_matrix_powers)
 
         """
         Tab 4: Output
         """
-        self.tab4.layout = QVBoxLayout(self)
-        self.tab4.layout.addWidget(self.output_form_groupbox)
-        self.tab4.setLayout(self.tab4.layout)
+        self.tab4.setLayout(self.output_form_layout)
 
         """ Finish placing items in page layout """
         self.layout.addWidget(self.toolbar)
@@ -400,12 +381,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_rule.insert(rule)
         self.number_of_steps.insert(str(num_steps))
 
-    """
-    When the Update Powers button is clicked, calculate and display the corresponding matrix power.
-    """
-    def on_click_update_powers(self):
-        self.lastMatrix = self.CA.get_matrix_power(self.activeMatrix, self.powers_of_matrix.text())
-        self.display_matrix('last')
 
     """
     Main function for displaying the matrix.
@@ -424,36 +399,32 @@ class MainWindow(QtWidgets.QMainWindow):
             self.canvas.axes.matshow(self.activeMatrix)
 
             msg = '\nBase Matrix:\n' + str(self.lastMatrix)
-            self.output_text.setText(msg)
+            # self.output_text.setText(msg)
 
             # Append to file if file is selected
             if self.outputFile:
                 print('outputting to file')
                 self.outputFile.write(msg)
-            else:
-                print('no file selected')
 
 
         elif flag == 'evo':
             """
-            If function is called with 'evo' flag, the evolution matrix of the base matrix becomes the last matrix displayed.
-            The evolution matrix is then displayed in the canvas.
-            The evolution matrix is then displayed in the output.
+            If function is called with 'evo' flag, the Transition (Evolution) matrix of the base matrix becomes the last matrix displayed.
+            The Transition (Evolution) matrix is then displayed in the canvas.
+            The Transition (Evolution) matrix is then displayed in the output.
             """
             self.activeMatrixLabel = 'evo'
             self.lastMatrix = self.CA.get_evolution_matrix()
             self.activeMatrix = self.lastMatrix
             self.canvas.axes.matshow(self.activeMatrix)
 
-            msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
+            msg = '\nTransition (Evolution) Matrix:\n' + str(self.lastMatrix)
             self.output_text.setText(msg)
 
             # Append to file if file is selected
             if self.outputFile:
                 print('outputting to file')
                 self.outputFile.write(msg)
-            else:
-                print('no file selected')
 
         elif flag == 'last':
             """
@@ -463,7 +434,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.canvas.axes.matshow(self.lastMatrix)
 
             if self.activeMatrixLabel == 'evo':
-                msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
+                msg = '\nTransition (Evolution) Matrix:\n' + str(self.lastMatrix)
             else:
                 msg = '\nBase Matrix:\n' + str(self.lastMatrix)
             self.output_text.setText(msg)
@@ -472,29 +443,6 @@ class MainWindow(QtWidgets.QMainWindow):
             if self.outputFile:
                 print('outputting to file')
                 self.outputFile.write(msg)
-            else:
-                print('no file selected')
-
-        elif flag == 'new':
-            """
-            If function is called with 'new' flag, the currently displayed matrix becomes the new base matrix.
-            The new base matrix is then displayed in the canvas.
-            The new base matrix is then displayed in the output.
-            """
-            self.activeMatrixLabel = 'base'
-            self.activeMatrix = self.lastMatrix
-            self.CA.set_cellular_automata(self.activeMatrix)
-            self.canvas.axes.matshow(self.activeMatrix)
-
-            msg = '\nBase Matrix:\n' + str(self.lastMatrix)
-            self.output_text.setText(msg)
-
-            # Append to file if file is selected
-            if self.outputFile:
-                print('outputting to file')
-                self.outputFile.write(msg)
-            else:
-                print('no file selected')
 
         else:
             if self.activeMatrixLabel == 'base':
@@ -510,8 +458,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 if self.outputFile:
                     print('outputting to file')
                     self.outputFile.write(msg)
-                else:
-                    print('no file selected')
 
             elif self.activeMatrixLabel == 'evo':
                 self.lastMatrix = self.CA.get_evolution_matrix()
@@ -519,53 +465,64 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.canvas.axes.matshow(self.activeMatrix)
 
                 # Print matrix to output
-                msg = '\nEvolution Matrix:\n' + str(self.lastMatrix)
+                msg = '\nTransition (Evolution) Matrix:\n' + str(self.lastMatrix)
                 self.output_text.setText(msg)
 
                 # Append to file if file is selected
                 if self.outputFile:
                     print('outputting to file')
                     self.outputFile.write(msg)
-                else:
-                    print('no file selected')
 
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
-    def display_rref_of_matrix(self, flag='None'):
+    def rref_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
         if self.activeMatrixLabel == 'base':
             self.lastMatrix = self.CA.row_reduced_echelon_form(self.CA.get_cellular_automata())
             self.canvas.axes.matshow(self.lastMatrix)
-            print("Row Reduced Echelon Form of Cellular Automata: ")
+            msg = "Row Reduced Echelon Form of Cellular Automata: "
+
+            # Append to file if file is selected
+            if self.outputFile:
+                print('outputting to file')
+                self.outputFile.write(msg)
+
         elif self.activeMatrixLabel == 'evo':
             self.canvas.axes.matshow(self.CA.row_reduced_echelon_form(self.CA.get_evolution_matrix()))
-            print("Row Reduced Echelon Form of Evolution Matrix: ")
+            msg = "Row Reduced Echelon Form of Transition (Evolution) Matrix: "
+
+            # Append to file if file is selected
+            if self.outputFile:
+                print('outputting to file')
+                self.outputFile.write(msg)
+
         # Trigger the canvas to update and redraw.
         self.canvas.draw()
 
-    def display_nullspace_of_matrix(self, flag='None'):
-        self.canvas.axes.cla()  # Clear the canvas.
-        if self.activeMatrixLabel == 'base':
-            #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
-            print("Under Construction")
-        elif self.activeMatrixLabel == 'evo':
-            #self.canvas.axes.matshow(self.CA.get_nullspace_matrix())
-            print("Under Construction")
-        # Trigger the canvas to update and redraw.
-        self.canvas.draw()
 
-    def display_rank_of_matrix(self, flag='None'):
+    """
+    When the Update Powers button is clicked, calculate and display the corresponding matrix power.
+    """
+    def matrix_powers(self, flag = 'None'):
+        if flag == 'identity':
+            self.lastMatrix = stats.generate_null_T_minus_I(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()), int(self.powers_of_matrix.text()))
+            # print(type(self.lastMatrix))
+        else:
+            self.lastMatrix = self.CA.get_matrix_power(self.CA.get_evolution_matrix(), int(self.powers_of_matrix.text()))
+            # print(type(self.lastMatrix))
+        self.display_matrix('last')
+
+
+    def nullspace_of_matrix(self, flag='None'):
         self.canvas.axes.cla()  # Clear the canvas.
-        if self.activeMatrixLabel == 'base':
-            rank = self.CA.rank(self.CA.get_cellular_automata())
-            print("Rank of Cellular Automata: ")
-            pprint(rank)
-        elif self.activeMatrixLabel == 'evo':
-            rank = self.CA.rank(self.CA.get_evolution_matrix())
-            print("Rank of Evolution Matrix: ")
-            pprint(rank)
-        # Trigger the canvas to update and redraw.
+
+        # Take the nullspace of the matrix currently in the canvas
+
+        self.lastMatrix = self.CA.get_nullspace_matrix(self.lastMatrix)
+
+        print(self.lastMatrix)
+        self.canvas.axes.matshow(self.lastMatrix)
         self.canvas.draw()
 
 
@@ -573,7 +530,7 @@ class MainWindow(QtWidgets.QMainWindow):
         dlg = QMessageBox(self)
 
         if flag_type == "cycle":
-            msg = self.CA.detect_first_cycle()
+            msg = self.CA.detect_first_cycle(self.lastMatrix)
             dlg.setWindowTitle("Cycle Detected")
 
         elif flag_type == "rank":
@@ -586,6 +543,20 @@ class MainWindow(QtWidgets.QMainWindow):
 
             dlg.setWindowTitle("Rank")
 
+        dlg.setText(msg)
+        dlg.exec_()
+
+
+    """
+    Help Window:
+    Displays information about the software.
+    """
+    def display_help(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle('Help')
+        msg = 'This is helpful.\n'
+        msg += 'The functions in the Calculation tab apply to the currently displayed matrix in the canvas.\n'
+        msg += 'The \'Matrix Powers\' tab generates the powers of the transition matrix.\n'
         dlg.setText(msg)
         dlg.exec_()
 
