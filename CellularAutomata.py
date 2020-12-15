@@ -20,7 +20,7 @@ class CellularAutomata:
         self.num_alphabet = 0
         self.ca_next = 0
         self.num_steps = 10
-        self.debug=False
+        self.debug=False 
 
         self.initial_state = []
         self.update_rule = 0
@@ -259,11 +259,14 @@ class CellularAutomata:
         B.reduced_row_echelon_form()
         Basis = B.get_nullspace()
 
-        for i in range(self.num_elements):
-            for j in range(self.num_elements):
-                data[i][j] = B.get(i, j)
+        # for i in range(self.num_elements):
+        #     for j in range(self.num_elements):
+        #         print('test')
+                # data[i][j] = Basis[i][j]
 
-        return data
+        # data = np.asarray(Basis)
+        # print("In get_null_mat: ",type(Basis))
+        return Basis
 
 
     # Returns the power of a matrix using np.linalg

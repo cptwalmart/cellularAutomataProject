@@ -81,8 +81,13 @@ class MainWindow(QtWidgets.QMainWindow):
         fileMenu = menubar.addMenu('File')
 
         # Adds an action to 'File' tab.
-        saveFile = QAction('Output to file', self)
-        fileMenu.addAction(saveFile)
+        saveFile_simple = QAction('Save - Simple Statistics', self)
+        fileMenu.addAction(saveFile_simple)
+        # self.saveFile_simple.clicked.connect(lambda: self.get_automata_stats())
+
+        saveFile_complex = QAction('Save - Complex Statistics', self)
+        fileMenu.addAction(saveFile_complex)
+        # self.saveFile_complex.clicked.connect(lambda: self.get_automata_stats())
 
         # Adds a 'Help' tab, which is placed to the right of 'File' in the top left of the GUI.
         help_act = QAction('Help', self)
@@ -117,7 +122,8 @@ class MainWindow(QtWidgets.QMainWindow):
         Commands to set the function that calls when an item is selected.
         The flag 'base' refers to the base automata matrix, while 'evo' refers to the Transition (Evolution) matrix.
         """
-        saveFile.triggered.connect(lambda: self.saveToFile())
+        saveFile_simple.triggered.connect(lambda: self.saveToFile('Simple'))
+        saveFile_complex.triggered.connect(lambda: self.saveToFile('Complex'))
 
         help_act.triggered.connect(lambda: self.display_help())
 
@@ -231,14 +237,41 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_powers_button2.setToolTip('Submit an update to the automaton')
         self.update_powers_button2.clicked.connect(lambda: self.matrix_powers('identity'))
 
-        self.matrix_output = QTextEdit(self)
+        # self.matrix_output = QTextEdit(self)
 
-        form_matrix_powers = QtWidgets.QFormLayout()
-        form_matrix_powers.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
-        form_matrix_powers.addRow(self.update_powers_button1, self.update_powers_button2)
-        form_matrix_powers.addRow(self.matrix_output)
+        self.matrix_powers_form = QtWidgets.QFormLayout()
+        self.matrix_powers_form.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
+        self.matrix_powers_form.addRow(self.update_powers_button1, self.update_powers_button2)
+        # self.matrix_powers_form.addRow(self.matrix_output)
 
         """ End Powers Of Matrix Input Form Creation """
+
+        """ Begin Cycle Statistics Input Form Creation """
+
+        # self.cycle_stats_label = QLabel(self)
+        # self.cycle_stats_label.setText('Power of matrix to generate:')
+        # self.cycle_stats = QLineEdit(self)
+        # self.cycle_stats.move(20, 20)
+        # self.cycle_stats.resize(280,40)
+
+        # Submit button for simple statistics output
+        self.cycle_stats_button1 = QPushButton('Simple Statistics', self)
+        self.cycle_stats_button1.setToolTip('Submit an update to the automaton')
+        self.cycle_stats_button1.clicked.connect(lambda: self.get_automata_stats('Simple'))
+
+        # Submit button for complex statistics output
+        self.cycle_stats_button2 = QPushButton('Complex Statistics', self)
+        self.cycle_stats_button2.setToolTip('Submit an update to the automaton')
+        self.cycle_stats_button2.clicked.connect(lambda: self.get_automata_stats('Complex'))
+
+        self.cycle_output = QTextEdit(self)
+
+        self.cycle_stats_form = QtWidgets.QFormLayout()
+        # self.cycle_stats_form.addRow(self.cycle_stats_label, self.cycle_stats)
+        self.cycle_stats_form.addRow(self.cycle_stats_button1, self.cycle_stats_button2)
+        self.cycle_stats_form.addRow(self.cycle_output)
+
+        """ End Cycle Statistics Input Form Creation """
 
         """ Begin Output Form Creation """
 
@@ -262,12 +295,15 @@ class MainWindow(QtWidgets.QMainWindow):
         self.tab2 = QWidget()
         self.tab3 = QWidget()
         self.tab4 = QWidget()
+        self.tab5 = QWidget()
         self.tabs.resize(300,200)
 
+        # Add tabs to widget
         self.tabs.addTab(self.tab1, "Default Input")
         self.tabs.addTab(self.tab2, "Update Rule")
         self.tabs.addTab(self.tab3, "Matrix Powers")
-        self.tabs.addTab(self.tab4, "Output")
+        self.tabs.addTab(self.tab4, "Cycle Statistics")
+        self.tabs.addTab(self.tab5, "Output")
 
         """
         Tab 1: Default Input
@@ -284,12 +320,17 @@ class MainWindow(QtWidgets.QMainWindow):
         """
         Tab 3: Matrix Powers
         """
-        self.tab3.setLayout(form_matrix_powers)
+        self.tab3.setLayout(self.matrix_powers_form)
 
         """
-        Tab 4: Output
+        Tab 4: Cycle Statistics
         """
-        self.tab4.setLayout(self.output_form_layout)
+        self.tab4.setLayout(self.cycle_stats_form)
+
+        """
+        Tab 5: Output
+        """
+        self.tab5.setLayout(self.output_form_layout)
 
         """ Finish placing items in page layout """
         self.layout.addWidget(self.toolbar)
@@ -506,11 +547,9 @@ class MainWindow(QtWidgets.QMainWindow):
     """
     def matrix_powers(self, flag = 'None'):
         if flag == 'identity':
-            self.lastMatrix = stats.generate_null_T_minus_I(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()), int(self.powers_of_matrix.text()))
-            # print(type(self.lastMatrix))
+            self.lastMatrix = stats.generate_T_minus_I(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()), int(self.powers_of_matrix.text()))
         else:
             self.lastMatrix = self.CA.get_matrix_power(self.CA.get_evolution_matrix(), int(self.powers_of_matrix.text()))
-            # print(type(self.lastMatrix))
         self.display_matrix('last')
 
 
@@ -518,10 +557,31 @@ class MainWindow(QtWidgets.QMainWindow):
         self.canvas.axes.cla()  # Clear the canvas.
 
         # Take the nullspace of the matrix currently in the canvas
+        nullspace = self.CA.get_nullspace_matrix(self.lastMatrix)
 
-        self.lastMatrix = self.CA.get_nullspace_matrix(self.lastMatrix)
+        # lastMatrix = Basis type: list
+        nullspace = np.asarray(nullspace)
+        
+        if nullspace.size == 0:
+            nullspace = np.zeros([int(self.number_of_cells.text()), int(self.number_of_cells.text())], dtype=int)
 
-        print(self.lastMatrix)
+        self.lastMatrix = nullspace
+        # print("Null nullspace: ", self.lastMatrix)
+        # print("Values in 'nullspace", nullspace)
+
+        # print("Type of lastMatrix in nullspace_mat: ", type(self.lastMatrix))
+
+        msg = 'Nullspace = ' + str(self.lastMatrix)
+
+        self.output_text.setText(msg)
+
+        # Append to file if file is selected
+        if self.outputFile:
+            print('outputting to file')
+            self.outputFile.write(msg)
+        else:
+            print('no file selected')
+
         self.canvas.axes.matshow(self.lastMatrix)
         self.canvas.draw()
 
@@ -561,17 +621,31 @@ class MainWindow(QtWidgets.QMainWindow):
         dlg.exec_()
 
 
+    def save(self):
+        if self.curFile:
+            self.saveToFile(self.curFile)
+        else:
+            self.saveAs()
+
+    def saveAs(self):
+        fileName, _ = QFileDialog.getSaveFileName(self)
+        if fileName:
+            self.saveFile(fileName)
+
+
     """
     When this function is called, open a file explorer window for user to select a file to append to.
     """
-    def saveToFile(self):
+    def saveToFile(self, flag):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getOpenFileName(self,"Output to a file", "","All Files (*);;Python Files (*.py)", options=options)
+        fileName, _ = QFileDialog.getSaveFileName(self,"Output to a file", "","All Files (*);;Python Files (*.py)", options=options)
 
         print (fileName)
         if fileName:
             self.outputFile = open(fileName, 'w')
+
+        self.get_automata_stats(flag)
 
 
     def toggleGroup(self, ctrl):
@@ -582,40 +656,79 @@ class MainWindow(QtWidgets.QMainWindow):
             ctrl.setFixedHeight(30)
 
 
-    def get_automata_stats(self):
+    """
+    Generates statistics about the system, called from AutomataStats.py
+    Two outputs:
+    Simple:
+        cycle length, cycle copies, number of states, nullspace
+    Complex:
+        powers, rref, nullspaces, etc
+    """
+    def get_automata_stats(self, print_type):
+        
+        if(print_type == "Simple" or print_type == "Complex"):
+            automata_stats, reversibility, n, cycle_type = stats.generate_automata_stats(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()))
 
-        automata_stats = stats.generate_automata_stats(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()))
+            msg = ''
 
-        msg = ''
+            msg += 'Number of Cells: {}\n'.format(self.number_of_cells.text())
+            msg += 'Alphabet Size: {}\n'.format(self.alphabet_size.text())
+            msg += 'Update Rule: {}\n'.format(self.update_rule.text())
 
-        msg += 'Number of Cells: {}\n'.format(self.number_of_cells.text())
-        msg += 'Alphabet Size: {}\n'.format(self.alphabet_size.text())
-        msg += 'Update Rule: {}\n'.format(self.update_rule.text())
+            msg += str(reversibility) + '\n'
 
-        msg += str(automata_stats[0]["reversible"]) + '\n'
+            msg += 'Transition Cycle at: {} \n'.format(n)
 
-        for i in range(len(automata_stats)):
-            msg += "\n"
-            msg += ("Cycle Length: {}\n".format(automata_stats[i]["power"]))
-            msg += ("Cycles Copies: {}\n".format(int(automata_stats[i]["cycles_count"])))
-            msg += ("Number of States on Length {} Cycles: {}\n".format(automata_stats[i]["power"], automata_stats[i]["states"]))
-            msg += ("Dimension of nullspace: {}\n".format(automata_stats[i]["cycles_size"]))
+            if(cycle_type == "0"):
+                msg += 'Transition Matrix Powers Evolved to: Zero Matrix\n'
+            elif(cycle_type == "I"):
+                msg += 'Transition Matrix Powers Evolved to: Identity Matrix\n'
+            elif(cycle_type == "Cycle"):
+                msg += 'Transition Matrix Powers Ended by Complete Cycle\n'
+
+            I = np.identity(int(self.number_of_cells.text()), dtype=int)
+
+            for i in range(len(automata_stats)):
+                msg += "\n"
+                msg += ("Cycle Length: {}\n".format(automata_stats[i]["power"]))
+                msg += ("Cycles Copies: {}\n".format(int(automata_stats[i]["cycles_count"])))
+                msg += ("Number of States on Length {} Cycles: {}\n".format(automata_stats[i]["power"], automata_stats[i]["states"]))
+                msg += ("Dimension of nullspace: {}\n".format(automata_stats[i]["cycles_size"]))
 
 
 
-            if np.array_equal(automata_stats[i]["nullspace"], I):
-                msg += ("Nullspace: {}\n".format("Entire Cellular Automata"))
+                if np.array_equal(automata_stats[i]["nullspace"], I):
+                    msg += ("Nullspace: {}\n".format("Entire Cellular Automata"))
+                else:
+                    msg += "Nullspace: \n" + str(automata_stats[i]["nullspace"]) + '\n\n'
+
+            if (print_type == "Complex"):
+                
+                for i in range(n):
+                    msg += ("\n(T)^{}: ".format(n))
+                    result_matrix_pow = self.CA.get_evolution_matrix()
+                    if(i > 0):
+                        result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
+                    result_matrix = (result_matrix_pow) % int(self.alphabet_size.text())
+                    msg += str(result_matrix)
+
+                for i in range(n):
+                    msg += ("\n(T)^{} - I: ".format(n))
+                    result_matrix_pow = self.CA.get_evolution_matrix()
+                    if(i > 0):
+                        result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
+                    result_matrix = (result_matrix_pow - I) % int(self.alphabet_size.text())
+                    msg += str(result_matrix)
+
+            self.output_text.setText(msg)
+            self.cycle_output.setText(msg)
+
+            # Append to file if file is selected
+            if self.outputFile:
+                print('outputting to file')
+                self.outputFile.write(msg)
             else:
-                msg += "Nullspace: \n" + str(automata_stats[i]["nullspace"]) + '\n\n'
-
-        self.output_text.setText(msg)
-
-        # Append to file if file is selected
-        if self.outputFile:
-            print('outputting to file')
-            self.outputFile.write(msg)
-        else:
-            print('no file selected')
+                print('no file selected')
 
         return()
 
