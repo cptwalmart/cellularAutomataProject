@@ -30,7 +30,7 @@ InstallDir "$PROGRAMFILES\${APPNAME}"
 # This will be in the installer/uninstaller's title bar
 Name "${APPNAME}"
 Icon "logo.ico"
-outFile "CellularAutomataInstaller.exe"
+outFile "CellularAutomataInstaller(Windowless).exe"
  
 !include LogicLib.nsh
  
@@ -58,7 +58,7 @@ section "install"
 	# Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
 	setOutPath $INSTDIR
 	# Files added here should be removed by the uninstaller (see section "uninstall")
-	file "CellularAutomata.exe"
+	file "CellularAutomataWindowless.exe"
 	file "logo.ico"
 	# Add any other files for the install directory (license files, app data, etc) here
  
