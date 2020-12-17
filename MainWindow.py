@@ -733,11 +733,11 @@ class MainWindow(QtWidgets.QMainWindow):
             msg += str(reversibility) + '\n'
 
             if(cycle_type == "0"):
-                msg += '\nTransition Matrix Powers: T^{} = Zero Matrix\n'.format(n)
+                msg += '\nTransition Matrix Powers: T^{} = Zero Matrix\n'.format(n+1)
             elif(cycle_type == "I"):
-                msg += '\nTransition Matrix Powers: T^{} = Identity Matrix\n'.format(n)
+                msg += '\nTransition Matrix Powers: T^{} = Identity Matrix\n'.format(n+1)
             elif(cycle_type == "Cycle"):
-                msg += '\nTransition Matrix Powers: Cycle {} = {}\n'.format(s, n)
+                msg += '\nTransition Matrix Powers: Cycle T^{} = T^{}\n'.format(s+1, n+1)
 
             I = np.identity(int(self.number_of_cells.text()), dtype=int)
 
@@ -758,7 +758,7 @@ class MainWindow(QtWidgets.QMainWindow):
             if (print_type == "Complex"):
                 
                 result_matrix_pow = self.CA.get_evolution_matrix()
-                for i in range(n+1):
+                for i in range(1, n+2):
                     msg += ("\n(T)^{}: \n".format(i))
                     if(i > 0):
                         result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
@@ -768,7 +768,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 msg += ("\n")
 
                 result_matrix_pow = self.CA.get_evolution_matrix()
-                for i in range(n+1):
+                for i in range(1, n+2):
                     msg += ("\n(T)^{} - I: \n".format(i))
                     if(i > 0):
                         result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
