@@ -1,0 +1,10077 @@
+####################################### 5 x 5 mod(5) #######################################
+
+update rule: -1 1
+alphabet: 5
+cells: 5
+
+transition matrix:
+[[0, 1, 0, 0, 1,
+  1, 0, 1, 0, 0,
+  0, 1, 0, 1, 0,
+  0, 0, 1, 0, 1,
+  1, 0, 0, 1, 0]]
+
+rref for matrix:
+[[1, 0, 0, 0, 0],
+ [0, 1, 0, 0, 0],
+ [0, 0, 1, 0, 0],
+ [0, 0, 0, 1, 0],
+ [0, 0, 0, 0, 1]]
+
+nullspace for matrix:
+[]
+
+Length: 1
+Cylces Count: 0
+Cylces Copies: 1.0
+States: 1
+Nullspace: []
+
+
+Length: 4
+Cylces Count: 2
+Cylces Copies: 6.0
+States: 24
+Nullspace: [[4, 3, 2, 1, 0], [2, 3, 4, 0, 1]]
+
+#######################################     END     #######################################
+
+####################################### 9 x 9 mod(5) #######################################
+
+update rule: -1 0 1
+alphabet: 3
+cells: 9
+
+transition matrix:
+[[1, 1, 0, 0, 0, 0, 0, 0, 1,
+  1, 1, 1, 0, 0, 0, 0, 0, 0,
+  0, 1, 1, 1, 0, 0, 0, 0, 0,
+  0, 0, 1, 1, 1, 0, 0, 0, 0,
+  0, 0, 0, 1, 1, 1, 0, 0, 0,
+  0, 0, 0, 0, 1, 1, 1, 0, 0,
+  0, 0, 0, 0, 0, 1, 1, 1, 0,
+  0, 0, 0, 0, 0, 0, 1, 1, 1,
+  1, 0, 0, 0, 0, 0, 0, 1, 1,]]
+
+rref for matrix:
+[[1, 0, 0, 0, 0, 0, 0, 1, 1],
+ [0, 1, 0, 0, 0, 0, 0, 2, 0],
+ [0, 0, 1, 0, 0, 0, 0, 0, 2],
+ [0, 0, 0, 1, 0, 0, 0, 1, 1],
+ [0, 0, 0, 0, 1, 0, 0, 2, 0],
+ [0, 0, 0, 0, 0, 1, 0, 0, 2],
+ [0, 0, 0, 0, 0, 0, 1, 1, 1],
+ [0, 0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+nullspace for matrix:
+[[2, 1, 0, 2, 1, 0, 2, 1, 0], [2, 0, 1, 2, 0, 1, 2, 0, 1]]
+
+
+Length: 1
+Cylces Count: 0
+Cylces Copies: 1.0
+States: 1
+Nullspace: []
+
+
+Length: 25
+Cylces Count: 2
+Cylces Copies: 0.32
+States: 8
+Nullspace: [[2, 1, 0, 2, 1, 0, 2, 1, 0], [2, 0, 1, 2, 0, 1, 2, 0, 1]]
+
+
+Length: 40
+Cylces Count: 4
+Cylces Copies: 1.8
+States: 72
+Nullspace: [[2, 2, 2, 1, 1, 1, 0, 0, 0], [1, 0, 0, 1, 0, 0, 1, 0, 0], [1, 1, 2, 2, 2, 0, 0, 0, 1], [0, 1, 0, 0, 1, 0, 0, 1, 0]]
+
+
+Length: 55
+Cylces Count: 6
+Cylces Copies: 11.781818181818181
+States: 648
+Nullspace: [[2, 0, 0, 1, 0, 0, 0, 0, 0], [2, 0, 0, 0, 0, 0, 1, 0, 0], [0, 2, 0, 0, 1, 0, 0, 0, 0], [0, 2, 0, 0, 0, 0, 0, 1, 0], [0, 0, 2, 0, 0, 1, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 1]]
+
+#######################################     END     #######################################
+
+####################################### 7 x 7 mod(3) #######################################
+
+update rule: -2 -1 1
+alphabet: 3
+cells: 7
+
+transition matrix:
+[[0, 1, 0, 0, 0, 1, 1,
+  1, 0, 1, 0, 0, 0, 1,
+  1, 1, 0, 1, 0, 0, 0,
+  0, 1, 1, 0, 1, 0, 0,
+  0, 0, 1, 1, 0, 1, 0,
+  1, 0, 0, 1, 1, 0, 1,
+  1, 1, 0, 0, 1, 1, 0]]
+  
+Length: 11177
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 0, 0], [2, 1, 1, 0, 0, 1, 1]]
+
+
+Length: 11181
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 0, 1, 0], [1, 2, 1, 1, 2, 0, 1]]
+
+
+Length: 11194
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 1, 0], [0, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 11236
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 1, 1, 0], [2, 1, 1, 2, 2, 0, 1]]
+
+
+Length: 11265
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 1, 0, 0, 0], [0, 2, 0, 0, 2, 1, 0]]
+
+
+Length: 11329
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 11336
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 0, 0], [2, 0, 0, 1, 0, 1, 1]]
+
+
+Length: 11356
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 1, 0, 0], [1, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 11360
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 1, 1, 1], [0, 2, 0, 1, 0, 0, 0]]
+
+
+Length: 11365
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 1, 0, 0], [2, 1, 1, 0, 0, 1, 1]]
+
+
+Length: 11392
+Cylces Count: 1
+Cylces Copies: -0.000526685393258427
+States: -6
+Nullspace: [[2, 0, 0, 0, 1, 0, 0]]
+
+
+Length: 11394
+Cylces Count: 2
+Cylces Copies: 0.000526592943654555
+States: 6
+Nullspace: [[2, 2, 0, 1, 0, 0, 1], [0, 2, 0, 1, 1, 1, 0]]
+
+
+Length: 11396
+Cylces Count: 1
+Cylces Copies: -0.0005265005265005265
+States: -6
+Nullspace: [[2, 0, 1, 0, 1, 2, 1]]
+
+
+Length: 11403
+Cylces Count: 1
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 0, 1, 1]]
+
+
+Length: 11422
+Cylces Count: 2
+Cylces Copies: 0.0005253020486779899
+States: 6
+Nullspace: [[1, 2, 1, 0, 1, 1, 0], [1, 1, 0, 1, 0, 0, 1]]
+
+
+Length: 11429
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 0, 2, 1], [0, 1, 2, 2, 1, 0, 0]]
+
+
+Length: 11457
+Cylces Count: 1
+Cylces Copies: -0.0005236973029588898
+States: -6
+Nullspace: [[0, 2, 1, 0, 2, 2, 1]]
+
+
+Length: 11464
+Cylces Count: 2
+Cylces Copies: 0.00052337752965806
+States: 6
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [2, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 11473
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 1, 1], [0, 1, 0, 1, 0, 0, 0]]
+
+
+Length: 11478
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 2, 1, 0], [1, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 11482
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 0, 1, 0], [1, 2, 2, 0, 1, 0, 1]]
+
+
+Length: 11484
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 0, 1], [0, 1, 2, 1, 0, 1, 0]]
+
+
+Length: 11499
+Cylces Count: 1
+Cylces Copies: -0.0005217845030002609
+States: -6
+Nullspace: [[2, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 11521
+Cylces Count: 2
+Cylces Copies: 0.0005207881260307265
+States: 6
+Nullspace: [[1, 2, 1, 0, 2, 1, 0], [1, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 11530
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 2, 1, 0], [1, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 11553
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 2, 0, 1], [0, 0, 1, 1, 2, 1, 0]]
+
+
+Length: 11561
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 2, 1, 0], [0, 1, 0, 1, 1, 0, 1]]
+
+
+Length: 11586
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 0, 0], [2, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 11599
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [1, 2, 0, 1, 0, 1, 1]]
+
+
+Length: 11604
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 2, 1, 0], [2, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 11621
+Cylces Count: 1
+Cylces Copies: -0.0005163066861715859
+States: -6
+Nullspace: [[2, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 11671
+Cylces Count: 2
+Cylces Copies: 0.0005140947648016451
+States: 6
+Nullspace: [[1, 0, 0, 0, 1, 0, 0], [0, 0, 2, 2, 0, 1, 0]]
+
+
+Length: 11675
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 0, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 11684
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 0, 0], [2, 2, 2, 0, 0, 1, 0]]
+
+
+Length: 11717
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 2, 1, 0], [0, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 11743
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 0, 0, 1], [0, 2, 2, 1, 1, 0, 0]]
+
+
+Length: 11745
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 0, 0, 0], [0, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 11768
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 1, 1, 0], [2, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 11811
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 1, 0], [1, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 11812
+Cylces Count: 3
+Cylces Copies: 0.0015238740264138164
+States: 18
+Nullspace: [[1, 2, 0, 1, 0, 0, 0], [1, 2, 0, 0, 1, 0, 0], [1, 0, 0, 0, 0, 2, 1]]
+
+
+Length: 11818
+Cylces Count: 2
+Cylces Copies: -0.001523100355390083
+States: -18
+Nullspace: [[1, 1, 0, 0, 0, 0, 0], [1, 0, 2, 1, 1, 0, 0]]
+
+
+Length: 11823
+Cylces Count: 1
+Cylces Copies: -0.0005074854097944684
+States: -6
+Nullspace: [[2, 2, 0, 0, 1, 1, 1]]
+
+
+Length: 11829
+Cylces Count: 2
+Cylces Copies: 0.000507227998985544
+States: 6
+Nullspace: [[2, 2, 1, 2, 0, 0, 1], [0, 0, 1, 0, 1, 1, 0]]
+
+
+Length: 11847
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 1, 1], [0, 0, 0, 1, 1, 0, 0]]
+
+
+Length: 11865
+Cylces Count: 1
+Cylces Copies: -0.0005056890012642225
+States: -6
+Nullspace: [[2, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 11870
+Cylces Count: 2
+Cylces Copies: 0.0005054759898904802
+States: 6
+Nullspace: [[2, 2, 0, 0, 2, 0, 1], [0, 0, 2, 1, 0, 0, 0]]
+
+
+Length: 11899
+Cylces Count: 1
+Cylces Copies: -0.0005042440541221952
+States: -6
+Nullspace: [[1, 1, 0, 1, 0, 2, 1]]
+
+
+Length: 11905
+Cylces Count: 2
+Cylces Copies: 0.000503989920201596
+States: 6
+Nullspace: [[1, 2, 1, 1, 0, 0, 0], [0, 0, 0, 0, 1, 1, 1]]
+
+
+Length: 11908
+Cylces Count: 3
+Cylces Copies: 0.0015115888478333893
+States: 18
+Nullspace: [[1, 2, 1, 0, 1, 0, 0], [2, 2, 1, 2, 0, 1, 0], [0, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 11912
+Cylces Count: 2
+Cylces Copies: -0.0015110812625923438
+States: -18
+Nullspace: [[1, 0, 1, 2, 2, 0, 1], [0, 2, 1, 1, 2, 1, 0]]
+
+
+Length: 11919
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 0, 1, 0], [0, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 11938
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 0, 0, 1], [0, 1, 2, 1, 2, 1, 0]]
+
+
+Length: 11952
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 2, 1, 0], [2, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 11997
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 0, 0, 1], [0, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 12001
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 2, 1, 0], [0, 1, 1, 0, 1, 0, 1]]
+
+
+Length: 12003
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 2, 1, 0], [0, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 12016
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 1, 0, 0], [0, 1, 0, 2, 0, 1, 1]]
+
+
+Length: 12035
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 0, 1, 0], [0, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 12071
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 1, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 12075
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 2, 1, 0], [0, 2, 2, 1, 1, 0, 1]]
+
+
+Length: 12077
+Cylces Count: 1
+Cylces Copies: -0.0004968121222157821
+States: -6
+Nullspace: [[0, 1, 0, 1, 0, 0, 0]]
+
+
+Length: 12082
+Cylces Count: 1
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 2, 1, 0]]
+
+
+Length: 12095
+Cylces Count: 2
+Cylces Copies: 0.0004960727573377428
+States: 6
+Nullspace: [[2, 2, 2, 1, 0, 1, 0], [0, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 12134
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 1, 0, 0], [0, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 12144
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 0, 0, 1], [0, 1, 2, 2, 1, 1, 0]]
+
+
+Length: 12163
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 1, 0], [2, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 12177
+Cylces Count: 1
+Cylces Copies: -0.0004927322000492732
+States: -6
+Nullspace: [[0, 0, 2, 1, 1, 0, 1]]
+
+
+Length: 12234
+Cylces Count: 2
+Cylces Copies: 0.0004904364884747426
+States: 6
+Nullspace: [[1, 2, 2, 1, 1, 0, 0], [2, 2, 2, 2, 0, 2, 1]]
+
+
+Length: 12235
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 0], [0, 2, 1, 0, 1, 0, 0]]
+
+
+Length: 12267
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 1, 1, 0], [0, 0, 1, 2, 2, 0, 1]]
+
+
+Length: 12276
+Cylces Count: 1
+Cylces Copies: -0.0004887585532746823
+States: -6
+Nullspace: [[0, 1, 1, 2, 0, 1, 0]]
+
+
+Length: 12295
+Cylces Count: 1
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 0, 2, 1]]
+
+
+Length: 12301
+Cylces Count: 2
+Cylces Copies: 0.00048776522233964716
+States: 6
+Nullspace: [[1, 1, 0, 0, 0, 0, 1], [0, 0, 2, 1, 1, 1, 0]]
+
+
+Length: 12307
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 2, 1, 0], [0, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 12308
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 0, 1, 0], [0, 2, 0, 1, 2, 0, 1]]
+
+
+Length: 12315
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 0, 0], [0, 0, 2, 0, 0, 2, 1]]
+
+
+Length: 12328
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 1], [0, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 12335
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 1], [0, 1, 1, 1, 1, 1, 0]]
+
+
+Length: 12339
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 0, 1], [0, 1, 1, 1, 0, 0, 0]]
+
+
+Length: 12364
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 0, 1], [0, 0, 1, 0, 0, 1, 0]]
+
+
+Length: 12370
+Cylces Count: 1
+Cylces Copies: -0.00048504446240905415
+States: -6
+Nullspace: [[0, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 12390
+Cylces Count: 2
+Cylces Copies: 0.00048426150121065375
+States: 6
+Nullspace: [[2, 0, 0, 0, 0, 1, 0], [2, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 12394
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 0, 0], [2, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 12416
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 1, 0], [1, 2, 2, 2, 2, 0, 1]]
+
+
+Length: 12459
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 0, 0], [2, 1, 1, 0, 1, 2, 1]]
+
+
+Length: 12483
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 1, 0, 1], [0, 0, 1, 2, 1, 1, 0]]
+
+
+Length: 12502
+Cylces Count: 1
+Cylces Copies: -0.00047992321228603423
+States: -6
+Nullspace: [[0, 2, 2, 1, 0, 1, 1]]
+
+
+Length: 12524
+Cylces Count: 2
+Cylces Copies: 0.0004790801660811242
+States: 6
+Nullspace: [[0, 1, 2, 0, 2, 1, 0], [0, 2, 1, 1, 1, 0, 1]]
+
+
+Length: 12529
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 1, 0], [1, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 12567
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 0, 0], [0, 0, 0, 2, 0, 2, 1]]
+
+
+Length: 12601
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [0, 1, 1, 1, 0, 1, 1]]
+
+
+Length: 12689
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 2, 1, 0], [2, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 12703
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 2, 0, 1], [0, 1, 1, 2, 0, 1, 0]]
+
+
+Length: 12748
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 2, 0, 1], [0, 0, 1, 1, 1, 1, 0]]
+
+
+Length: 12756
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 1, 0, 0], [1, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 12774
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 0], [2, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 12775
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 0, 1, 0], [0, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 12794
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [0, 1, 0, 2, 0, 1, 1]]
+
+
+Length: 12845
+Cylces Count: 1
+Cylces Copies: -0.0004671078240560529
+States: -6
+Nullspace: [[2, 1, 2, 1, 1, 1, 0]]
+
+
+Length: 12865
+Cylces Count: 2
+Cylces Copies: 0.0004663816556548776
+States: 6
+Nullspace: [[1, 0, 0, 2, 0, 1, 0], [0, 1, 0, 1, 0, 0, 1]]
+
+
+Length: 12887
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 0, 1, 0], [0, 2, 1, 2, 2, 0, 1]]
+
+
+Length: 12959
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 1, 0], [0, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 12968
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 0, 0], [2, 2, 1, 0, 0, 2, 1]]
+
+
+Length: 12976
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 1, 0], [1, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 12994
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [1, 1, 1, 1, 0, 1, 0]]
+
+
+Length: 13022
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 2, 0, 1], [0, 2, 0, 2, 0, 1, 0]]
+
+
+Length: 13044
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 1, 1, 1], [0, 1, 0, 1, 0, 0, 0]]
+
+
+Length: 13075
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 0, 1], [0, 2, 1, 1, 0, 1, 0]]
+
+
+Length: 13116
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 1, 0], [0, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 13128
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 2, 1], [0, 1, 2, 1, 1, 0, 0]]
+
+
+Length: 13186
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 1, 0], [1, 0, 1, 1, 2, 0, 1]]
+
+
+Length: 13205
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 1], [0, 2, 1, 2, 1, 0, 0]]
+
+
+Length: 13226
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 2, 1, 0, 0], [0, 1, 2, 1, 0, 1, 1]]
+
+
+Length: 13232
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 0, 1, 0], [1, 1, 0, 0, 1, 0, 1]]
+
+
+Length: 13245
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 0, 2, 0, 1], [0, 0, 2, 1, 0, 0, 0]]
+
+
+Length: 13264
+Cylces Count: 1
+Cylces Copies: -0.0004523522316043426
+States: -6
+Nullspace: [[1, 0, 2, 2, 0, 1, 1]]
+
+
+Length: 13266
+Cylces Count: 2
+Cylces Copies: 0.0004522840343735866
+States: 6
+Nullspace: [[1, 2, 2, 0, 1, 0, 0], [2, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 13339
+Cylces Count: 1
+Cylces Copies: -0.00044980883124672017
+States: -6
+Nullspace: [[2, 1, 1, 0, 0, 0, 0]]
+
+
+Length: 13353
+Cylces Count: 2
+Cylces Copies: 0.00044933722758930576
+States: 6
+Nullspace: [[1, 2, 1, 1, 1, 0, 0], [0, 1, 2, 2, 0, 1, 1]]
+
+
+Length: 13421
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 0, 0, 1], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 13422
+Cylces Count: 1
+Cylces Copies: -0.0004470272686633885
+States: -6
+Nullspace: [[0, 1, 0, 0, 2, 2, 1]]
+
+
+Length: 13423
+Cylces Count: 2
+Cylces Copies: 0.00044699396558146463
+States: 6
+Nullspace: [[1, 0, 2, 1, 0, 1, 0], [2, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 13444
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 1, 1, 0], [1, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 13448
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 0, 1], [0, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 13458
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 1, 0], [1, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 13481
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 0, 1, 0], [0, 0, 1, 2, 1, 0, 0]]
+
+
+Length: 13528
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 1, 1, 0], [0, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 13534
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 0, 0], [0, 0, 0, 2, 1, 0, 1]]
+
+
+Length: 13549
+Cylces Count: 1
+Cylces Copies: -0.00044283710974979705
+States: -6
+Nullspace: [[1, 0, 1, 1, 1, 2, 1]]
+
+
+Length: 13556
+Cylces Count: 2
+Cylces Copies: 0.00044260843906757157
+States: 6
+Nullspace: [[2, 2, 2, 0, 0, 1, 0], [2, 0, 2, 1, 1, 0, 1]]
+
+
+Length: 13611
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 1, 0], [2, 0, 1, 1, 2, 0, 1]]
+
+
+Length: 13626
+Cylces Count: 1
+Cylces Copies: -0.00044033465433729633
+States: -6
+Nullspace: [[0, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 13633
+Cylces Count: 3
+Cylces Copies: 0.0017604342404459767
+States: 24
+Nullspace: [[1, 0, 0, 1, 0, 0, 0], [1, 2, 2, 0, 2, 1, 0], [1, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 13635
+Cylces Count: 2
+Cylces Copies: -0.0013201320132013201
+States: -18
+Nullspace: [[2, 0, 2, 0, 2, 1, 0], [2, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 13660
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 0], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 13664
+Cylces Count: 1
+Cylces Copies: -0.00043911007025761124
+States: -6
+Nullspace: [[2, 0, 1, 1, 0, 1, 1]]
+
+
+Length: 13687
+Cylces Count: 1
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 13727
+Cylces Count: 2
+Cylces Copies: 0.0004370947767174182
+States: 6
+Nullspace: [[0, 2, 2, 0, 1, 0, 0], [0, 1, 2, 1, 0, 1, 1]]
+
+
+Length: 13729
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 1, 1, 0], [1, 0, 0, 0, 2, 0, 1]]
+
+
+Length: 13737
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 2, 1, 0], [1, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 13739
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 0], [1, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 13745
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 1, 0, 0], [2, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 13753
+Cylces Count: 1
+Cylces Copies: -0.00043626845051988655
+States: -6
+Nullspace: [[2, 0, 2, 1, 0, 1, 0]]
+
+
+Length: 13786
+Cylces Count: 2
+Cylces Copies: 0.0004352241404323226
+States: 6
+Nullspace: [[2, 2, 2, 1, 0, 1, 1], [0, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 13787
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 2, 0, 1], [0, 0, 2, 2, 0, 1, 0]]
+
+
+Length: 13817
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 2, 1, 0], [2, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 13897
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 0, 0], [0, 2, 1, 2, 0, 1, 1]]
+
+
+Length: 13971
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 0, 0], [2, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 13986
+Cylces Count: 1
+Cylces Copies: -0.000429000429000429
+States: -6
+Nullspace: [[1, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 13990
+Cylces Count: 2
+Cylces Copies: 0.00042887776983559683
+States: 6
+Nullspace: [[1, 1, 1, 1, 1, 1, 0], [2, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 14020
+Cylces Count: 1
+Cylces Copies: -0.00042796005706134097
+States: -6
+Nullspace: [[2, 0, 2, 2, 1, 1, 0]]
+
+
+Length: 14052
+Cylces Count: 1
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 0, 2, 2, 1]]
+
+
+Length: 14096
+Cylces Count: 2
+Cylces Copies: 0.0004256526674233825
+States: 6
+Nullspace: [[2, 2, 0, 0, 1, 0, 0], [0, 1, 2, 0, 0, 1, 0]]
+
+
+Length: 14125
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 1, 0, 0], [1, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 14127
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 2, 1, 0], [2, 0, 1, 2, 0, 0, 1]]
+
+
+Length: 14173
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 0, 0, 0], [1, 0, 1, 0, 0, 2, 1]]
+
+
+Length: 14191
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 0, 1, 0, 1], [0, 0, 2, 0, 0, 1, 0]]
+
+
+Length: 14219
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 1, 1, 0], [1, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 14224
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 2, 1, 0], [2, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 14245
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 1, 0], [1, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 14284
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 2, 1, 0], [1, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 14286
+Cylces Count: 1
+Cylces Copies: -0.00041999160016799666
+States: -6
+Nullspace: [[2, 2, 2, 1, 0, 2, 1]]
+
+
+Length: 14318
+Cylces Count: 2
+Cylces Copies: 0.00041905294035479815
+States: 6
+Nullspace: [[1, 2, 0, 1, 2, 0, 1], [0, 2, 0, 2, 2, 1, 0]]
+
+
+Length: 14370
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 0, 1, 0], [2, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 14374
+Cylces Count: 1
+Cylces Copies: -0.0004174203422846807
+States: -6
+Nullspace: [[1, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 14376
+Cylces Count: 2
+Cylces Copies: 0.00041736227045075126
+States: 6
+Nullspace: [[1, 1, 0, 1, 1, 0, 0], [0, 1, 1, 2, 0, 1, 1]]
+
+
+Length: 14378
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 0, 0, 0, 0], [0, 1, 0, 0, 2, 1, 1]]
+
+
+Length: 14384
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 2, 1, 0], [0, 2, 2, 2, 2, 0, 1]]
+
+
+Length: 14393
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 0, 0], [0, 2, 2, 1, 0, 2, 1]]
+
+
+Length: 14396
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 0, 1], [0, 2, 2, 2, 1, 1, 0]]
+
+
+Length: 14418
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 1, 0, 0, 1], [0, 0, 0, 2, 1, 1, 0]]
+
+
+Length: 14451
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 2, 0, 1], [0, 0, 0, 2, 1, 1, 0]]
+
+
+Length: 14487
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 0, 1, 0], [1, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 14538
+Cylces Count: 3
+Cylces Copies: 0.0012381345439537762
+States: 18
+Nullspace: [[1, 0, 0, 1, 1, 0, 0], [2, 1, 2, 1, 0, 1, 0], [0, 2, 2, 1, 0, 0, 1]]
+
+
+Length: 14553
+Cylces Count: 2
+Cylces Copies: -0.0012368583797155227
+States: -18
+Nullspace: [[2, 2, 1, 2, 1, 1, 0], [1, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 14559
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 0, 0], [1, 1, 1, 0, 0, 1, 1]]
+
+
+Length: 14605
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 0, 1, 0], [0, 0, 0, 2, 2, 0, 1]]
+
+
+Length: 14635
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 1, 0], [0, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 14657
+Cylces Count: 1
+Cylces Copies: -0.00040936071501671554
+States: -6
+Nullspace: [[1, 2, 2, 0, 1, 1, 1]]
+
+
+Length: 14668
+Cylces Count: 2
+Cylces Copies: 0.00040905372238887375
+States: 6
+Nullspace: [[2, 2, 0, 2, 1, 0, 0], [0, 1, 0, 2, 0, 2, 1]]
+
+
+Length: 14699
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 1, 0, 0], [1, 0, 2, 1, 0, 1, 1]]
+
+
+Length: 14740
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 2, 0, 1], [0, 2, 2, 1, 1, 1, 0]]
+
+
+Length: 14750
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 2, 0, 1], [0, 0, 2, 1, 0, 0, 0]]
+
+
+Length: 14785
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 2, 1, 0], [2, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 14848
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 0, 1, 0, 0], [0, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 14958
+Cylces Count: 1
+Cylces Copies: -0.00040112314480545525
+States: -6
+Nullspace: [[2, 2, 0, 0, 1, 2, 1]]
+
+
+Length: 14962
+Cylces Count: 2
+Cylces Copies: 0.0004010159069643096
+States: 6
+Nullspace: [[2, 2, 2, 1, 1, 1, 0], [1, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 15010
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 2, 1, 0], [1, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 15015
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 1, 0], [2, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 15032
+Cylces Count: 1
+Cylces Copies: -0.0003991484832357637
+States: -6
+Nullspace: [[0, 0, 1, 2, 1, 2, 1]]
+
+
+Length: 15060
+Cylces Count: 2
+Cylces Copies: 0.00039840637450199205
+States: 6
+Nullspace: [[1, 1, 0, 1, 0, 1, 0], [0, 0, 1, 0, 1, 0, 0]]
+
+
+Length: 15065
+Cylces Count: 1
+Cylces Copies: -0.00039827414537006305
+States: -6
+Nullspace: [[2, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 15087
+Cylces Count: 1
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 15096
+Cylces Count: 2
+Cylces Copies: 0.000397456279809221
+States: 6
+Nullspace: [[1, 1, 2, 2, 1, 1, 0], [1, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 15099
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 0], [0, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 15110
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 1, 0, 0], [2, 1, 0, 0, 0, 2, 1]]
+
+
+Length: 15120
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 2, 1, 0], [0, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 15122
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 1, 0, 0], [0, 2, 2, 1, 0, 0, 1]]
+
+
+Length: 15139
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 0, 0], [2, 0, 0, 0, 0, 1, 1]]
+
+
+Length: 15160
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 1, 1, 0], [2, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 15177
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 1, 0], [0, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 15221
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 0, 1, 0], [1, 0, 2, 1, 2, 0, 1]]
+
+
+Length: 15238
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 1, 0, 0]]
+
+
+Length: 15241
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 0, 1, 0], [0, 0, 2, 1, 1, 0, 1]]
+
+
+Length: 15282
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 0, 1], [0, 2, 0, 2, 0, 1, 0]]
+
+
+Length: 15295
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 0, 0, 1], [0, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 15338
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 0, 0], [1, 1, 1, 1, 0, 2, 1]]
+
+
+Length: 15345
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 0, 1, 0], [2, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 15372
+Cylces Count: 1
+Cylces Copies: -0.00039032006245121
+States: -6
+Nullspace: [[2, 1, 1, 1, 2, 0, 1]]
+
+
+Length: 15378
+Cylces Count: 2
+Cylces Copies: 0.0003901677721420211
+States: 6
+Nullspace: [[1, 2, 2, 0, 2, 1, 0], [2, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 15399
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 2, 1, 0], [0, 2, 0, 1, 1, 0, 1]]
+
+
+Length: 15400
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 1, 0, 0], [0, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 15402
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 1, 0], [2, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 15416
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 1, 0], [1, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 15423
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 0, 0], [1, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 15476
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 0, 1, 1], [0, 1, 2, 2, 1, 0, 0]]
+
+
+Length: 15500
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 0, 0], [0, 2, 2, 1, 0, 1, 1]]
+
+
+Length: 15517
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 1, 1, 0], [1, 2, 1, 2, 2, 0, 1]]
+
+
+Length: 15575
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 0, 0], [1, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 15594
+Cylces Count: 1
+Cylces Copies: -0.00038476337052712584
+States: -6
+Nullspace: [[0, 1, 0, 1, 2, 1, 0]]
+
+
+Length: 15602
+Cylces Count: 2
+Cylces Copies: 0.0003845660812716318
+States: 6
+Nullspace: [[2, 1, 1, 0, 0, 0, 0], [1, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 15611
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 2, 1, 0], [0, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 15651
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 1, 0], [0, 0, 1, 2, 0, 0, 1]]
+
+
+Length: 15661
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 0, 0], [2, 1, 2, 2, 0, 1, 0]]
+
+
+Length: 15687
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 0, 1, 0], [0, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 15688
+Cylces Count: 1
+Cylces Copies: -0.00038245792962774094
+States: -6
+Nullspace: [[2, 2, 0, 2, 1, 0, 0]]
+
+
+Length: 15729
+Cylces Count: 2
+Cylces Copies: 0.00038146099561319857
+States: 6
+Nullspace: [[2, 1, 0, 1, 0, 1, 0], [2, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 15762
+Cylces Count: 1
+Cylces Copies: -0.00038066235249333843
+States: -6
+Nullspace: [[0, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 15774
+Cylces Count: 2
+Cylces Copies: 0.0003803727653100038
+States: 6
+Nullspace: [[2, 0, 2, 0, 2, 1, 0], [2, 1, 1, 1, 1, 0, 1]]
+
+
+Length: 15782
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 2, 1, 0], [1, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 15796
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 1, 0], [2, 2, 1, 1, 2, 0, 1]]
+
+
+Length: 15861
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [1, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 15870
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 1, 1, 0], [1, 0, 2, 1, 1, 0, 1]]
+
+
+Length: 15898
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 0, 0], [1, 2, 0, 0, 0, 1, 0]]
+
+
+Length: 15925
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 0, 0, 1, 0], [0, 1, 2, 1, 2, 0, 1]]
+
+
+Length: 15934
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 1, 0], [0, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 15955
+Cylces Count: 3
+Cylces Copies: 0.0011281729865246005
+States: 18
+Nullspace: [[1, 2, 2, 0, 1, 0, 0], [2, 1, 2, 0, 0, 1, 0], [1, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 15965
+Cylces Count: 2
+Cylces Copies: -0.001127466332602568
+States: -18
+Nullspace: [[1, 0, 0, 1, 1, 1, 0], [0, 1, 0, 0, 1, 0, 1]]
+
+
+Length: 15968
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 0, 1], [0, 2, 2, 2, 2, 1, 0]]
+
+
+Length: 15986
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 1, 0, 0], [1, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 15991
+Cylces Count: 1
+Cylces Copies: -0.00037521105621912324
+States: -6
+Nullspace: [[2, 1, 1, 0, 2, 1, 1]]
+
+
+Length: 16020
+Cylces Count: 2
+Cylces Copies: 0.0003745318352059925
+States: 6
+Nullspace: [[1, 1, 2, 0, 1, 0, 0], [1, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 16075
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 1, 0], [1, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 16080
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 1, 0, 1], [0, 1, 1, 2, 1, 1, 0]]
+
+
+Length: 16083
+Cylces Count: 1
+Cylces Copies: -0.00037306472673008767
+States: -6
+Nullspace: [[0, 0, 2, 2, 2, 1, 1]]
+
+
+Length: 16086
+Cylces Count: 2
+Cylces Copies: 0.0003729951510630362
+States: 6
+Nullspace: [[1, 2, 0, 0, 1, 0, 0], [2, 1, 1, 1, 0, 1, 0]]
+
+
+Length: 16105
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 2, 1, 0], [2, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 16146
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 0, 1], [0, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 16148
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 2, 1, 1], [0, 1, 1, 1, 0, 0, 0]]
+
+
+Length: 16160
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 0], [1, 1, 2, 1, 0, 1, 0]]
+
+
+Length: 16177
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 1, 0], [0, 2, 2, 1, 0, 0, 1]]
+
+
+Length: 16217
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 1, 1, 0], [0, 1, 2, 1, 2, 0, 1]]
+
+
+Length: 16222
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 1, 2, 1, 0], [0, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 16223
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 0, 1, 0], [0, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 16234
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 16244
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 0, 1, 0], [2, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 16263
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 0, 1, 0, 1], [0, 0, 2, 2, 1, 1, 0]]
+
+
+Length: 16293
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 0], [0, 0, 2, 1, 0, 2, 1]]
+
+
+Length: 16307
+Cylces Count: 1
+Cylces Copies: -0.0003679401484025265
+States: -6
+Nullspace: [[1, 2, 1, 2, 0, 1, 0]]
+
+
+Length: 16363
+Cylces Count: 2
+Cylces Copies: 0.00036668092648047424
+States: 6
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [1, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 16377
+Cylces Count: 1
+Cylces Copies: -0.00036636746656896867
+States: -6
+Nullspace: [[2, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 16396
+Cylces Count: 2
+Cylces Copies: 0.00036594291290558675
+States: 6
+Nullspace: [[2, 1, 2, 1, 1, 1, 0], [1, 2, 0, 2, 2, 0, 1]]
+
+
+Length: 16403
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 0, 0], [0, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 16498
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 2, 2, 1]]
+
+
+Length: 16503
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 2, 2, 1, 0], [0, 1, 2, 2, 1, 0, 1]]
+
+
+Length: 16515
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 1, 0], [1, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 16524
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 1, 0], [1, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 16527
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 0, 1], [0, 1, 1, 1, 1, 1, 0]]
+
+
+Length: 16572
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 2, 1, 0], [1, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 16579
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 0, 1], [0, 2, 2, 1, 1, 0, 0]]
+
+
+Length: 16667
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 1, 1, 0], [1, 2, 1, 1, 1, 0, 1]]
+
+
+Length: 16671
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 2, 0, 1], [0, 0, 1, 1, 1, 1, 0]]
+
+
+Length: 16687
+Cylces Count: 1
+Cylces Copies: -0.0003595613351710913
+States: -6
+Nullspace: [[1, 1, 0, 1, 2, 0, 1]]
+
+
+Length: 16709
+Cylces Count: 2
+Cylces Copies: 0.00035908791669160333
+States: 6
+Nullspace: [[1, 0, 2, 1, 0, 0, 0], [0, 0, 2, 0, 0, 2, 1]]
+
+
+Length: 16713
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 0, 1, 0], [2, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 16715
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 0, 0], [2, 2, 2, 1, 0, 1, 1]]
+
+
+Length: 16737
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 0, 0], [2, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 16790
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 0], [0, 0, 1, 0, 1, 0, 1]]
+
+
+Length: 16795
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 0, 1], [0, 1, 1, 2, 1, 1, 0]]
+
+
+Length: 16814
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 0, 0, 1], [0, 0, 2, 0, 2, 1, 0]]
+
+
+Length: 16833
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 1, 0], [0, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 16851
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 1, 0, 0], [2, 0, 0, 2, 0, 1, 1]]
+
+
+Length: 16874
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 0, 1, 0], [2, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 16954
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 2, 1, 0], [0, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 16986
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 16988
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 1, 2, 0, 1], [0, 0, 0, 2, 0, 1, 0]]
+
+
+Length: 16990
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 1, 0, 1], [0, 2, 2, 2, 2, 1, 0]]
+
+
+Length: 16999
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 2, 0, 1], [0, 0, 2, 1, 1, 1, 0]]
+
+
+Length: 17010
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 2, 0, 1], [0, 0, 0, 0, 1, 1, 0]]
+
+
+Length: 17037
+Cylces Count: 1
+Cylces Copies: -0.00035217467864060575
+States: -6
+Nullspace: [[1, 1, 1, 1, 2, 1, 0]]
+
+
+Length: 17039
+Cylces Count: 2
+Cylces Copies: 0.00035213334115851867
+States: 6
+Nullspace: [[1, 1, 2, 2, 2, 1, 0], [1, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 17043
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 1, 0], [0, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 17104
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 1, 0, 0], [1, 1, 1, 1, 0, 1, 0]]
+
+
+Length: 17130
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 1, 0, 0], [0, 0, 0, 1, 0, 1, 0]]
+
+
+Length: 17147
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 2, 0, 1], [0, 1, 1, 1, 0, 1, 0]]
+
+
+Length: 17160
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 2, 0, 1], [0, 0, 1, 0, 2, 1, 0]]
+
+
+Length: 17186
+Cylces Count: 1
+Cylces Copies: -0.00034912137786570463
+States: -6
+Nullspace: [[2, 1, 2, 1, 1, 0, 1]]
+
+
+Length: 17246
+Cylces Count: 2
+Cylces Copies: 0.0003479067609880552
+States: 6
+Nullspace: [[2, 1, 2, 1, 0, 0, 1], [0, 2, 1, 0, 1, 1, 0]]
+
+
+Length: 17259
+Cylces Count: 1
+Cylces Copies: -0.0003476447071093343
+States: -6
+Nullspace: [[1, 1, 2, 2, 0, 1, 1]]
+
+
+Length: 17289
+Cylces Count: 2
+Cylces Copies: 0.00034704147145583897
+States: 6
+Nullspace: [[2, 0, 1, 0, 0, 1, 0], [0, 2, 1, 2, 2, 0, 1]]
+
+
+Length: 17297
+Cylces Count: 1
+Cylces Copies: -0.00034688096201653467
+States: -6
+Nullspace: [[1, 1, 2, 1, 2, 1, 1]]
+
+
+Length: 17299
+Cylces Count: 2
+Cylces Copies: 0.0003468408578530551
+States: 6
+Nullspace: [[1, 0, 2, 1, 1, 1, 0], [2, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 17338
+Cylces Count: 1
+Cylces Copies: -0.0003460606759718537
+States: -6
+Nullspace: [[2, 2, 2, 0, 2, 1, 0]]
+
+
+Length: 17377
+Cylces Count: 2
+Cylces Copies: 0.00034528399608678136
+States: 6
+Nullspace: [[1, 2, 0, 2, 0, 1, 0], [0, 2, 0, 2, 1, 0, 0]]
+
+
+Length: 17396
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 2, 1, 0], [1, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 17404
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 1, 0, 0], [2, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 17448
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 2, 1, 0], [0, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 17454
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 1, 0, 1], [0, 2, 1, 2, 1, 1, 0]]
+
+
+Length: 17478
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 0, 0, 0], [0, 1, 0, 0, 1, 2, 1]]
+
+
+Length: 17490
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 0, 1, 0], [2, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 17504
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 1, 0], [1, 2, 2, 1, 1, 0, 1]]
+
+
+Length: 17527
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 2, 1, 0], [0, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 17540
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 0, 0], [2, 0, 2, 0, 1, 2, 1]]
+
+
+Length: 17554
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 1, 1], [0, 0, 1, 1, 0, 0, 0]]
+
+
+Length: 17582
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 2, 1, 0], [0, 1, 1, 0, 0, 0, 0]]
+
+
+Length: 17618
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 2, 1, 0], [0, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 17632
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 1, 0, 1], [0, 2, 1, 1, 1, 1, 0]]
+
+
+Length: 17669
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 0, 0, 0], [1, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 17704
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 17721
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 0, 0], [0, 0, 1, 0, 1, 1, 1]]
+
+
+Length: 17734
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 2, 0, 1], [0, 2, 0, 1, 1, 1, 0]]
+
+
+Length: 17744
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 0, 0], [2, 0, 0, 1, 0, 1, 0]]
+
+
+Length: 17774
+Cylces Count: 1
+Cylces Copies: -0.00033757173399347364
+States: -6
+Nullspace: [[1, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 17835
+Cylces Count: 2
+Cylces Copies: 0.000336417157275021
+States: 6
+Nullspace: [[1, 1, 1, 1, 0, 0, 1], [0, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 17837
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 2, 1, 0], [1, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 17842
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 0, 0], [1, 2, 1, 2, 0, 2, 1]]
+
+
+Length: 17871
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 1, 0], [2, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 17892
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 0, 1, 0], [0, 2, 2, 2, 2, 0, 1]]
+
+
+Length: 17895
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 0, 0], [2, 2, 1, 0, 2, 1, 0]]
+
+
+Length: 17932
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 1, 0], [0, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 17933
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 2, 0, 1, 0], [0, 0, 0, 2, 1, 0, 1]]
+
+
+Length: 17960
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 0, 0, 0], [0, 1, 0, 1, 0, 1, 0]]
+
+
+Length: 17971
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 1, 0, 1], [0, 1, 0, 1, 0, 1, 0]]
+
+
+Length: 17977
+Cylces Count: 3
+Cylces Copies: 0.0010012794125827445
+States: 18
+Nullspace: [[2, 1, 2, 0, 1, 0, 0], [2, 2, 1, 0, 0, 0, 1], [0, 1, 2, 1, 0, 1, 0]]
+
+
+Length: 18008
+Cylces Count: 3
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 1, 0, 0], [1, 0, 2, 0, 0, 1, 0], [1, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 18048
+Cylces Count: 2
+Cylces Copies: -0.0009973404255319148
+States: -18
+Nullspace: [[1, 0, 2, 0, 1, 0, 0], [0, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 18049
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 1, 0, 0], [2, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 18057
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 0, 0], [2, 0, 0, 0, 0, 1, 1]]
+
+
+Length: 18098
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 1, 0], [2, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 18099
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 0, 0], [1, 0, 1, 0, 0, 2, 1]]
+
+
+Length: 18114
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 0, 0, 1], [0, 1, 1, 1, 1, 0, 0]]
+
+
+Length: 18194
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 0, 0], [0, 1, 1, 1, 0, 2, 1]]
+
+
+Length: 18205
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 2, 1, 0], [1, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 18209
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 1, 0, 0], [1, 1, 2, 2, 0, 1, 0]]
+
+
+Length: 18250
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 0, 1, 0], [0, 0, 1, 2, 1, 0, 0]]
+
+
+Length: 18273
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 0, 0], [1, 1, 1, 1, 0, 2, 1]]
+
+
+Length: 18310
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 1, 0], [1, 2, 1, 1, 2, 0, 1]]
+
+
+Length: 18336
+Cylces Count: 1
+Cylces Copies: -0.0003272251308900524
+States: -6
+Nullspace: [[1, 0, 2, 2, 2, 1, 1]]
+
+
+Length: 18390
+Cylces Count: 2
+Cylces Copies: 0.0003262642740619902
+States: 6
+Nullspace: [[2, 0, 2, 0, 1, 0, 0], [1, 0, 0, 0, 0, 0, 1]]
+
+
+Length: 18391
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 2, 1, 0], [0, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 18402
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 0, 1, 0], [0, 2, 2, 2, 2, 0, 1]]
+
+
+Length: 18408
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 0, 1], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 18505
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 0, 0, 1], [0, 2, 1, 1, 1, 1, 0]]
+
+
+Length: 18518
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 2, 1], [0, 2, 2, 1, 0, 0, 0]]
+
+
+Length: 18560
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 0, 1, 0], [0, 2, 0, 1, 0, 0, 0]]
+
+
+Length: 18565
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 2, 1, 0], [2, 0, 0, 0, 2, 0, 1]]
+
+
+Length: 18576
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 1, 0, 0], [1, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 18624
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 2, 1, 0], [1, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 18630
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 0, 0, 0], [1, 0, 2, 0, 1, 0, 0]]
+
+
+Length: 18698
+Cylces Count: 3
+Cylces Copies: 0.0009626698042571398
+States: 18
+Nullspace: [[1, 1, 0, 2, 1, 0, 0], [2, 1, 2, 1, 0, 1, 0], [2, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 18734
+Cylces Count: 2
+Cylces Copies: -0.0009608198996476993
+States: -18
+Nullspace: [[1, 1, 0, 2, 2, 1, 0], [2, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 18741
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 2, 1, 0], [2, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 18754
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 0, 0], [0, 2, 0, 0, 1, 1, 1]]
+
+
+Length: 18756
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 2, 1, 0], [0, 0, 0, 2, 1, 0, 1]]
+
+
+Length: 18781
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 1, 0, 0], [1, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 18858
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 1, 0, 0], [1, 2, 2, 1, 0, 1, 0]]
+
+
+Length: 18863
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 0, 0], [0, 2, 2, 2, 0, 2, 1]]
+
+
+Length: 18926
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 0, 1], [0, 0, 2, 2, 1, 0, 0]]
+
+
+Length: 18931
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 2, 2, 1, 0], [0, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 18955
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 1, 0, 0], [0, 0, 2, 2, 0, 2, 1]]
+
+
+Length: 18999
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 2, 1, 0], [1, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 19028
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 2, 1, 0], [2, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 19037
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 1, 0], [2, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 19077
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 1, 0, 0], [1, 1, 2, 0, 0, 1, 0]]
+
+
+Length: 19082
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 1, 0], [1, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 19116
+Cylces Count: 3
+Cylces Copies: 0.0009416195856873823
+States: 18
+Nullspace: [[2, 1, 2, 2, 1, 0, 0], [2, 2, 0, 0, 0, 1, 0], [1, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 19122
+Cylces Count: 2
+Cylces Copies: -0.0009413241292751804
+States: -18
+Nullspace: [[0, 1, 1, 1, 0, 1, 0], [0, 1, 1, 2, 2, 0, 1]]
+
+
+Length: 19125
+Cylces Count: 1
+Cylces Copies: -0.00031372549019607844
+States: -6
+Nullspace: [[0, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 19144
+Cylces Count: 2
+Cylces Copies: 0.0003134141245298788
+States: 6
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [2, 1, 0, 0, 1, 2, 1]]
+
+
+Length: 19149
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 1], [0, 2, 0, 0, 2, 1, 0]]
+
+
+Length: 19203
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 2, 1, 0], [1, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 19220
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 2, 0, 1], [0, 1, 1, 0, 1, 1, 0]]
+
+
+Length: 19234
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 2, 0, 1], [0, 1, 0, 2, 2, 1, 0]]
+
+
+Length: 19253
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 0, 0], [2, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 19285
+Cylces Count: 3
+Cylces Copies: 0.0009333679025149079
+States: 18
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [0, 0, 1, 1, 0, 1, 0], [0, 0, 1, 2, 0, 0, 1]]
+
+
+Length: 19362
+Cylces Count: 2
+Cylces Copies: -0.0009296560272699101
+States: -18
+Nullspace: [[2, 0, 1, 0, 0, 2, 1], [0, 0, 1, 0, 1, 0, 0]]
+
+
+Length: 19436
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 0, 1, 0], [0, 2, 0, 2, 1, 0, 0]]
+
+
+Length: 19445
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 1, 1, 0], [1, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 19458
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 2, 1, 0], [0, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 19473
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 0, 1, 1], [0, 1, 2, 0, 1, 0, 0]]
+
+
+Length: 19497
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 0, 0], [2, 0, 1, 1, 0, 1, 1]]
+
+
+Length: 19501
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 1, 0], [1, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 19506
+Cylces Count: 3
+Cylces Copies: 0.0009227929867733005
+States: 18
+Nullspace: [[1, 0, 1, 2, 1, 0, 0], [1, 2, 2, 0, 0, 1, 0], [0, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 19518
+Cylces Count: 2
+Cylces Copies: -0.0009222256378727329
+States: -18
+Nullspace: [[0, 2, 2, 0, 2, 1, 0], [0, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 19577
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 0, 2, 1], [0, 2, 2, 2, 1, 0, 0]]
+
+
+Length: 19646
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 1, 1, 1], [0, 0, 1, 1, 0, 0, 0]]
+
+
+Length: 19672
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 2, 0, 1], [0, 0, 0, 1, 2, 1, 0]]
+
+
+Length: 19683
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 2, 1, 0], [2, 1, 0, 2, 1, 0, 1]]
+
+
+Length: 19694
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 0, 1], [0, 2, 2, 2, 1, 0, 0]]
+
+
+Length: 19706
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 0, 2, 1], [0, 0, 1, 0, 1, 0, 0]]
+
+
+Length: 19709
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 0, 1, 0], [0, 0, 1, 0, 1, 0, 0]]
+
+
+Length: 19725
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 0, 1, 0], [0, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 19730
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 1, 0, 0], [1, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 19731
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 2, 1, 0], [0, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 19744
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 1, 0], [1, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 19758
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 0, 2, 1], [0, 2, 0, 0, 1, 0, 0]]
+
+
+Length: 19786
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 1, 1, 0], [2, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 19826
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 0, 0, 1], [0, 0, 1, 0, 1, 1, 0]]
+
+
+Length: 19834
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 2, 1, 0], [0, 1, 1, 0, 1, 0, 1]]
+
+
+Length: 19915
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 1, 0, 0], [2, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 19942
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 2, 1, 0], [2, 0, 1, 2, 0, 0, 1]]
+
+
+Length: 20035
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 0, 0], [1, 1, 2, 2, 0, 1, 0]]
+
+
+Length: 20093
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 1, 1, 0], [0, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 20125
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 2, 1, 0], [2, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 20131
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 2, 1, 0], [2, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 20163
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 0, 1, 0], [0, 1, 0, 1, 1, 0, 1]]
+
+
+Length: 20197
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 2, 1, 0, 0], [0, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 20203
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 0, 0], [1, 0, 1, 1, 1, 2, 1]]
+
+
+Length: 20205
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 0, 0, 1], [0, 0, 0, 2, 1, 1, 0]]
+
+
+Length: 20209
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 1, 0], [2, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 20214
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 2, 0, 1], [0, 1, 0, 2, 0, 1, 0]]
+
+
+Length: 20233
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 1, 0, 0], [1, 0, 1, 2, 0, 2, 1]]
+
+
+Length: 20265
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 1, 1, 0], [2, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 20296
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 0, 0, 1], [0, 0, 1, 1, 1, 1, 0]]
+
+
+Length: 20298
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 1, 0, 0], [2, 0, 0, 1, 0, 2, 1]]
+
+
+Length: 20322
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 1, 0, 0], [0, 0, 1, 2, 0, 2, 1]]
+
+
+Length: 20337
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 0, 0, 1], [0, 1, 0, 2, 0, 1, 0]]
+
+
+Length: 20348
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 1, 0], [0, 1, 0, 0, 1, 0, 1]]
+
+
+Length: 20377
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 0], [2, 1, 1, 0, 2, 1, 1]]
+
+
+Length: 20403
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 1, 0], [0, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 20434
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 1, 0], [2, 2, 0, 1, 1, 0, 1]]
+
+
+Length: 20436
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 2, 1, 0], [0, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 20463
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 1, 0], [2, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 20560
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 1, 0], [0, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 20568
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 1, 0], [1, 1, 0, 1, 2, 0, 1]]
+
+
+Length: 20588
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 1, 0], [1, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 20603
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [2, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 20626
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 1, 1, 0], [1, 2, 1, 1, 1, 0, 1]]
+
+
+Length: 20738
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 1, 0, 0], [0, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 20752
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 0, 0], [1, 2, 1, 0, 0, 1, 1]]
+
+
+Length: 20818
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 2, 0, 1], [0, 0, 2, 0, 2, 1, 0]]
+
+
+Length: 20844
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 1, 0], [0, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 20859
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 1, 0], [0, 2, 1, 1, 2, 0, 1]]
+
+
+Length: 20885
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 1], [0, 1, 0, 1, 1, 1, 0]]
+
+
+Length: 20890
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 2, 1, 0], [2, 1, 2, 1, 1, 0, 1]]
+
+
+Length: 20908
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 0, 1, 0], [2, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 20936
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 0, 0], [1, 1, 0, 1, 0, 0, 1]]
+
+
+Length: 21028
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [1, 0, 0, 2, 1, 0, 1]]
+
+
+Length: 21036
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 0, 1, 0], [2, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 21048
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 1, 0], [1, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 21053
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 0], [0, 1, 0, 0, 1, 2, 1]]
+
+
+Length: 21056
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 0, 1, 0], [1, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 21064
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 0, 1, 0], [1, 1, 1, 2, 2, 0, 1]]
+
+
+Length: 21111
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [0, 0, 0, 0, 2, 1, 0]]
+
+
+Length: 21120
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 0, 0, 1], [0, 2, 2, 2, 2, 1, 0]]
+
+
+Length: 21127
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 1, 0, 0], [0, 1, 2, 2, 0, 1, 0]]
+
+
+Length: 21154
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 2, 1, 0], [2, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 21185
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 1, 0], [1, 1, 0, 1, 1, 0, 1]]
+
+
+Length: 21211
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 0, 1, 0], [2, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 21239
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 0, 0], [2, 0, 0, 0, 1, 1, 0]]
+
+
+Length: 21250
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 1, 0], [1, 2, 0, 1, 1, 0, 1]]
+
+
+Length: 21334
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 2, 1, 0], [0, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 21343
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 1, 1, 0], [2, 0, 0, 2, 1, 0, 1]]
+
+
+Length: 21380
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 2, 1, 0], [2, 1, 1, 1, 1, 0, 1]]
+
+
+Length: 21386
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 0, 0], [1, 2, 2, 1, 0, 1, 1]]
+
+
+Length: 21403
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [2, 0, 0, 1, 0, 0, 0]]
+
+
+Length: 21425
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 0], [0, 2, 0, 0, 2, 1, 1]]
+
+
+Length: 21510
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 0, 0], [0, 1, 0, 1, 1, 1, 1]]
+
+
+Length: 21588
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 0, 0], [2, 1, 2, 0, 0, 2, 1]]
+
+
+Length: 21593
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 2, 0, 1], [0, 2, 0, 1, 1, 1, 0]]
+
+
+Length: 21600
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [2, 2, 2, 0, 1, 0, 1]]
+
+
+Length: 21610
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 2, 0, 1], [0, 0, 0, 1, 1, 1, 0]]
+
+
+Length: 21628
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 1, 0], [0, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 21658
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [2, 1, 0, 1, 1, 1, 1]]
+
+
+Length: 21725
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 0, 0], [0, 1, 0, 2, 0, 2, 1]]
+
+
+Length: 21762
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 1], [0, 1, 0, 2, 1, 0, 0]]
+
+
+Length: 21782
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 0, 1, 0], [0, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 21812
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 2, 1, 0], [2, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 21827
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 0, 0, 1], [0, 2, 0, 1, 0, 0, 0]]
+
+
+Length: 21896
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 2, 1, 0], [0, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 21951
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 1, 0, 0], [1, 1, 1, 1, 0, 1, 1]]
+
+
+Length: 21965
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 1, 1, 1], [0, 2, 1, 0, 0, 0, 0]]
+
+
+Length: 21977
+Cylces Count: 3
+Cylces Copies: 0.0008190380852709651
+States: 18
+Nullspace: [[2, 0, 2, 1, 1, 0, 0], [2, 1, 0, 1, 0, 1, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 21980
+Cylces Count: 2
+Cylces Copies: -0.000818926296633303
+States: -18
+Nullspace: [[1, 0, 0, 0, 1, 0, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 21995
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [1, 0, 2, 0, 0, 1, 1]]
+
+
+Length: 22089
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 0, 0], [1, 2, 2, 0, 0, 1, 0]]
+
+
+Length: 22184
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 1, 0], [2, 1, 0, 2, 1, 0, 1]]
+
+
+Length: 22225
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 0], [1, 1, 2, 0, 1, 1, 0]]
+
+
+Length: 22257
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 2, 0, 1], [0, 1, 1, 0, 2, 1, 0]]
+
+
+Length: 22270
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 1, 0], [0, 2, 0, 0, 1, 0, 0]]
+
+
+Length: 22291
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 2, 1, 0, 0], [0, 1, 0, 1, 0, 0, 1]]
+
+
+Length: 22306
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 0, 1, 0], [2, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 22317
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 1, 0, 0], [1, 0, 1, 2, 0, 1, 1]]
+
+
+Length: 22386
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 1, 0], [1, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 22471
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 1, 1, 0], [0, 1, 1, 2, 2, 0, 1]]
+
+
+Length: 22487
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 0, 1, 0], [0, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 22587
+Cylces Count: 3
+Cylces Copies: 0.000796918581484925
+States: 18
+Nullspace: [[2, 1, 1, 1, 0, 0, 0], [0, 1, 2, 0, 2, 1, 0], [0, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 22618
+Cylces Count: 2
+Cylces Copies: -0.0007958263330091078
+States: -18
+Nullspace: [[2, 0, 1, 1, 0, 0, 0], [2, 2, 1, 0, 1, 0, 0]]
+
+
+Length: 22643
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 0, 0, 1], [0, 0, 1, 1, 2, 1, 0]]
+
+
+Length: 22688
+Cylces Count: 3
+Cylces Copies: 0.0007933709449929478
+States: 18
+Nullspace: [[1, 0, 1, 0, 2, 1, 0], [2, 1, 1, 0, 1, 0, 1], [0, 1, 1, 1, 0, 0, 0]]
+
+
+Length: 22724
+Cylces Count: 2
+Cylces Copies: -0.0007921140644252772
+States: -18
+Nullspace: [[1, 0, 1, 0, 1, 0, 0], [2, 1, 2, 2, 0, 1, 0]]
+
+
+Length: 22762
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 1, 0, 0], [0, 2, 1, 0, 0, 2, 1]]
+
+
+Length: 22772
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 1, 0, 0], [0, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 22804
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 0, 1, 0], [1, 1, 0, 0, 1, 0, 1]]
+
+
+Length: 22868
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 1], [0, 0, 0, 1, 1, 0, 0]]
+
+
+Length: 22874
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 0, 1], [0, 1, 2, 1, 1, 1, 0]]
+
+
+Length: 22914
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 0, 0], [2, 2, 1, 0, 0, 1, 1]]
+
+
+Length: 22959
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 0, 1, 0], [0, 0, 1, 1, 1, 0, 0]]
+
+
+Length: 22979
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 1, 0, 1], [0, 2, 2, 1, 0, 0, 0]]
+
+
+Length: 23018
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 0], [0, 1, 0, 0, 1, 0, 0]]
+
+
+Length: 23033
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 1, 0], [2, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 23044
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 1, 0, 0], [1, 0, 1, 0, 0, 1, 1]]
+
+
+Length: 23045
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 1, 0], [0, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 23053
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 1, 1], [0, 2, 0, 1, 0, 0, 0]]
+
+
+Length: 23072
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 0, 0], [1, 0, 0, 2, 0, 1, 0]]
+
+
+Length: 23101
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 1, 0, 0], [0, 2, 2, 0, 0, 1, 1]]
+
+
+Length: 23121
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 1, 1, 0], [0, 0, 0, 2, 1, 0, 1]]
+
+
+Length: 23154
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 1, 1, 0], [0, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 23156
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 0, 1, 0], [0, 1, 0, 2, 1, 0, 1]]
+
+
+Length: 23192
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 0, 1, 0], [0, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 23205
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 2, 1, 0], [0, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 23210
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 0, 1], [0, 1, 2, 1, 0, 0, 0]]
+
+
+Length: 23211
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 1, 1, 0], [0, 0, 1, 1, 1, 0, 1]]
+
+
+Length: 23214
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 0, 0], [0, 1, 2, 0, 1, 1, 0]]
+
+
+Length: 23215
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 0], [2, 2, 1, 0, 1, 2, 1]]
+
+
+Length: 23240
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [0, 0, 0, 2, 0, 1, 1]]
+
+
+Length: 23258
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 0, 0, 1], [0, 0, 2, 1, 0, 1, 0]]
+
+
+Length: 23262
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 1, 0], [1, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 23291
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 1, 0], [2, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 23296
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 0, 1, 0], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 23360
+Cylces Count: 3
+Cylces Copies: 0.0007705479452054794
+States: 18
+Nullspace: [[2, 2, 1, 0, 0, 0, 0], [2, 1, 0, 1, 1, 1, 0], [0, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 23365
+Cylces Count: 2
+Cylces Copies: -0.0007703830515728654
+States: -18
+Nullspace: [[2, 2, 1, 1, 1, 0, 0], [0, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 23376
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 1, 0, 0], [1, 0, 0, 0, 0, 2, 1]]
+
+
+Length: 23378
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 0, 1, 1]]
+
+
+Length: 23384
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 2, 1, 0, 0], [0, 0, 0, 0, 0, 2, 1]]
+
+
+Length: 23387
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 0, 1], [0, 0, 2, 2, 0, 1, 0]]
+
+
+Length: 23426
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 1, 1, 0], [2, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 23430
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 2, 1, 0], [2, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 23464
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 0, 0], [1, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 23496
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 0, 0, 0], [1, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 23507
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 1, 0], [1, 0, 1, 0, 1, 0, 1]]
+
+
+Length: 23518
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 0, 1, 0], [2, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 23557
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 1, 0], [2, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 23568
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 0, 1], [0, 1, 1, 0, 2, 1, 0]]
+
+
+Length: 23586
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 1, 0, 1], [0, 0, 0, 2, 0, 1, 0]]
+
+
+Length: 23596
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 1, 0], [0, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 23628
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 2, 0, 1], [0, 0, 1, 1, 0, 0, 0]]
+
+
+Length: 23631
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 1, 1, 0], [1, 1, 1, 0, 1, 0, 1]]
+
+
+Length: 23641
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 2, 0, 1], [0, 2, 1, 0, 2, 1, 0]]
+
+
+Length: 23650
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 1, 0], [2, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 23675
+Cylces Count: 3
+Cylces Copies: 0.0007602956705385428
+States: 18
+Nullspace: [[0, 2, 2, 1, 0, 0, 0], [0, 1, 1, 0, 1, 0, 0], [0, 1, 1, 0, 0, 1, 1]]
+
+
+Length: 23692
+Cylces Count: 2
+Cylces Copies: -0.0007597501266250211
+States: -18
+Nullspace: [[2, 1, 0, 0, 1, 1, 0], [0, 1, 1, 1, 2, 0, 1]]
+
+
+Length: 23708
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 1, 0, 0], [1, 0, 2, 0, 0, 2, 1]]
+
+
+Length: 23756
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 1, 0], [2, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 23762
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 0, 0, 0], [2, 1, 0, 0, 1, 0, 1]]
+
+
+Length: 23857
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 1, 0], [2, 1, 1, 0, 1, 0, 1]]
+
+
+Length: 23866
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 0, 0], [1, 1, 2, 0, 0, 1, 0]]
+
+
+Length: 23889
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 1, 0], [2, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 23920
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [2, 1, 0, 2, 2, 1, 1]]
+
+
+Length: 23975
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 1, 0, 0], [0, 2, 1, 2, 0, 1, 0]]
+
+
+Length: 23984
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 0, 1, 0], [2, 1, 1, 1, 1, 0, 1]]
+
+
+Length: 24070
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 2, 1, 0], [0, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 24088
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 0, 0, 0], [0, 0, 0, 2, 0, 1, 0]]
+
+
+Length: 24094
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 1, 0], [2, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 24106
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 1, 0], [2, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 24111
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 0, 2, 1]]
+
+
+Length: 24150
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 0, 0], [2, 0, 2, 1, 0, 1, 1]]
+
+
+Length: 24204
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 0, 0, 1], [0, 2, 0, 1, 0, 0, 0]]
+
+
+Length: 24223
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 1, 0, 0], [2, 0, 0, 0, 0, 0, 1]]
+
+
+Length: 24230
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 1, 0], [2, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 24300
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 0, 0, 0, 1], [0, 0, 2, 1, 1, 0, 0]]
+
+
+Length: 24312
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 0, 0], [2, 2, 0, 2, 1, 0, 0]]
+
+
+Length: 24365
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 1, 0], [1, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 24392
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 0, 1, 0], [0, 1, 2, 1, 2, 0, 1]]
+
+
+Length: 24396
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 2, 2, 1], [0, 0, 1, 1, 0, 0, 0]]
+
+
+Length: 24412
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 1, 0, 1], [0, 0, 1, 1, 1, 1, 0]]
+
+
+Length: 24468
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 0, 0], [0, 2, 2, 0, 0, 2, 1]]
+
+
+Length: 24489
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 0, 1, 1], [0, 1, 1, 1, 1, 0, 0]]
+
+
+Length: 24518
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 1, 0, 1, 0], [0, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 24519
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 0, 0, 0], [1, 0, 2, 0, 2, 1, 0]]
+
+
+Length: 24530
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 0, 1, 1, 0], [0, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 24544
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 1, 0, 0], [0, 0, 2, 1, 0, 1, 1]]
+
+
+Length: 24572
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 2, 1, 0], [0, 1, 2, 0, 1, 0, 1]]
+
+
+Length: 24579
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 1, 0], [2, 1, 0, 1, 2, 0, 1]]
+
+
+Length: 24583
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 2, 1, 0], [2, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 24587
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [1, 1, 2, 0, 0, 1, 0]]
+
+
+Length: 24631
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 2, 1, 0], [1, 2, 2, 2, 2, 0, 1]]
+
+
+Length: 24650
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 0, 0], [2, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 24671
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 0, 0, 0], [0, 1, 0, 0, 2, 1, 0]]
+
+
+Length: 24680
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 0, 1, 0], [0, 0, 0, 2, 2, 0, 1]]
+
+
+Length: 24699
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 1, 0], [2, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 24713
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [0, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 24723
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 2, 0, 1], [0, 2, 1, 2, 1, 1, 0]]
+
+
+Length: 24751
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 1, 0], [0, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 24792
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 1, 0, 0], [0, 1, 2, 2, 0, 1, 1]]
+
+
+Length: 24798
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 1, 0, 0], [0, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 24821
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 2, 1, 0], [2, 1, 1, 1, 1, 0, 1]]
+
+
+Length: 24828
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [2, 0, 1, 1, 0, 2, 1]]
+
+
+Length: 24852
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 2, 2, 0, 1], [0, 0, 2, 0, 0, 1, 0]]
+
+
+Length: 24857
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 1, 0, 0], [1, 1, 0, 1, 0, 1, 1]]
+
+
+Length: 24863
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 0, 1, 0], [2, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 24868
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 2, 1, 0], [1, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 24869
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 2, 0, 1], [0, 0, 0, 1, 2, 1, 0]]
+
+
+Length: 24875
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 0, 0], [2, 1, 1, 2, 0, 1, 0]]
+
+
+Length: 24887
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 2, 0, 1], [0, 2, 2, 0, 2, 1, 0]]
+
+
+Length: 24911
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 1, 0, 1], [0, 1, 2, 1, 0, 1, 0]]
+
+
+Length: 24962
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 1, 0], [1, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 24975
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 0], [0, 2, 2, 0, 0, 2, 1]]
+
+
+Length: 25070
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 1, 0, 0], [1, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 25141
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 2, 0, 1], [0, 0, 1, 2, 1, 1, 0]]
+
+
+Length: 25143
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 1, 0, 0], [2, 1, 2, 1, 0, 1, 0]]
+
+
+Length: 25156
+Cylces Count: 3
+Cylces Copies: 0.0007155350612179996
+States: 18
+Nullspace: [[2, 2, 1, 1, 1, 0, 0], [2, 0, 2, 1, 0, 1, 0], [0, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 25177
+Cylces Count: 2
+Cylces Copies: -0.0007149382372800572
+States: -18
+Nullspace: [[1, 2, 1, 1, 0, 1, 0], [0, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 25197
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 2, 1, 0], [1, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 25284
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 2, 1, 0], [0, 1, 1, 1, 2, 0, 1]]
+
+
+Length: 25337
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 1, 0], [1, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 25354
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 2, 1, 0], [0, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 25368
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 0, 0], [2, 1, 0, 0, 0, 2, 1]]
+
+
+Length: 25374
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 0, 1, 0], [1, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 25422
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 1, 1, 0, 0], [0, 1, 0, 2, 0, 2, 1]]
+
+
+Length: 25425
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 2, 1, 0], [1, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 25474
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 1, 0, 1], [0, 0, 0, 1, 0, 1, 0]]
+
+
+Length: 25479
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 1, 0], [1, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 25535
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 0, 0], [0, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 25553
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 0, 1], [0, 1, 0, 0, 0, 1, 0]]
+
+
+Length: 25585
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 2, 0, 1], [0, 1, 1, 2, 0, 1, 0]]
+
+
+Length: 25594
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 0, 1, 0], [0, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 25628
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 1, 1, 0], [0, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 25665
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 1, 1, 0], [2, 2, 2, 1, 1, 0, 1]]
+
+
+Length: 25717
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 2, 1, 0], [1, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 25747
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 0, 1, 1], [0, 1, 1, 2, 1, 0, 0]]
+
+
+Length: 25790
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [2, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 25857
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 0], [0, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 25862
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 1, 0], [1, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 25872
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 2, 0, 1, 0], [0, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 25907
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 0, 0, 1], [0, 1, 0, 0, 2, 1, 0]]
+
+
+Length: 25908
+Cylces Count: 3
+Cylces Copies: 0.0006947660954145438
+States: 18
+Nullspace: [[1, 0, 2, 2, 1, 0, 0], [2, 2, 2, 1, 0, 0, 1], [0, 0, 1, 0, 0, 1, 0]]
+
+
+Length: 26023
+Cylces Count: 2
+Cylces Copies: -0.0006916958075548553
+States: -18
+Nullspace: [[2, 2, 0, 1, 1, 1, 0], [2, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 26045
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 1, 0, 0], [2, 0, 1, 2, 0, 2, 1]]
+
+
+Length: 26148
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 0, 0], [0, 2, 2, 1, 0, 2, 1]]
+
+
+Length: 26191
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 0, 2, 1, 0], [0, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 26201
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 1, 1, 0], [1, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 26236
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 2, 1, 0], [0, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 26265
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 1, 1, 0], [0, 1, 2, 0, 1, 0, 1]]
+
+
+Length: 26319
+Cylces Count: 3
+Cylces Copies: 0.0006839165621794141
+States: 18
+Nullspace: [[2, 1, 1, 0, 0, 0, 0], [2, 0, 0, 1, 1, 1, 0], [1, 1, 0, 2, 1, 0, 1]]
+
+
+Length: 26345
+Cylces Count: 2
+Cylces Copies: -0.0006832416018219776
+States: -18
+Nullspace: [[2, 0, 2, 2, 1, 0, 0], [0, 0, 0, 2, 0, 2, 1]]
+
+
+Length: 26347
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 0, 1, 0], [1, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 26351
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 0, 0], [1, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 26357
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 0, 1, 0], [1, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 26366
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 2, 1, 0], [2, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 26416
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 0, 2, 1], [0, 1, 0, 2, 1, 0, 0]]
+
+
+Length: 26417
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 1], [0, 0, 0, 0, 2, 1, 0]]
+
+
+Length: 26440
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 2, 1, 0], [0, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 26443
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 1, 0], [1, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 26466
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [1, 0, 2, 1, 2, 0, 1]]
+
+
+Length: 26474
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 1, 0, 0], [2, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 26483
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 1, 0], [2, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 26506
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 1, 0, 1], [0, 2, 1, 2, 1, 1, 0]]
+
+
+Length: 26513
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 0, 2, 1], [0, 1, 2, 1, 1, 0, 0]]
+
+
+Length: 26526
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 2, 1, 0], [0, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 26531
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 2, 1, 0], [0, 1, 2, 2, 1, 0, 1]]
+
+
+Length: 26553
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 1, 0], [2, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 26586
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 0, 0], [1, 2, 2, 0, 1, 0, 0]]
+
+
+Length: 26595
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 2, 1, 0], [2, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 26614
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 0, 1, 1, 0], [0, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 26618
+Cylces Count: 3
+Cylces Copies: 0.0006762341272822901
+States: 18
+Nullspace: [[2, 0, 1, 1, 0, 0, 0], [2, 1, 0, 0, 1, 0, 0], [0, 1, 0, 0, 0, 2, 1]]
+
+
+Length: 26629
+Cylces Count: 2
+Cylces Copies: -0.0006759547861354163
+States: -18
+Nullspace: [[1, 1, 2, 1, 1, 0, 1], [0, 0, 1, 1, 1, 1, 0]]
+
+
+Length: 26643
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 1, 0, 0], [1, 2, 1, 2, 0, 1, 1]]
+
+
+Length: 26664
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 1, 0, 0], [2, 1, 1, 1, 0, 1, 0]]
+
+
+Length: 26680
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 0, 1, 0], [0, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 26706
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 1, 0], [0, 2, 2, 0, 1, 0, 0]]
+
+
+Length: 26847
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 1, 0], [1, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 26874
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 1, 0, 0], [0, 1, 0, 1, 0, 2, 1]]
+
+
+Length: 26906
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 0, 1, 0], [1, 0, 2, 1, 2, 0, 1]]
+
+
+Length: 26911
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 2, 1, 0], [1, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 26912
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 2, 0, 1], [0, 1, 2, 2, 1, 1, 0]]
+
+
+Length: 26928
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 0, 0], [1, 1, 0, 0, 1, 0, 0]]
+
+
+Length: 26935
+Cylces Count: 3
+Cylces Copies: 0.0006682754780025988
+States: 18
+Nullspace: [[2, 0, 0, 0, 1, 0, 0], [0, 0, 2, 1, 0, 1, 0], [0, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 26970
+Cylces Count: 2
+Cylces Copies: -0.0006674082313681868
+States: -18
+Nullspace: [[1, 1, 1, 2, 1, 1, 0], [2, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 26998
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 0, 1], [0, 2, 2, 0, 0, 1, 0]]
+
+
+Length: 27007
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 0, 1, 0], [1, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 27019
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 0, 2, 1, 0], [0, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 27045
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 0, 2, 1, 1], [0, 0, 2, 1, 0, 0, 0]]
+
+
+Length: 27071
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 0, 1, 0], [0, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 27093
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 2, 0, 1], [0, 2, 0, 2, 0, 1, 0]]
+
+
+Length: 27196
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 1, 0, 0], [1, 2, 1, 1, 0, 1, 0]]
+
+
+Length: 27209
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 0, 0], [0, 0, 0, 1, 1, 2, 1]]
+
+
+Length: 27219
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 1, 1, 0], [1, 2, 0, 2, 2, 0, 1]]
+
+
+Length: 27222
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 2, 1, 0], [2, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 27274
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 0, 1, 0], [1, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 27275
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 1, 1, 0, 0], [0, 0, 1, 1, 0, 1, 1]]
+
+
+Length: 27310
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 1, 0], [0, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 27369
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 1, 1, 0], [0, 2, 1, 0, 1, 0, 1]]
+
+
+Length: 27383
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 0, 1, 0], [2, 1, 2, 1, 2, 0, 1]]
+
+
+Length: 27430
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 0, 0], [1, 2, 1, 1, 0, 2, 1]]
+
+
+Length: 27466
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 0, 1], [0, 0, 2, 2, 2, 1, 0]]
+
+
+Length: 27471
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 0, 0], [1, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 27484
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 2, 1, 0], [1, 0, 2, 1, 2, 0, 1]]
+
+
+Length: 27495
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 2, 0, 1], [0, 2, 2, 1, 0, 1, 0]]
+
+
+Length: 27529
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 0, 0], [2, 2, 2, 0, 1, 0, 1]]
+
+
+Length: 27601
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 1, 0], [1, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 27683
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 1, 0, 0], [2, 0, 2, 2, 0, 1, 0]]
+
+
+Length: 27718
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 0, 1, 0], [2, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 27732
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 1, 0], [1, 2, 1, 1, 1, 0, 1]]
+
+
+Length: 27766
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 0, 0], [2, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 27776
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 1, 0, 0], [1, 0, 2, 1, 0, 1, 0]]
+
+
+Length: 27801
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 1, 0], [1, 2, 0, 1, 2, 0, 1]]
+
+
+Length: 27843
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 2, 1, 0], [2, 1, 2, 1, 1, 0, 1]]
+
+
+Length: 27852
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 1, 1], [0, 1, 1, 0, 0, 0, 0]]
+
+
+Length: 27867
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 2, 1, 0], [0, 1, 1, 2, 2, 0, 1]]
+
+
+Length: 27873
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 2, 1, 0], [0, 1, 2, 1, 1, 0, 1]]
+
+
+Length: 27991
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 1, 1, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 28028
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 0, 1, 0], [2, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 28030
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 0, 1, 0], [0, 1, 0, 0, 1, 0, 1]]
+
+
+Length: 28098
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 2, 1], [0, 2, 2, 0, 1, 0, 0]]
+
+
+Length: 28114
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 0, 0, 1, 0], [0, 0, 0, 2, 2, 0, 1]]
+
+
+Length: 28145
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 2, 1, 0], [2, 1, 2, 0, 1, 0, 1]]
+
+
+Length: 28172
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 2, 1, 0], [0, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 28197
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 2, 1, 0], [0, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 28221
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 0, 1], [0, 1, 1, 0, 2, 1, 0]]
+
+
+Length: 28231
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 1, 0], [1, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 28285
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 0, 0, 1], [0, 1, 1, 2, 1, 0, 0]]
+
+
+Length: 28305
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 2, 1, 0], [1, 2, 1, 2, 2, 0, 1]]
+
+
+Length: 28337
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 0, 0], [1, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 28348
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 1, 0], [1, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 28354
+Cylces Count: 3
+Cylces Copies: 0.0006348310644000846
+States: 18
+Nullspace: [[2, 0, 1, 0, 1, 0, 1], [0, 2, 0, 0, 0, 1, 0], [0, 0, 2, 1, 0, 0, 0]]
+
+
+Length: 28388
+Cylces Count: 2
+Cylces Copies: -0.0006340707341130054
+States: -18
+Nullspace: [[1, 1, 1, 0, 0, 1, 0], [2, 0, 1, 2, 2, 0, 1]]
+
+
+Length: 28390
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 0, 0], [0, 2, 1, 2, 0, 1, 1]]
+
+
+Length: 28408
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 1, 0], [0, 1, 2, 1, 2, 0, 1]]
+
+
+Length: 28416
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 1, 0], [0, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 28440
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 2, 0, 1], [0, 2, 1, 1, 1, 1, 0]]
+
+
+Length: 28479
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 1, 0, 0], [0, 1, 2, 1, 0, 1, 0]]
+
+
+Length: 28482
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 1, 0], [2, 1, 1, 2, 2, 0, 1]]
+
+
+Length: 28530
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 0, 1, 0], [2, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 28563
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 1, 0, 0], [0, 2, 2, 0, 0, 1, 0]]
+
+
+Length: 28576
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 2, 0, 1], [0, 1, 0, 2, 2, 1, 0]]
+
+
+Length: 28658
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 2, 1, 1], [0, 1, 0, 1, 0, 0, 0]]
+
+
+Length: 28667
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 0, 0], [1, 2, 0, 0, 1, 0, 0]]
+
+
+Length: 28730
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 0, 1, 0], [0, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 28733
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 0, 0], [0, 2, 2, 0, 0, 2, 1]]
+
+
+Length: 28745
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 1, 0], [0, 2, 0, 1, 1, 0, 1]]
+
+
+Length: 28752
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 0, 0], [2, 0, 1, 1, 0, 1, 1]]
+
+
+Length: 28822
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 1, 0], [0, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 28833
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 0, 0], [0, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 28868
+Cylces Count: 3
+Cylces Copies: 0.0006235277816267147
+States: 18
+Nullspace: [[2, 2, 1, 2, 1, 0, 0], [2, 0, 2, 1, 0, 0, 1], [0, 0, 1, 0, 0, 1, 0]]
+
+
+Length: 28901
+Cylces Count: 2
+Cylces Copies: -0.0006228158195218158
+States: -18
+Nullspace: [[1, 1, 1, 1, 0, 0, 0], [0, 0, 1, 0, 1, 0, 1]]
+
+
+Length: 28928
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 0, 1, 1], [0, 0, 0, 1, 1, 0, 0]]
+
+
+Length: 28963
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 0, 1, 0], [0, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 28967
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 0, 0], [1, 2, 2, 1, 0, 0, 1]]
+
+
+Length: 28993
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 1, 0], [0, 0, 1, 1, 2, 0, 1]]
+
+
+Length: 29034
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 2, 1, 0], [0, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 29037
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 2, 0, 0, 1], [0, 0, 2, 1, 0, 1, 0]]
+
+
+Length: 29055
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 1, 2, 1, 0], [0, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 29071
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 2, 1, 0], [2, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 29083
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 2, 0, 1], [0, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 29084
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 1, 1, 1, 0], [0, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 29117
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 0, 0], [2, 2, 2, 0, 0, 2, 1]]
+
+
+Length: 29138
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 0, 0], [1, 1, 0, 1, 0, 2, 1]]
+
+
+Length: 29190
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 1, 1, 0], [0, 1, 1, 1, 1, 0, 1]]
+
+
+Length: 29237
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 1, 0, 0], [2, 1, 2, 2, 0, 1, 0]]
+
+
+Length: 29269
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 0, 0], [1, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 29304
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 0, 1, 0], [0, 1, 2, 0, 1, 0, 0]]
+
+
+Length: 29331
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 1, 0, 0], [2, 0, 1, 1, 0, 2, 1]]
+
+
+Length: 29366
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [2, 2, 1, 1, 2, 0, 1]]
+
+
+Length: 29408
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 0], [1, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 29416
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 0, 1, 0], [0, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 29440
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 0, 1, 1, 0], [0, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 29453
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 1, 0], [0, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 29495
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 0, 0], [2, 1, 0, 0, 1, 0, 0]]
+
+
+Length: 29529
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 0, 2, 1], [0, 2, 1, 0, 1, 0, 0]]
+
+
+Length: 29531
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 2, 2, 1, 0], [0, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 29532
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 0, 0], [0, 1, 0, 0, 1, 1, 1]]
+
+
+Length: 29579
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 0, 1, 0], [2, 1, 1, 1, 2, 0, 1]]
+
+
+Length: 29582
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 0, 0], [2, 2, 0, 1, 0, 2, 1]]
+
+
+Length: 29618
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 0, 0, 1, 0], [0, 0, 2, 0, 1, 0, 0]]
+
+
+Length: 29636
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 2, 1, 1, 0], [0, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 29649
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 0, 1, 0], [1, 0, 0, 2, 1, 0, 1]]
+
+
+Length: 29660
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 0, 1, 0, 0], [0, 0, 2, 0, 0, 1, 1]]
+
+
+Length: 29681
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 0, 0], [2, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 29685
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 1, 0], [1, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 29702
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 2, 1, 0], [1, 1, 2, 1, 2, 0, 1]]
+
+
+Length: 29739
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 2, 0, 1], [0, 0, 1, 0, 2, 1, 0]]
+
+
+Length: 29778
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 1, 0, 0, 0], [0, 2, 1, 0, 1, 1, 0]]
+
+
+Length: 29808
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 1, 0, 0], [0, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 29849
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 1, 0, 0], [0, 1, 2, 2, 0, 1, 1]]
+
+
+Length: 29854
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 1, 0, 0], [2, 0, 2, 1, 0, 1, 1]]
+
+
+Length: 29857
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 0, 0], [0, 1, 1, 2, 0, 1, 1]]
+
+
+Length: 29863
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 0, 1], [0, 2, 1, 1, 1, 1, 0]]
+
+
+Length: 29867
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 1, 0], [1, 2, 2, 1, 1, 0, 1]]
+
+
+Length: 29877
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 1, 1, 0], [2, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 29888
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 1, 1, 0], [0, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 29906
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 0, 0], [2, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 29938
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 0, 0], [0, 0, 0, 2, 0, 1, 0]]
+
+
+Length: 29939
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 2, 1, 0], [1, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 29965
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 0, 1], [0, 2, 0, 2, 2, 1, 0]]
+
+
+Length: 29992
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 1, 1, 0], [2, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 30027
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [2, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 30030
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 1, 1, 0]]
+
+
+Length: 30040
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [0, 2, 1, 1, 1, 0, 1]]
+
+
+Length: 30044
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [2, 0, 2, 1, 0, 1, 0]]
+
+
+Length: 30085
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 0, 0, 0], [0, 1, 0, 0, 0, 1, 1]]
+
+
+Length: 30113
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 1, 0], [0, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 30130
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 1, 1, 0], [2, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 30137
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 0, 0], [1, 0, 1, 0, 2, 1, 1]]
+
+
+Length: 30146
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 1, 0, 0], [2, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 30148
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 0, 0, 0], [0, 2, 1, 0, 1, 0, 0]]
+
+
+Length: 30150
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 0, 1, 0], [1, 2, 1, 0, 1, 0, 1]]
+
+
+Length: 30157
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 1, 0], [1, 0, 1, 1, 1, 0, 1]]
+
+
+Length: 30181
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 2, 0, 1], [0, 2, 1, 0, 1, 1, 0]]
+
+
+Length: 30191
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 0, 0, 0], [0, 2, 0, 0, 2, 1, 1]]
+
+
+Length: 30204
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 1, 0, 1, 0], [0, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 30207
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 1, 0], [1, 2, 1, 2, 2, 0, 1]]
+
+
+Length: 30235
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 1, 0], [2, 1, 1, 0, 1, 0, 1]]
+
+
+Length: 30253
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 0, 2, 1], [0, 2, 0, 2, 1, 0, 0]]
+
+
+Length: 30263
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 1], [0, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 30269
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 2, 1, 0], [2, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 30271
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 2, 1, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 30279
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 2, 1], [0, 1, 2, 1, 1, 0, 0]]
+
+
+Length: 30311
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 0, 1, 0], [0, 0, 0, 0, 2, 0, 1]]
+
+
+Length: 30349
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 1, 0], [0, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 30355
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 1, 0], [0, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 30423
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 1, 0], [0, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 30485
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 0, 0], [2, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 30526
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 2, 0, 1], [0, 0, 0, 1, 0, 1, 0]]
+
+
+Length: 30537
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 2, 1, 0], [1, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 30663
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 1, 0, 1], [0, 2, 2, 1, 1, 1, 0]]
+
+
+Length: 30752
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [1, 1, 0, 0, 0, 1, 1]]
+
+
+Length: 30759
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 1, 0, 0], [1, 1, 1, 0, 0, 1, 1]]
+
+
+Length: 30772
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 0, 0, 0], [0, 0, 0, 0, 2, 0, 1]]
+
+
+Length: 30797
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 2, 1, 1]]
+
+
+Length: 30831
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 30834
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 1, 1], [0, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 30912
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 2, 1, 0], [0, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 30914
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 0, 1, 0], [1, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 30938
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [2, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 30975
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 1, 0], [0, 1, 0, 1, 1, 0, 1]]
+
+
+Length: 31008
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 1, 0], [2, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 31013
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 1, 0, 0], [2, 0, 1, 0, 0, 2, 1]]
+
+
+Length: 31050
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 1, 0, 1], [0, 0, 0, 1, 2, 1, 0]]
+
+
+Length: 31061
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 0, 0, 0], [1, 0, 0, 0, 1, 2, 1]]
+
+
+Length: 31089
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 2, 1, 0], [0, 0, 1, 0, 1, 0, 1]]
+
+
+Length: 31094
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 0, 0, 1], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 31124
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 1, 0], [0, 2, 2, 2, 1, 0, 0]]
+
+
+Length: 31160
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 1, 1], [0, 1, 2, 1, 0, 0, 0]]
+
+
+Length: 31251
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 1, 0, 0], [0, 0, 2, 0, 0, 1, 1]]
+
+
+Length: 31270
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [1, 2, 1, 0, 1, 0, 1]]
+
+
+Length: 31286
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 1, 0, 0, 1], [0, 0, 2, 0, 0, 1, 0]]
+
+
+Length: 31378
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 0, 0, 1], [0, 2, 2, 2, 1, 1, 0]]
+
+
+Length: 31383
+Cylces Count: 3
+Cylces Copies: 0.0005735589331803843
+States: 18
+Nullspace: [[2, 2, 0, 1, 0, 0, 0], [2, 2, 2, 0, 2, 1, 0], [2, 2, 2, 0, 1, 0, 1]]
+
+
+Length: 31392
+Cylces Count: 2
+Cylces Copies: -0.0005733944954128441
+States: -18
+Nullspace: [[2, 1, 1, 1, 1, 0, 0], [0, 0, 1, 1, 0, 1, 1]]
+
+
+Length: 31450
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 1, 0, 1], [0, 2, 1, 0, 2, 1, 0]]
+
+
+Length: 31616
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 1, 0], [0, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 31635
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 2, 1, 0], [2, 1, 0, 2, 1, 0, 1]]
+
+
+Length: 31658
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 1, 0, 0], [0, 2, 2, 2, 0, 1, 0]]
+
+
+Length: 31663
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 0, 0], [2, 1, 0, 0, 1, 0, 0]]
+
+
+Length: 31670
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 1, 0], [1, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 31683
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 0, 1], [0, 1, 1, 2, 1, 0, 0]]
+
+
+Length: 31833
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 0, 0], [0, 2, 0, 0, 2, 1, 1]]
+
+
+Length: 31869
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 1, 0], [0, 1, 0, 1, 1, 0, 1]]
+
+
+Length: 31923
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 2, 1, 0], [0, 2, 1, 1, 1, 0, 1]]
+
+
+Length: 31931
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 1, 0], [2, 2, 1, 1, 1, 0, 1]]
+
+
+Length: 32007
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 2, 0, 1], [0, 1, 2, 2, 2, 1, 0]]
+
+
+Length: 32017
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 2, 1, 0], [1, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 32041
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 0, 0], [2, 1, 1, 2, 0, 1, 1]]
+
+
+Length: 32105
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [0, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 32106
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 2, 1, 0], [1, 0, 1, 1, 1, 0, 1]]
+
+
+Length: 32178
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 0, 1], [0, 0, 1, 1, 1, 1, 0]]
+
+
+Length: 32220
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 1, 0, 0], [0, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 32230
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 1, 0], [1, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 32271
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 2, 0, 1], [0, 0, 1, 0, 0, 1, 0]]
+
+
+Length: 32282
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 0, 0, 0], [1, 0, 2, 0, 1, 2, 1]]
+
+
+Length: 32295
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 1, 0, 0], [1, 1, 0, 2, 0, 1, 1]]
+
+
+Length: 32328
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 0, 1, 0], [0, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 32352
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 0, 0], [0, 2, 0, 0, 0, 1, 1]]
+
+
+Length: 32364
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 1, 0, 0], [1, 0, 1, 1, 0, 2, 1]]
+
+
+Length: 32517
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 0, 1], [0, 2, 1, 2, 2, 1, 0]]
+
+
+Length: 32528
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 0, 0], [2, 2, 1, 0, 0, 2, 1]]
+
+
+Length: 32559
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 2, 1, 0], [2, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 32560
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 0, 1], [0, 2, 0, 2, 1, 0, 0]]
+
+
+Length: 32571
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 0, 0, 1], [0, 0, 0, 1, 0, 1, 0]]
+
+
+Length: 32650
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 2, 1, 0, 0], [0, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 32668
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 0, 0], [2, 2, 0, 1, 0, 2, 1]]
+
+
+Length: 32680
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 2, 1, 0], [1, 2, 0, 2, 2, 0, 1]]
+
+
+Length: 32685
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 0, 1, 0], [0, 2, 1, 0, 1, 0, 1]]
+
+
+Length: 32794
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 0, 1, 0], [0, 2, 2, 1, 1, 0, 0]]
+
+
+Length: 32807
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 0, 1], [0, 1, 1, 0, 2, 1, 0]]
+
+
+Length: 32840
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 0, 1, 0], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 32844
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 0, 0, 0], [0, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 32865
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 0, 1, 0], [1, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 32899
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 32922
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 1, 0, 0], [2, 2, 0, 0, 0, 2, 1]]
+
+
+Length: 32929
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 2, 1, 0], [0, 1, 0, 1, 0, 0, 1]]
+
+
+Length: 32946
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 0, 1, 0], [1, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 32961
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 0, 0], [1, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 32983
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 1, 0], [2, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 33000
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 0, 0], [0, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 33007
+Cylces Count: 3
+Cylces Copies: 0.0005453388675129518
+States: 18
+Nullspace: [[2, 2, 1, 0, 0, 0, 0], [1, 1, 0, 2, 2, 1, 0], [1, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 33012
+Cylces Count: 2
+Cylces Copies: -0.0005452562704471102
+States: -18
+Nullspace: [[2, 0, 1, 0, 0, 0, 0], [0, 0, 0, 2, 1, 1, 0]]
+
+
+Length: 33036
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 0, 1, 0], [0, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 33119
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 2, 1, 0], [1, 0, 1, 0, 1, 0, 1]]
+
+
+Length: 33122
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 0, 1, 0], [0, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 33162
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 0, 0], [2, 2, 1, 0, 0, 2, 1]]
+
+
+Length: 33176
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 0, 1, 1], [0, 2, 2, 0, 1, 0, 0]]
+
+
+Length: 33201
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 1, 0, 0], [1, 2, 1, 1, 0, 1, 1]]
+
+
+Length: 33220
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 1, 1, 0], [1, 0, 2, 1, 1, 0, 1]]
+
+
+Length: 33225
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 0, 0], [2, 2, 1, 0, 0, 2, 1]]
+
+
+Length: 33248
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 1, 0, 0], [1, 1, 0, 1, 0, 1, 0]]
+
+
+Length: 33261
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 1, 0], [2, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 33263
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 2, 1, 0], [1, 0, 0, 0, 2, 0, 1]]
+
+
+Length: 33267
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 0, 1, 0], [0, 1, 1, 2, 1, 0, 0]]
+
+
+Length: 33313
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 2, 1, 0], [1, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 33320
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 2, 1, 0], [0, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 33353
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 1, 0, 1], [0, 2, 0, 2, 2, 1, 0]]
+
+
+Length: 33362
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 0], [2, 1, 0, 0, 1, 0, 0]]
+
+
+Length: 33377
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 2, 0, 2, 1], [0, 0, 0, 2, 1, 0, 0]]
+
+
+Length: 33390
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 0, 0], [2, 0, 0, 0, 1, 0, 0]]
+
+
+Length: 33410
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 1, 0], [2, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 33420
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 0, 0], [1, 0, 1, 2, 0, 2, 1]]
+
+
+Length: 33505
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 0, 1, 0], [0, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 33530
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 1, 0], [1, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 33550
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 0], [1, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 33554
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 2, 0, 1], [0, 2, 1, 2, 2, 1, 0]]
+
+
+Length: 33585
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 2, 1, 0], [1, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 33605
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 1, 0, 0], [0, 0, 2, 2, 0, 1, 1]]
+
+
+Length: 33606
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 1], [0, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 33630
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 0, 1, 0], [1, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 33637
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 2, 1, 0], [2, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 33660
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 2, 0, 1], [0, 2, 0, 1, 2, 1, 0]]
+
+
+Length: 33708
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 2, 1, 0], [1, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 33722
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 2, 1, 0], [2, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 33723
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 0, 0], [0, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 33728
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 0, 1], [0, 2, 1, 2, 2, 1, 0]]
+
+
+Length: 33755
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 1, 0, 0], [0, 2, 0, 2, 0, 2, 1]]
+
+
+Length: 33791
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 2, 0, 1], [0, 2, 1, 0, 0, 0, 0]]
+
+
+Length: 33800
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 0], [0, 1, 1, 0, 2, 1, 1]]
+
+
+Length: 33803
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 2, 1, 0], [2, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 33819
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 2, 1, 0], [2, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 33839
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 0, 0, 0], [2, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 33930
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 0, 1], [0, 0, 1, 0, 2, 1, 0]]
+
+
+Length: 33940
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [1, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 33980
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 2, 1, 0], [0, 2, 0, 1, 2, 0, 1]]
+
+
+Length: 33985
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 1, 1, 0], [0, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 34042
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 1, 0, 0], [2, 0, 2, 1, 0, 1, 0]]
+
+
+Length: 34089
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 1, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 34109
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 1, 0, 1], [0, 2, 1, 1, 0, 1, 0]]
+
+
+Length: 34110
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 0, 1, 1], [0, 2, 1, 2, 1, 0, 0]]
+
+
+Length: 34114
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 1, 2, 0, 1], [0, 0, 2, 2, 2, 1, 0]]
+
+
+Length: 34148
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 0, 1], [0, 0, 1, 1, 2, 1, 0]]
+
+
+Length: 34168
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 2, 1, 0], [2, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 34222
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 1, 0], [0, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 34248
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 2, 1, 0], [2, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 34250
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 1, 0], [1, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 34266
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 0, 1, 0], [0, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 34302
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 0, 1, 0], [0, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 34323
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 1, 0, 0], [2, 1, 1, 1, 0, 2, 1]]
+
+
+Length: 34340
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 0, 0, 0], [0, 0, 0, 0, 1, 2, 1]]
+
+
+Length: 34358
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 2, 1, 0], [2, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 34385
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 1, 0, 1], [0, 1, 0, 1, 0, 0, 0]]
+
+
+Length: 34419
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 1, 0], [0, 1, 0, 2, 1, 0, 0]]
+
+
+Length: 34437
+Cylces Count: 3
+Cylces Copies: 0.0005226936144263438
+States: 18
+Nullspace: [[2, 1, 1, 1, 1, 0, 0], [1, 2, 1, 1, 0, 1, 0], [1, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 34468
+Cylces Count: 2
+Cylces Copies: -0.0005222235116629918
+States: -18
+Nullspace: [[1, 0, 0, 1, 0, 1, 0], [1, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 34484
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 1, 0, 0], [0, 2, 1, 0, 0, 2, 1]]
+
+
+Length: 34505
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 2, 0, 1], [0, 1, 1, 0, 2, 1, 0]]
+
+
+Length: 34520
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 2, 0, 1], [0, 0, 1, 1, 1, 1, 0]]
+
+
+Length: 34551
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 1, 0], [1, 0, 1, 2, 0, 0, 1]]
+
+
+Length: 34591
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 0, 0], [2, 0, 2, 1, 2, 1, 0]]
+
+
+Length: 34661
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 1, 0], [2, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 34669
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 0, 1], [0, 2, 1, 0, 1, 1, 0]]
+
+
+Length: 34687
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 0, 0], [1, 0, 2, 0, 0, 2, 1]]
+
+
+Length: 34700
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 0, 1], [0, 1, 0, 0, 1, 1, 0]]
+
+
+Length: 34701
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 2, 1, 0], [1, 0, 0, 2, 2, 0, 1]]
+
+
+Length: 34732
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 2, 1, 0], [0, 2, 0, 0, 1, 0, 1]]
+
+
+Length: 34784
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 2, 0, 1], [0, 0, 0, 0, 2, 1, 0]]
+
+
+Length: 34785
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 0, 0], [1, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 34798
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 34857
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 2, 0, 1], [0, 2, 2, 2, 1, 1, 0]]
+
+
+Length: 34864
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 1, 1, 0], [2, 2, 2, 0, 1, 0, 1]]
+
+
+Length: 34867
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 0, 1, 0], [0, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 34887
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 2, 1, 0], [1, 2, 2, 1, 1, 0, 1]]
+
+
+Length: 34910
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [0, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 34978
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 0, 1, 1], [0, 0, 2, 2, 1, 0, 0]]
+
+
+Length: 35008
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 1, 0, 1], [0, 2, 0, 1, 0, 0, 0]]
+
+
+Length: 35019
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 0, 1], [0, 1, 2, 2, 1, 0, 0]]
+
+
+Length: 35050
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 0, 1], [0, 0, 1, 1, 2, 1, 0]]
+
+
+Length: 35054
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 1, 0, 2, 1], [0, 0, 1, 2, 1, 0, 0]]
+
+
+Length: 35079
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 1, 1, 0], [1, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 35087
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 0, 1, 0], [0, 0, 0, 2, 2, 0, 1]]
+
+
+Length: 35156
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 1, 0], [2, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 35208
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 0, 1, 0], [2, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 35215
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 0, 1, 0], [0, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 35219
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 0, 1, 0], [0, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 35244
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 0, 0, 0], [2, 1, 1, 0, 1, 0, 1]]
+
+
+Length: 35288
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 2, 1, 0], [2, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 35326
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 2, 1, 0], [0, 0, 0, 2, 2, 0, 1]]
+
+
+Length: 35339
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 2, 0, 1], [0, 0, 1, 2, 1, 1, 0]]
+
+
+Length: 35345
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 1, 0], [1, 0, 2, 1, 2, 0, 1]]
+
+
+Length: 35362
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 2, 1, 0], [1, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 35402
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 2, 1, 0], [0, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 35418
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 1, 0, 0], [1, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 35428
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 0, 1], [0, 0, 2, 1, 1, 1, 0]]
+
+
+Length: 35462
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 1, 0], [2, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 35463
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 1, 0, 0], [0, 2, 0, 0, 0, 1, 1]]
+
+
+Length: 35465
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 1, 0, 1], [0, 2, 2, 2, 0, 1, 0]]
+
+
+Length: 35473
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 0, 1, 0], [0, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 35478
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 2, 1, 1, 0], [0, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 35522
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 2, 1, 0], [2, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 35555
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 1, 0, 0], [2, 2, 0, 0, 0, 2, 1]]
+
+
+Length: 35566
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 1, 0], [0, 1, 2, 2, 1, 0, 1]]
+
+
+Length: 35576
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 1, 1, 0], [2, 2, 0, 1, 2, 0, 1]]
+
+
+Length: 35599
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 0, 1, 0], [0, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 35661
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 1, 1, 0], [2, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 35664
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 0, 0, 0], [2, 1, 2, 0, 0, 2, 1]]
+
+
+Length: 35680
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 0, 1], [0, 0, 0, 1, 1, 1, 0]]
+
+
+Length: 35716
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 1, 0], [0, 0, 0, 0, 2, 0, 1]]
+
+
+Length: 35720
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 0, 0], [1, 0, 1, 1, 0, 1, 1]]
+
+
+Length: 35737
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 0, 0, 0], [2, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 35754
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 2, 0, 1], [0, 0, 2, 2, 0, 1, 0]]
+
+
+Length: 35778
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 1, 1, 0], [0, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 35829
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 2, 0, 1], [0, 0, 2, 2, 1, 1, 0]]
+
+
+Length: 35835
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 0], [2, 2, 1, 2, 0, 2, 1]]
+
+
+Length: 35836
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 1, 1], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 35863
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [2, 0, 2, 2, 0, 1, 1]]
+
+
+Length: 35867
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 2, 1, 0], [1, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 35901
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 0, 1, 0], [1, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 35921
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 2, 1, 0], [1, 2, 2, 2, 2, 0, 1]]
+
+
+Length: 35953
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 1, 1, 0], [0, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 35978
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 1, 0], [0, 0, 1, 2, 2, 0, 1]]
+
+
+Length: 35981
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 0, 0], [2, 2, 0, 1, 0, 1, 1]]
+
+
+Length: 35982
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 2, 1, 0], [2, 2, 1, 2, 2, 0, 1]]
+
+
+Length: 35994
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 1, 0], [0, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 36014
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [0, 0, 1, 2, 0, 2, 1]]
+
+
+Length: 36034
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 2, 2, 0, 1], [0, 0, 0, 2, 2, 1, 0]]
+
+
+Length: 36104
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 0, 1, 0], [2, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 36165
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 1, 1, 0], [0, 1, 1, 2, 2, 0, 1]]
+
+
+Length: 36187
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 0, 0, 1], [0, 0, 2, 2, 0, 1, 0]]
+
+
+Length: 36189
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 1, 0], [2, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 36225
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 2, 0, 1], [0, 1, 0, 0, 2, 1, 0]]
+
+
+Length: 36241
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 36337
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 0, 0], [2, 2, 2, 1, 0, 0, 1]]
+
+
+Length: 36358
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 0, 0], [1, 1, 0, 1, 0, 1, 1]]
+
+
+Length: 36393
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 1, 0, 1], [0, 1, 1, 1, 0, 1, 0]]
+
+
+Length: 36459
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 0, 0], [1, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 36510
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 2, 1, 0], [2, 2, 0, 2, 2, 0, 1]]
+
+
+Length: 36540
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 0, 0, 1], [0, 1, 1, 0, 2, 1, 0]]
+
+
+Length: 36543
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 1, 0], [2, 2, 0, 2, 2, 0, 1]]
+
+
+Length: 36551
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 0, 1], [0, 2, 1, 1, 0, 0, 0]]
+
+
+Length: 36555
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 0], [2, 0, 2, 0, 1, 0, 0]]
+
+
+Length: 36558
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 1, 0, 0], [0, 0, 2, 1, 0, 2, 1]]
+
+
+Length: 36561
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 1, 0, 0], [0, 2, 1, 2, 0, 0, 1]]
+
+
+Length: 36669
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 1, 0], [1, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 36682
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 2, 1, 0], [0, 2, 1, 0, 1, 0, 1]]
+
+
+Length: 36707
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 2, 1], [0, 2, 0, 0, 1, 0, 0]]
+
+
+Length: 36712
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 1, 0, 0], [2, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 36716
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 1, 0, 1], [0, 1, 0, 1, 2, 1, 0]]
+
+
+Length: 36723
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 1, 0], [1, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 36744
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 0, 1, 0], [0, 2, 1, 1, 2, 0, 1]]
+
+
+Length: 36765
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 2, 1], [0, 1, 2, 0, 1, 0, 0]]
+
+
+Length: 36772
+Cylces Count: 3
+Cylces Copies: 0.0004895028826280866
+States: 18
+Nullspace: [[1, 1, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 1, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 36774
+Cylces Count: 2
+Cylces Copies: -0.0004894762604013706
+States: -18
+Nullspace: [[0, 1, 0, 1, 1, 0, 0], [0, 2, 2, 1, 0, 1, 0]]
+
+
+Length: 36790
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 0, 0], [2, 0, 0, 1, 0, 2, 1]]
+
+
+Length: 36837
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 0, 1, 0, 0], [0, 2, 2, 1, 0, 1, 1]]
+
+
+Length: 36845
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 0], [1, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 36857
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 0, 1], [0, 0, 2, 1, 0, 0, 0]]
+
+
+Length: 36863
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 0, 2, 1], [0, 1, 0, 1, 1, 0, 0]]
+
+
+Length: 36874
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 2, 0, 1], [0, 1, 0, 0, 1, 1, 0]]
+
+
+Length: 36915
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 2, 1, 1], [0, 1, 1, 0, 0, 0, 0]]
+
+
+Length: 36992
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 0], [1, 0, 0, 0, 0, 1, 0]]
+
+
+Length: 37007
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 2, 2, 1, 0], [0, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 37012
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 0, 1, 0], [1, 0, 1, 1, 0, 0, 1]]
+
+
+Length: 37036
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 0, 1], [0, 0, 0, 2, 1, 1, 0]]
+
+
+Length: 37165
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 1, 1, 0], [1, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 37178
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 0, 1], [0, 2, 1, 2, 0, 1, 0]]
+
+
+Length: 37200
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 1], [0, 0, 2, 1, 0, 0, 0]]
+
+
+Length: 37202
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 0, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 37240
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 2, 1, 0], [0, 2, 1, 0, 0, 0, 0]]
+
+
+Length: 37256
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 1, 0, 1], [0, 1, 1, 2, 1, 1, 0]]
+
+
+Length: 37275
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 1, 2, 1, 0], [0, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 37280
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 1, 1, 0], [2, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 37336
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 1, 0], [1, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 37363
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 0, 1], [0, 2, 1, 2, 2, 1, 0]]
+
+
+Length: 37415
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 0, 0], [0, 2, 0, 1, 0, 2, 1]]
+
+
+Length: 37416
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 2, 1, 0], [2, 1, 2, 1, 2, 0, 1]]
+
+
+Length: 37419
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 2, 1, 0], [0, 1, 0, 0, 1, 0, 1]]
+
+
+Length: 37449
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 0, 0], [1, 0, 0, 2, 0, 1, 1]]
+
+
+Length: 37459
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 1, 0], [0, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 37460
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 0], [1, 1, 1, 0, 1, 0, 1]]
+
+
+Length: 37474
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 2, 1, 0, 0], [0, 0, 2, 0, 0, 1, 1]]
+
+
+Length: 37516
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 0, 1, 0], [2, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 37540
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 2, 0, 1], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 37544
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 1, 0], [2, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 37545
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 2, 1, 0], [0, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 37569
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 0, 1, 0], [0, 0, 1, 1, 2, 0, 1]]
+
+
+Length: 37576
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 0, 0, 1], [0, 0, 1, 1, 1, 1, 0]]
+
+
+Length: 37624
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 1, 0], [1, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 37627
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 0, 1], [0, 0, 2, 1, 2, 1, 0]]
+
+
+Length: 37630
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 2, 1, 0], [1, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 37631
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 2, 1, 0], [2, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 37667
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 2, 1, 0]]
+
+
+Length: 37677
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 2, 1, 0], [2, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 37841
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 0, 1, 0, 0], [0, 0, 2, 0, 0, 1, 1]]
+
+
+Length: 37842
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 0], [2, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 37861
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 1, 0, 0, 1], [0, 0, 1, 2, 1, 0, 0]]
+
+
+Length: 37926
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 2, 1, 0], [0, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 37927
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 0], [0, 2, 2, 0, 1, 0, 0]]
+
+
+Length: 37965
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 0, 1, 0], [2, 1, 0, 0, 1, 0, 1]]
+
+
+Length: 37999
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 2, 1, 0], [0, 1, 2, 0, 1, 0, 1]]
+
+
+Length: 38007
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 0, 0], [0, 2, 0, 0, 2, 1, 0]]
+
+
+Length: 38018
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 1, 1, 0], [1, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 38035
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 1, 0], [0, 2, 2, 1, 1, 0, 1]]
+
+
+Length: 38053
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 1, 0, 0], [0, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 38065
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 2, 1, 0], [0, 0, 1, 2, 2, 0, 1]]
+
+
+Length: 38082
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 0, 1, 0], [1, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 38084
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 1, 0, 1, 0], [0, 0, 2, 0, 1, 0, 0]]
+
+
+Length: 38090
+Cylces Count: 3
+Cylces Copies: 0.0004725649776844316
+States: 18
+Nullspace: [[1, 0, 1, 1, 0, 0, 0], [2, 1, 0, 0, 1, 0, 0], [2, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 38109
+Cylces Count: 2
+Cylces Copies: -0.0004723293710147209
+States: -18
+Nullspace: [[1, 0, 0, 0, 2, 0, 1], [0, 1, 2, 0, 2, 1, 0]]
+
+
+Length: 38117
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 2, 1, 0], [0, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 38129
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 0, 0], [1, 1, 0, 0, 0, 1, 1]]
+
+
+Length: 38134
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 0, 1, 0], [2, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 38185
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 2, 1], [0, 0, 1, 1, 1, 0, 0]]
+
+
+Length: 38200
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 0, 1, 0], [1, 1, 2, 0, 2, 0, 1]]
+
+
+Length: 38206
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 2, 1, 0], [0, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 38244
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 1, 0, 0], [0, 0, 2, 0, 0, 2, 1]]
+
+
+Length: 38290
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 0, 1, 0], [1, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 38319
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 2, 1, 0], [0, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 38320
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 0, 0], [2, 1, 0, 0, 2, 2, 1]]
+
+
+Length: 38347
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 1, 1, 0], [1, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 38360
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 0, 1, 0], [0, 0, 0, 1, 1, 0, 1]]
+
+
+Length: 38415
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 2, 1, 0], [0, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 38421
+Cylces Count: 3
+Cylces Copies: 0.00046849379245724994
+States: 18
+Nullspace: [[1, 1, 0, 1, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0], [1, 2, 2, 0, 0, 1, 1]]
+
+
+Length: 38425
+Cylces Count: 2
+Cylces Copies: -0.00046844502277163305
+States: -18
+Nullspace: [[1, 2, 0, 2, 0, 0, 1], [0, 2, 1, 0, 1, 0, 0]]
+
+
+Length: 38449
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 1, 1, 0], [1, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 38452
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 1, 1, 0, 1], [0, 0, 2, 2, 0, 1, 0]]
+
+
+Length: 38503
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 0, 1], [0, 0, 1, 1, 0, 0, 0]]
+
+
+Length: 38527
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 1, 0], [0, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 38530
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 0, 1, 0], [1, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 38532
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 2, 1, 1], [0, 2, 2, 1, 0, 0, 0]]
+
+
+Length: 38567
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 0, 0], [1, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 38617
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 2, 1], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 38629
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 1, 1], [0, 2, 0, 0, 1, 0, 0]]
+
+
+Length: 38682
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 2, 1, 0], [0, 0, 0, 0, 2, 0, 1]]
+
+
+Length: 38757
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 2, 1, 0], [1, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 38805
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 1, 0, 1], [0, 2, 2, 2, 2, 1, 0]]
+
+
+Length: 38814
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 0, 0, 1], [0, 0, 2, 2, 1, 1, 0]]
+
+
+Length: 38860
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [2, 0, 2, 0, 1, 0, 1]]
+
+
+Length: 38874
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 1, 1, 0], [2, 2, 1, 2, 2, 0, 1]]
+
+
+Length: 38884
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 2, 1, 0], [0, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 38890
+Cylces Count: 3
+Cylces Copies: 0.00046284391874517873
+States: 18
+Nullspace: [[1, 2, 0, 1, 1, 0, 0], [1, 1, 2, 0, 0, 1, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 38908
+Cylces Count: 2
+Cylces Copies: -0.0004626297933586923
+States: -18
+Nullspace: [[2, 1, 0, 2, 0, 0, 1], [0, 2, 2, 0, 2, 1, 0]]
+
+
+Length: 38954
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 0, 1, 0], [2, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 38977
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 0, 0, 1], [0, 0, 0, 1, 0, 1, 0]]
+
+
+Length: 38989
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 1, 0], [0, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 38997
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 1, 0], [2, 2, 2, 1, 0, 0, 1]]
+
+
+Length: 39040
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 1, 0], [2, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 39076
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 1, 0, 1], [0, 2, 2, 2, 0, 1, 0]]
+
+
+Length: 39098
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 0, 1, 0], [0, 0, 1, 1, 1, 0, 1]]
+
+
+Length: 39108
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 0, 0], [1, 1, 0, 0, 0, 1, 0]]
+
+
+Length: 39115
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 1, 0, 1, 0], [0, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 39163
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 2, 0, 1], [0, 1, 1, 2, 1, 1, 0]]
+
+
+Length: 39183
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 1, 1, 0], [0, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 39236
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 0, 1, 1], [0, 1, 2, 0, 1, 0, 0]]
+
+
+Length: 39254
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 1, 0, 0], [2, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 39255
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 0, 1, 0], [2, 1, 0, 2, 1, 0, 1]]
+
+
+Length: 39256
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 0, 2, 1], [0, 0, 2, 2, 1, 0, 0]]
+
+
+Length: 39279
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 2, 1, 0], [2, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 39291
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 0, 0, 1], [0, 0, 1, 2, 0, 1, 0]]
+
+
+Length: 39347
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 1, 0], [1, 2, 0, 1, 2, 0, 1]]
+
+
+Length: 39371
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 2, 1, 0], [1, 2, 1, 2, 2, 0, 1]]
+
+
+Length: 39385
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 1, 0, 0], [0, 2, 0, 2, 0, 1, 1]]
+
+
+Length: 39411
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 1, 0, 0], [2, 0, 0, 0, 0, 1, 0]]
+
+
+Length: 39430
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 1, 0, 0], [1, 2, 0, 0, 0, 1, 0]]
+
+
+Length: 39440
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 2, 1, 0], [0, 2, 1, 1, 0, 0, 0]]
+
+
+Length: 39452
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 1, 0], [1, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 39470
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 0, 0], [1, 1, 2, 0, 0, 1, 1]]
+
+
+Length: 39491
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 1, 1], [0, 1, 1, 2, 1, 0, 0]]
+
+
+Length: 39498
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 2, 1, 0], [0, 2, 1, 2, 1, 0, 1]]
+
+
+Length: 39563
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 1, 1, 0], [1, 0, 0, 2, 2, 0, 1]]
+
+
+Length: 39608
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 1, 0, 0], [0, 1, 2, 2, 0, 1, 0]]
+
+
+Length: 39625
+Cylces Count: 3
+Cylces Copies: 0.00045425867507886436
+States: 18
+Nullspace: [[2, 1, 1, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 1], [0, 1, 0, 2, 1, 1, 0]]
+
+
+Length: 39658
+Cylces Count: 2
+Cylces Copies: -0.000453880679812396
+States: -18
+Nullspace: [[1, 0, 2, 0, 0, 1, 0], [2, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 39669
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 0, 0], [2, 1, 1, 1, 0, 1, 0]]
+
+
+Length: 39685
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 0, 0], [0, 2, 2, 0, 0, 1, 0]]
+
+
+Length: 39789
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 0, 1], [0, 2, 1, 2, 0, 1, 0]]
+
+
+Length: 39816
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 1, 0, 0], [1, 2, 0, 2, 0, 2, 1]]
+
+
+Length: 39851
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 1, 1, 0], [1, 0, 0, 0, 1, 0, 1]]
+
+
+Length: 39885
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 2, 1, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 39937
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 0, 1, 1], [0, 2, 1, 0, 1, 0, 0]]
+
+
+Length: 39941
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 0, 1], [0, 1, 0, 2, 2, 1, 0]]
+
+
+Length: 39943
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 0, 1, 0], [2, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 39966
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 2, 0, 1], [0, 1, 2, 0, 0, 1, 0]]
+
+
+Length: 39990
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 1, 0], [1, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 40036
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 1, 0, 0], [1, 0, 2, 1, 0, 1, 0]]
+
+
+Length: 40060
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 1, 0], [1, 1, 1, 0, 1, 0, 1]]
+
+
+Length: 40125
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 1, 0, 0], [2, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 40164
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 2, 1, 0, 0], [2, 2, 2, 1, 0, 1, 1]]
+
+
+Length: 40175
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 1], [0, 2, 0, 0, 2, 1, 0]]
+
+
+Length: 40211
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 0, 1, 0], [0, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 40213
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 1, 0, 0], [0, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 40216
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 0, 1, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 40231
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 0, 0], [1, 2, 0, 0, 1, 0, 0]]
+
+
+Length: 40244
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 1, 1], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 40251
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 0, 0], [1, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 40261
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 0, 0], [1, 0, 1, 2, 0, 0, 1]]
+
+
+Length: 40296
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 0], [2, 1, 2, 2, 0, 1, 1]]
+
+
+Length: 40372
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 1, 0, 0], [0, 0, 0, 2, 0, 1, 1]]
+
+
+Length: 40423
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 2, 1, 0], [0, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 40463
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 0, 1, 0], [2, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 40474
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 2, 1], [0, 0, 0, 2, 1, 0, 0]]
+
+
+Length: 40478
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 0], [1, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 40486
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 40505
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 2, 1, 0], [2, 2, 0, 1, 2, 0, 1]]
+
+
+Length: 40515
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 1, 0], [1, 1, 0, 1, 1, 0, 1]]
+
+
+Length: 40522
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 0, 2, 0, 1], [0, 0, 0, 2, 2, 1, 0]]
+
+
+Length: 40540
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 0, 0], [0, 0, 2, 2, 0, 2, 1]]
+
+
+Length: 40574
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 1, 0, 1], [0, 2, 0, 1, 0, 1, 0]]
+
+
+Length: 40584
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 2, 1, 0], [0, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 40587
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 1, 0, 0], [0, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 40617
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 0, 0], [1, 1, 0, 1, 0, 1, 0]]
+
+
+Length: 40643
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 2, 1, 0], [0, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 40644
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 2, 2, 1], [0, 2, 2, 1, 0, 0, 0]]
+
+
+Length: 40683
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 2, 1, 0], [0, 2, 2, 2, 0, 0, 1]]
+
+
+Length: 40704
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 2, 0, 1], [0, 1, 0, 0, 2, 1, 0]]
+
+
+Length: 40718
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 0, 1, 0], [2, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 40790
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 0, 1, 0, 1], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 40807
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 1, 0, 0], [0, 1, 0, 1, 0, 2, 1]]
+
+
+Length: 40808
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 1, 0, 1], [0, 0, 0, 2, 2, 1, 0]]
+
+
+Length: 40885
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 0, 0, 0], [0, 1, 0, 0, 2, 2, 1]]
+
+
+Length: 40888
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 1, 0, 0], [0, 1, 0, 2, 0, 1, 1]]
+
+
+Length: 40893
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 2, 0, 1], [0, 1, 2, 0, 1, 1, 0]]
+
+
+Length: 40916
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 2, 1, 0], [1, 2, 0, 2, 0, 0, 1]]
+
+
+Length: 40924
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 2, 0, 1], [0, 0, 0, 2, 1, 1, 0]]
+
+
+Length: 40955
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 2, 1, 0], [0, 1, 0, 1, 0, 0, 0]]
+
+
+Length: 40956
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 0, 0, 0], [0, 1, 2, 0, 0, 2, 1]]
+
+
+Length: 40995
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 1, 0], [2, 1, 2, 2, 0, 0, 1]]
+
+
+Length: 41083
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 1, 1, 0], [2, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 41086
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 2, 1, 0], [0, 1, 0, 0, 2, 0, 1]]
+
+
+Length: 41093
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 1, 0], [2, 0, 0, 0, 0, 0, 1]]
+
+
+Length: 41099
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 0, 0, 1], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 41136
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 1, 0, 0], [0, 0, 2, 1, 0, 2, 1]]
+
+
+Length: 41140
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 0, 2, 1, 0], [1, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 41202
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 1, 0], [1, 1, 0, 1, 2, 0, 1]]
+
+
+Length: 41244
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 0, 1, 0], [2, 2, 1, 0, 2, 0, 1]]
+
+
+Length: 41294
+Cylces Count: 3
+Cylces Copies: 0.00043589867777401074
+States: 18
+Nullspace: [[2, 0, 1, 1, 1, 0, 0], [2, 2, 1, 0, 0, 1, 0], [0, 0, 1, 2, 0, 0, 1]]
+
+
+Length: 41299
+Cylces Count: 2
+Cylces Copies: -0.000435845904259183
+States: -18
+Nullspace: [[2, 1, 0, 2, 1, 1, 0], [0, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 41340
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 2, 2, 1, 0, 0], [0, 1, 0, 0, 0, 1, 0]]
+
+
+Length: 41343
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 1, 1, 0], [1, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 41363
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 0, 1, 0], [0, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 41442
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 1, 0, 0], [0, 2, 1, 0, 0, 2, 1]]
+
+
+Length: 41474
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 0, 1, 0], [0, 1, 0, 2, 1, 0, 0]]
+
+
+Length: 41507
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 0], [1, 0, 0, 0, 1, 1, 1]]
+
+
+Length: 41542
+Cylces Count: 3
+Cylces Copies: 0.00043329642289730876
+States: 18
+Nullspace: [[1, 1, 1, 0, 0, 0, 0], [2, 1, 0, 0, 1, 0, 0], [1, 0, 0, 2, 0, 1, 0]]
+
+
+Length: 41543
+Cylces Count: 2
+Cylces Copies: -0.0004332859928267097
+States: -18
+Nullspace: [[2, 0, 1, 0, 1, 0, 0], [2, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 41553
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 0, 0, 1], [0, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 41558
+Cylces Count: 3
+Cylces Copies: 0.0004331296020020213
+States: 18
+Nullspace: [[1, 2, 0, 0, 0, 0, 1], [0, 1, 1, 1, 1, 0, 0], [0, 2, 2, 1, 0, 1, 0]]
+
+
+Length: 41560
+Cylces Count: 2
+Cylces Copies: -0.0004331087584215592
+States: -18
+Nullspace: [[2, 1, 2, 0, 1, 0, 0], [2, 1, 0, 1, 0, 1, 0]]
+
+
+Length: 41584
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 0, 2, 1], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 41621
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 1, 1, 0], [2, 2, 2, 2, 1, 0, 1]]
+
+
+Length: 41670
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 0, 0, 1], [0, 0, 0, 1, 0, 1, 0]]
+
+
+Length: 41775
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 2, 0, 1], [0, 1, 2, 0, 1, 1, 0]]
+
+
+Length: 41785
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 1, 1], [0, 1, 0, 1, 1, 0, 0]]
+
+
+Length: 41799
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 2, 0, 1], [0, 0, 2, 1, 0, 1, 0]]
+
+
+Length: 41882
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 2, 0, 1, 0], [1, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 41889
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 0, 1], [0, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 41914
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 0, 0], [0, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 41939
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 1, 0], [2, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 41957
+Cylces Count: 3
+Cylces Copies: 0.0004290106537645685
+States: 18
+Nullspace: [[2, 0, 1, 1, 0, 0, 0], [2, 0, 1, 0, 1, 0, 1], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 41962
+Cylces Count: 2
+Cylces Copies: -0.00042895953481721555
+States: -18
+Nullspace: [[2, 2, 1, 2, 0, 0, 1], [0, 1, 1, 2, 0, 1, 0]]
+
+
+Length: 41968
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 1, 0], [1, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 41975
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 1, 1, 0], [0, 1, 2, 2, 2, 0, 1]]
+
+
+Length: 41995
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 1, 0], [0, 0, 1, 1, 1, 0, 1]]
+
+
+Length: 42004
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 0, 0], [2, 0, 2, 1, 0, 1, 1]]
+
+
+Length: 42047
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 0, 0, 0, 1], [0, 1, 1, 2, 1, 0, 0]]
+
+
+Length: 42078
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 0], [2, 2, 2, 0, 2, 2, 1]]
+
+
+Length: 42097
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 2, 0, 0, 1], [0, 2, 0, 0, 2, 1, 0]]
+
+
+Length: 42145
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 0, 0, 1], [0, 0, 1, 1, 0, 1, 0]]
+
+
+Length: 42153
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 1, 1, 0, 0], [0, 1, 2, 1, 0, 2, 1]]
+
+
+Length: 42158
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 0, 1, 0], [2, 2, 0, 2, 1, 0, 1]]
+
+
+Length: 42198
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 2, 1, 0], [1, 0, 2, 0, 2, 0, 1]]
+
+
+Length: 42199
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 1, 1, 0], [2, 1, 2, 1, 0, 0, 1]]
+
+
+Length: 42206
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 1, 0, 1], [0, 2, 0, 0, 2, 1, 0]]
+
+
+Length: 42208
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 0, 1, 0], [0, 0, 2, 1, 1, 0, 1]]
+
+
+Length: 42252
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 0, 0, 1], [0, 2, 2, 1, 1, 1, 0]]
+
+
+Length: 42259
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 1, 0, 0], [1, 1, 0, 0, 0, 1, 0]]
+
+
+Length: 42286
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 1, 0, 0], [0, 1, 1, 1, 0, 1, 0]]
+
+
+Length: 42300
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 0], [2, 0, 0, 1, 0, 0, 0]]
+
+
+Length: 42311
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 0, 0], [2, 0, 2, 1, 0, 2, 1]]
+
+
+Length: 42348
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 1, 1, 0], [0, 1, 0, 2, 1, 0, 1]]
+
+
+Length: 42420
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 1, 0, 0], [0, 2, 1, 2, 0, 2, 1]]
+
+
+Length: 42431
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 0, 0, 1], [0, 1, 1, 0, 2, 1, 0]]
+
+
+Length: 42447
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 1, 2, 1, 0], [0, 1, 0, 2, 0, 0, 1]]
+
+
+Length: 42460
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 0, 0], [1, 0, 2, 2, 0, 1, 1]]
+
+
+Length: 42471
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 0, 0, 0], [1, 0, 0, 0, 2, 1, 1]]
+
+
+Length: 42481
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 0, 0, 1], [0, 1, 2, 1, 0, 1, 0]]
+
+
+Length: 42497
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 1, 0, 1, 0], [2, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 42518
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 2, 1, 0], [0, 0, 1, 2, 0, 0, 1]]
+
+
+Length: 42591
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0]]
+
+
+Length: 42648
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 2, 1, 1, 0], [0, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 42655
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 0, 1], [0, 0, 2, 0, 0, 1, 0]]
+
+
+Length: 42656
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 2, 1, 0], [1, 2, 2, 0, 1, 0, 1]]
+
+
+Length: 42657
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 1, 1], [0, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 42658
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 1, 0], [1, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 42665
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 2, 0, 1], [0, 1, 2, 0, 2, 1, 0]]
+
+
+Length: 42732
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 1, 1, 0], [0, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 42748
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [0, 0, 1, 2, 0, 1, 1]]
+
+
+Length: 42750
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 0, 0], [0, 2, 0, 0, 0, 2, 1]]
+
+
+Length: 42824
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 2, 0, 1], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 42825
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 2, 2, 0, 1], [0, 0, 0, 2, 1, 1, 0]]
+
+
+Length: 42883
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 2, 1, 0], [2, 1, 1, 1, 1, 0, 1]]
+
+
+Length: 42890
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 0, 0, 0], [2, 1, 1, 0, 1, 2, 1]]
+
+
+Length: 42898
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 1, 0, 0], [2, 2, 0, 1, 0, 1, 1]]
+
+
+Length: 42909
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 0, 1, 0], [0, 0, 1, 0, 1, 0, 1]]
+
+
+Length: 42915
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 0, 0], [0, 1, 2, 0, 2, 2, 1]]
+
+
+Length: 42919
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 0, 1], [0, 0, 2, 0, 2, 1, 0]]
+
+
+Length: 42931
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 2, 1, 0, 0], [2, 0, 2, 0, 0, 1, 0]]
+
+
+Length: 42945
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 2, 0, 1], [0, 0, 2, 2, 0, 1, 0]]
+
+
+Length: 42976
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 1, 0, 0], [2, 2, 2, 1, 0, 1, 1]]
+
+
+Length: 43062
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 0, 0, 0, 0], [2, 0, 0, 2, 1, 1, 1]]
+
+
+Length: 43093
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 0, 2, 1, 0], [0, 0, 1, 0, 2, 0, 1]]
+
+
+Length: 43146
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 1, 0, 0], [1, 1, 0, 2, 0, 1, 1]]
+
+
+Length: 43154
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 1, 0], [1, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 43169
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 2, 1, 0], [1, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 43289
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 1, 0], [0, 1, 0, 2, 1, 0, 1]]
+
+
+Length: 43300
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 2, 2, 2, 0, 1], [0, 0, 1, 0, 0, 1, 0]]
+
+
+Length: 43304
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 0, 1, 0], [1, 1, 2, 0, 0, 0, 1]]
+
+
+Length: 43364
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 0, 0, 0, 1], [0, 1, 0, 1, 0, 0, 0]]
+
+
+Length: 43381
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 0, 0, 1], [0, 0, 1, 2, 1, 1, 0]]
+
+
+Length: 43413
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 0, 1, 0], [2, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 43426
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 0, 1, 0], [1, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 43452
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 2, 1, 0], [0, 0, 2, 2, 2, 0, 1]]
+
+
+Length: 43493
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 2, 0, 1], [0, 0, 1, 2, 1, 1, 0]]
+
+
+Length: 43503
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 0, 1, 2, 2, 1], [0, 2, 1, 0, 0, 0, 0]]
+
+
+Length: 43504
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 1, 1, 0], [0, 0, 2, 1, 1, 0, 1]]
+
+
+Length: 43522
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 1, 0], [1, 2, 2, 0, 1, 0, 1]]
+
+
+Length: 43551
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 2, 0, 1], [0, 2, 2, 0, 1, 1, 0]]
+
+
+Length: 43558
+Cylces Count: 3
+Cylces Copies: 0.00041324211396299185
+States: 18
+Nullspace: [[2, 1, 0, 1, 0, 0, 0], [1, 1, 1, 0, 1, 0, 1], [0, 0, 1, 0, 1, 1, 0]]
+
+
+Length: 43559
+Cylces Count: 2
+Cylces Copies: -0.00041323262701163936
+States: -18
+Nullspace: [[1, 0, 1, 2, 0, 1, 0], [1, 0, 2, 1, 0, 0, 1]]
+
+
+Length: 43572
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 0, 0, 0], [2, 1, 1, 0, 0, 2, 1]]
+
+
+Length: 43625
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [1, 0, 0, 1, 2, 1, 1]]
+
+
+Length: 43636
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 2, 1, 0], [0, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 43715
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 0, 0, 1], [0, 1, 2, 0, 1, 0, 0]]
+
+
+Length: 43767
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 0, 0, 1, 0], [2, 2, 1, 0, 0, 0, 1]]
+
+
+Length: 43775
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 1, 0, 0], [0, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 43847
+Cylces Count: 3
+Cylces Copies: 0.00041051839350468675
+States: 18
+Nullspace: [[2, 2, 0, 2, 1, 0, 0], [1, 2, 1, 0, 0, 1, 0], [1, 1, 0, 0, 0, 0, 1]]
+
+
+Length: 43855
+Cylces Count: 2
+Cylces Copies: -0.0004104435070117432
+States: -18
+Nullspace: [[1, 2, 0, 1, 0, 0, 0], [2, 2, 0, 0, 0, 2, 1]]
+
+
+Length: 43856
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 0, 1, 0, 1], [0, 2, 0, 0, 0, 1, 0]]
+
+
+Length: 43903
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [1, 0, 0, 1, 0, 0, 1]]
+
+
+Length: 43917
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 1, 1, 1, 0], [2, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 43951
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [1, 2, 1, 1, 0, 1, 1]]
+
+
+Length: 43965
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 1, 1, 0, 0], [2, 1, 1, 0, 0, 0, 1]]
+
+
+Length: 44052
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 1, 0, 1], [0, 1, 2, 1, 2, 1, 0]]
+
+
+Length: 44067
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 2, 1, 0, 1], [0, 2, 0, 0, 1, 1, 0]]
+
+
+Length: 44072
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 1, 1, 0], [2, 0, 1, 2, 1, 0, 1]]
+
+
+Length: 44094
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 1, 1], [0, 1, 1, 0, 1, 0, 0]]
+
+
+Length: 44096
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 1, 0, 1, 0], [2, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 44106
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 1, 0, 0], [1, 1, 0, 2, 0, 1, 0]]
+
+
+Length: 44134
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 1], [0, 2, 1, 0, 1, 1, 0]]
+
+
+Length: 44184
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 1, 1, 0, 1, 0], [1, 2, 2, 0, 2, 0, 1]]
+
+
+Length: 44243
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 0, 0, 1], [0, 1, 1, 2, 1, 1, 0]]
+
+
+Length: 44274
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 0, 0, 0], [0, 2, 1, 0, 0, 1, 0]]
+
+
+Length: 44283
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 2, 2, 1, 0], [1, 0, 0, 0, 2, 0, 1]]
+
+
+Length: 44320
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 2, 0, 1, 1], [0, 1, 0, 1, 1, 0, 0]]
+
+
+Length: 44341
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 1, 0], [1, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 44354
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 0, 1, 0], [0, 2, 0, 0, 0, 0, 1]]
+
+
+Length: 44380
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 0, 0, 0], [0, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 44412
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 1, 2, 1, 0], [2, 0, 1, 0, 0, 0, 1]]
+
+
+Length: 44446
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 0, 1], [0, 0, 0, 0, 1, 1, 0]]
+
+
+Length: 44456
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 0, 0, 0], [1, 0, 1, 0, 2, 2, 1]]
+
+
+Length: 44460
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 1, 0, 0], [0, 1, 2, 2, 0, 2, 1]]
+
+
+Length: 44486
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 1, 0], [0, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 44495
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 1, 2, 0, 0, 1], [0, 0, 2, 2, 1, 1, 0]]
+
+
+Length: 44511
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 1, 1, 0, 1], [0, 2, 1, 1, 2, 1, 0]]
+
+
+Length: 44522
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 1], [0, 2, 0, 0, 1, 0, 0]]
+
+
+Length: 44533
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 1, 0, 1, 0], [1, 2, 1, 1, 1, 0, 1]]
+
+
+Length: 44548
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 2, 2, 0, 1], [0, 2, 2, 1, 2, 1, 0]]
+
+
+Length: 44562
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 0, 2, 0, 0, 2, 1], [0, 1, 0, 2, 1, 0, 0]]
+
+
+Length: 44622
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 2, 0, 1, 0, 1], [0, 0, 2, 1, 0, 0, 0]]
+
+
+Length: 44654
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 0, 1, 0], [1, 0, 0, 1, 2, 0, 1]]
+
+
+Length: 44704
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 1, 1, 1, 1, 0], [0, 2, 0, 0, 2, 0, 1]]
+
+
+Length: 44714
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 1, 0, 1], [0, 0, 0, 0, 2, 1, 0]]
+
+
+Length: 44747
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 0, 0, 1, 0], [0, 0, 0, 2, 1, 0, 0]]
+
+
+Length: 44748
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 0, 0, 0, 0, 1], [0, 2, 0, 1, 1, 0, 0]]
+
+
+Length: 44825
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 0, 1, 1, 0], [0, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 44913
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 1, 0, 0, 2, 1], [0, 0, 0, 1, 1, 0, 0]]
+
+
+Length: 44914
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 0, 0, 0], [1, 1, 0, 0, 2, 2, 1]]
+
+
+Length: 44959
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 0, 1, 0, 0], [0, 2, 1, 2, 0, 1, 1]]
+
+
+Length: 45015
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 1, 1, 0], [2, 0, 1, 2, 2, 0, 1]]
+
+
+Length: 45025
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 2, 2, 1, 0], [2, 1, 1, 2, 1, 0, 1]]
+
+
+Length: 45026
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 0, 0, 1], [0, 2, 2, 1, 0, 1, 0]]
+
+
+Length: 45033
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 2, 1, 0, 0], [1, 2, 0, 2, 0, 1, 0]]
+
+
+Length: 45047
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 2, 1, 1, 1, 0], [2, 0, 2, 0, 0, 0, 1]]
+
+
+Length: 45071
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 1, 0, 0, 1], [0, 1, 2, 1, 1, 0, 0]]
+
+
+Length: 45085
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 1, 2, 1, 0], [2, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 45097
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 0, 0, 0], [1, 2, 2, 0, 1, 0, 1]]
+
+
+Length: 45113
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 2, 0, 1, 1], [0, 0, 2, 2, 1, 0, 0]]
+
+
+Length: 45126
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 1, 2, 1, 0], [2, 1, 0, 2, 2, 0, 1]]
+
+
+Length: 45143
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 1, 1, 0], [1, 1, 1, 0, 2, 0, 1]]
+
+
+Length: 45160
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [1, 2, 0, 0, 0, 2, 1]]
+
+
+Length: 45169
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 2, 0, 1], [0, 2, 1, 2, 0, 1, 0]]
+
+
+Length: 45202
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 0, 0, 0, 0], [2, 1, 0, 1, 1, 0, 0]]
+
+
+Length: 45267
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 0, 2, 1, 0], [0, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 45276
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 2, 2, 1, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 45288
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 1, 2, 1, 0], [2, 2, 1, 1, 2, 0, 1]]
+
+
+Length: 45292
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 0, 0, 1, 0], [0, 0, 2, 2, 0, 0, 1]]
+
+
+Length: 45299
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 1], [0, 2, 0, 0, 0, 1, 0]]
+
+
+Length: 45309
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 0, 1, 0, 0], [0, 2, 2, 0, 0, 0, 1]]
+
+
+Length: 45324
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 1, 1, 0, 0, 0], [1, 1, 0, 0, 1, 2, 1]]
+
+
+Length: 45344
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 1, 1, 0, 1, 0], [0, 0, 1, 0, 1, 0, 1]]
+
+
+Length: 45348
+Cylces Count: 3
+Cylces Copies: 0.00039693040486901297
+States: 18
+Nullspace: [[1, 1, 0, 1, 1, 0, 0], [2, 2, 0, 0, 0, 1, 0], [0, 1, 0, 1, 0, 0, 1]]
+
+
+Length: 45351
+Cylces Count: 2
+Cylces Copies: -0.00039690414764834294
+States: -18
+Nullspace: [[1, 1, 1, 0, 0, 1, 0], [2, 2, 0, 1, 0, 0, 1]]
+
+
+Length: 45385
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 1, 2, 1, 1, 0], [0, 0, 1, 0, 1, 0, 1]]
+
+
+Length: 45389
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 2, 1, 0, 0], [0, 1, 1, 2, 0, 0, 1]]
+
+
+Length: 45426
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 0, 0, 1, 0, 0], [2, 0, 0, 1, 0, 2, 1]]
+
+
+Length: 45540
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 2, 2, 2, 1, 0, 0], [1, 2, 0, 1, 0, 1, 0]]
+
+
+Length: 45554
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 0, 2, 2, 1, 1, 0], [1, 2, 1, 1, 0, 0, 1]]
+
+
+Length: 45555
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 2, 2, 2, 0, 1], [0, 2, 1, 0, 1, 1, 0]]
+
+
+Length: 45560
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 1, 0, 0, 0, 0, 1], [0, 0, 2, 0, 1, 1, 0]]
+
+
+Length: 45569
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 1, 1, 2, 1, 0], [1, 0, 0, 2, 2, 0, 1]]
+
+
+Length: 45572
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 0, 0, 0, 1], [0, 0, 1, 2, 1, 0, 0]]
+
+
+Length: 45596
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 2, 1]]
+
+
+Length: 45600
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 2, 0, 1, 0, 1, 0], [1, 1, 1, 1, 0, 0, 1]]
+
+
+Length: 45641
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[2, 1, 0, 2, 1, 0, 0], [0, 0, 0, 2, 0, 0, 1]]
+
+
+Length: 45677
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 2, 0, 2, 2, 1, 0], [0, 2, 2, 1, 2, 0, 1]]
+
+
+Length: 45699
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[0, 0, 2, 1, 1, 1, 0], [0, 0, 2, 2, 1, 0, 1]]
+
+
+Length: 45743
+Cylces Count: 2
+Cylces Copies: 0.0
+States: 0
+Nullspace: [[1, 1, 1, 0, 0, 0, 1], [0, 2, 1, 1, 1, 0, 0]]
+
+
+
+#######################################     END     #######################################
