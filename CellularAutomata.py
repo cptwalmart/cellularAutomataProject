@@ -5,7 +5,7 @@ from sympy import *     # For nullspace
 import re       # Needed for parsing
 import random
 import Nayuki as field
-import gistfile1 as gist
+#import gistfile1 as gist
 from sympy import Matrix, Rational, mod_inverse, pprint
 
 # The class is setup as a method so all functions must pass 'self' for the 1st variable.
