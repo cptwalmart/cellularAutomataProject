@@ -2,9 +2,7 @@
 This project was created for COSC 425/426 for use by Salisbury University.
 Programmers: Joseph Craft, Sean Dunn, Malik Green, Kevin Koch
 COSC 425/426 Cellular Automata Project
-
 ******************************************
-
 This is the GUI file of the project, primarily using the PyQt5 library, as well as matplotlib for graphing.
 The main computational file CellularAutomata.py is imported and called throughout to incorporate functions into the GUI.
 """
@@ -91,7 +89,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Adds a 'Help' tab, which is placed to the right of 'File' in the top left of the GUI.
         help_act = QAction('Help', self)
-        menubar.addAction(help_act)        
+        menubar.addAction(help_act)
 
         # Adds a 'Display' tab,  which is placed to the right of 'Help' in the top left of the GUI.
         display_menu = menubar.addMenu('Display')
@@ -172,7 +170,6 @@ class MainWindow(QtWidgets.QMainWindow):
         Input form for the update rule of the automata. The update rule will be used to transition the automata between steps.
         The update rule is of the form: n1 n2 n3 ... nm, where n is an element of R (all real integers) and m is an element of Z (all positive integers).
         This string of integers represents the positional elements relative to the current cell, which will be computed in transition to the next state of the automata.
-
         UNDER CONSTRUCTION: Will be replaced later with a radius of elements to choose from, in order to add complexity and functionality to the system.
         """
         self.update_rule_label = QLabel(self)
@@ -228,9 +225,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.nullspace_tk_button1 = QPushButton('Find nullspace of T^k', self)
         self.nullspace_tk_button1.clicked.connect(lambda: self.matrix_nullspace('None'))
-        
+        #self.nullspace_tk_button1.clicked.connect(lambda: self.matrix_nullspace('T^k'))
+
         self.nullspace_tk_button2 = QPushButton('Find nullspace of T^k - I', self)
-        self.nullspace_tk_button2.clicked.connect(lambda: self.matrix_nullspace('identity'))
+        self.nullspace_tk_button2.clicked.connect(lambda: self.matrix_nullspace('T^k-I'))
+        #self.nullspace_tk_button2.clicked.connect(lambda: self.matrix_nullspace('T^k-I'))
 
         self.nullspace_output = QTextEdit(self)
 
@@ -260,7 +259,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # Submit button for T^k - I
         self.update_powers_button2 = QPushButton('Find T^k - I', self)
         self.update_powers_button2.setToolTip('Submit an update to the automaton')
-        self.update_powers_button2.clicked.connect(lambda: self.matrix_powers('identity'))
+        self.update_powers_button2.clicked.connect(lambda: self.matrix_powers('T^k-I'))
 
         self.matrix_output = QTextEdit(self)
 
@@ -570,11 +569,11 @@ class MainWindow(QtWidgets.QMainWindow):
     When the Update Powers button is clicked, calculate and display the corresponding matrix power.
     """
     def matrix_powers(self, flag = 'None'):
-        
+
         if self.CA.get_is_automata_generated() == 0:
             return
 
-        if flag == 'identity':
+        if flag == 'T^k-I':
             self.lastMatrix = self.CA.generate_T_pow_minus_I(int(self.powers_of_matrix.text()))
         else:
             self.lastMatrix = self.CA.generate_T_pow(int(self.powers_of_matrix.text()))
@@ -582,24 +581,38 @@ class MainWindow(QtWidgets.QMainWindow):
         msg = str(self.lastMatrix)
 
         self.matrix_output.setText(msg)
-        
         self.display_matrix('last')
 
+
+
     def matrix_nullspace(self, flag = 'None'):
-        
+
         if self.CA.get_is_automata_generated() == 0:
             return
 
-        if flag == 'identity':
-            self.lastMatrix = self.CA.generate_null_T_minus_I(int(self.nullspace_powers.text()))
+        msg = ''
+        if flag == 'T^k-I':
+            self.lastMatrix, Basis = self.CA.generate_null_T_minus_I(int(self.nullspace_powers.text()))
+            msg = f"Nullspace for T^{int(self.nullspace_powers.text())}-I:\n {str(Basis)}"
         else:
-            self.lastMatrix = self.CA.generate_null_T(int(self.nullspace_powers.text()))
+            self.lastMatrix, Basis = self.CA.generate_null_T(int(self.nullspace_powers.text()))
+            msg = f"Nullspace for T^{int(self.nullspace_powers.text())}:\n {str(Basis)}"
 
-        msg = str(self.lastMatrix)
+
+
 
         self.nullspace_output.setText(msg)
 
-        self.display_matrix('last')
+        if flag == 'T^k-I':
+            self.lastMatrix = self.CA.generate_T_pow_minus_I(int(self.nullspace_powers.text()))
+        else:
+            self.lastMatrix = self.CA.generate_T_pow(int(self.nullspace_powers.text()))
+
+        #self.display_matrix('last')
+        self.canvas.axes.matshow(self.lastMatrix)
+        self.canvas.draw()
+
+
 
     def nullspace_of_matrix(self, flag='None'):
 
@@ -613,9 +626,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # lastMatrix = Basis type: list
         nullspace = np.asarray(nullspace)
-        
-        if nullspace.size == 0:
-            nullspace = np.zeros([int(self.number_of_cells.text()), int(self.number_of_cells.text())], dtype=int)
+
+        #if nullspace.size == 0:
+            #nullspace = np.zeros([int(self.number_of_cells.text()), int(self.number_of_cells.text())], dtype=int)
 
         self.lastMatrix = nullspace
 
@@ -630,8 +643,8 @@ class MainWindow(QtWidgets.QMainWindow):
         else:
             print('no file selected')
 
-        self.canvas.axes.matshow(self.lastMatrix)
-        self.canvas.draw()
+        #self.canvas.axes.matshow(self.lastMatrix)
+        #self.canvas.draw()
 
 
     def display_pop_up(self, flag_type="None", flag_call="None"):
@@ -720,7 +733,7 @@ class MainWindow(QtWidgets.QMainWindow):
         powers, rref, nullspaces, etc
     """
     def get_automata_stats(self, print_type):
-        
+
         if(print_type == "Simple" or print_type == "Complex"):
             automata_stats, reversibility, s, n, cycle_type = stats.generate_automata_stats(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()))
 
@@ -733,7 +746,7 @@ class MainWindow(QtWidgets.QMainWindow):
             msg += str(reversibility) + '\n'
 
             if(cycle_type == "0"):
-                msg += '\nTransition Matrix Powers: T^{} = Zero Matrix\n'.format(n+1)
+                msg += '\nTransition Matrix Powers: T^{} = Zero Matrix\n'.format(n)
             elif(cycle_type == "I"):
                 msg += '\nTransition Matrix Powers: T^{} = Identity Matrix\n'.format(n+1)
             elif(cycle_type == "Cycle"):
@@ -756,24 +769,38 @@ class MainWindow(QtWidgets.QMainWindow):
                     msg += "Nullspace: \n" + str(automata_stats[i]["nullspace"]) + '\n\n'
 
             if (print_type == "Complex"):
-                
+
                 result_matrix_pow = self.CA.get_evolution_matrix()
-                for i in range(1, n+2):
-                    msg += ("\n(T)^{}: \n".format(i))
-                    if(i > 0):
+                #result_matrix = result_matrix_pow
+                k = 1
+                for k in range(n+2):
+                    if k == 1:
+                        msg += ("\n(T)^{}: \n".format(k))
+                        result_matrix = self.CA.get_evolution_matrix()
+                        msg += str(result_matrix)
+
+
+                    elif k > 1:
+                        msg += ("\n(T)^{}: \n".format(k))
                         result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
-                    result_matrix = (result_matrix_pow) % int(self.alphabet_size.text())
-                    msg += str(result_matrix)
+                        result_matrix = (result_matrix_pow) % int(self.alphabet_size.text())
+                        msg += str(result_matrix)
 
                 msg += ("\n")
 
                 result_matrix_pow = self.CA.get_evolution_matrix()
-                for i in range(1, n+2):
-                    msg += ("\n(T)^{} - I: \n".format(i))
-                    if(i > 0):
+                l = 1
+                for l in range(n+2):
+                    if l == 1:
+                        msg += ("\n(T)^{} - I: \n".format(l))
+                        result_matrix = (self.CA.get_evolution_matrix() - I) % int(self.alphabet_size.text())
+                        msg += str(result_matrix)
+
+                    elif l > 1:
+                        msg += ("\n(T)^{} - I: \n".format(l))
                         result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
-                    result_matrix = (result_matrix_pow - I) % int(self.alphabet_size.text())
-                    msg += str(result_matrix)
+                        result_matrix = (result_matrix_pow - I) % int(self.alphabet_size.text())
+                        msg += str(result_matrix)
 
             self.output_text.setText(msg)
             self.cycle_output.setText(msg)
@@ -795,6 +822,3 @@ class MainWindow(QtWidgets.QMainWindow):
             self.outputFile.close()
 
     """ End Main Window """
-
-"""
-"""
