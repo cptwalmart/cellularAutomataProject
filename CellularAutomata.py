@@ -299,6 +299,10 @@ class CellularAutomata:
             print('The matrix must be square!')
             return_matrix = original_evolution_matrix
 
+
+        if return_matrix.all() == 0:
+            return return_matrix, "Entire cellular automata"
+
         ### Using Nayuki ####
         F = field.PrimeField(self.num_alphabet)
         B = field.Matrix(return_matrix.shape[0], return_matrix.shape[1], F)
@@ -343,6 +347,9 @@ class CellularAutomata:
         except:
             print('The matrix must be square!')
             return_matrix = original_evolution_matrix
+
+        if return_matrix.all() == 0:
+            return return_matrix, "Entire cellular automata"
 
         ### Using Nayuki ####
         F = field.PrimeField(self.num_alphabet)
