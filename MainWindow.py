@@ -88,8 +88,8 @@ class MainWindow(QtWidgets.QMainWindow):
         # self.saveFile_complex.clicked.connect(lambda: self.get_automata_stats())
 
         # Adds a 'Help' tab, which is placed to the right of 'File' in the top left of the GUI.
-        help_act = QAction('Help', self)
-        menubar.addAction(help_act)
+        #help_act = QAction('Help', self)
+        #menubar.addAction(help_act)
 
         # Adds a 'Display' tab,  which is placed to the right of 'Help' in the top left of the GUI.
         display_menu = menubar.addMenu('Display')
@@ -106,12 +106,12 @@ class MainWindow(QtWidgets.QMainWindow):
         # Adds actions to 'Calculation' tab.
         rref_act = QAction('Row Reduced Echelon Form', self)
         nullspace_act = QAction('Nullspace of Matrix', self)
-        rank_act = QAction('Rank of Matrix', self)
+        #rank_act = QAction('Rank of Matrix', self)
         cycle_act = QAction('Detect First Cycle', self)
         stats_act = QAction('Generate Cycle Statistics', self)
         calculation_menu.addAction(rref_act)
         calculation_menu.addAction(nullspace_act)
-        calculation_menu.addAction(rank_act)
+        #calculation_menu.addAction(rank_act)
         calculation_menu.addAction(cycle_act)
         calculation_menu.addAction(stats_act)
 
@@ -123,13 +123,13 @@ class MainWindow(QtWidgets.QMainWindow):
         saveFile_simple.triggered.connect(lambda: self.saveToFile('Simple'))
         saveFile_complex.triggered.connect(lambda: self.saveToFile('Complex'))
 
-        help_act.triggered.connect(lambda: self.display_help())
+        #help_act.triggered.connect(lambda: self.display_help())
 
         base_matrix_act.triggered.connect(lambda: self.display_matrix('base'))
         evo_matrix_act.triggered.connect(lambda: self.display_matrix('evo'))
         rref_act.triggered.connect(lambda: self.rref_of_matrix())
         nullspace_act.triggered.connect(lambda: self.nullspace_of_matrix())
-        rank_act.triggered.connect(lambda: self.display_pop_up('rank'))
+        #rank_act.triggered.connect(lambda: self.display_pop_up('rank'))
         cycle_act.triggered.connect(lambda: self.display_pop_up('cycle'))
         stats_act.triggered.connect(lambda: self.get_automata_stats('Simple'))
 
