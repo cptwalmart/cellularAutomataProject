@@ -20,7 +20,7 @@ class CellularAutomata:
         self.num_alphabet = 0
         self.ca_next = 0
         self.num_steps = 10
-        self.debug=False 
+        self.debug=False
 
         self.initial_state = []
         self.update_rule = 0
@@ -282,7 +282,8 @@ class CellularAutomata:
     def generate_null_T(self, power):
 
         if power == 0:
-            return self.get_evolution_matrix()
+            I = np.identity(self.num_elements, dtype=int)
+            return I, []
 
         original_evolution_matrix = self.get_evolution_matrix()
         power = int(power)
@@ -306,24 +307,30 @@ class CellularAutomata:
                 B.set(i, j, ( int(return_matrix[i][j])) )
 
         B.reduced_row_echelon_form()
-        B.get_nullspace()
+        Basis = B.get_nullspace()
+
+        numpy_Basis = np.array(Basis)
+
 
         for i in range(return_matrix.shape[0]):
             for j in range(return_matrix.shape[1]):
                 return_matrix[i][j] = B.get(i, j)
 
-        return return_matrix
+        return return_matrix, numpy_Basis
+
+
 
     """
     Compute nullspace for (T)^{power} - I
     """
     def generate_null_T_minus_I(self, power):
+        I = np.identity(self.num_elements, dtype=int)
 
         if power == 0:
-            return self.get_evolution_matrix()
+            return I, []
 
         original_evolution_matrix = self.get_evolution_matrix()
-        I = np.identity(self.num_elements, dtype=int)        # Identity Matrix
+                # Identity Matrix
         power = int(power)
 
         try:
@@ -347,19 +354,33 @@ class CellularAutomata:
         B.reduced_row_echelon_form()
         B.get_nullspace()
 
+        Basis = B.get_nullspace()
+        #print(type(Basis))
+
+        numpy_Basis = np.array(Basis)
+
+
+        print("Value of B from generate_null_T_minus_I: ", B)
+        print("Nullspace of T^{} : {}".format(power, Basis))
+
         for i in range(return_matrix.shape[0]):
             for j in range(return_matrix.shape[1]):
                 return_matrix[i][j] = B.get(i, j)
 
-        return return_matrix
+
+
+        #return return_matrix
+        return return_matrix, numpy_Basis
 
     """
     Compute power  for (T)^{power}
     """
     def generate_T_pow(self, power):
 
+        # Any matrix to 0 power is identity.
+        I = np.eye(self.get_evolution_matrix().shape[0], dtype=int)
         if power == 0:
-            return self.get_evolution_matrix()
+            return I
 
         original_evolution_matrix = self.get_evolution_matrix()
         power = int(power)
@@ -421,7 +442,6 @@ class CellularAutomata:
         This function loops through the range of the matrix and compares each row i to each row j in the rest of the matrix.
         It stops either when it finds two of the same row (a cycle), or it reaches the end of the matrix.
         Because there are a finite number of states, given enough discrete time steps, there will be a cycle.
-
         This function will be improved later, in terms of versatility and time complexity.
         """
 
@@ -435,7 +455,7 @@ class CellularAutomata:
         #             return(msg)
         # msg = ("NO CYCLES DETECTED IN THIS RANGE. TRY USING MORE STEPS.")
 
-    
+
         for i in range(len(data)):
             for j in range(i+1, len(data)):
                 if (data[i] == data[j]).all():
