@@ -697,6 +697,10 @@ class MainWindow(QtWidgets.QMainWindow):
             self.outputFile = open(fileName, 'w')
 
         self.get_automata_stats(flag)
+        self.outputFile.close()
+
+        # Temp output for GUI to save to save file later
+        self.outputFile = open('temp_data', 'w')
 
 
     def toggleGroup(self, ctrl):
@@ -760,6 +764,8 @@ class MainWindow(QtWidgets.QMainWindow):
                         result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
                     result_matrix = (result_matrix_pow) % int(self.alphabet_size.text())
                     msg += str(result_matrix)
+
+                msg += ("\n")
 
                 result_matrix_pow = self.CA.get_evolution_matrix()
                 for i in range(n+1):
