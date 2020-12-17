@@ -32,11 +32,11 @@ def detect_cycle_transition(transition, alphabet, size):
             if i != j:
                 # If true all states evloves to Zero State
                 if(M_list[j] == I).all():
-                    return(j, "I")
+                    return(i, j, "I")
                 if(M_list[j] == ZERO).all():
-                    return(j, "0")
+                    return(i, j, "0")
                 if (M_list[i] == M_list[j]).all():
-                    return(j, "Cycle")
+                    return(i, j, "Cycle")
             elif i == len(M_list):
                 return(-1, "-1")
         else:
@@ -121,23 +121,7 @@ def detect_unique_cycle(Nullspace_list, alphabet, size):
 
     return(unique_nullspace)
 
-def generate_T_minus_I(data, size, alphabet, power):
-    """
-    Compute nullspace for (T)^{power} - I
-    """
 
-    I = np.identity(size, dtype=int) # Identity Matrix
-    rows = cols = size
-    transition = data
-    result_matrix = np.zeros([rows, cols], dtype=int)
-
-    result_matrix_pow = transition
-    for i in range(power):
-        if(i > 0):
-            result_matrix_pow = (np.matmul(transition, result_matrix_pow)) % alphabet
-        result_matrix = (result_matrix_pow - I) % alphabet
-
-    return(result_matrix)
 
 def generate_automata_stats(data, size, alphabet):
     """
@@ -165,7 +149,7 @@ def generate_automata_stats(data, size, alphabet):
     I = np.identity(size, dtype=int)        # Identity Matrix
     power = 1                               # power
     reversible = is_reversible(B, rows, cols, size)   # is automate reversible
-    n, cycle_type = detect_cycle_transition(transition, alphabet, size)  # max steps
+    s, n, cycle_type = detect_cycle_transition(transition, alphabet, size)  # max steps
 
     #print("\nrref for matrix:")
     #B.reduced_row_echelon_form()
@@ -239,4 +223,4 @@ def generate_automata_stats(data, size, alphabet):
         else:
             reversibility = 'Irreversible system'
 
-    return (Automata_stats, reversibility, n, cycle_type)
+    return (Automata_stats, reversibility, s, n, cycle_type)

@@ -25,6 +25,8 @@ class CellularAutomata:
         self.initial_state = []
         self.update_rule = 0
 
+        self.is_automata_generated = 0
+
 	# Set function for number of columns in the matrix.
     def set_number_of_cells(self, number_of_cells):
         self.num_elements = number_of_cells
@@ -102,6 +104,10 @@ class CellularAutomata:
     def get_evolution_matrix(self):
         return self.evolution_matrix
 
+    # Return function to check if the automata has been generated
+    def get_is_automata_generated(self):
+        return self.is_automata_generated
+
 
     # Primary function - determines the automaton itself.
     def generate_cellular_automata(self):
@@ -134,6 +140,7 @@ class CellularAutomata:
         #     print()
 
         self.cellular_automata = np.asarray(cellular_automata)
+        self.is_automata_generated = 1
 
 
     # Function to determine the evolution matrix based on the update rule.
@@ -269,21 +276,140 @@ class CellularAutomata:
         return Basis
 
 
-    # Returns the power of a matrix using np.linalg
-    def get_matrix_power(self, matrix, power):
+    """
+    Compute nullspace for (T)^{power}
+    """
+    def generate_null_T(self, power):
 
+        if power == 0:
+            return self.get_evolution_matrix()
+
+        original_evolution_matrix = self.get_evolution_matrix()
         power = int(power)
 
         try:
-            return_matrix_pow = matrix
+            return_matrix_pow = original_evolution_matrix
             for i in range(power):
                 if(i > 0):
-                    return_matrix_pow = (np.matmul(matrix, return_matrix_pow)) % self.num_alphabet
+                    return_matrix_pow = (np.matmul(original_evolution_matrix, return_matrix_pow)) % self.num_alphabet
                 return_matrix = (return_matrix_pow) % self.num_alphabet
 
         except:
             print('The matrix must be square!')
-            return_matrix = matrix
+            return_matrix = original_evolution_matrix
+
+        ### Using Nayuki ####
+        F = field.PrimeField(self.num_alphabet)
+        B = field.Matrix(return_matrix.shape[0], return_matrix.shape[1], F)
+        for i in range(return_matrix.shape[0]):
+            for j in range(return_matrix.shape[1]):
+                B.set(i, j, ( int(return_matrix[i][j])) )
+
+        B.reduced_row_echelon_form()
+        B.get_nullspace()
+
+        for i in range(return_matrix.shape[0]):
+            for j in range(return_matrix.shape[1]):
+                return_matrix[i][j] = B.get(i, j)
+
+        return return_matrix
+
+    """
+    Compute nullspace for (T)^{power} - I
+    """
+    def generate_null_T_minus_I(self, power):
+
+        if power == 0:
+            return self.get_evolution_matrix()
+
+        original_evolution_matrix = self.get_evolution_matrix()
+        I = np.identity(self.num_elements, dtype=int)        # Identity Matrix
+        power = int(power)
+
+        try:
+            return_matrix_pow = original_evolution_matrix
+            for i in range(power):
+                if(i > 0):
+                    return_matrix_pow = (np.matmul(original_evolution_matrix, return_matrix_pow)) % self.num_alphabet
+                return_matrix = (return_matrix_pow - I) % self.num_alphabet
+
+        except:
+            print('The matrix must be square!')
+            return_matrix = original_evolution_matrix
+
+        ### Using Nayuki ####
+        F = field.PrimeField(self.num_alphabet)
+        B = field.Matrix(return_matrix.shape[0], return_matrix.shape[1], F)
+        for i in range(return_matrix.shape[0]):
+            for j in range(return_matrix.shape[1]):
+                B.set(i, j, ( int(return_matrix[i][j])) )
+
+        B.reduced_row_echelon_form()
+        B.get_nullspace()
+
+        for i in range(return_matrix.shape[0]):
+            for j in range(return_matrix.shape[1]):
+                return_matrix[i][j] = B.get(i, j)
+
+        return return_matrix
+
+    """
+    Compute power  for (T)^{power}
+    """
+    def generate_T_pow(self, power):
+
+        if power == 0:
+            return self.get_evolution_matrix()
+
+        original_evolution_matrix = self.get_evolution_matrix()
+        power = int(power)
+
+        try:
+            return_matrix_pow = original_evolution_matrix
+            for i in range(power):
+                if(i > 0):
+                    return_matrix_pow = (np.matmul(original_evolution_matrix, return_matrix_pow)) % self.num_alphabet
+                return_matrix = (return_matrix_pow) % self.num_alphabet
+
+        except:
+            print('The matrix must be square!')
+            return_matrix = original_evolution_matrix
+
+        return return_matrix
+
+    """
+    Compute power  for (T)^{power} - I
+    """
+    def generate_T_pow_minus_I(self, power):
+
+        if power == 0:
+            return self.get_evolution_matrix()
+
+        original_evolution_matrix = self.get_evolution_matrix()
+        I = np.identity(self.num_elements, dtype=int) # Identity Matrix
+
+        power = int(power)
+
+        try:
+            return_matrix_pow = original_evolution_matrix
+            for i in range(power):
+                if(i > 0):
+                    return_matrix_pow = (np.matmul(self.get_evolution_matrix(), return_matrix_pow)) % self.num_alphabet
+                return_matrix = (return_matrix_pow - I) % self.num_alphabet
+
+        except:
+            print('The matrix must be square!')
+            return_matrix = original_evolution_matrix
+
+        # rows = cols = size
+        # transition = data
+        # result_matrix = np.zeros([rows, cols], dtype=int)
+
+        # result_matrix_pow = transition
+        # for i in range(power):
+        #     if(i > 0):
+        #         result_matrix_pow = (np.matmul(transition, result_matrix_pow)) % alphabet
+        #     result_matrix = (result_matrix_pow - I) % alphabet
 
         return return_matrix
 

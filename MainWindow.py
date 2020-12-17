@@ -1,7 +1,7 @@
 """
-This project was created for COSC 425 for use by Salisbury University.
+This project was created for COSC 425/426 for use by Salisbury University.
 Programmers: Joseph Craft, Sean Dunn, Malik Green, Kevin Koch
-COSC 425 Cellular Automata Project
+COSC 425/426 Cellular Automata Project
 
 ******************************************
 
@@ -32,7 +32,7 @@ cached_primes = [i for i in range(minPrime,maxPrime) if isprime(i)]
 ### Cached Prime Numbers ###
 
 """
-This class represents the main window of the GUI. As such, most of the GUI is accessed here, as well as the main computational file CellularAutomata.py.
+This class represents the main window of the GUI. As such, all of the GUI is accessed here, as well as the main computational file CellularAutomata.py.
 """
 class MainWindow(QtWidgets.QMainWindow):
     """
@@ -97,8 +97,8 @@ class MainWindow(QtWidgets.QMainWindow):
         display_menu = menubar.addMenu('Display')
 
         # Adds actions to 'Display' tab.
-        base_matrix_act = QAction('Base Matrix', self, checkable=True)
-        evo_matrix_act = QAction('Transition (Evolution) Matrix', self, checkable=True)
+        base_matrix_act = QAction('Base Matrix', self)
+        evo_matrix_act = QAction('Transition (Evolution) Matrix', self)
         display_menu.addAction(base_matrix_act)
         display_menu.addAction(evo_matrix_act)
 
@@ -133,7 +133,7 @@ class MainWindow(QtWidgets.QMainWindow):
         nullspace_act.triggered.connect(lambda: self.nullspace_of_matrix())
         rank_act.triggered.connect(lambda: self.display_pop_up('rank'))
         cycle_act.triggered.connect(lambda: self.display_pop_up('cycle'))
-        stats_act.triggered.connect(lambda: self.get_automata_stats())
+        stats_act.triggered.connect(lambda: self.get_automata_stats('Simple'))
 
         """ End Menu Bar Creation """
 
@@ -207,15 +207,39 @@ class MainWindow(QtWidgets.QMainWindow):
         """
         Pushes form to the GUI.
         """
-        input_form_default = QtWidgets.QFormLayout()
-        input_form_default.addRow(self.number_of_cells_label, self.number_of_cells)
-        input_form_default.addRow(self.alphabet_size_label, self.alphabet_size)
-        input_form_default.addRow(self.initial_state_label, self.initial_state)
-        input_form_default.addRow(self.update_rule_label, self.update_rule)
-        input_form_default.addRow(self.number_of_steps_label, self.number_of_steps)
-        input_form_default.addRow(self.random_automata_button, self.update_automata_button)
+        self.input_form_default = QtWidgets.QFormLayout()
+        self.input_form_default.addRow(self.number_of_cells_label, self.number_of_cells)
+        self.input_form_default.addRow(self.alphabet_size_label, self.alphabet_size)
+        self.input_form_default.addRow(self.initial_state_label, self.initial_state)
+        self.input_form_default.addRow(self.update_rule_label, self.update_rule)
+        self.input_form_default.addRow(self.number_of_steps_label, self.number_of_steps)
+        self.input_form_default.addRow(self.random_automata_button, self.update_automata_button)
 
         """ End Default Input Form Creation """
+
+        """ Begin Nullspace Input Form Creation """
+
+        self.nullspace_label = QLabel(self)
+        self.nullspace_label.setText('Power of matrix to generate:')
+        self.nullspace_powers = QLineEdit(self)
+        self.nullspace_powers.setText("0")
+        self.nullspace_powers.move(20, 20)
+        self.nullspace_powers.resize(280,40)
+
+        self.nullspace_tk_button1 = QPushButton('Find nullspace of T^k', self)
+        self.nullspace_tk_button1.clicked.connect(lambda: self.matrix_nullspace('None'))
+        
+        self.nullspace_tk_button2 = QPushButton('Find nullspace of T^k - I', self)
+        self.nullspace_tk_button2.clicked.connect(lambda: self.matrix_nullspace('identity'))
+
+        self.nullspace_output = QTextEdit(self)
+
+        self.nullspace_form = QtWidgets.QFormLayout()
+        self.nullspace_form.addRow(self.nullspace_label, self.nullspace_powers)
+        self.nullspace_form.addRow(self.nullspace_tk_button1, self.nullspace_tk_button2)
+        self.nullspace_form.addRow(self.nullspace_output)
+
+        """ End Nullspace Input Form Creation """
 
         """ Begin Powers Of Matrix Input Form Creation """
 
@@ -224,6 +248,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.powers_of_matrix_label = QLabel(self)
         self.powers_of_matrix_label.setText('Power of matrix to generate:')
         self.powers_of_matrix = QLineEdit(self)
+        self.powers_of_matrix.setText("0")
         self.powers_of_matrix.move(20, 20)
         self.powers_of_matrix.resize(280,40)
 
@@ -237,12 +262,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_powers_button2.setToolTip('Submit an update to the automaton')
         self.update_powers_button2.clicked.connect(lambda: self.matrix_powers('identity'))
 
-        # self.matrix_output = QTextEdit(self)
+        self.matrix_output = QTextEdit(self)
 
         self.matrix_powers_form = QtWidgets.QFormLayout()
         self.matrix_powers_form.addRow(self.powers_of_matrix_label, self.powers_of_matrix)
         self.matrix_powers_form.addRow(self.update_powers_button1, self.update_powers_button2)
-        # self.matrix_powers_form.addRow(self.matrix_output)
+        self.matrix_powers_form.addRow(self.matrix_output)
 
         """ End Powers Of Matrix Input Form Creation """
 
@@ -300,7 +325,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Add tabs to widget
         self.tabs.addTab(self.tab1, "Default Input")
-        self.tabs.addTab(self.tab2, "Update Rule")
+        self.tabs.addTab(self.tab2, "Nullspace")
         self.tabs.addTab(self.tab3, "Matrix Powers")
         self.tabs.addTab(self.tab4, "Cycle Statistics")
         self.tabs.addTab(self.tab5, "Output")
@@ -308,14 +333,13 @@ class MainWindow(QtWidgets.QMainWindow):
         """
         Tab 1: Default Input
         """
-        self.tab1.setLayout(input_form_default)
+        self.tab1.setLayout(self.input_form_default)
 
         """
-        Tab 2: Update Rule (Currently not implemented)
+        Tab 2: Nullspace
         """
-        # self.tab2.layout = QVBoxLayout(self)
-        # self.tab2.layout.addWidget()
-        # self.tab2.setLayout(self.tab2.layout)
+
+        self.tab2.setLayout(self.nullspace_form)
 
         """
         Tab 3: Matrix Powers
@@ -546,14 +570,42 @@ class MainWindow(QtWidgets.QMainWindow):
     When the Update Powers button is clicked, calculate and display the corresponding matrix power.
     """
     def matrix_powers(self, flag = 'None'):
+        
+        if self.CA.get_is_automata_generated() == 0:
+            return
+
         if flag == 'identity':
-            self.lastMatrix = stats.generate_T_minus_I(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()), int(self.powers_of_matrix.text()))
+            self.lastMatrix = self.CA.generate_T_pow_minus_I(int(self.powers_of_matrix.text()))
         else:
-            self.lastMatrix = self.CA.get_matrix_power(self.CA.get_evolution_matrix(), int(self.powers_of_matrix.text()))
+            self.lastMatrix = self.CA.generate_T_pow(int(self.powers_of_matrix.text()))
+
+        msg = str(self.lastMatrix)
+
+        self.matrix_output.setText(msg)
+        
         self.display_matrix('last')
 
+    def matrix_nullspace(self, flag = 'None'):
+        
+        if self.CA.get_is_automata_generated() == 0:
+            return
+
+        if flag == 'identity':
+            self.lastMatrix = self.CA.generate_null_T_minus_I(int(self.nullspace_powers.text()))
+        else:
+            self.lastMatrix = self.CA.generate_null_T(int(self.nullspace_powers.text()))
+
+        msg = str(self.lastMatrix)
+
+        self.nullspace_output.setText(msg)
+
+        self.display_matrix('last')
 
     def nullspace_of_matrix(self, flag='None'):
+
+        if self.lastMatrix.shape[0] != self.lastMatrix.shape[1]:
+            return
+
         self.canvas.axes.cla()  # Clear the canvas.
 
         # Take the nullspace of the matrix currently in the canvas
@@ -566,10 +618,6 @@ class MainWindow(QtWidgets.QMainWindow):
             nullspace = np.zeros([int(self.number_of_cells.text()), int(self.number_of_cells.text())], dtype=int)
 
         self.lastMatrix = nullspace
-        # print("Null nullspace: ", self.lastMatrix)
-        # print("Values in 'nullspace", nullspace)
-
-        # print("Type of lastMatrix in nullspace_mat: ", type(self.lastMatrix))
 
         msg = 'Nullspace = ' + str(self.lastMatrix)
 
@@ -637,9 +685,12 @@ class MainWindow(QtWidgets.QMainWindow):
     When this function is called, open a file explorer window for user to select a file to append to.
     """
     def saveToFile(self, flag):
+        if self.CA.get_is_automata_generated() == 0:
+            return
+
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getSaveFileName(self,"Output to a file", "","All Files (*);;Python Files (*.py)", options=options)
+        fileName, _ = QFileDialog.getSaveFileName(self,"Output to a file", "example.txt","All Files (*);;Python Files (*.py)", options=options)
 
         print (fileName)
         if fileName:
@@ -667,7 +718,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def get_automata_stats(self, print_type):
         
         if(print_type == "Simple" or print_type == "Complex"):
-            automata_stats, reversibility, n, cycle_type = stats.generate_automata_stats(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()))
+            automata_stats, reversibility, s, n, cycle_type = stats.generate_automata_stats(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()))
 
             msg = ''
 
@@ -677,14 +728,12 @@ class MainWindow(QtWidgets.QMainWindow):
 
             msg += str(reversibility) + '\n'
 
-            msg += 'Transition Cycle at: {} \n'.format(n)
-
             if(cycle_type == "0"):
-                msg += 'Transition Matrix Powers Evolved to: Zero Matrix\n'
+                msg += '\nTransition Matrix Powers: T^{} = Zero Matrix\n'.format(n)
             elif(cycle_type == "I"):
-                msg += 'Transition Matrix Powers Evolved to: Identity Matrix\n'
+                msg += '\nTransition Matrix Powers: T^{} = Identity Matrix\n'.format(n)
             elif(cycle_type == "Cycle"):
-                msg += 'Transition Matrix Powers Ended by Complete Cycle\n'
+                msg += '\nTransition Matrix Powers: Cycle {} = {}\n'.format(s, n)
 
             I = np.identity(int(self.number_of_cells.text()), dtype=int)
 
@@ -704,17 +753,17 @@ class MainWindow(QtWidgets.QMainWindow):
 
             if (print_type == "Complex"):
                 
-                for i in range(n):
-                    msg += ("\n(T)^{}: ".format(n))
-                    result_matrix_pow = self.CA.get_evolution_matrix()
+                result_matrix_pow = self.CA.get_evolution_matrix()
+                for i in range(n+1):
+                    msg += ("\n(T)^{}: \n".format(i))
                     if(i > 0):
                         result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
                     result_matrix = (result_matrix_pow) % int(self.alphabet_size.text())
                     msg += str(result_matrix)
 
-                for i in range(n):
-                    msg += ("\n(T)^{} - I: ".format(n))
-                    result_matrix_pow = self.CA.get_evolution_matrix()
+                result_matrix_pow = self.CA.get_evolution_matrix()
+                for i in range(n+1):
+                    msg += ("\n(T)^{} - I: \n".format(i))
                     if(i > 0):
                         result_matrix_pow = (np.matmul(self.CA.get_evolution_matrix(), result_matrix_pow)) % int(self.alphabet_size.text())
                     result_matrix = (result_matrix_pow - I) % int(self.alphabet_size.text())
