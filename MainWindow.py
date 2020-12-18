@@ -541,6 +541,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.canvas.draw()
 
     def rref_of_matrix(self, flag='None'):
+        if self.CA.get_is_automata_generated() == 0:
+            return
         self.canvas.axes.cla()  # Clear the canvas.
         if self.activeMatrixLabel == 'base':
             self.lastMatrix = self.CA.row_reduced_echelon_form(self.CA.get_cellular_automata())
@@ -615,7 +617,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def nullspace_of_matrix(self, flag='None'):
-
+        if self.CA.get_is_automata_generated() == 0:
+            return
         if self.lastMatrix.shape[0] != self.lastMatrix.shape[1]:
             return
 
@@ -733,7 +736,8 @@ class MainWindow(QtWidgets.QMainWindow):
         powers, rref, nullspaces, etc
     """
     def get_automata_stats(self, print_type):
-
+        if self.CA.get_is_automata_generated() == 0:
+            return
         if(print_type == "Simple" or print_type == "Complex"):
             automata_stats, reversibility, s, n, cycle_type = stats.generate_automata_stats(self.CA.get_evolution_matrix(), int(self.number_of_cells.text()), int(self.alphabet_size.text()))
 
