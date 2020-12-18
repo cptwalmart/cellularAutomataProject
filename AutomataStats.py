@@ -44,38 +44,48 @@ def detect_cycle_transition(transition, alphabet, size):
 
     return(-1, "-1")
 
-def detect_cycle_transition_test_recurse_1(transition, alphabet, size):
+def detect_cycle_transition_recurse_1(transition, alphabet, size):
     """
     Find T^k = T^n-k (IF there is one)
     finds the max number of cycle of transition matrix to compute
     """
 
-    power = 1
-    M_list = []
+    u_bound = 100
+    M_List = []
     ZERO = np.zeros((size, size), dtype=int)
     I = np.identity(size, dtype=int)
 
+
     result_matrix = transition
-    M_list.append(result_matrix)
+    for i in range(u_bound):
+        M_List.append(result_matrix)
+        result_matrix = (np.matmul(transition, result_matrix)) % alphabet
 
-    return(detect_cycle_transition_test_recurse(M_List, transition, result_matrix))
+    #result_matrix = transition
+    #M_List.append(result_matrix)
+    return(detect_cycle_transition_recurse_2(M_List, transition, result_matrix, size, alphabet, ZERO, I, u_bound))
 
-def detect_cycle_transition_test_recurse_2(M_List, transition, result_matrix):
+def detect_cycle_transition_recurse_2(M_List, transition, result_matrix, size, alphabet, ZERO, I, u_bound):
 
-    for i in range(len(M_list)):
-        for j in range(i + 1, len(M_list)):
+    for i in range(len(M_List)):
+        for j in range(i + 1, len(M_List)):
             if i != j:
                 # If true all states evloves to Zero State
-                if(M_list[j] == I).all():
-                    return(j)
-                if(M_list[j] == ZERO).all():
-                    return(j)
-                if (M_list[i] == M_list[j]).all():
-                    return(j)
+                if(M_List[j] == I).all():
+                    return(i, j, "I")
+                if(M_List[j] == ZERO).all():
+                    return(i, j, "0")
+                if (M_List[i] == M_List[j]).all():
+                    return(i, j, "Cycle")
 
-    result_matrix = (np.matmul(transition, result_matrix)) % alphabet
-    M_list.append(result_matrix)
-    return(detect_cycle_transition_test_recurse(M_List, transition, result_matrix))
+    result_matrix = transition
+    for i in range(u_bound):
+        M_List.append(result_matrix)
+        result_matrix = (np.matmul(transition, result_matrix)) % alphabet
+
+    #result_matrix = (np.matmul(transition, result_matrix)) % alphabet
+    #M_List.append(result_matrix)
+    return(detect_cycle_transition_recurse_2(M_List, transition, result_matrix, size, alphabet, ZERO, I, u_bound))
 
 
 def is_reversible(B, rows, cols, size):
@@ -149,7 +159,7 @@ def generate_automata_stats(data, size, alphabet):
     I = np.identity(size, dtype=int)        # Identity Matrix
     power = 1                               # power
     reversible = is_reversible(B, rows, cols, size)   # is automate reversible
-    s, n, cycle_type = detect_cycle_transition(transition, alphabet, size)  # max steps
+    s, n, cycle_type = detect_cycle_transition_recurse_1(transition, alphabet, size)  # max steps
 
     #print("\nrref for matrix:")
     #B.reduced_row_echelon_form()
