@@ -2,7 +2,7 @@
 
 PyQt5_sip == 12.7.2
 matplotlib == 3.2.1
-numpy == 1.18.2
+numpy == 1.22.0
 sympy == 1.5.1
 
 #setuptools == 41.2.0
